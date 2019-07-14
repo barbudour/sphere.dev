@@ -21,6 +21,12 @@
 		@include retina {
 			background-image: url("../images/logo@2x.png");
 		}
+
+		@include desktop {
+			&:hover {
+				opacity: 0.7;
+			}
+		}
 	}
 
 	&__menu {
