@@ -1,0 +1,53 @@
+.footer {
+	position: relative;
+	z-index: 5;
+	display: flex;
+	justify-content: flex-end;
+	margin-right: 0;
+	margin-left: auto;
+	width: 50vw;
+	height: 220px;
+
+	&__content {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		padding: 16px 30px;
+		width: 100%;
+		font-weight: 400;
+		font-size: 11px;
+		line-height: 30px;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: $color-white;
+		background-color: rgba($color-woodsmoke-dark, 0.25);
+
+		a {
+			position: relative;
+			display: inline-block;
+			text-decoration: none;
+			color: $color-cream-can;
+
+			&::before {
+				content: "";
+				position: absolute;
+				left: 0;
+				bottom: 5px;
+				width: 100%;
+				height: 2px;
+				background-color: $color-cream-can;
+				transform: scaleX(0) translateZ(0);
+				transition: transform 0.3s;
+				will-change: transform;
+			}
+
+			@include desktop {
+				&:hover {
+					&::before {
+						transform: scaleX(1) translateZ(0);
+					}
+				}
+			}
+		}
+	}
+}

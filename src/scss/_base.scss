@@ -4,6 +4,34 @@
 	box-sizing: inherit;
 }
 
+a,
+button,
+input,
+textarea {
+	&:hover,
+	&:focus,
+	&:active {
+		// stylelint-disable-next-line declaration-no-important
+		outline: none !important;
+	}
+}
+
 html {
 	box-sizing: border-box;
+}
+
+body {
+	font-family: $font-roboto;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 23px;
+}
+
+.is-overflow-hidden {
+	overflow: hidden;
+	height: 100vh;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
 }
