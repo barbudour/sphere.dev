@@ -1,10 +1,10 @@
 .footer {
-	position: relative;
+	position: absolute;
+	right: 0;
+	bottom: 0;
 	z-index: 5;
 	display: flex;
 	justify-content: flex-end;
-	margin-right: 0;
-	margin-left: auto;
 	width: 50vw;
 	height: 220px;
 
