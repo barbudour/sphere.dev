@@ -1,8 +1,4 @@
 .home {
-	position: relative;
-	z-index: 1;
-	padding-top: 65px;
-
 	&__fixed {
 		position: fixed;
 		left: 0;
@@ -261,6 +257,11 @@
 				@include mobile {
 					display: none;
 				}
+			}
+
+			@include not-mobile {
+				// stylelint-disable-next-line declaration-no-important
+				background: none !important;
 			}
 
 			@include mobile {

@@ -5,8 +5,9 @@
 	z-index: 5;
 	display: flex;
 	justify-content: flex-end;
-	width: 50vw;
+	width: 100%;
 	height: 220px;
+	max-width: vw(1020);
 
 	&__content {
 		display: flex;
@@ -67,6 +68,10 @@
 
 	&__create {
 		margin-top: 3px;
+	}
+
+	&--main {
+		max-width: vw(680);
 	}
 
 	@include laptop {
