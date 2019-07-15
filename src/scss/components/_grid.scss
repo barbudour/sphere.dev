@@ -1,4 +1,4 @@
-.grid {
+.home-grid {
 	position: relative;
 	z-index: 2;
 	display: flex;
@@ -42,6 +42,10 @@
 			letter-spacing: -0.06em;
 			text-align: center;
 			color: rgba($color-white, 0.2);
+
+			@include tablet {
+				right: 10px;
+			}
 		}
 
 		&__preview {
@@ -146,14 +150,6 @@
 			}
 		}
 
-		&:nth-child(2n + 1) {
-			margin-top: -80px;
-
-			&.grid-item--first {
-				margin-top: 0;
-			}
-		}
-
 		&.is-before-last,
 		&.is-last {
 			transform-origin: center bottom;
@@ -184,6 +180,75 @@
 				right: auto;
 				top: auto;
 			}
+
+			@include laptop-only {
+				margin-left: calc(100% / 3 * 2);
+				height: 495px;
+			}
+
+			@include tablet {
+				margin: 0;
+				width: 50%;
+				height: 400px;
+			}
 		}
+
+		@include desktop-big {
+			&:nth-child(2n + 1) {
+				margin-top: -80px;
+
+				&.grid-item--first {
+					margin-top: 0;
+				}
+			}
+		}
+
+		@include laptop {
+			width: calc(100% / 3);
+			height: 480px;
+			pointer-events: auto;
+
+			&.grid-item--first {
+				height: calc(100vh - 65px);
+			}
+
+			&.is-laptop-before-last {
+				height: 560px;
+			}
+		}
+
+		@include laptop-only {
+			&:nth-child(3n) {
+				margin-top: -80px;
+
+				&:nth-child(3) {
+					margin-top: 0;
+					height: 400px;
+				}
+			}
+		}
+
+		@include tablet {
+			width: 50%;
+			height: 480px;
+
+			&:nth-child(2n + 1) {
+				margin-top: -80px;
+			}
+
+			&.grid-item--first {
+				margin: 0;
+				height: 400px;
+			}
+
+			&.is-tablet-before-last {
+				height: 560px;
+			}
+		}
+	}
+
+	@include laptop {
+		width: 100%;
+		pointer-events: none;
 	}
 }

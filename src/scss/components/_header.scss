@@ -27,6 +27,15 @@
 				opacity: 0.7;
 			}
 		}
+
+		@include laptop {
+			width: 56px;
+			background-image: url("../images/logo-small.png");
+
+			@include retina {
+				background-image: url("../images/logo-small@2x.png");
+			}
+		}
 	}
 
 	&__menu {
@@ -80,5 +89,21 @@
 				}
 			}
 		}
+
+		@include laptop {
+			width: calc(100% - 76px);
+		}
+
+		@include tablet {
+			width: calc(100% - 96px);
+		}
+	}
+
+	@include laptop {
+		padding-left: 9px;
+	}
+
+	@include tablet {
+		padding-left: 12px;
 	}
 }

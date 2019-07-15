@@ -29,6 +29,16 @@
 				z-index: 1;
 				width: 100%;
 				height: 100%;
+
+				@include laptop {
+					left: vh(-21, 560);
+					top: vh(-15, 560);
+				}
+
+				@include tablet {
+					left: vh(-28, 560);
+					top: vh(-11, 560);
+				}
 			}
 
 			&__polygon {
@@ -38,6 +48,11 @@
 				z-index: 2;
 				width: 100%;
 				height: 100%;
+
+				@include laptop {
+					left: vh(-12, 560);
+					top: vh(-7, 560);
+				}
 			}
 
 			img {
@@ -48,6 +63,20 @@
 				display: block;
 				width: vh(600);
 				height: vh(600);
+
+				@include laptop {
+					top: vh(12, 560);
+					margin-left: vh(6, 560);
+					width: vh(370, 560);
+					height: vh(370, 560);
+				}
+
+				@include tablet {
+					left: 0;
+					top: 0;
+					width: vh(464, 560);
+					height: vh(465, 560);
+				}
 			}
 
 			svg {
@@ -58,6 +87,36 @@
 				display: block;
 				width: vh(569);
 				height: vh(564);
+
+				@include laptop {
+					left: vh(12, 560);
+					top: vh(6, 560);
+					width: vh(352, 560);
+					height: vh(348, 560);
+				}
+
+				@include tablet {
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+				}
+			}
+
+			@include laptop {
+				top: vh(206, 560);
+				margin-left: vh(-158, 560);
+				width: vh(400, 560);
+				height: vh(400, 560);
+			}
+
+			@include tablet {
+				left: auto;
+				right: vh(-76, 560);
+				top: vh(101, 560);
+				margin: 0;
+				width: vh(440, 560);
+				height: vh(436, 560);
 			}
 		}
 
@@ -71,12 +130,30 @@
 			line-height: 43px;
 			letter-spacing: -0.01em;
 			color: $color-white;
+
+			@include laptop {
+				left: 85px;
+				top: vh(242, 560);
+			}
+
+			@include tablet {
+				left: 44px;
+			}
 		}
 
 		&__button {
 			position: absolute;
 			left: 60px;
 			bottom: vh(59);
+
+			@include laptop {
+				left: 85px;
+				bottom: vh(60, 560);
+			}
+
+			@include tablet {
+				left: 44px;
+			}
 		}
 
 		@include retina {
@@ -93,6 +170,7 @@
 		width: 100%;
 		height: 120px;
 		background: $color-woodsmoke-dark;
+		pointer-events: auto;
 
 		p {
 			margin-right: 66px;
@@ -112,9 +190,11 @@
 
 	&__vacancies {
 		position: relative;
+		overflow-x: hidden;
 		margin-top: vw(-29);
 		width: 100%;
 		height: vw(368);
+		pointer-events: auto;
 
 		&__bg {
 			position: absolute;
@@ -125,8 +205,11 @@
 			height: 100%;
 
 			img {
+				position: absolute;
+				right: 0;
+				bottom: 0;
 				display: block;
-				width: 100%;
+				width: auto;
 				height: 100%;
 			}
 		}
@@ -187,5 +270,23 @@
 				}
 			}
 		}
+
+		@include laptop {
+			margin-top: vw(-29, 1020);
+			height: vw(367, 1020);
+		}
+
+		@include tablet {
+			margin-top: vw(-29, 768);
+			height: vw(365, 768);
+		}
+	}
+
+	@include laptop {
+		padding-bottom: 150px;
+	}
+
+	@include tablet {
+		padding-top: 100vh;
 	}
 }

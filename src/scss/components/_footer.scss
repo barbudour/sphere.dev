@@ -49,5 +49,18 @@
 				}
 			}
 		}
+
+		@include laptop {
+			padding: 16px 85px;
+		}
+
+		@include tablet {
+			padding: 16px 44px;
+		}
+	}
+
+	@include laptop {
+		width: 100%;
+		height: 150px;
 	}
 }

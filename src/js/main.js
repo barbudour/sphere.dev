@@ -1,3 +1,3 @@
 import './vendor';
-import './components/grid';
+import './components/home-grid';
 import './components/polygon';

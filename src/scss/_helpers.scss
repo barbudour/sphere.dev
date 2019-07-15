@@ -17,6 +17,81 @@
 	}
 }
 
+.for-desktop-only {
+	@include laptop-only {
+		// stylelint-disable-next-line declaration-no-important
+		display: none !important;
+	}
+
+	@include tablet-only {
+		// stylelint-disable-next-line declaration-no-important
+		display: none !important;
+	}
+
+	@include mobile {
+		// stylelint-disable-next-line declaration-no-important
+		display: none !important;
+	}
+}
+
+.for-laptop-only {
+	@include desktop-big {
+		// stylelint-disable-next-line declaration-no-important
+		display: none !important;
+	}
+
+	@include tablet-only {
+		// stylelint-disable-next-line declaration-no-important
+		display: none !important;
+	}
+
+	@include mobile {
+		// stylelint-disable-next-line declaration-no-important
+		display: none !important;
+	}
+}
+
+.is-laptop-hidden {
+	@include laptop-only {
+		// stylelint-disable-next-line declaration-no-important
+		display: none !important;
+	}
+}
+
+.for-tablet-only {
+	@include desktop-big {
+		// stylelint-disable-next-line declaration-no-important
+		display: none !important;
+	}
+
+	@include laptop-only {
+		// stylelint-disable-next-line declaration-no-important
+		display: none !important;
+	}
+
+	@include mobile {
+		// stylelint-disable-next-line declaration-no-important
+		display: none !important;
+	}
+}
+
+.for-mobile-only {
+	@include desktop-big {
+		// stylelint-disable-next-line declaration-no-important
+		display: none !important;
+	}
+
+	@include laptop-only {
+		// stylelint-disable-next-line declaration-no-important
+		display: none !important;
+	}
+
+	@include tablet-only {
+		// stylelint-disable-next-line declaration-no-important
+		display: none !important;
+	}
+}
+
 .clearfix {
 	overflow: auto;
 
