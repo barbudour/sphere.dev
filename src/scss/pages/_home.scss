@@ -1,0 +1,292 @@
+.home {
+	position: relative;
+	z-index: 1;
+	padding-top: 65px;
+
+	&__fixed {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background: url("../images/main/bg.jpg") no-repeat center;
+		background-size: cover;
+
+		&__decoration {
+			position: absolute;
+			left: 50%;
+			top: vh(160);
+			z-index: 1;
+			margin-left: vh(-377);
+			width: vh(600);
+			height: vh(600);
+			pointer-events: none;
+
+			&__image {
+				position: absolute;
+				left: vh(-26);
+				top: vh(-12);
+				z-index: 1;
+				width: 100%;
+				height: 100%;
+
+				@include laptop {
+					left: vh(-21, 560);
+					top: vh(-15, 560);
+				}
+
+				@include tablet {
+					left: vh(-28, 560);
+					top: vh(-11, 560);
+				}
+			}
+
+			&__polygon {
+				position: absolute;
+				left: vh(-12);
+				top: vh(-7);
+				z-index: 2;
+				width: 100%;
+				height: 100%;
+
+				@include laptop {
+					left: vh(-12, 560);
+					top: vh(-7, 560);
+				}
+			}
+
+			img {
+				position: absolute;
+				left: vh(12);
+				top: vh(6);
+				z-index: 1;
+				display: block;
+				width: vh(600);
+				height: vh(600);
+
+				@include laptop {
+					top: vh(12, 560);
+					margin-left: vh(6, 560);
+					width: vh(370, 560);
+					height: vh(370, 560);
+				}
+
+				@include tablet {
+					left: 0;
+					top: 0;
+					width: vh(464, 560);
+					height: vh(465, 560);
+				}
+			}
+
+			svg {
+				position: absolute;
+				left: vh(12);
+				top: vh(6);
+				z-index: 2;
+				display: block;
+				width: vh(569);
+				height: vh(564);
+
+				@include laptop {
+					left: vh(12, 560);
+					top: vh(6, 560);
+					width: vh(352, 560);
+					height: vh(348, 560);
+				}
+
+				@include tablet {
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+				}
+			}
+
+			@include laptop {
+				top: vh(206, 560);
+				margin-left: vh(-158, 560);
+				width: vh(400, 560);
+				height: vh(400, 560);
+			}
+
+			@include tablet {
+				left: auto;
+				right: vh(-76, 560);
+				top: vh(101, 560);
+				margin: 0;
+				width: vh(440, 560);
+				height: vh(436, 560);
+			}
+		}
+
+		&__title {
+			position: absolute;
+			left: 60px;
+			top: vh(457);
+			z-index: 2;
+			font-weight: 300;
+			font-size: 32px;
+			line-height: 43px;
+			letter-spacing: -0.01em;
+			color: $color-white;
+
+			@include laptop {
+				left: 85px;
+				top: vh(242, 560);
+			}
+
+			@include tablet {
+				left: 44px;
+			}
+		}
+
+		&__button {
+			position: absolute;
+			left: 60px;
+			bottom: vh(59);
+
+			@include laptop {
+				left: 85px;
+				bottom: vh(60, 560);
+			}
+
+			@include tablet {
+				left: 44px;
+			}
+		}
+
+		@include retina {
+			background-image: url("../images/main/bg@2x.jpg");
+		}
+	}
+
+	&__all-news {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 120px;
+		background: $color-woodsmoke-dark;
+		pointer-events: auto;
+
+		p {
+			margin-right: 66px;
+			font-weight: 400;
+			font-size: 11px;
+			line-height: 15px;
+			letter-spacing: 0.1em;
+			text-align: center;
+			text-transform: uppercase;
+			color: $color-white;
+		}
+
+		@include desktop-big {
+			height: vw(120);
+		}
+	}
+
+	&__vacancies {
+		position: relative;
+		overflow-x: hidden;
+		margin-top: vw(-29);
+		width: 100%;
+		height: vw(368);
+		pointer-events: auto;
+
+		&__bg {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			z-index: 1;
+			height: 100%;
+
+			img {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				display: block;
+				width: auto;
+				height: 100%;
+			}
+		}
+
+		&__content {
+			position: relative;
+			z-index: 2;
+			padding-top: 90px;
+			padding-left: 30px;
+			max-width: 280px;
+		}
+
+		h4 {
+			margin: 0;
+			font-weight: 300;
+			font-size: 18px;
+			line-height: 23px;
+			color: $color-black;
+		}
+
+		p {
+			margin: 28px 0 0;
+			font-weight: 300;
+			font-size: 15px;
+			line-height: 28px;
+			color: $color-black;
+		}
+
+		a {
+			display: flex;
+			align-items: center;
+			margin-top: 28px;
+			padding: 15px 0;
+			font-weight: 400;
+			font-size: 11px;
+			line-height: 15px;
+			letter-spacing: 0.1em;
+			text-decoration: none;
+			text-transform: uppercase;
+			color: $color-woodsmoke;
+
+			svg {
+				margin-top: -1px;
+				margin-left: 8px;
+				width: 14px;
+				height: 14px;
+				fill: none;
+				transform: translateZ(0);
+				transition: transform 0.3s;
+				will-change: transform;
+			}
+
+			@include desktop {
+				&:hover {
+					svg {
+						transform: scale(1.25) translateZ(0);
+					}
+				}
+			}
+		}
+
+		@include laptop {
+			margin-top: vw(-29, 1020);
+			height: vw(367, 1020);
+		}
+
+		@include tablet {
+			margin-top: vw(-29, 768);
+			height: vw(365, 768);
+		}
+	}
+
+	@include laptop {
+		padding-bottom: 150px;
+	}
+
+	@include tablet {
+		padding-top: 100vh;
+	}
+}

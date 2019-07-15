@@ -1,0 +1,96 @@
+.button {
+	position: relative;
+	display: inline-block;
+	border: 1px solid rgba($color-white, 0.2);
+	padding: 0 22px;
+	font-size: 11px;
+	line-height: 43px;
+	letter-spacing: 1px;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: $color-white;
+
+	span {
+		position: absolute;
+		left: -1px;
+		right: -1px;
+		top: -1px;
+		bottom: -1px;
+		z-index: -1;
+		overflow: hidden;
+		pointer-events: none;
+
+		&:first-child {
+			&::before {
+				@include triangle(to top left, 4px, 4px, $color-sunglow);
+
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 0;
+				transform: translateZ(0);
+				transform-origin: left top;
+				transition: transform 0.3s;
+				will-change: transform;
+			}
+
+			&::after {
+				@include triangle(to bottom left, 4px, 4px, $color-sunglow);
+
+				content: "";
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				transform: translateZ(0);
+				transform-origin: left bottom;
+				transition: transform 0.3s;
+				will-change: transform;
+			}
+		}
+
+		&:last-child {
+			&::before {
+				@include triangle(to top right, 4px, 4px, $color-sunglow);
+
+				content: "";
+				position: absolute;
+				right: 0;
+				top: 0;
+				transform: translateZ(0);
+				transform-origin: right top;
+				transition: transform 0.3s;
+				will-change: transform;
+			}
+
+			&::after {
+				@include triangle(to bottom right, 4px, 4px, $color-sunglow);
+
+				content: "";
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				transform: translateZ(0);
+				transform-origin: right bottom;
+				transition: transform 0.3s;
+				will-change: transform;
+			}
+		}
+	}
+
+	@include desktop {
+		&:hover {
+			span {
+				&::before,
+				&::after {
+					transform: scale(35) translateZ(0);
+				}
+			}
+		}
+	}
+}
+
+.page {
+	position: relative;
+	overflow-x: hidden;
+	padding-bottom: 220px;
+}

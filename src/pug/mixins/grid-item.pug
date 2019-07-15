@@ -1,0 +1,11 @@
+mixin grid-item(data)
+	a.grid-item(href= data.link class=`${data.classList ? data.classList : ''}`)
+		.grid-item__bg(style=`background-color: ${data.background ? data.background : 'none'}; opacity: ${data.opacity ? data.opacity : 1}`)
+			if data.src
+				img(src= data.src srcset= data.srcset)
+		.grid-item__content
+			.grid-item__topside
+				.grid-item__label новость./
+				.grid-item__date!= data.date
+			.grid-item__bottomside
+				p!= data.text
