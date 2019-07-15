@@ -87,6 +87,11 @@
 			}
 		}
 	}
+
+	@include mobile {
+		display: block;
+		text-align: center;
+	}
 }
 
 .page {

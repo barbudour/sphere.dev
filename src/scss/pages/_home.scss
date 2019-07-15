@@ -39,6 +39,11 @@
 					left: vh(-28, 560);
 					top: vh(-11, 560);
 				}
+
+				@include mobile {
+					left: 0;
+					top: 0;
+				}
 			}
 
 			&__polygon {
@@ -76,6 +81,13 @@
 					top: 0;
 					width: vh(464, 560);
 					height: vh(465, 560);
+				}
+
+				@include mobile {
+					left: vh(-24, 550);
+					top: vh(-10, 550);
+					width: vh(318, 550);
+					height: vh(321, 550);
 				}
 			}
 
@@ -118,6 +130,13 @@
 				width: vh(440, 560);
 				height: vh(436, 560);
 			}
+
+			@include mobile {
+				right: vh(-99, 550);
+				top: vh(98, 550);
+				width: vh(305, 550);
+				height: vh(302, 550);
+			}
 		}
 
 		&__title {
@@ -139,6 +158,14 @@
 			@include tablet {
 				left: 44px;
 			}
+
+			@include mobile {
+				left: 15px;
+				top: auto;
+				bottom: vh(121, 550);
+				font-size: 21px;
+				line-height: 25px;
+			}
 		}
 
 		&__button {
@@ -153,6 +180,14 @@
 
 			@include tablet {
 				left: 44px;
+			}
+
+			@include mobile {
+				left: 15px;
+				right: 15px;
+				bottom: vh(50, 550);
+				display: block;
+				text-align: center;
 			}
 		}
 
@@ -181,10 +216,21 @@
 			text-align: center;
 			text-transform: uppercase;
 			color: $color-white;
+
+			@include mobile {
+				margin: 0 0 21px;
+			}
 		}
 
 		@include desktop-big {
 			height: vw(120);
+		}
+
+		@include mobile {
+			display: block;
+			padding: 62px 15px 0;
+			height: 207px;
+			text-align: center;
 		}
 	}
 
@@ -211,6 +257,14 @@
 				display: block;
 				width: auto;
 				height: 100%;
+
+				@include mobile {
+					display: none;
+				}
+			}
+
+			@include mobile {
+				background-size: cover;
 			}
 		}
 
@@ -220,6 +274,11 @@
 			padding-top: 90px;
 			padding-left: 30px;
 			max-width: 280px;
+
+			@include mobile {
+				padding: 64px 15px 0;
+				max-width: 290px;
+			}
 		}
 
 		h4 {
@@ -228,6 +287,11 @@
 			font-size: 18px;
 			line-height: 23px;
 			color: $color-black;
+
+			@include mobile {
+				font-size: 17px;
+				line-height: 22px;
+			}
 		}
 
 		p {
@@ -236,6 +300,11 @@
 			font-size: 15px;
 			line-height: 28px;
 			color: $color-black;
+
+			@include mobile {
+				font-size: 14px;
+				line-height: 25px;
+			}
 		}
 
 		a {
@@ -260,6 +329,10 @@
 				transform: translateZ(0);
 				transition: transform 0.3s;
 				will-change: transform;
+
+				@include mobile {
+					margin-left: 4px;
+				}
 			}
 
 			@include desktop {
@@ -268,6 +341,10 @@
 						transform: scale(1.25) translateZ(0);
 					}
 				}
+			}
+
+			@include mobile {
+				margin-top: 12px;
 			}
 		}
 
@@ -279,6 +356,11 @@
 		@include tablet {
 			margin-top: vw(-29, 768);
 			height: vw(365, 768);
+		}
+
+		@include mobile {
+			margin: 0;
+			height: 341px;
 		}
 	}
 

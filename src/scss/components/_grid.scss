@@ -46,6 +46,10 @@
 			@include tablet {
 				right: 10px;
 			}
+
+			@include mobile {
+				right: -32px;
+			}
 		}
 
 		&__preview {
@@ -62,6 +66,12 @@
 			line-height: 23px;
 			letter-spacing: 0;
 			color: $color-white;
+
+			@include mobile {
+				max-width: 100%;
+				font-size: 17px;
+				line-height: 22px;
+			}
 		}
 
 		&__decoration {
@@ -123,6 +133,11 @@
 			display: flex;
 			text-transform: uppercase;
 			color: $color-white;
+
+			@include mobile {
+				left: 15px;
+				right: 15px;
+			}
 		}
 
 		&__label {
@@ -147,6 +162,19 @@
 				line-height: 23px;
 				letter-spacing: 0;
 				color: $color-white;
+
+				@include mobile {
+					font-size: 17px;
+					line-height: 22px;
+				}
+			}
+
+			@include mobile {
+				left: 15px;
+				right: 15px;
+				bottom: 38px;
+				font-size: 17px;
+				line-height: 22px;
 			}
 		}
 
@@ -172,6 +200,10 @@
 
 			.grid-item__content {
 				padding: 30px 30px 35px;
+
+				@include mobile {
+					padding: 30px 15px 35px;
+				}
 			}
 
 			.grid-item__topside {
@@ -243,6 +275,15 @@
 
 			&.is-tablet-before-last {
 				height: 560px;
+			}
+		}
+
+		@include mobile {
+			width: 100%;
+			height: 400px;
+
+			&:nth-child(2n + 1) {
+				margin-top: 0;
 			}
 		}
 	}
