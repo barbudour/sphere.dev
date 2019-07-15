@@ -1,0 +1,93 @@
+.vacancies {
+	position: relative;
+	overflow-x: hidden;
+	margin-top: vw(-29);
+	width: 100%;
+	height: vw(368);
+	pointer-events: auto;
+
+	&__bg {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		z-index: 1;
+		height: 100%;
+
+		img {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			display: block;
+			width: auto;
+			height: 100%;
+		}
+	}
+
+	&__content {
+		position: relative;
+		z-index: 2;
+		padding-top: 90px;
+		padding-left: 30px;
+		max-width: 280px;
+	}
+
+	h4 {
+		margin: 0;
+		font-weight: 300;
+		font-size: 18px;
+		line-height: 23px;
+		color: $color-black;
+	}
+
+	p {
+		margin: 28px 0 0;
+		font-weight: 300;
+		font-size: 15px;
+		line-height: 28px;
+		color: $color-black;
+	}
+
+	a {
+		display: flex;
+		align-items: center;
+		margin-top: 28px;
+		padding: 15px 0;
+		font-weight: 400;
+		font-size: 11px;
+		line-height: 15px;
+		letter-spacing: 0.1em;
+		text-decoration: none;
+		text-transform: uppercase;
+		color: $color-woodsmoke;
+
+		svg {
+			margin-top: -1px;
+			margin-left: 8px;
+			width: 14px;
+			height: 14px;
+			fill: none;
+			transform: translateZ(0);
+			transition: transform 0.3s;
+			will-change: transform;
+		}
+
+		@include desktop {
+			&:hover {
+				svg {
+					transform: scale(1.25) translateZ(0);
+				}
+			}
+		}
+	}
+
+	@include laptop {
+		margin-top: vw(-29, 1020);
+		height: vw(367, 1020);
+	}
+
+	@include tablet {
+		margin-top: vw(-29, 768);
+		height: vw(365, 768);
+	}
+}

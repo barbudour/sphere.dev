@@ -1,0 +1,8 @@
+mixin breadcrumb(data)
+	ul.breadcrumb
+		li.breadcrumb__item
+			a.breadcrumb__link(href="/")
+				| Главная
+		li.breadcrumb__item
+			a.breadcrumb__link(href= data.link)
+				!= data.name
