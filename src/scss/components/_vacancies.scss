@@ -21,6 +21,19 @@
 			display: block;
 			width: auto;
 			height: 100%;
+
+			@include mobile {
+				display: none;
+			}
+		}
+
+		@include not-mobile {
+			// stylelint-disable-next-line declaration-no-important
+			background: none !important;
+		}
+
+		@include mobile {
+			background-size: cover;
 		}
 	}
 
@@ -30,6 +43,11 @@
 		padding-top: 90px;
 		padding-left: 30px;
 		max-width: 280px;
+
+		@include mobile {
+			padding: 64px 15px 0;
+			max-width: 290px;
+		}
 	}
 
 	h4 {
@@ -38,6 +56,11 @@
 		font-size: 18px;
 		line-height: 23px;
 		color: $color-black;
+
+		@include mobile {
+			font-size: 17px;
+			line-height: 22px;
+		}
 	}
 
 	p {
@@ -46,6 +69,11 @@
 		font-size: 15px;
 		line-height: 28px;
 		color: $color-black;
+
+		@include mobile {
+			font-size: 14px;
+			line-height: 25px;
+		}
 	}
 
 	a {
@@ -70,6 +98,10 @@
 			transform: translateZ(0);
 			transition: transform 0.3s;
 			will-change: transform;
+
+			@include mobile {
+				margin-left: 4px;
+			}
 		}
 
 		@include desktop {
@@ -78,6 +110,10 @@
 					transform: scale(1.25) translateZ(0);
 				}
 			}
+		}
+
+		@include mobile {
+			margin-top: 12px;
 		}
 	}
 
@@ -89,5 +125,10 @@
 	@include tablet {
 		margin-top: vw(-29, 768);
 		height: vw(365, 768);
+	}
+
+	@include mobile {
+		margin: 0;
+		height: 341px;
 	}
 }
