@@ -1,0 +1,31 @@
+.breadcrumb {
+	margin: 22px 0 0;
+	padding: 0;
+
+	&__item {
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+
+		&:not(:last-child) {
+			&::after {
+				content: "/";
+				display: inline-block;
+				margin: 0 5px;
+				color: rgba($color-white, 0.5);
+			}
+		}
+	}
+
+	&__link {
+		font-weight: 300;
+		font-size: 15px;
+		line-height: (28 / 15);
+		text-decoration: none;
+		color: rgba($color-white, 0.5);
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
