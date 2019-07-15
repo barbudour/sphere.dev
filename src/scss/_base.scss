@@ -18,6 +18,11 @@ textarea {
 
 html {
 	box-sizing: border-box;
+
+	&.is-overflow-hidden {
+		overflow: hidden;
+		height: 100vh;
+	}
 }
 
 body {

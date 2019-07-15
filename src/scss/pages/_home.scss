@@ -35,6 +35,11 @@
 					left: vh(-28, 560);
 					top: vh(-11, 560);
 				}
+
+				@include mobile {
+					left: 0;
+					top: 0;
+				}
 			}
 
 			&__polygon {
@@ -72,6 +77,13 @@
 					top: 0;
 					width: vh(464, 560);
 					height: vh(465, 560);
+				}
+
+				@include mobile {
+					left: vh(-24, 550);
+					top: vh(-10, 550);
+					width: vh(318, 550);
+					height: vh(321, 550);
 				}
 			}
 
@@ -114,6 +126,13 @@
 				width: vh(440, 560);
 				height: vh(436, 560);
 			}
+
+			@include mobile {
+				right: vh(-99, 550);
+				top: vh(98, 550);
+				width: vh(305, 550);
+				height: vh(302, 550);
+			}
 		}
 
 		&__title {
@@ -135,6 +154,14 @@
 			@include tablet {
 				left: 44px;
 			}
+
+			@include mobile {
+				left: 15px;
+				top: auto;
+				bottom: vh(121, 550);
+				font-size: 21px;
+				line-height: 25px;
+			}
 		}
 
 		&__button {
@@ -149,6 +176,14 @@
 
 			@include tablet {
 				left: 44px;
+			}
+
+			@include mobile {
+				left: 15px;
+				right: 15px;
+				bottom: vh(50, 550);
+				display: block;
+				text-align: center;
 			}
 		}
 
@@ -177,10 +212,156 @@
 			text-align: center;
 			text-transform: uppercase;
 			color: $color-white;
+
+			@include mobile {
+				margin: 0 0 21px;
+			}
 		}
 
 		@include desktop-big {
 			height: vw(120);
+		}
+
+		@include mobile {
+			display: block;
+			padding: 62px 15px 0;
+			height: 207px;
+			text-align: center;
+		}
+	}
+
+	&__vacancies {
+		position: relative;
+		overflow-x: hidden;
+		margin-top: vw(-29);
+		width: 100%;
+		height: vw(368);
+		pointer-events: auto;
+
+		&__bg {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			z-index: 1;
+			height: 100%;
+
+			img {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				display: block;
+				width: auto;
+				height: 100%;
+
+				@include mobile {
+					display: none;
+				}
+			}
+
+			@include not-mobile {
+				// stylelint-disable-next-line declaration-no-important
+				background: none !important;
+			}
+
+			@include mobile {
+				background-size: cover;
+			}
+		}
+
+		&__content {
+			position: relative;
+			z-index: 2;
+			padding-top: 90px;
+			padding-left: 30px;
+			max-width: 280px;
+
+			@include mobile {
+				padding: 64px 15px 0;
+				max-width: 290px;
+			}
+		}
+
+		h4 {
+			margin: 0;
+			font-weight: 300;
+			font-size: 18px;
+			line-height: 23px;
+			color: $color-black;
+
+			@include mobile {
+				font-size: 17px;
+				line-height: 22px;
+			}
+		}
+
+		p {
+			margin: 28px 0 0;
+			font-weight: 300;
+			font-size: 15px;
+			line-height: 28px;
+			color: $color-black;
+
+			@include mobile {
+				font-size: 14px;
+				line-height: 25px;
+			}
+		}
+
+		a {
+			display: flex;
+			align-items: center;
+			margin-top: 28px;
+			padding: 15px 0;
+			font-weight: 400;
+			font-size: 11px;
+			line-height: 15px;
+			letter-spacing: 0.1em;
+			text-decoration: none;
+			text-transform: uppercase;
+			color: $color-woodsmoke;
+
+			svg {
+				margin-top: -1px;
+				margin-left: 8px;
+				width: 14px;
+				height: 14px;
+				fill: none;
+				transform: translateZ(0);
+				transition: transform 0.3s;
+				will-change: transform;
+
+				@include mobile {
+					margin-left: 4px;
+				}
+			}
+
+			@include desktop {
+				&:hover {
+					svg {
+						transform: scale(1.25) translateZ(0);
+					}
+				}
+			}
+
+			@include mobile {
+				margin-top: 12px;
+			}
+		}
+
+		@include laptop {
+			margin-top: vw(-29, 1020);
+			height: vw(367, 1020);
+		}
+
+		@include tablet {
+			margin-top: vw(-29, 768);
+			height: vw(365, 768);
+		}
+
+		@include mobile {
+			margin: 0;
+			height: 341px;
 		}
 	}
 
