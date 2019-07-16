@@ -110,6 +110,20 @@
 		z-index: -1;
 		background: url("../images/bg.jpg") no-repeat center;
 		background-size: cover;
+
+		@include tablet {
+			position: absolute;
+			bottom: auto;
+			height: 75vh;
+		}
+
+		@include mobile {
+			background-position: 0;
+
+			@media (orientation: landscape) {
+				height: 110vh;
+			}
+		}
 	}
 
 	&__top {
@@ -121,6 +135,12 @@
 			font-size: 48px;
 			line-height: (58 / 48);
 			color: $color-white;
+
+			@include mobile {
+				margin-bottom: 40px;
+				font-size: 30px;
+				line-height: (37 / 30);
+			}
 		}
 
 		&__text {
@@ -129,7 +149,30 @@
 			font-size: 16px;
 			line-height: (30 / 16);
 			color: $color-white;
+
+			@include mobile {
+				font-size: 14px;
+				line-height: (25 / 14);
+			}
 		}
+
+		@include laptop {
+			margin-right: 85px;
+			margin-left: 85px;
+		}
+
+		@include tablet {
+			margin-right: 44px;
+			margin-left: 44px;
+		}
+
+		@include mobile {
+			margin: 40px 15px;
+		}
+	}
+
+	@include laptop {
+		padding-bottom: 150px;
 	}
 }
 
@@ -137,4 +180,8 @@
 	margin-left: auto;
 	width: 100%;
 	max-width: vw(1020);
+
+	@include laptop {
+		max-width: 100%;
+	}
 }
