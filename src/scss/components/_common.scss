@@ -1,5 +1,6 @@
 .button {
 	position: relative;
+	z-index: 0;
 	display: inline-block;
 	border: 1px solid rgba($color-white, 0.2);
 	padding: 0 22px;
@@ -284,4 +285,11 @@
 	@include laptop {
 		max-width: 100%;
 	}
+}
+
+button {
+	border: 0;
+	padding: 0;
+	background-color: transparent;
+	cursor: pointer;
 }

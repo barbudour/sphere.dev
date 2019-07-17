@@ -1,6 +1,14 @@
+import * as globals from '../globals';
+
 $('.header__burger').on('click', () => {
-	if (innerWidth < 768) {
+	if (globals.isMobile()) {
 		$('.header').toggleClass('is-active');
-		$(document.documentElement).toggleClass('is-overflow-hidden');
+		globals.vars.$html.toggleClass('is-overflow-hidden');
+	}
+
+	if ($('.header').hasClass('is-active')) {
+		globals.saveScrollPosition();
+	} else {
+		globals.restoreScrollPosition();
 	}
 });

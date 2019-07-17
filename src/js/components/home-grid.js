@@ -1,3 +1,5 @@
+import * as globals from '../globals';
+
 let $gridItem = $('.page.home').find('.grid-item')
 	.not('.for-laptop')
 	.not('.for-laptop-only')
@@ -10,7 +12,7 @@ let firstGridHeight = Math.round(400 / 1360 * innerWidth);
 let gridOffset = gridHeight - firstGridHeight;
 let beforeLastGridHeight = gridHeight + gridOffset;
 
-if (innerWidth >= 1360) {
+if (globals.isDesktopBig()) {
 	$gridItem.each((index, element) => {
 		if (index !== 0) {
 			$(element).css({
@@ -47,20 +49,20 @@ if (innerWidth >= 1360) {
 	});
 }
 
-if (innerWidth >= 1020 && innerWidth < 1360) {
+if (globals.isLaptopOnly()) {
 	$('.home-grid .grid-item')
 		.eq($('.home-grid .grid-item').length - 2)
 		.addClass('is-laptop-before-last');
 }
 
-if (innerWidth >= 768 && innerWidth < 1020) {
+if (globals.isTabletOnly()) {
 	$('.home-grid .grid-item')
 		.eq($('.home-grid .grid-item').length - 3)
 		.addClass('is-tablet-before-last');
 }
 
 $(window).on('resize', () => {
-	if (innerWidth >= 1360) {
+	if (globals.isDesktopBig()) {
 		gridHeight = Math.round(480 / 1360 * innerWidth) + 1;
 		firstGridHeight = Math.round(400 / 1360 * innerWidth);
 		gridOffset = gridHeight - firstGridHeight;
@@ -97,7 +99,7 @@ $(window).on('resize', () => {
 	}
 });
 
-if (innerWidth > 1024) {
+if (globals.isDesktop()) {
 	$('.grid-item').each((index, element) => {
 		$(element)
 			.on('mouseenter', (event) => {
