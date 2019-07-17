@@ -234,3 +234,69 @@
 
 		button.vacancies__city__button.js-vacancies-city-more(data-id="city-ryazan" type="button")
 			| Показать все вакансии в&nbsp;Рязани
+
+.vacancies__popup.is-hidden
+	.vacancies__popup__shade.js-vacancies-popup-close
+
+	.vacancies__popup__body
+		.vacancies__popup__top
+			.vacancies__popup__name
+				| Отправить резюме
+			button.vacancies__popup__close.js-vacancies-popup-close
+				+svg('close')
+
+		form.vacancies__popup__form(action="/result.json")
+			input.vacancies__popup__field--hide(type="text" name="vacancy_id")
+			input.vacancies__popup__field--hide(type="text" name="vacancy_name")
+			.vacancies__popup__middle
+				.vacancies__popup__fieldset.required(data-error="Неверный формат")
+					input.vacancies__popup__field#popup-name(type="text" name="name" data-length="5")
+					label.vacancies__popup__label(for="popup-name")
+						| Имя Фамилия
+
+				.vacancies__popup__fieldset.required(data-error="Неверный формат")
+					input.vacancies__popup__field.js-mask-phone#popup-phone(type="tel" name="phone" data-length="16")
+					label.vacancies__popup__label(for="popup-phone")
+						| Телефон
+
+				.vacancies__popup__fieldset.required(data-error="Неверный формат")
+					input.vacancies__popup__field#popup-email(type="email" name="email" data-length="6")
+					label.vacancies__popup__label(for="popup-email")
+						| E-mail
+
+				.vacancies__popup__fieldset
+					textarea.vacancies__popup__field.vacancies__popup__textarea#popup-message(name="message")
+					label.vacancies__popup__label(for="popup-message")
+						| Сопроводительное письмо
+				
+				.vacancies__popup__file
+					.vacancies__popup__name
+						| Прикрепить файлы
+
+					.vacancies__popup__file__text
+						| Вы&nbsp;можете прикрепить до&nbsp;двух файлов, размером не&nbsp;более 10&nbsp;МБ. #[br]Доступные форматы: .doc, .pdf, .jpg, .jpeg, .png.
+
+					.vacancies__popup__file__fieldset
+						.vacancies__popup__file__result.is-hidden
+
+						input.vacancies__popup__file__input.js-vacancies-popup-file#popup-file(type="file" accept=".doc, .pdf, .jpg, .jpeg, .png" multiple)
+						label.button.vacancies__popup__file__label(for="popup-file")
+							span
+							| Выбрать
+							span
+
+			.vacancies__popup__bottom
+				button.vacancies__popup__submit(disabled)
+					| Отправить
+
+		.vacancies__popup__result.is-hidden
+			.vacancies__popup__result__title
+				| Спасибо!
+
+			.vacancies__popup__result__text
+				| Ваше резюме отправлено.
+
+			button.button.vacancies__popup__result__button.js-vacancies-popup-close
+				span
+				| Хорошо
+				span
