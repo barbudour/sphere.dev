@@ -5,6 +5,8 @@ vars.$body = $(document.body);
 vars.$html = $(document.documentElement);
 vars.$siteContainer = $('.site-container');
 vars.$page = $('.page');
+vars.$header = $('.header');
+vars.$footer = $('.footer');
 
 vars.isEdgeIE = vars.$html.hasClass('is-browser-edge') || vars.$html.hasClass('is-browser-ie');
 
@@ -38,6 +40,42 @@ export function isDesktopBig() {
 
 export function getBodyScrollbarWidth() {
 	return window.innerWidth - document.body.offsetWidth;
+}
+
+export function bodyWithOutScrollbar() {
+	vars.$siteContainer.css({
+		paddingRight: `${getBodyScrollbarWidth()}px`,
+	});
+
+	$(vars.$header).css({
+		right: `${getBodyScrollbarWidth()}px`,
+	});
+
+	$(vars.$footer).css({
+		right: `${getBodyScrollbarWidth()}px`,
+	});
+
+	$('.page__fixed').css({
+		right: `${getBodyScrollbarWidth()}px`,
+	});
+}
+
+export function bodyWithScrollbar() {
+	vars.$siteContainer.css({
+		paddingRight: '',
+	});
+
+	$(vars.$header).css({
+		right: '',
+	});
+
+	$(vars.$footer).css({
+		right: '',
+	});
+
+	$('.page__fixed').css({
+		right: '',
+	});
 }
 
 export function saveScrollPosition() {

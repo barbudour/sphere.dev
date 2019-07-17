@@ -6,7 +6,7 @@ $('.header__burger').on('click', () => {
 		globals.vars.$html.toggleClass('is-overflow-hidden');
 	}
 
-	if ($('.header').hasClass('is-active')) {
+	if (globals.vars.$html.hasClass('is-overflow-hidden')) {
 		globals.saveScrollPosition();
 	} else {
 		globals.restoreScrollPosition();
