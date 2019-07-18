@@ -1,5 +1,5 @@
 mixin vacancies-item(data)
-	.vacancies-item(id=data.id)
+	.vacancies-item.filter-card(id=data.id data-filter=data.filter)
 		.vacancies-item__info
 			.vacancies-item__info__top
 				.vacancies-item__date

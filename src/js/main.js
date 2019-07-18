@@ -6,3 +6,4 @@ import './components/menu';
 import './components/slider';
 import './components/vacancies';
 import './components/moreCards';
+import './components/filter';
