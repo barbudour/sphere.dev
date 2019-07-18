@@ -1,3 +1,125 @@
+.grid-item {
+	position: relative;
+	z-index: 1;
+	width: 50%;
+	height: 480px;
+	font-weight: 400;
+	font-size: 11px;
+	line-height: (15 / 11);
+	letter-spacing: 0.1em;
+	text-decoration: none;
+
+	&::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		z-index: -1;
+		box-shadow: 0 7px 100px rgba($color-black, 0.8);
+		opacity: 0;
+		transition: opacity 0.3s;
+		pointer-events: none;
+	}
+
+	&__bg {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		z-index: 1;
+		overflow: hidden;
+		transition: opacity 0.3s;
+
+		img {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			display: block;
+			min-width: 100%;
+			min-height: 100%;
+			transform: translate(-50%, -50%);
+		}
+	}
+
+	&__content {
+		position: relative;
+		z-index: 2;
+		overflow: hidden;
+		width: 100%;
+		height: 100%;
+	}
+
+	&__topside {
+		position: absolute;
+		left: 30px;
+		right: 30px;
+		top: 30px;
+		display: flex;
+		text-transform: uppercase;
+		color: $color-white;
+
+		@include mobile {
+			left: 15px;
+			right: 15px;
+		}
+	}
+
+	&__label {
+		color: $color-sunglow;
+	}
+
+	&__date {
+		margin-left: 8px;
+		color: $color-white;
+	}
+
+	&__title {
+		margin: 0;
+		font-weight: 300;
+		font-size: 18px;
+		line-height: (23 / 18);
+		letter-spacing: 0;
+		color: $color-white;
+
+		@include mobile {
+			font-size: 17px;
+			line-height: (22 / 17);
+		}
+	}
+
+	&__text {
+		margin: 14px 0 0;
+		font-weight: 300;
+		font-size: 15px;
+		line-height: (28 / 15);
+		letter-spacing: 0;
+		color: $color-white;
+
+		@include mobile {
+			font-size: 14px;
+			line-height: (25 / 14);
+		}
+	}
+
+	&__bottomside {
+		position: absolute;
+		left: 30px;
+		right: 30px;
+		bottom: 35px;
+
+		@include mobile {
+			left: 15px;
+			right: 15px;
+			bottom: 38px;
+			font-size: 17px;
+			line-height: (22 / 17);
+		}
+	}
+}
+
 .home-grid {
 	position: relative;
 	z-index: 2;
@@ -8,37 +130,13 @@
 	width: 50vw;
 
 	.grid-item {
-		position: relative;
-		z-index: 1;
-		width: 50%;
-		height: 480px;
-		font-weight: 400;
-		font-size: 11px;
-		line-height: 15px;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-
-		&::before {
-			content: "";
-			position: absolute;
-			left: 0;
-			right: 0;
-			top: 0;
-			bottom: 0;
-			z-index: -1;
-			box-shadow: 0 7px 100px rgba(0, 0, 0, 0.8);
-			opacity: 0;
-			transition: opacity 0.3s;
-			pointer-events: none;
-		}
-
 		&__num {
 			position: absolute;
 			right: -35px;
 			bottom: -52px;
 			font-weight: 500;
 			font-size: 240px;
-			line-height: 240px;
+			line-height: (240 / 240);
 			letter-spacing: -0.06em;
 			text-align: center;
 			color: rgba($color-white, 0.2);
@@ -63,14 +161,14 @@
 			max-width: 200px;
 			font-weight: 300;
 			font-size: 18px;
-			line-height: 23px;
+			line-height: (23 / 18);
 			letter-spacing: 0;
 			color: $color-white;
 
 			@include mobile {
 				max-width: 100%;
 				font-size: 17px;
-				line-height: 22px;
+				line-height: (22 / 17);
 			}
 		}
 
@@ -93,88 +191,6 @@
 					height: 27px;
 					background-color: $color-woodsmoke;
 				}
-			}
-		}
-
-		&__bg {
-			position: absolute;
-			left: 0;
-			right: 0;
-			top: 0;
-			bottom: 0;
-			z-index: 1;
-			overflow: hidden;
-			transition: opacity 0.3s;
-
-			img {
-				position: absolute;
-				left: 50%;
-				top: 50%;
-				display: block;
-				min-width: 100%;
-				min-height: 100%;
-				transform: translate(-50%, -50%);
-			}
-		}
-
-		&__content {
-			position: relative;
-			z-index: 2;
-			overflow: hidden;
-			width: 100%;
-			height: 100%;
-		}
-
-		&__topside {
-			position: absolute;
-			left: 30px;
-			right: 30px;
-			top: 30px;
-			display: flex;
-			text-transform: uppercase;
-			color: $color-white;
-
-			@include mobile {
-				left: 15px;
-				right: 15px;
-			}
-		}
-
-		&__label {
-			color: $color-sunglow;
-		}
-
-		&__date {
-			margin-left: 8px;
-			color: $color-white;
-		}
-
-		&__bottomside {
-			position: absolute;
-			left: 30px;
-			right: 30px;
-			bottom: 35px;
-
-			p {
-				margin: 0;
-				font-weight: 300;
-				font-size: 18px;
-				line-height: 23px;
-				letter-spacing: 0;
-				color: $color-white;
-
-				@include mobile {
-					font-size: 17px;
-					line-height: 22px;
-				}
-			}
-
-			@include mobile {
-				left: 15px;
-				right: 15px;
-				bottom: 38px;
-				font-size: 17px;
-				line-height: 22px;
 			}
 		}
 
@@ -291,5 +307,43 @@
 	@include laptop {
 		width: 100%;
 		pointer-events: none;
+	}
+}
+
+.technologies-grid {
+	position: relative;
+	z-index: 2;
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: 0;
+	margin-left: auto;
+	width: vw(1020);
+
+	.grid-item {
+		width: percentage(4 / 12);
+		height: 400px;
+
+		&--color {
+			.grid-item__label {
+				color: $color-woodsmoke-dark;
+			}
+		}
+
+		&--big {
+			width: percentage(8 / 12);
+
+			.grid-item__title {
+				margin-bottom: 8px;
+				font-size: 32px;
+				line-height: (45 / 32);
+				letter-spacing: -0.01em;
+			}
+
+			.grid-item__text {
+				max-width: vw(530);
+				font-size: 16px;
+				line-height: (30 / 16);
+			}
+		}
 	}
 }
