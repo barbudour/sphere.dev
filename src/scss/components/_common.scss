@@ -887,3 +887,20 @@ textarea {
 		margin-top: 0;
 	}
 }
+
+.message {
+	position: relative;
+	padding: 40px 0;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: (30 / 16);
+
+	&::after {
+		content: "";
+		position: absolute;
+		left: -85px;
+		right: -85px;
+		bottom: 0;
+		border-bottom: 1px solid rgba($color-black, 0.1);
+	}
+}
