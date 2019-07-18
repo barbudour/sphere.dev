@@ -1,0 +1,13 @@
+mixin direction-item(data)
+	a.about__directions__item.js-cursor(href= data.link)
+		.about__directions__item__topside
+			h3.about__directions__item__title!= data.name
+		.about__directions__item__bottomside
+			p.about__directions__item__description!= data.text
+		.about__directions__item__icon
+			img(src="../images/sprites/svg/"+data.icon+".svg", alt!= data.name)
+
+mixin direction-item-big(data)
+	a.about__directions__item.about__directions__item--big.js-cursor(href= data.link)
+		.about__directions__item__topside
+			h3.about__directions__item__title!= data.name
