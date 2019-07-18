@@ -344,6 +344,44 @@
 				font-size: 16px;
 				line-height: (30 / 16);
 			}
+
+			@include tablet {
+				width: percentage(12 / 12);
+			}
 		}
+
+		@include tablet {
+			width: percentage(6 / 12);
+
+			&--big {
+				width: percentage(12 / 12);
+
+				.grid-item__text {
+					max-width: 100%;
+				}
+			}
+		}
+
+		@include mobile {
+			width: percentage(12 / 12);
+
+			&--big {
+				.grid-item__title {
+					margin-bottom: 20px;
+					font-size: 21px;
+					line-height: (25 / 21);
+					letter-spacing: -0.01em;
+				}
+
+				.grid-item__text {
+					font-size: 14px;
+					line-height: (25 / 14);
+				}
+			}
+		}
+	}
+
+	@include laptop {
+		width: 100%;
 	}
 }
