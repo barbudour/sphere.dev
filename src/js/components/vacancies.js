@@ -133,6 +133,10 @@ function validateForm(e) {
 	}
 
 	if ($form.find('.is-error').length) {
+		$form.animate({
+			scrollTop: $form.find('.is-error').position().top,
+		});
+
 		return false;
 	}
 
@@ -183,10 +187,6 @@ function removeFile(event) {
 	$(event.target).closest('.vacancies__popup__file__result__item').remove();
 }
 
-$('.js-vacancies-popup-file').on('change', updateFiles);
-
-$('body').on('click', '.js-vacancies-popup-file-remove', removeFile);
-
 $('.vacancies__popup__field').on('keyup', (e) => {
 	$(e.currentTarget).toggleClass('is-filled', $(e.currentTarget).val().length > 0);
 
@@ -201,26 +201,34 @@ $popupForm.on('submit', (e) => {
 	validateForm(e);
 });
 
-$('.js-vacancies-button-more').on('click', (e) => {
-	const $this = $(e.currentTarget);
+$('body')
+	.on('click', '.js-vacancies-popup-file-remove', removeFile)
 
-	$this.toggleClass('is-active');
-	$this.closest('.vacancies-item').find('.vacancies-item__body').slideToggle();
-});
+	.on('change', '.js-vacancies-popup-file', updateFiles)
 
-$('.js-vacancies-popup-open').on('click', (e) => {
-	const id = $(e.currentTarget).data('id');
-	const name = $(e.currentTarget).data('name');
+	.on('click', '.js-vacancies-button-more', (e) => {
+		const $this = $(e.currentTarget);
 
-	globals.bodyWithOutScrollbar();
-	globals.vars.$html.addClass('is-overflow-hidden');
-	globals.saveScrollPosition();
-	showPopup(id, name);
-});
+		$this.toggleClass('is-active');
+		$this.closest('.vacancies-item').find('.vacancies-item__body').slideToggle();
+	})
 
-$('.js-vacancies-popup-close').on('click', () => {
-	closePopup();
-	globals.vars.$html.removeClass('is-overflow-hidden');
-	globals.restoreScrollPosition();
-	globals.bodyWithScrollbar();
-});
+	.on('click', '.js-vacancies-popup-open', (e) => {
+		const id = $(e.currentTarget).data('id');
+		const name = $(e.currentTarget).data('name');
+
+		globals.bodyWithOutScrollbar();
+		globals.vars.$html.addClass('is-overflow-hidden');
+		globals.saveScrollPosition();
+		showPopup(id, name);
+	})
+
+	.on('click', '.js-vacancies-popup-close', () => {
+		closePopup();
+
+		setTimeout(() => {
+			globals.vars.$html.removeClass('is-overflow-hidden');
+			globals.restoreScrollPosition();
+			globals.bodyWithScrollbar();
+		}, 250);
+	});

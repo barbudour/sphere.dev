@@ -1,4 +1,6 @@
-$('.site-container').append('<div class="cursor"></div>');
+import * as globals from '../globals';
+
+globals.vars.$siteContainer.append('<div class="cursor"></div>');
 
 const $cursor = $(document).find('.cursor');
 
