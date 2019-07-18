@@ -28,4 +28,19 @@
 			text-decoration: underline;
 		}
 	}
+
+	@include laptop {
+		margin-right: 85px;
+		margin-left: 85px;
+	}
+
+	@include tablet {
+		margin-right: 44px;
+		margin-left: 44px;
+	}
+
+	@include mobile {
+		margin-right: 15px;
+		margin-left: 15px;
+	}
 }

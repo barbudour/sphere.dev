@@ -1,5 +1,6 @@
 .button {
 	position: relative;
+	z-index: 0;
 	display: inline-block;
 	border: 1px solid rgba($color-white, 0.2);
 	padding: 0 22px;
@@ -129,6 +130,20 @@
 		z-index: -1;
 		background: url("../images/bg.jpg") no-repeat center;
 		background-size: cover;
+
+		@include tablet {
+			position: absolute;
+			bottom: auto;
+			height: 75vh;
+		}
+
+		@include mobile {
+			background-position: 0;
+
+			@media (orientation: landscape) {
+				height: 110vh;
+			}
+		}
 	}
 
 	&__top {
@@ -141,6 +156,12 @@
 			font-size: 48px;
 			line-height: (58 / 48);
 			color: $color-white;
+
+			@include mobile {
+				margin-bottom: 40px;
+				font-size: 30px;
+				line-height: (37 / 30);
+			}
 		}
 
 		&__text {
@@ -150,7 +171,130 @@
 			font-size: 16px;
 			line-height: (30 / 16);
 			color: $color-white;
+
+			@include mobile {
+				font-size: 14px;
+				line-height: (25 / 14);
+			}
 		}
+
+		@include laptop {
+			margin-right: 85px;
+			margin-left: 85px;
+		}
+
+		@include tablet {
+			margin-right: 44px;
+			margin-left: 44px;
+		}
+
+		@include mobile {
+			margin: 40px 15px;
+		}
+	}
+
+	&__container {
+		position: relative;
+		padding: 100px 85px;
+
+		ul {
+			list-style: none;
+			margin: 0 0 50px;
+			padding: 0;
+
+			li {
+				position: relative;
+				display: block;
+				padding-left: 50px;
+				font-weight: 300;
+				font-size: 16px;
+				line-height: (30 / 16);
+
+				&::before {
+					content: "";
+					position: absolute;
+					left: 0;
+					top: 10px;
+					border-radius: 50%;
+					width: 7px;
+					height: 7px;
+					background-color: $color-sunglow;
+				}
+
+				&:not(:last-child) {
+					margin-bottom: 20px;
+				}
+
+				@include mobile {
+					padding-left: 30px;
+				}
+			}
+
+			@include mobile {
+				margin-bottom: 40px;
+			}
+		}
+
+		h2 {
+			margin: 0 0 50px;
+			font-weight: 300;
+			font-size: 32px;
+			line-height: (45 / 32);
+			letter-spacing: -0.01em;
+
+			@include mobile {
+				margin-bottom: 40px;
+				font-size: 21px;
+				line-height: (25 / 21);
+			}
+		}
+
+		h3 {
+			margin: 0 0 35px;
+			font-weight: 300;
+			font-size: 18px;
+			line-height: (23 / 18);
+
+			@include mobile {
+				margin-bottom: 30px;
+			}
+		}
+
+		p {
+			margin: 0 0 50px;
+			font-weight: 300;
+			font-size: 16px;
+			line-height: (30 / 16);
+
+			@include mobile {
+				margin-bottom: 40px;
+				font-size: 15px;
+				line-height: (26 / 15);
+			}
+		}
+
+		&--white {
+			color: $color-woodsmoke;
+			background-color: $color-white;
+		}
+
+		&--black {
+			color: $color-white;
+			background-color: rgba($color-woodsmoke-dark, 0.85);
+		}
+
+		@include tablet {
+			padding-right: 44px;
+			padding-left: 44px;
+		}
+
+		@include mobile {
+			padding: 60px 15px;
+		}
+	}
+
+	@include laptop {
+		padding-bottom: 150px;
 	}
 }
 
@@ -158,6 +302,25 @@
 	margin-left: auto;
 	width: 100%;
 	max-width: vw(1020);
+
+	@include laptop {
+		max-width: 100%;
+	}
+}
+
+button {
+	border: 0;
+	padding: 0;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+select {
+	appearance: none;
+}
+
+textarea {
+	resize: none;
 }
 
 .content {

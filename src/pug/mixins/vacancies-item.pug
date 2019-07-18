@@ -1,0 +1,38 @@
+mixin vacancies-item(data)
+	.vacancies-item(id=data.id)
+		.vacancies-item__info
+			.vacancies-item__info__top
+				.vacancies-item__date
+					!= data.date
+				.vacancies-item__city
+					!= data.city
+
+			.vacancies-item__info__bottom
+				h3.vacancies-item__name
+					!= data.title
+				.vacancies-item__salary
+					!= data.salary
+				button.vacancies-item__button.js-vacancies-button-more
+					+svg('arrow')
+					span
+
+		.vacancies-item__body
+			if data.list
+				each list in data.list
+					.vacancies-item__body__title= list.name
+
+					if list.array
+						ul.vacancies-item__list
+							each arr in list.array
+								li.vacancies-item__list__item= arr
+					else
+						p
+							| Нет описания
+			.vacancies-item__bottom
+				.vacancies-item__bottom__left
+					| Указанные выше сведения не&nbsp;являются официальным предложением заключения трудового договора, а&nbsp;уведомляют о&nbsp;имеющейся вакансии вштатном расписании, актуальной на&nbsp;момент размещения.
+				.vacancies-item__bottom__right
+					button.button.vacancies-item__body__button.js-vacancies-popup-open(type="button" data-name=data.title data-id=data.id)
+						span
+						| Отправить резюме
+						span
