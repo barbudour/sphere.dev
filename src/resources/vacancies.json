@@ -1,9 +1,10 @@
 {
 	"vacancy-1": {
 		"id": "1-3",
+		"filter": "admin",
 		"date": "20 июня ‘18./",
 		"city": "москва./ ",
-		"title": "Java разработчик",
+		"title": "Администратор",
 		"salary": "от&nbsp;75&nbsp;000&nbsp;руб.",
 		"list": [{
 			"name": "Функциональные обязанности",
@@ -31,6 +32,7 @@
 	},
 	"vacancy-2": {
 		"id": "1-3",
+		"filter": "developer",
 		"date": "20 июня ‘18./",
 		"city": "москва./ ",
 		"title": "Java разработчик",
