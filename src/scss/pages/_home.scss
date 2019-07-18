@@ -5,7 +5,7 @@
 		right: 0;
 		top: 0;
 		bottom: 0;
-		background: url("../images/main/bg.jpg") no-repeat center;
+		background: url("../images/pages/main/bg.jpg") no-repeat center;
 		background-size: cover;
 
 		&__decoration {
@@ -188,7 +188,7 @@
 		}
 
 		@include retina {
-			background-image: url("../images/main/bg@2x.jpg");
+			background-image: url("../images/pages/main/bg@2x.jpg");
 		}
 	}
 

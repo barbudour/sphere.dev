@@ -5,7 +5,11 @@ mixin grid-item(data)
 				img(src= data.src srcset= data.srcset)
 		.grid-item__content
 			.grid-item__topside
-				.grid-item__label новость./
-				.grid-item__date!= data.date
+				if data.label
+					.grid-item__label!= data.label
+				if data.date
+					.grid-item__date!= data.date
 			.grid-item__bottomside
-				p!= data.text
+				p.grid-item__title!= data.title
+				if data.text
+					p.grid-item__text!= data.text

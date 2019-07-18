@@ -926,6 +926,10 @@ textarea {
 			color: $color-woodsmoke;
 		}
 
+		&::-ms-expand {
+			display: none;
+		}
+
 		&:not(:last-of-type) {
 			margin-right: 30px;
 
@@ -937,6 +941,10 @@ textarea {
 
 		&:focus {
 			outline: none;
+		}
+
+		.is-browser-ie & {
+			background-image: url("/images/arrow-select.png");
 		}
 	}
 }
