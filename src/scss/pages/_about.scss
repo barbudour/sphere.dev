@@ -151,4 +151,39 @@
 			}
 		}
 	}
+
+	&__lists {
+		display: flex;
+
+		& .lists {
+			&__col {
+				flex: 0 percentage(1 / 2);
+
+				&--short {
+					padding-right: 100px;
+				}
+			}
+
+			&__item {
+				&:not(:last-child) {
+					margin-bottom: 20px;
+				}
+
+				&__index {
+					font-size: 11px;
+					line-height: 140%;
+					margin-bottom: 4px;
+					letter-spacing: 0.1em;
+					text-transform: uppercase;
+					color: #EDAE09;
+				}
+
+				&__title {
+					font-size: 16px;
+					line-height: 187%;
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
 }
