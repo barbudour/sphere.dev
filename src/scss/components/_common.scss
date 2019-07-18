@@ -131,12 +131,6 @@
 		background: url("../images/bg.jpg") no-repeat center;
 		background-size: cover;
 
-		@include tablet {
-			position: absolute;
-			bottom: auto;
-			height: 75vh;
-		}
-
 		@include mobile {
 			background-position: 0;
 
@@ -179,6 +173,7 @@
 		}
 
 		@include laptop {
+			margin-top: 56px;
 			margin-right: 85px;
 			margin-left: 85px;
 		}
@@ -189,7 +184,7 @@
 		}
 
 		@include mobile {
-			margin: 40px 15px;
+			margin: 15px 15px 47px;
 		}
 	}
 
@@ -242,6 +237,10 @@
 			line-height: (45 / 32);
 			letter-spacing: -0.01em;
 
+			@include laptop {
+				max-width: 620px;
+			}
+
 			@include mobile {
 				margin-bottom: 40px;
 				font-size: 21px;
@@ -265,6 +264,10 @@
 			font-weight: 300;
 			font-size: 16px;
 			line-height: (30 / 16);
+
+			@include laptop {
+				max-width: 620px;
+			}
 
 			@include mobile {
 				margin-bottom: 40px;
@@ -336,6 +339,15 @@ textarea {
 			color: $color-woodsmoke;
 			background-color: $color-white;
 		}
+
+		@include tablet {
+			padding-right: 44px;
+			padding-left: 44px;
+		}
+
+		@include mobile {
+			padding: 60px 15px 43px;
+		}
 	}
 
 	h2 {
@@ -345,6 +357,16 @@ textarea {
 		font-size: 32px;
 		line-height: (45 / 32);
 		letter-spacing: -0.01em;
+
+		@include laptop {
+			max-width: 680px;
+		}
+
+		@include mobile {
+			margin-bottom: 37px;
+			font-size: 21px;
+			line-height: 25px;
+		}
 	}
 
 	h3 {
@@ -353,6 +375,17 @@ textarea {
 		font-weight: 300;
 		font-size: 18px;
 		line-height: (23 / 18);
+
+		@include laptop {
+			max-width: 680px;
+		}
+
+		@include mobile {
+			margin-top: 44px;
+			font-weight: 400;
+			font-size: 17px;
+			line-height: 22px;
+		}
 	}
 
 	h4 {
@@ -369,6 +402,15 @@ textarea {
 		font-weight: 300;
 		font-size: 16px;
 		line-height: (30 / 16);
+
+		@include laptop {
+			max-width: 680px;
+		}
+
+		@include mobile {
+			font-size: 15px;
+			line-height: 26px;
+		}
 	}
 
 	ol {
@@ -395,6 +437,11 @@ textarea {
 				font-size: 11px;
 				line-height: 33px;
 				color: $color-buttercup;
+
+				@include mobile {
+					line-height: 29px;
+					letter-spacing: 0.1em;
+				}
 			}
 
 			ol {
@@ -420,6 +467,31 @@ textarea {
 					}
 				}
 			}
+
+			@include mobile {
+				margin-bottom: 22px;
+				padding-left: 30px;
+				font-size: 15px;
+				line-height: 26px;
+
+				ol {
+					li {
+						margin-left: -30px;
+						padding-left: 40px;
+
+						ol {
+							li {
+								margin-left: -40px;
+								padding-left: 50px;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		@include laptop {
+			max-width: 730px;
 		}
 	}
 
@@ -467,6 +539,35 @@ textarea {
 					}
 				}
 			}
+
+			@include mobile {
+				margin-bottom: 22px;
+				padding-left: 30px;
+				font-size: 15px;
+				line-height: 26px;
+
+				ul {
+					li {
+						margin-left: -30px;
+						padding-left: 40px;
+
+						&::before {
+							left: 12px;
+						}
+
+						ul {
+							li {
+								margin-left: -40px;
+								padding-left: 50px;
+
+								&::before {
+									left: 21px;
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 
 		&.breadcrumb {
@@ -490,6 +591,14 @@ textarea {
 					}
 				}
 			}
+
+			@include laptop {
+				margin-top: 19px;
+			}
+		}
+
+		@include laptop {
+			max-width: 730px;
 		}
 	}
 
@@ -508,6 +617,16 @@ textarea {
 			z-index: 1;
 			height: 1px;
 			background: rgba($color-black, 0.1);
+
+			@include tablet {
+				left: -44px;
+				right: -44px;
+			}
+
+			@include mobile {
+				left: -15px;
+				right: -15px;
+			}
 		}
 
 		&::after {
@@ -518,6 +637,23 @@ textarea {
 			left: -85px;
 			top: 0;
 			z-index: 2;
+
+			@include tablet {
+				left: -44px;
+			}
+
+			@include mobile {
+				left: -15px;
+			}
+		}
+
+		@include laptop {
+			margin-bottom: 98px;
+		}
+
+		@include mobile {
+			margin-top: 66px;
+			margin-bottom: 60px;
 		}
 	}
 
@@ -529,6 +665,31 @@ textarea {
 			&:hover {
 				text-decoration: underline;
 			}
+		}
+	}
+
+	.table-container {
+		@include tablet {
+			overflow-x: scroll;
+			margin-left: -44px;
+			padding: 0 44px;
+			width: 100vw;
+			-webkit-overflow-scrolling: touch;
+
+			&__content {
+				padding-right: 44px;
+				width: 894px;
+
+				@include mobile {
+					padding-right: 15px;
+					width: 865px;
+				}
+			}
+		}
+
+		@include mobile {
+			margin-left: -15px;
+			padding: 0 15px;
 		}
 	}
 
@@ -576,6 +737,10 @@ textarea {
 			&:last-child {
 				border-right: none;
 			}
+
+			@include laptop {
+				padding: 27px 35px;
+			}
 		}
 
 		td {
@@ -593,6 +758,27 @@ textarea {
 			&:last-child {
 				border-right: none;
 			}
+
+			@include laptop {
+				padding: 21px 35px;
+				letter-spacing: 0;
+			}
+		}
+
+		@include laptop {
+			margin-top: 103px;
+			margin-bottom: 100px;
+		}
+
+		@include tablet {
+			margin-top: 84px;
+			margin-bottom: 48px;
+			width: 100%;
+		}
+
+		@include mobile {
+			margin-top: 44px;
+			margin-bottom: 16px;
 		}
 	}
 
@@ -654,11 +840,49 @@ textarea {
 					letter-spacing: 0.1em;
 					text-transform: uppercase;
 				}
+
+				@include tablet {
+					margin-top: -1px;
+				}
 			}
 
 			&:nth-child(odd) {
 				margin-right: 48px;
 			}
+
+			@include laptop {
+				max-width: 377px;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+
+			@include tablet {
+				margin-bottom: 52px;
+				max-width: 311px;
+			}
+
+			@include mobile {
+				margin-right: 0;
+				margin-bottom: 42px;
+				width: 100%;
+				max-width: 100%;
+			}
+		}
+
+		@include laptop {
+			max-width: 802px;
+		}
+
+		@include tablet {
+			margin-top: 136px;
+		}
+
+		@include mobile {
+			display: block;
+			margin-top: 69px;
+			margin-bottom: 16px;
 		}
 	}
 
@@ -680,6 +904,16 @@ textarea {
 			font-size: 15px;
 			line-height: 28px;
 			color: rgba($color-woodsmoke, 0.4);
+
+			@include laptop {
+				margin-bottom: 38px;
+			}
+
+			@include mobile {
+				margin-bottom: 0;
+				font-size: 14px;
+				line-height: 25px;
+			}
 		}
 
 		&--wrap {
@@ -692,11 +926,38 @@ textarea {
 				margin-right: 20px;
 				margin-bottom: 20px;
 				max-width: vw(405);
+
+				@include laptop {
+					max-width: 405px;
+				}
+
+				@include mobile {
+					float: none;
+					margin-bottom: 16px;
+					max-width: 100%;
+				}
 			}
 
 			span {
 				display: inline;
+
+				@include mobile {
+					display: block;
+				}
 			}
+
+			@include laptop {
+				max-width: 680px;
+			}
+		}
+
+		@include laptop {
+			max-width: 850px;
+		}
+
+		@include mobile {
+			margin-bottom: 29px;
+			max-width: 100%;
 		}
 	}
 
@@ -796,6 +1057,11 @@ textarea {
 				line-height: 45px;
 				letter-spacing: -0.01em;
 				color: $color-white;
+
+				@include mobile {
+					font-size: 21px;
+					line-height: 25px;
+				}
 			}
 
 			&__play {
@@ -839,6 +1105,10 @@ textarea {
 						}
 					}
 				}
+
+				@include mobile {
+					margin-top: 19px;
+				}
 			}
 
 			&__time {
@@ -880,6 +1150,26 @@ textarea {
 					}
 				}
 			}
+
+			@include laptop {
+				height: 288px;
+			}
+
+			@include mobile {
+				margin-bottom: 32px;
+				padding: 74px 19px;
+				height: auto;
+				min-height: vmin(288, 320);
+			}
+		}
+
+		@include tablet {
+			padding-right: 40px;
+			padding-left: 40px;
+		}
+
+		@include mobile {
+			padding: 56px 11px;
 		}
 	}
 

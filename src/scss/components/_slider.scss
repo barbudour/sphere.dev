@@ -1,18 +1,36 @@
 .slider {
+	max-height: vw(574);
 	background-color: rgba($color-woodsmoke-dark, 0.5);
 
 	img {
 		display: block;
 		margin: 0 auto;
+		height: 100%;
+	}
+
+	.slick-slide {
+		height: 100%;
+
+		@include tablet {
+			div {
+				height: 100%;
+			}
+		}
 	}
 
 	.slide {
 		// stylelint-disable-next-line declaration-no-important
 		display: block !important;
+		height: 100%;
 	}
 
 	.slick-list {
+		height: 100%;
 		font-size: 0;
+	}
+
+	.slick-track {
+		height: 100%;
 	}
 
 	.slick-arrow {
@@ -73,5 +91,40 @@
 				}
 			}
 		}
+
+		@include mobile {
+			// stylelint-disable-next-line declaration-no-important
+			display: none !important;
+		}
 	}
+
+	@include laptop {
+		max-height: 574px;
+	}
+
+	@include tablet {
+		height: 432px;
+		max-height: 432px;
+	}
+
+	@include mobile {
+		margin-bottom: 35px;
+		height: vw(180, 320);
+		max-height: vw(180, 320);
+	}
+}
+
+.slides-counter {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 100%;
+	padding-top: 20px;
+	padding-left: 15px;
+	font-weight: 400;
+	font-size: 11px;
+	line-height: 15px;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	background-color: $color-white;
 }
