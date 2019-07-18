@@ -1,0 +1,77 @@
+.slider {
+	background-color: rgba($color-woodsmoke-dark, 0.5);
+
+	img {
+		display: block;
+		margin: 0 auto;
+	}
+
+	.slide {
+		// stylelint-disable-next-line declaration-no-important
+		display: block !important;
+	}
+
+	.slick-list {
+		font-size: 0;
+	}
+
+	.slick-arrow {
+		position: absolute;
+		bottom: 20px;
+		z-index: 3;
+		margin: 0;
+		border: none;
+		padding: 0;
+		width: 45px;
+		height: 45px;
+		font-size: 0;
+		background: url("../images/sprites/svg/arrow-bg.svg") no-repeat center;
+		background-size: 100% 100%;
+		cursor: pointer;
+
+		&::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			background-position: center;
+			background-size: 11px 17px;
+			background-repeat: no-repeat;
+			transition: background 0.3s;
+		}
+
+		&.slick-prev {
+			right: 85px;
+
+			&::before {
+				background-image: url("../images/sprites/svg/prev.svg");
+			}
+
+			@include desktop {
+				&:hover {
+					&::before {
+						background-image: url("../images/sprites/svg/prev-hover.svg");
+					}
+				}
+			}
+		}
+
+		&.slick-next {
+			right: 20px;
+
+			&::before {
+				background-image: url("../images/sprites/svg/next.svg");
+			}
+
+			@include desktop {
+				&:hover {
+					&::before {
+						background-image: url("../images/sprites/svg/next-hover.svg");
+					}
+				}
+			}
+		}
+	}
+}
