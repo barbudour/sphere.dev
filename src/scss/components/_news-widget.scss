@@ -1,0 +1,45 @@
+.news__widget {
+	position: relative;
+	z-index: 2;
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: 0;
+	margin-left: auto;
+	width: 100%;
+
+	.grid-item {
+		width: percentage(4 / 12);
+
+		@include desktop-big {
+			&:nth-child(2n + 1) {
+				margin-top: initial;
+	
+				&.grid-item--first {
+					margin-top: initial;
+				}
+			}
+		}
+		
+		&--big {
+			width: percentage(8 / 12);
+			// background-color: rgba(23, 27, 30, 0.85);
+
+			& .grid-item__bottomside {
+				bottom: 56px;
+				right: 60px;
+	
+				p {
+					font-size: 32px;
+					line-height: 140%;
+				}
+			}
+		}
+
+		&--empty {
+			&:hover {
+				
+			}
+		}
+
+	}
+}
