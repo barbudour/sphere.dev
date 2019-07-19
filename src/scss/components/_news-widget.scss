@@ -79,6 +79,10 @@
 		}
 
 		&__bottomside {
+			width: initial;
+			display: flex;
+			align-items: flex-end;
+
 			@include mobile {
 				bottom: 50px;
 			}

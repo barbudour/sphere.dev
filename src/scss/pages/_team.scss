@@ -1,7 +1,7 @@
 .team {
 	&__list {
 		display: flex;
-		margin: 0 (-20px / 2);
+		margin: 40px (-20px / 2) 20px;
 
 		&__group {
 			display: flex;
@@ -9,13 +9,21 @@
 			ul {
 				flex: 0 0 50%;
 				margin-bottom: 0;
-				padding-right: 80px;
 				max-width: 50%;
+				
+				&:first-child {
+					padding-right: 80px;
+
+					@include tablet {
+						padding-right: 0;
+					}
+				}
 
 				&:not(:first-child) {
 					padding-left: 30px;
 
 					@include mobile {
+						margin-top: 0;	
 						padding-left: 0;
 					}
 				}
@@ -24,13 +32,8 @@
 					padding-right: 44px;
 				}
 
-				@include tablet {
-					padding-right: 0;
-				}
-
 				@include mobile {
 					flex: 0 0 100%;
-					padding-right: 0;
 					max-width: 100%;
 				}
 			}
@@ -47,7 +50,7 @@
 
 			&__text {
 				// stylelint-disable-next-line declaration-no-important
-				margin: 23px 0 0 !important;
+				margin: 13px 0 0 !important;
 			}
 
 			@include mobile {
@@ -58,29 +61,23 @@
 					margin-bottom: 30px;
 				}
 			}
-
-			@include desktop-big {
-				padding: 0 (55px / 2);
-			}
 		}
 
 		@include mobile {
 			display: block;
-		}
-
-		@include desktop-big {
-			margin: 0 (-55px / 2);
 		}
 	}
 
 	&__content {
 		&__title {
 			@include desktop {
-				max-width: 500px;
+				// stylelint-disable-next-line declaration-no-important
+				max-width: 500px !important;
 			}
 
 			@include desktop-big {
-				max-width: vw(500);
+				// stylelint-disable-next-line declaration-no-important
+				max-width: vw(500) !important;
 			}
 		}
 
@@ -192,7 +189,7 @@
 		}
 
 		&__post {
-			margin: 0 0 10px;
+			margin: 20px 0 10px;
 			font-size: 11px;
 			line-height: (15 / 11);
 			letter-spacing: 0.1em;
@@ -202,10 +199,13 @@
 				color: #15151A;
 				opacity: 0.6;
 			}
+			@include mobile {
+				margin-top: 0;
+			}
 		}
 
 		&__name {
-			margin: 0 0 50px;
+			margin: 0 0 40px;
 			font-weight: 300;
 			font-size: 32px;
 			line-height: (45 / 32);
@@ -249,7 +249,7 @@
 		}
 
 		@include mobile {
-			padding: 340px 15px 40px;
+			padding: 340px 15px 43px;
 			height: auto;
 		}
 	}
@@ -262,7 +262,7 @@
 			display: flex;
 			flex: 0 0 50%;
 			flex-direction: column;
-			padding: 30px 50px 60px 30px;
+			padding: 30px 50px 65px 30px;
 			max-width: 50%;
 			color: $color-white;
 			background-color: rgba($color-woodsmoke-dark, 0.85);
@@ -288,7 +288,7 @@
 				margin-left: 40px;
 
 				@include tablet {
-					margin-top: 20px;
+					margin-top: 30px;
 					margin-left: 0;
 				}
 			}
@@ -314,13 +314,18 @@
 
 			&__body {
 				margin-top: auto;
-				padding-top: 75px;
+				padding-top: 70px;
 				font-weight: 300;
 				font-size: 15px;
 				line-height: (28 / 15);
 
 				@include tablet {
 					padding-top: 35px;
+				}
+
+				@include mobile {
+					font-size: 14px;
+					line-height: (25 / 14);
 				}
 			}
 

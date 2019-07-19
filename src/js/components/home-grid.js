@@ -100,7 +100,7 @@ $(window).on('resize', () => {
 });
 
 if (globals.isDesktop()) {
-	$('.grid-item').each((index, element) => {
+	$('.home-grid').find('.grid-item').each((index, element) => {
 		$(element)
 			.on('mouseenter', (event) => {
 				let $this = $(event.currentTarget);

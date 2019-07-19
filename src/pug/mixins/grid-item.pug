@@ -7,8 +7,17 @@ mixin grid-item(data)
 			.grid-item__topside
 				if data.label
 					.grid-item__label!= data.label
+<<<<<<< HEAD
 				else
 					.grid-item__label новость./
 				.grid-item__date!= data.date
 			.grid-item__bottomside
 				p!= data.text
+=======
+				if data.date
+					.grid-item__date!= data.date
+			.grid-item__bottomside
+				p.grid-item__title!= data.title
+				if data.text
+					p.grid-item__text!= data.text
+>>>>>>> 77a26c05b8065cd3c7554f4397390d5769970e4c

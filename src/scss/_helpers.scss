@@ -11,7 +11,7 @@
 }
 
 .for-mobile {
-	@include desktop {
+	@include tablet-up {
 		// stylelint-disable-next-line declaration-no-important
 		display: none !important;
 	}

@@ -54,12 +54,13 @@
 		margin: 0;
 		font-weight: 300;
 		font-size: 18px;
-		line-height: 23px;
+		line-height: (23 / 18);
+		text-transform: none;
 		color: $color-black;
 
 		@include mobile {
 			font-size: 17px;
-			line-height: 22px;
+			line-height: (22 / 17);
 		}
 	}
 
@@ -67,12 +68,12 @@
 		margin: 28px 0 0;
 		font-weight: 300;
 		font-size: 15px;
-		line-height: 28px;
+		line-height: (28 / 15);
 		color: $color-black;
 
 		@include mobile {
 			font-size: 14px;
-			line-height: 25px;
+			line-height: (25 / 14);
 		}
 	}
 
@@ -83,7 +84,7 @@
 		padding: 15px 0;
 		font-weight: 400;
 		font-size: 11px;
-		line-height: 15px;
+		line-height: (15 / 11);
 		letter-spacing: 0.1em;
 		text-decoration: none;
 		text-transform: uppercase;
