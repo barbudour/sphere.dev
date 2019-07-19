@@ -9,16 +9,16 @@
 	}
 
 	&__hr {
-		padding: 60px 85px;
+		padding: 60px 90px;
 
 		&__top {
 			display: flex;
 			align-items: center;
-			margin-bottom: 50px;
+			margin-bottom: 45px;
 
 			@include mobile {
 				display: block;
-				margin-bottom: 40px;
+				margin-bottom: 55px;
 			}
 		}
 
@@ -31,7 +31,7 @@
 			max-width: 100px;
 
 			@include mobile {
-				margin-bottom: 30px;
+				margin-bottom: 25px;
 			}
 		}
 
@@ -41,6 +41,10 @@
 			line-height: (15 / 11);
 			letter-spacing: 0.1em;
 			text-transform: uppercase;
+
+			@include mobile {
+				margin-bottom: 5px;
+			}
 		}
 
 		&__name {
@@ -57,16 +61,14 @@
 		&__body {
 			position: relative;
 			font-weight: 300;
-			font-size: 15px;
-			line-height: (28 / 15);
 
 			&::before {
 				content: "";
 				position: absolute;
 				left: 0;
-				top: -15px;
-				width: 10px;
-				height: 10px;
+				top: -24px;
+				width: 13px;
+				height: 13px;
 				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 12' fill='none'%3E%3Cpath fill='%23edae09' d='M8 11V7h4v4H8z'/%3E%3Cpath stroke='%23edae09' d='M11.333 1L8 7m0 0v4h4V7H8z'/%3E%3Cpath fill='%23edae09' d='M1 11V7h4v4H1z'/%3E%3Cpath stroke='%23edae09' d='M4.333 1L1 7m0 0v4h4V7H1z'/%3E%3C/svg%3E");
 				background-size: contain;
 				background-repeat: no-repeat;
@@ -74,15 +76,18 @@
 
 			p {
 				margin: 0;
+				max-width: none;
+				font-size: 15px;
+				line-height: (28 / 15);
 
 				&:not(:last-child) {
 					margin-bottom: 25px;
 				}
-			}
 
-			@include mobile {
-				font-size: 14px;
-				line-height: (25 / 14);
+				@include mobile {
+					font-size: 14px;
+					line-height: (25 / 14);
+				}
 			}
 		}
 
@@ -136,7 +141,7 @@
 
 	&-item {
 		position: relative;
-		padding: 40px 0;
+		padding: 40px 0 55px;
 
 		&::before {
 			content: "";
@@ -157,7 +162,7 @@
 		}
 
 		&:first-of-type {
-			padding-top: 0;
+			padding-top: 15px;
 
 			&::before {
 				content: none;
@@ -171,7 +176,11 @@
 			&__top {
 				display: flex;
 				align-items: center;
-				margin-bottom: 8px;
+				margin-bottom: 20px;
+
+				@include mobile {
+					margin-bottom: 15px;
+				}
 			}
 
 			&__bottom {
@@ -297,7 +306,7 @@
 			margin-top: 50px;
 
 			&__title {
-				margin: 0 0 20px;
+				margin: 0 0 10px;
 				font-weight: 500;
 				font-size: 16px;
 				line-height: (30 / 16);
@@ -339,6 +348,10 @@
 			@include mobile {
 				display: block;
 			}
+		}
+
+		@include mobile {
+			padding: 25px 0 35px;
 		}
 	}
 

@@ -1,7 +1,7 @@
 .page.vacancies
 	.page__fixed
 
-	.wrapper
+	.wrapper.content
 		+breadcrumb({
 			link: 'vacancies.html',
 			name: 'Вакансии',
@@ -18,10 +18,10 @@
 
 				select.vacancies__select.filter__select.js-filter-city(name="city")
 					option(value="all") Все города
-					optgroup(value="region-center")
+					optgroup(value="region-center" label="Центральный регион")
 						option(value="city-moscow") Москва
 						option(value="city-ryazan") Рязань
-					optgroup(value="region-sibir")
+					optgroup(value="region-sibir" label="Сибирский регион")
 						option(value="city-irkutsk") Иркутск
 
 				select.vacancies__select.filter__select.js-filter-select(name="work")
@@ -29,7 +29,7 @@
 					option(value="developer") Разработчик
 					option(value="admin") Администратор
 
-		.vacancies__hr.page__container--black
+		.vacancies__hr.content__container--black
 			.vacancies__hr__top
 				.vacancies__hr__image
 					img(src="/images/pages/vacancies/hr.jpg" scrset="/images/pages/vacancies/hr@2x.jpg 2x" alt="")
@@ -47,7 +47,7 @@
 					| В&nbsp;Кластере поддерживается творческий подход к&nbsp;своему делу, нацеленность на&nbsp;результат, профессионализм, инициативность и&nbsp;умение работать в&nbsp;команде.
 
 		.vacancyes__region.filter-region(data-region="region-center")
-			.vacancies__city.page__container.filter-city#city-moscow(data-city="city-moscow")
+			.vacancies__city.content__container.filter-city#city-moscow(data-city="city-moscow")
 				h2.vacancies__city__title
 					| Москва
 
@@ -147,7 +147,7 @@
 				button.vacancies__city__button.js-add-more(data-url="/vacancies.json" data-type="vacancy" data-id="city-moscow" type="button")
 					| Показать все вакансии в&nbsp;Москве
 
-			.vacancies__city.page__container.filter-city#city-ryazan(data-city="city-ryazan")
+			.vacancies__city.content__container.filter-city#city-ryazan(data-city="city-ryazan")
 				h2.vacancies__city__title
 					| Рязань
 
@@ -248,7 +248,7 @@
 					| Показать все вакансии в&nbsp;Рязани
 
 		.vacancyes__region.filter-region(data-region="region-sibir")
-			.vacancies__city.page__container.filter-city#city-irkutsk(data-city="city-irkutsk")
+			.vacancies__city.content__container.filter-city#city-irkutsk(data-city="city-irkutsk")
 				h2.vacancies__city__title
 					| Иркутск
 
