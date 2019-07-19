@@ -1,0 +1,60 @@
+.pagination {
+	background: #171B1E;
+	
+	&--big {
+		height: 317px;
+		padding: 60px 85px;
+
+		@include tablet {
+			padding: 60px 44px;
+		}
+
+		@include mobile {
+			padding: 60px 15px;
+		}
+	}
+	
+	&__content {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	&__link {
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+	}
+
+	&__subtitle {
+		font-size: 11px;
+		line-height: 140%;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: #FFC630;
+		margin-bottom: 20px;
+	}
+
+	&__title {
+		font-weight: 300;
+		font-size: 32px;
+		line-height: 140%;
+		letter-spacing: -0.01em;
+		color: #fff;
+
+		@include mobile {
+			font-size: 21px;
+			line-height: 25px;
+		}
+	}
+
+	& svg {
+		fill: none;
+		width: 19px;
+		height: 19px;
+		margin-left: 20px;
+
+		@include mobile {
+			margin-left: 12px;
+		}
+	}
+}

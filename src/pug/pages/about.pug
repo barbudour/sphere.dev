@@ -1,0 +1,173 @@
+.page.about
+	.page__fixed.about__fixed
+
+	.wrapper
+		+breadcrumb({
+			link: 'about.html',
+			name: 'О кластере',
+		})
+
+		.page__top.about__top
+			.about__content
+				h1.page__top__title
+					| О цифровом кластере
+				.page__top__text
+					| Цифровой кластер&nbsp;&mdash; это команда единомышленников, обладающая энтузиазмом и&nbsp;компетенциями, необходимыми для развития современных, инновационных и&nbsp;перспективных технологий.
+
+		.page__container.page__container--white.about__container
+			.about__content.about__directions__title
+				h2
+					| Основные элементы кластера
+			.about__directions
+				+direction-item({
+					link: '#',
+					name: 'Аналитический центр',
+					text: 'Цифровой кластер завершил формирование основной команды. В том числе, запущен и активно работает проект «Кадры для цифровой экономики»',
+					icon: 'chart'
+				})
+				+direction-item({
+					link: '#',
+					name: 'Полигон прототипирования',
+					text: 'Цифровой кластер завершил формирование основной команды. В том числе, запущен и активно работает проект «Кадры для цифровой экономики»',
+					icon: 'cloud'
+				})
+				+direction-item({
+					link: '#',
+					name: 'Студия цифрового проектирования',
+					text: 'Цифровой кластер завершил формирование основной команды. В том числе, запущен и активно работает проект «Кадры для цифровой экономики»',
+					icon: 'port',
+					classList: 'about__directions__item--long-title'
+				})
+				+direction-item({
+					link: '#',
+					name: 'Центр партнерского взаимодействия',
+					text: 'Цифровой кластер завершил формирование основной команды. В том числе, запущен и активно работает проект «Кадры для цифровой экономики»',
+					icon: 'hands',
+					classList: 'about__directions__item--long-title'
+				})
+				+direction-item({
+					link: '#',
+					name: 'Шоурум цифровых разработок',
+					text: 'Цифровой кластер завершил формирование основной команды. В том числе, запущен и активно работает проект «Кадры для цифровой экономики»',
+					icon: 'builds',
+					classList: 'about__directions__item--long-title'
+				})
+				+direction-item({
+					link: '#',
+					name: 'Центр акселерации',
+					text: 'Цифровой кластер завершил формирование основной команды. В том числе, запущен и активно работает проект «Кадры для цифровой экономики»',
+					icon: 'chart'
+				})
+				+direction-item({
+					link: '#',
+					name: 'Центр бизнес&#8209;трансформации',
+					text: 'Цифровой кластер завершил формирование основной команды. В том числе, запущен и активно работает проект «Кадры для цифровой экономики»',
+					icon: 'backup',
+					classList: 'about__directions__item--long-title'
+				})
+				+direction-item-big({
+					link: '#',
+					name: 'Цифровой кластер обеспечивает компетенции и&nbsp;среду&nbsp;для&nbsp;реализации программ цифровизации'
+				})
+			.about__content.about__content--short.about__content--mobile-hide
+				p.about__content__description
+					| Цифровой кластер&nbsp;&mdash; это команда единомышленников, обладающая энтузиазмом и&nbsp;компетенциями, необходимыми для развития современных, инновационных и&nbsp;перспективных технологий.
+				+button-more({
+					link: 'team.html',
+					name: 'О команде',
+				})
+
+		.page__container.page__container--black
+			.about__lists
+				.lists__col.lists__col--short
+					h2.lists__title
+						| Цели
+					.lists__items
+						+tasklist-item({
+							number: '01',
+							name: 'Поддержка обновления и реализации плана ускоренной цифровизации'
+						})
+						+tasklist-item({
+							number: '02',
+							name: 'Создание инновационных цифровых решений и масштабируемых компетенций'
+						})
+				.lists__col
+					h2.lists__title
+						| Задачи
+					.lists__items
+						+tasklist-item({
+							number: '01',
+							name: 'Регулярный мониторинг рынка, постоянный поиск новых идей и изучение сквозных цифровых технологий'
+						})
+						+tasklist-item({
+							number: '02',
+							name: 'Прототипирование цифровых решений и ускоренная апробация'
+						})
+						+tasklist-item({
+							number: '03',
+							name: 'Выступление на конференциях, фасилитация внутренних коммуникаций'
+						})
+						+tasklist-item({
+							number: '04',
+							name: 'Развитие новых подходов к созданию ИТ решений'
+						})
+						+tasklist-item({
+							number: '05',
+							name: 'Выстраивание взаимодействия с партнерами, поиск компетенций и ресурсов'
+						})
+
+		.team__person.team__person--ceo
+			.team__person__body.team__person__body--left
+				.team__person__post.team__person__post--gray
+					| Генеральный директор ООО&nbsp;ИК&nbsp;&laquo;СИБИНТЕК&raquo;
+				.team__person__name.team__person__name--small
+					| Владимир Перевозный
+				.team__person__text
+					| Цифровые технологии неизбежно оптимизируют процессы и повышают эффективность работы. Наша задача поддержать и обеспечить реализацию цифровой повестки Компании
+			.team__person__photo
+				img(src="/images/pages/about/ceo.png" srcset="/images/pages/about/ceo@2x.png 2x")
+
+		.videos
+			.video.js-cursor
+				span.corner
+				.video__content
+					.video__title
+						| Видео о цифровом кластере
+					.video__controls
+						.video__play
+							button
+								+svg('play')
+							span play
+							.video__time 3:30
+				span.corner
+
+		.page__container.page__container--white
+			.about__content.about__content--medium
+				h2
+					| Результаты работ цифрового кластера
+				p
+					| Цифровой кластер завершил формирование основной команды. В&nbsp;том числе, запущен и&nbsp;активно работает проект &laquo;Кадры для цифровой экономики&raquo;, в&nbsp;котором в&nbsp;качестве партнеров участвуют ведущие вузы, математические лицеи и&nbsp;колледжи, рейтинговое агентство &laquo;Эксперт&raquo;. Начала формироваться партнерская экосистема. В&nbsp;нее входят инновационные кластеры, аккумулирующие перспективные стартапы, в&nbsp;т.ч. Сколково и&nbsp;Иннополис, ВУЗы, ведущие подготовку адекватных задачам кластера специалистов, начат переговорный процесс с&nbsp;кластерами довузовского инновационного образования.
+			.about__counters
+				+counter-item({
+					number: '>20',
+					text: 'Цифровых продуктов и проектов'
+				})
+				+counter-item({
+					number: '>2000',
+					text: 'Предоставляемых сервисов'
+				})
+				+counter-item({
+					number: '>100 000',
+					text: 'Обслуживаемых пользователей'
+				})
+				+counter-item({
+					number: '>100',
+					text: 'Количество сотрудников'
+				})
+
+		include ../components/news-widget
+		+pagination-big({
+			subtitle: 'Смотрите также',
+			title: 'Технологии и решения',
+			link: '#'
+		})

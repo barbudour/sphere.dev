@@ -1,0 +1,4 @@
+mixin tasklist-item(data)
+	.lists__item
+		span.lists__item__index!= data.number+"./"
+		h4.lists__item__title!= data.name

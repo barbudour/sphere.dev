@@ -884,100 +884,121 @@ textarea {
 		}
 	}
 
-	.videos {
-		padding: 96px 81px;
-		background-color: rgba($color-woodsmoke-dark, 0.85);
+	
+	.no-offset-top {
+		margin-top: 0;
+	}
+}
 
-		.video {
-			position: relative;
-			display: flex;
-			align-items: center;
-			margin-bottom: 42px;
-			padding: 15px 89px;
-			height: vw(288);
+.videos {
+	padding: 96px 81px;
+	background-color: rgba($color-woodsmoke-dark, 0.85);
 
-			&::before {
-				content: "";
-				position: absolute;
-				left: 4px;
-				right: 4px;
-				top: 4px;
-				bottom: 4px;
-				border: 1px solid rgba($color-white, 0.2);
-				pointer-events: none;
-			}
+	@include mobile {
+		padding: 60px 15px;
+	}
 
-			> span {
-				position: absolute;
-				left: -1px;
-				right: -1px;
-				top: -1px;
-				bottom: -1px;
-				overflow: hidden;
-				pointer-events: none;
+	.video {
+		position: relative;
+		display: flex;
+		align-items: center;
+		margin-bottom: 42px;
+		padding: 15px 89px;
+		height: vw(288);
 
-				&:first-child {
-					&::before {
-						@include triangle(to top left, 4px, 4px, $color-sunglow);
+		@include mobile {
+			height: 100%;
+			padding: 82px 15px;
+		}
 
-						content: "";
-						position: absolute;
-						left: 0;
-						top: 0;
-						transform: translate(5px, 5px) translateZ(0);
-						transform-origin: left top;
-						transition: transform 0.3s;
-						will-change: transform;
-					}
+		&::before {
+			content: "";
+			position: absolute;
+			left: 4px;
+			right: 4px;
+			top: 4px;
+			bottom: 4px;
+			border: 1px solid rgba($color-white, 0.2);
+			pointer-events: none;
+		}
 
-					&::after {
-						@include triangle(to bottom left, 4px, 4px, $color-sunglow);
+		> span {
+			position: absolute;
+			left: -1px;
+			right: -1px;
+			top: -1px;
+			bottom: -1px;
+			overflow: hidden;
+			pointer-events: none;
 
-						content: "";
-						position: absolute;
-						left: 0;
-						bottom: 0;
-						transform: translate(5px, -5px) translateZ(0);
-						transform-origin: left bottom;
-						transition: transform 0.3s;
-						will-change: transform;
-					}
+			&:first-child {
+				&::before {
+					@include triangle(to top left, 4px, 4px, $color-sunglow);
+
+					content: "";
+					position: absolute;
+					left: 0;
+					top: 0;
+					transform: translate(5px, 5px) translateZ(0);
+					transform-origin: left top;
+					transition: transform 0.3s;
+					will-change: transform;
 				}
 
-				&:last-child {
-					&::before {
-						@include triangle(to top right, 4px, 4px, $color-sunglow);
+				&::after {
+					@include triangle(to bottom left, 4px, 4px, $color-sunglow);
 
-						content: "";
-						position: absolute;
-						right: 0;
-						top: 0;
-						transform: translate(-5px, 5px) translateZ(0);
-						transform-origin: right top;
-						transition: transform 0.3s;
-						will-change: transform;
-					}
-
-					&::after {
-						@include triangle(to bottom right, 4px, 4px, $color-sunglow);
-
-						content: "";
-						position: absolute;
-						right: 0;
-						bottom: 0;
-						transform: translate(-5px, -5px) translateZ(0);
-						transform-origin: right bottom;
-						transition: transform 0.3s;
-						will-change: transform;
-					}
+					content: "";
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					transform: translate(5px, -5px) translateZ(0);
+					transform-origin: left bottom;
+					transition: transform 0.3s;
+					will-change: transform;
 				}
 			}
 
-			&__title {
-				max-width: 500px;
-				font-weight: 300;
-				font-size: 32px;
-				line-height: 45px;
+			&:last-child {
+				&::before {
+					@include triangle(to top right, 4px, 4px, $color-sunglow);
+
+					content: "";
+					position: absolute;
+					right: 0;
+					top: 0;
+					transform: translate(-5px, 5px) translateZ(0);
+					transform-origin: right top;
+					transition: transform 0.3s;
+					will-change: transform;
+				}
+
+				&::after {
+					@include triangle(to bottom right, 4px, 4px, $color-sunglow);
+
+					content: "";
+					position: absolute;
+					right: 0;
+					bottom: 0;
+					transform: translate(-5px, -5px) translateZ(0);
+					transform-origin: right bottom;
+					transition: transform 0.3s;
+					will-change: transform;
+				}
+			}
+		}
+
+		&__title {
+			max-width: 500px;
+			font-weight: 300;
+			font-size: 32px;
+			line-height: 45px;
+			letter-spacing: -0.01em;
+			color: $color-white;
+
+			@include mobile {
+				font-size: 21px;
+				line-height: 25px;
 				letter-spacing: -0.01em;
 				color: $color-white;
 
@@ -986,47 +1007,29 @@ textarea {
 					line-height: 25px;
 				}
 			}
+		}
 
-			&__play {
+		&__play {
+			display: flex;
+			align-items: center;
+			margin-top: 23px;
+			height: 45px;
+			cursor: pointer;
+
+			button {
 				display: flex;
 				align-items: center;
-				margin-top: 23px;
+				justify-content: center;
+				border: none;
+				width: 45px;
 				height: 45px;
+				background-color: $color-sunglow;
+				transition: background 0.3s;
 				cursor: pointer;
 
-				button {
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					border: none;
-					width: 45px;
-					height: 45px;
-					background-color: $color-sunglow;
-					transition: background 0.3s;
-					cursor: pointer;
-
-					svg {
-						width: 12px;
-						height: 15px;
-					}
-				}
-
-				span {
-					margin-left: 20px;
-					font-weight: 400;
-					font-size: 11px;
-					line-height: 15px;
-					letter-spacing: 0.1em;
-					text-transform: uppercase;
-					color: $color-white;
-				}
-
-				@include desktop {
-					&:hover {
-						button {
-							background-color: $color-buttercup;
-						}
-					}
+				svg {
+					width: 12px;
+					height: 15px;
 				}
 
 				@include mobile {
@@ -1034,41 +1037,59 @@ textarea {
 				}
 			}
 
-			&__time {
-				margin-left: 10px;
+			span {
+				margin-left: 20px;
 				font-weight: 400;
 				font-size: 11px;
 				line-height: 15px;
 				letter-spacing: 0.1em;
 				text-transform: uppercase;
-				color: rgba($color-white, 0.5);
-			}
-
-			&:last-child {
-				margin-bottom: 0;
+				color: $color-white;
 			}
 
 			@include desktop {
 				&:hover {
-					> span {
-						&:first-child {
-							&::before {
-								transform: translate(0, 0) translateZ(0);
-							}
+					button {
+						background-color: $color-buttercup;
+					}
+				}
+			}
+		}
 
-							&::after {
-								transform: translate(0, 0) translateZ(0);
-							}
+		&__time {
+			margin-left: 10px;
+			font-weight: 400;
+			font-size: 11px;
+			line-height: 15px;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: rgba($color-white, 0.5);
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		@include desktop {
+			&:hover {
+				> span {
+					&:first-child {
+						&::before {
+							transform: translate(0, 0) translateZ(0);
 						}
 
-						&:last-child {
-							&::before {
-								transform: translate(0, 0) translateZ(0);
-							}
+						&::after {
+							transform: translate(0, 0) translateZ(0);
+						}
+					}
 
-							&::after {
-								transform: translate(0, 0) translateZ(0);
-							}
+					&:last-child {
+						&::before {
+							transform: translate(0, 0) translateZ(0);
+						}
+
+						&::after {
+							transform: translate(0, 0) translateZ(0);
 						}
 					}
 				}

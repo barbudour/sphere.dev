@@ -96,6 +96,16 @@
 		align-items: center;
 		height: 500px;
 
+		&--ceo {
+			height: initial;
+			background: #EAEAEA;
+
+			@include mobile {
+				padding: initial!important;
+				flex-direction: column;
+			}
+		}
+
 		&__placeholder {
 			position: absolute;
 			left: 0;
@@ -127,6 +137,26 @@
 			}
 		}
 
+		&__photo {
+			& img {
+				margin-top: -76px;
+				display: block;
+				width: 511px;
+				height: 414px;
+				object-fit: cover;
+				object-position: 50% 0%;
+
+				@include tablet {
+					width: 100%;
+				}
+
+				@include mobile {
+					width: 100vw;
+					height: auto;
+				}
+			}
+		}
+
 		&__body {
 			position: relative;
 			flex: 0 0 50%;
@@ -144,6 +174,18 @@
 				padding: 0;
 				max-width: 100%;
 			}
+
+			&--left {
+				padding: 30px 85px;
+
+				@include tablet {
+					padding: 30px 44px;
+				}
+
+				@include mobile {
+					padding: 30px 15px 80px;
+				}
+			}
 		}
 
 		&__post {
@@ -153,6 +195,10 @@
 			letter-spacing: 0.1em;
 			text-transform: uppercase;
 
+			&--gray {
+				color: #15151A;
+				opacity: 0.6;
+			}
 			@include mobile {
 				margin-top: 0;
 			}
@@ -169,6 +215,12 @@
 				margin-bottom: 40px;
 				font-size: 21px;
 				line-height: (25 / 21);
+			}
+
+			&--small {
+				font-weight: 300;
+				font-size: 18px;
+				line-height: 130%;
 			}
 		}
 
