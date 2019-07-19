@@ -27,6 +27,11 @@
 		&:hover {
 			text-decoration: underline;
 		}
+
+		@include mobile {
+			font-size: 14px;
+			line-height: (25 / 14);
+		}
 	}
 
 	@include laptop {

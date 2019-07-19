@@ -19,7 +19,7 @@ function loadVacancy(objects) {
 						<div class="vacancies-item__body">
 							${object.list.map((item) => `
 								<div class="vacancies-item__body__title">${item.name}</div>
-								<ul class="vacancies-item__list">
+								<ul class="vacancies-item__list no-offset-top">
 									${item.array.map((arr) => `
 										<li class="vacancies-item__list__item">${arr}</li>
 									`).join('')}

@@ -184,97 +184,13 @@
 		}
 
 		@include mobile {
-			margin: 15px 15px 47px;
+			margin: 35px 15px 47px;
 		}
 	}
 
 	&__container {
 		position: relative;
 		padding: 100px 85px;
-
-		ul {
-			list-style: none;
-			margin: 0 0 50px;
-			padding: 0;
-
-			li {
-				position: relative;
-				display: block;
-				padding-left: 50px;
-				font-weight: 300;
-				font-size: 16px;
-				line-height: (30 / 16);
-
-				&::before {
-					content: "";
-					position: absolute;
-					left: 0;
-					top: 10px;
-					border-radius: 50%;
-					width: 7px;
-					height: 7px;
-					background-color: $color-sunglow;
-				}
-
-				&:not(:last-child) {
-					margin-bottom: 20px;
-				}
-
-				@include mobile {
-					padding-left: 30px;
-				}
-			}
-
-			@include mobile {
-				margin-bottom: 40px;
-			}
-		}
-
-		h2 {
-			margin: 0 0 50px;
-			font-weight: 300;
-			font-size: 32px;
-			line-height: (45 / 32);
-			letter-spacing: -0.01em;
-
-			@include laptop {
-				max-width: 620px;
-			}
-
-			@include mobile {
-				margin-bottom: 40px;
-				font-size: 21px;
-				line-height: (25 / 21);
-			}
-		}
-
-		h3 {
-			margin: 0 0 35px;
-			font-weight: 300;
-			font-size: 18px;
-			line-height: (23 / 18);
-
-			@include mobile {
-				margin-bottom: 30px;
-			}
-		}
-
-		p {
-			margin: 0 0 50px;
-			font-weight: 300;
-			font-size: 16px;
-			line-height: (30 / 16);
-
-			@include laptop {
-				max-width: 620px;
-			}
-
-			@include mobile {
-				margin-bottom: 40px;
-				font-size: 15px;
-				line-height: (26 / 15);
-			}
-		}
 
 		&--white {
 			color: $color-woodsmoke;
@@ -338,6 +254,11 @@ textarea {
 		&--white {
 			color: $color-woodsmoke;
 			background-color: $color-white;
+		}
+
+		&--black {
+			color: $color-white;
+			background-color: rgba($color-woodsmoke-dark, 0.85);
 		}
 
 		@include tablet {
@@ -571,9 +492,11 @@ textarea {
 		}
 
 		&.breadcrumb {
+			margin-top: 20px;
 			padding: 0;
 
 			li {
+				margin: 0;
 				padding: 0;
 
 				&::before {
@@ -1212,7 +1135,8 @@ textarea {
 		background-repeat: no-repeat;
 		background-color: transparent;
 
-		option {
+		option,
+		optgroup {
 			color: $color-woodsmoke;
 		}
 
