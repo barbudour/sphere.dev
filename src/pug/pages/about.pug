@@ -1,5 +1,5 @@
 .page.about
-	.page__fixed
+	.page__fixed.about__fixed
 
 	.wrapper
 		+breadcrumb({
@@ -7,15 +7,15 @@
 			name: 'О кластере',
 		})
 
-		.page__top
+		.page__top.about__top
 			.about__content
 				h1.page__top__title
 					| О цифровом кластере
 				.page__top__text
 					| Цифровой кластер&nbsp;&mdash; это команда единомышленников, обладающая энтузиазмом и&nbsp;компетенциями, необходимыми для развития современных, инновационных и&nbsp;перспективных технологий.
 
-		.page__container.page__container--white
-			.about__content
+		.page__container.page__container--white.about__container
+			.about__content.about__directions__title
 				h2
 					| Основные элементы кластера
 			.about__directions
@@ -35,19 +35,22 @@
 					link: '#',
 					name: 'Студия цифрового проектирования',
 					text: 'Цифровой кластер завершил формирование основной команды. В том числе, запущен и активно работает проект «Кадры для цифровой экономики»',
-					icon: 'port'
+					icon: 'port',
+					classList: 'about__directions__item--long-title'
 				})
 				+direction-item({
 					link: '#',
 					name: 'Центр партнерского взаимодействия',
 					text: 'Цифровой кластер завершил формирование основной команды. В том числе, запущен и активно работает проект «Кадры для цифровой экономики»',
-					icon: 'hands'
+					icon: 'hands',
+					classList: 'about__directions__item--long-title'
 				})
 				+direction-item({
 					link: '#',
 					name: 'Шоурум цифровых разработок',
 					text: 'Цифровой кластер завершил формирование основной команды. В том числе, запущен и активно работает проект «Кадры для цифровой экономики»',
-					icon: 'builds'
+					icon: 'builds',
+					classList: 'about__directions__item--long-title'
 				})
 				+direction-item({
 					link: '#',
@@ -59,14 +62,15 @@
 					link: '#',
 					name: 'Центр бизнес&#8209;трансформации',
 					text: 'Цифровой кластер завершил формирование основной команды. В том числе, запущен и активно работает проект «Кадры для цифровой экономики»',
-					icon: 'backup'
+					icon: 'backup',
+					classList: 'about__directions__item--long-title'
 				})
 				+direction-item-big({
 					link: '#',
 					name: 'Цифровой кластер обеспечивает компетенции и&nbsp;среду&nbsp;для&nbsp;реализации программ цифровизации'
 				})
-			.about__content.about__content--short
-				p
+			.about__content.about__content--short.about__content--mobile-hide
+				p.about__content__description
 					| Цифровой кластер&nbsp;&mdash; это команда единомышленников, обладающая энтузиазмом и&nbsp;компетенциями, необходимыми для развития современных, инновационных и&nbsp;перспективных технологий.
 				+button-more({
 					link: 'team.html',
@@ -76,7 +80,7 @@
 		.page__container.page__container--black
 			.about__lists
 				.lists__col.lists__col--short
-					h2
+					h2.lists__title
 						| Цели
 					.lists__items
 						+tasklist-item({
@@ -88,7 +92,7 @@
 							name: 'Создание инновационных цифровых решений и масштабируемых компетенций'
 						})
 				.lists__col
-					h2
+					h2.lists__title
 						| Задачи
 					.lists__items
 						+tasklist-item({
@@ -115,7 +119,7 @@
 		.team__person.team__person--ceo
 			.team__person__body.team__person__body--left
 				.team__person__post.team__person__post--gray
-					| Генеральный директор ООО ИК&nbsp;&laquo;СИБИНТЕК&raquo;
+					| Генеральный директор ООО&nbsp;ИК&nbsp;&laquo;СИБИНТЕК&raquo;
 				.team__person__name.team__person__name--small
 					| Владимир Перевозный
 				.team__person__text
@@ -162,3 +166,8 @@
 				})
 
 		include ../components/news-widget
+		+pagination-big({
+			subtitle: 'Смотрите также',
+			title: 'Технологии и решения',
+			link: '#'
+		})

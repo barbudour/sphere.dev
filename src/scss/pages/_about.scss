@@ -1,12 +1,45 @@
+$grayborder: 1px solid rgba(104, 101, 101, 0.2);
+
 .about {
+
+	&__fixed {
+		@include mobile {
+			height: 452px;
+		}
+	}
+
+	&__top {
+		@include mobile {
+			margin: 40px 15px;
+		}
+	}
+
+	&__container {
+		@include mobile {
+			padding: 0px 15px;
+		}
+	}
+
 	&__content {
 
 		&--short {
 			max-width: 560px;
 		}
 
+		&--mobile-hide {
+			@include mobile {
+				display: none;
+			}
+		}
+
 		&--medium {
 			max-width: 680px;
+		}
+
+		&__description {
+			@include tablet {
+				margin: 0 0 30px!important;
+			}
 		}
 	}
 
@@ -14,8 +47,18 @@
 		display: flex;
 		flex-wrap: wrap;
 		position: relative;
-		border-bottom: 1px solid rgba(104, 101, 101, 0.2);
+		border-bottom: $grayborder;
 		margin-bottom: 50px;
+
+		@include tablet {
+			padding-right: 110px;
+		}
+
+		@include mobile {
+			padding-right: initial;
+			border-bottom: initial;
+			margin-bottom: initial;
+		}
 
 		&::before, &::after {
 			content: '';
@@ -24,12 +67,22 @@
 			height: calc(100% + 1px);
 			top: 0;
 			left: -85px;
-			border-bottom: 1px solid rgba(104, 101, 101, 0.2);
+			border-bottom: $grayborder;
+
+			@include mobile {
+				content: none;
+			}
 		}
 
 		&::after {
 			left: initial;
 			right: -85px;
+		}
+
+		&__title {
+			@include mobile {
+				display: none;
+			}
 		}
 
 		&__item {
@@ -40,9 +93,20 @@
 			height: 355px;
 			text-decoration: none;
 			padding: 60px 30px 30px;
-			border-top: 1px solid rgba(104, 101, 101, 0.2);
-			border-right: 1px solid rgba(104, 101, 101, 0.2);
+			border-top: $grayborder;
+			border-right: $grayborder;
 			color: #15151A;
+
+			@include tablet {
+				flex: 0 percentage(6 / 12);
+				border-left: $grayborder;
+			}
+
+			@include mobile {
+				flex: 0 percentage(12 / 12);
+				padding: 50px 50px 50px 30px;
+				height: 280px;
+			}
 
 			&::before {
 				content: '';
@@ -52,10 +116,20 @@
 				width: 11px;
 				height: 11px;
 				background: url("../images/sprites/svg/plus.svg") center no-repeat;
+
+				@include mobile {
+					top: 50px;
+				}
+			}
+
+			&:nth-child(1) {
+				@include mobile {
+					border-top: initial;
+				}
 			}
 
 			&:nth-child(3n+1) {
-				border-left: 1px solid rgba(104, 101, 101, 0.2);
+				border-left: $grayborder;
 				
 				&::after {
 					content: '';
@@ -64,10 +138,13 @@
 					left: -86px;
 					width: 85px;
 					height: 1px;
-					border-top: 1px solid rgba(104, 101, 101, 0.2);
+					border-top: $grayborder;
+					@include tablet {
+						content: none;
+					}
 				}
 			}
-
+			
 			&:nth-child(3n+3) {
 				&::after {
 					content: '';
@@ -76,12 +153,73 @@
 					right: -86px;
 					width: 85px;
 					height: 1px;
-					border-top: 1px solid rgba(104, 101, 101, 0.2);
+					border-top: $grayborder;
+					
+					@include tablet {
+						content: none;
+					}
+				}
+			}
+
+			&:nth-child(odd) {
+				@include tablet {
+					border-right: initial;
+
+					&::after {
+						content: '';
+						position: absolute;
+						top: -1px;
+						left: -86px;
+						width: 85px;
+						height: 1px;
+						border-top: $grayborder;
+					}
+				}
+
+				@include mobile {
+					border-right: $grayborder;
+
+					&::after {
+						content: none;
+					}
+				}
+			}
+
+			&:nth-child(even) {
+				@include tablet {
+					&::after {
+						content: '';
+						position: absolute;
+						top: -1px;
+						left: initial;
+						right: -155px;
+						width: 154px;
+						height: 1px;
+						border-top: $grayborder;
+					}
+				}
+
+				@include mobile {
+					&::after {
+						content: none;
+					}
 				}
 			}
 
 			&:hover {
 				background: #FFC630;
+			}
+
+			&--long-title {
+				&::before {
+					@include mobile {
+						top: 60px;
+					}
+				}
+
+				.about__directions__item__title {
+					max-width: 200px;
+				}
 			}
 
 			&__topside {
@@ -106,6 +244,10 @@
 				width: 76px;
 				height: 80px;
 				mask: url("../images/sprites/svg/octagon-mask.svg") center center;
+
+				@include mobile {
+					top: 120px;
+				}
 				
 				&::before {
 					content: '';
@@ -128,6 +270,14 @@
 
 			&__title {
 				margin-bottom: 20px;
+
+				@include mobile {
+					font-size: 11px!important;
+					line-height: 140%!important;
+					font-weight: normal!important;
+					letter-spacing: 0.1em;
+					text-transform: uppercase;
+				}
 			}
 
 			&__description {
@@ -138,6 +288,21 @@
 			&--big {
 				flex: 0 percentage(8 / 12);
 				justify-content: center;
+
+				@include tablet {
+					flex: 1;
+					margin-right: -154px;
+					border-right: initial;
+				}
+
+				@include mobile {
+					flex: 0 percentage(12 / 12);
+					margin-right: initial;
+					border-right: initial;
+					border-left: initial;
+					padding: 0;
+					height: 260px;
+				}
 
 				&::before {
 					content: initial;
@@ -150,7 +315,18 @@
 					right: -86px;
 					width: 85px;
 					height: 1px;
-					border-top: 1px solid rgba(104, 101, 101, 0.2);
+					border-top: $grayborder;
+				}
+
+				& .about__directions__item__title {
+					@include mobile {
+						font-size: 21px!important;
+						line-height: 25px!important;
+						letter-spacing: -0.01em;
+						font-weight: 300!important;
+						text-transform: none;
+						margin-bottom: 0!important;
+					}
 				}
 			}
 		}
@@ -159,12 +335,35 @@
 	&__lists {
 		display: flex;
 
+		@include mobile {
+			flex-direction: column;
+		}
+
 		& .lists {
+			&__title {
+				@include mobile {
+					margin-bottom: 30px;
+				}
+			}
+
 			&__col {
-				flex: 0 percentage(1 / 2);
+				flex: 0 percentage(6 / 12);
+
+				@include mobile {
+					flex: 0 percentage(12 / 12)
+				}
 
 				&--short {
 					padding-right: 100px;
+
+					@include tablet {
+						padding-right: 55px;
+					}
+
+					@include mobile {
+						padding-right: initial;
+						margin-bottom: 40px;
+					}
 				}
 			}
 
@@ -207,16 +406,46 @@
 				padding: 30px 35px;
 				border: 1px solid rgba(#15151A, 0.1);
 
+				@include tablet {
+					flex: 0 255px;
+					width: 255px;
+				}
+
+				@include mobile {
+					flex: 0 100%;
+					width: 100%;
+				}
+
+				&:not(:last-child) {
+					@include mobile {
+						margin-bottom: 20px;
+					}
+				}
+
 				&:nth-child(2n+1) {
 					margin-right: 85px;
+
+					@include mobile {
+						margin-right: initial;
+					}
 				}
 
 				&:not(:nth-last-child(-n+2)) {
 					margin-bottom: 48px;
+
+					@include mobile {
+						margin-bottom: 20px;
+					}
 				}
 
 				&__number {
 					margin-bottom: 0;
+
+					@include mobile {
+						font-size: 32px;
+						line-height: 140%;
+						letter-spacing: -0.01em;
+					}
 				}
 
 				&__text {

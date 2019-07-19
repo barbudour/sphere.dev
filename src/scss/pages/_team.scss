@@ -102,6 +102,11 @@
 		&--ceo {
 			height: initial;
 			background: #EAEAEA;
+
+			@include mobile {
+				padding: initial!important;
+				flex-direction: column;
+			}
 		}
 
 		&__placeholder {
@@ -143,6 +148,15 @@
 				height: 414px;
 				object-fit: cover;
 				object-position: 50% 0%;
+
+				@include tablet {
+					width: 100%;
+				}
+
+				@include mobile {
+					width: 100vw;
+					height: auto;
+				}
 			}
 		}
 
@@ -166,6 +180,14 @@
 
 			&--left {
 				padding: 30px 85px;
+
+				@include tablet {
+					padding: 30px 44px;
+				}
+
+				@include mobile {
+					padding: 30px 15px 80px;
+				}
 			}
 		}
 

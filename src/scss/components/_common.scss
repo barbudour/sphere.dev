@@ -710,6 +710,10 @@ textarea {
 	padding: 96px 81px;
 	background-color: rgba($color-woodsmoke-dark, 0.85);
 
+	@include mobile {
+		padding: 60px 15px;
+	}
+
 	.video {
 		position: relative;
 		display: flex;
@@ -717,6 +721,11 @@ textarea {
 		margin-bottom: 42px;
 		padding: 15px 89px;
 		height: vw(288);
+
+		@include mobile {
+			height: 100%;
+			padding: 82px 15px;
+		}
 
 		&::before {
 			content: "";
@@ -802,6 +811,12 @@ textarea {
 			line-height: 45px;
 			letter-spacing: -0.01em;
 			color: $color-white;
+
+			@include mobile {
+				font-size: 21px;
+				line-height: 25px;
+				letter-spacing: -0.01em;
+			}
 		}
 
 		&__play {

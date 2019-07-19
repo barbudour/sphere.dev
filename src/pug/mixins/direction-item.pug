@@ -1,5 +1,5 @@
 mixin direction-item(data)
-	a.about__directions__item.js-cursor(href= data.link)
+	a.about__directions__item.js-cursor(href= data.link class=`${data.classList ? data.classList : ''}`)
 		.about__directions__item__topside
 			h3.about__directions__item__title!= data.name
 		.about__directions__item__bottomside
