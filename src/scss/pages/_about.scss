@@ -1,7 +1,4 @@
-$grayborder: 1px solid rgba(104, 101, 101, 0.2);
-
 .about {
-
 	&__fixed {
 		@include mobile {
 			height: 452px;
@@ -16,11 +13,68 @@ $grayborder: 1px solid rgba(104, 101, 101, 0.2);
 
 	&__container {
 		@include mobile {
-			padding: 0px 15px;
+			padding: 0 15px;
 		}
 	}
 
 	&__content {
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			left: -85px;
+			top: 0;
+			border-bottom: $grayborder;
+			width: 85px;
+			height: calc(100% + 1px);
+
+			@include mobile {
+				content: none;
+			}
+		}
+
+		&::after {
+			left: initial;
+			right: -85px;
+		}
+
+		h2 {
+			margin-top: 0;
+			margin-bottom: 40px;
+			font-weight: 300;
+			font-size: 32px;
+			line-height: 140%;
+			letter-spacing: -0.01em;
+
+			@include mobile {
+				font-size: 21px;
+				line-height: 25px;
+			}
+		}
+
+		p {
+			margin-top: 0;
+			margin-bottom: 50px;
+			font-weight: 300;
+			font-size: 16px;
+			line-height: 187%;
+
+			@include mobile {
+				font-size: 15px;
+				line-height: 26px;
+			}
+		}
+
+		&__description {
+			font-weight: 300;
+			font-size: 16px;
+			line-height: 187%;
+
+			@include tablet {
+				// stylelint-disable-next-line declaration-no-important
+				margin: 0 0 30px !important;
+			}
+		}
 
 		&--short {
 			max-width: 560px;
@@ -35,124 +89,47 @@ $grayborder: 1px solid rgba(104, 101, 101, 0.2);
 		&--medium {
 			max-width: 680px;
 		}
-
-		&__description {
-			font-weight: 300;
-			font-size: 16px;
-			line-height: 187%;
-
-			@include tablet {
-				margin: 0 0 30px!important;
-			}
-		}
-
-		& h2 {
-			font-weight: 300;
-			font-size: 32px;
-			line-height: 140%;
-			letter-spacing: -0.01em;
-			margin-top: 0;
-			margin-bottom: 40px;
-
-			@include mobile {
-				font-size: 21px;
-				line-height: 25px;
-			}
-		}
-
-		& p {
-			font-weight: 300;
-			font-size: 16px;
-			line-height: 187%;
-			margin-top: 0;
-			margin-bottom: 50px;
-
-			@include mobile {
-				font-size: 15px;
-				line-height: 26px;
-			}
-		}
 	}
 
 	&__directions {
+		position: relative;
 		display: flex;
 		flex-wrap: wrap;
-		position: relative;
-		border-bottom: $grayborder;
 		margin-bottom: 50px;
-
-		@include tablet {
-			padding-right: 110px;
-		}
-
-		@include mobile {
-			padding-right: initial;
-			border-bottom: initial;
-			margin-bottom: initial;
-		}
-
-		&::before, &::after {
-			content: '';
-			position: absolute;
-			width: 85px;
-			height: calc(100% + 1px);
-			top: 0;
-			left: -85px;
-			border-bottom: $grayborder;
-
-			@include mobile {
-				content: none;
-			}
-		}
-
-		&::after {
-			left: initial;
-			right: -85px;
-		}
+		border-bottom: $grayborder;
 
 		&__title {
-			@include mobile {
-				display: none;
-			}
-
-			& h2 {
+			h2 {
+				margin-top: initial;
+				margin-bottom: 50px;
 				font-weight: 300;
 				font-size: 32px;
 				line-height: 140%;
 				letter-spacing: -0.01em;
-				margin-top: initial;
-				margin-bottom: 50px;
+			}
+
+			@include mobile {
+				display: none;
 			}
 		}
 
 		&__item {
-			flex: 0 percentage(4 / 12);
 			position: relative;
 			display: flex;
+			flex: 0 percentage(4 / 12);
 			flex-direction: column;
-			height: 355px;
-			text-decoration: none;
-			padding: 60px 30px 30px;
 			border-top: $grayborder;
 			border-right: $grayborder;
-			color: #15151A;
-
-			@include tablet {
-				flex: 0 percentage(6 / 12);
-				border-left: $grayborder;
-			}
-
-			@include mobile {
-				flex: 0 percentage(12 / 12);
-				padding: 50px 50px 50px 30px;
-				height: 280px;
-			}
+			padding: 60px 30px 30px;
+			height: 355px;
+			text-decoration: none;
+			color: $color-woodsmoke;
 
 			&::before {
-				content: '';
+				content: "";
 				position: absolute;
-				top: -6px;
 				left: -6px;
+				top: -6px;
 				width: 11px;
 				height: 11px;
 				background: url("../images/sprites/svg/plus.svg") center no-repeat;
@@ -160,6 +137,77 @@ $grayborder: 1px solid rgba(104, 101, 101, 0.2);
 				@include mobile {
 					top: 50px;
 				}
+			}
+
+			&__bottomside {
+				opacity: 0;
+
+				:hover > & {
+					opacity: 1;
+				}
+			}
+
+			&__icon {
+				position: absolute;
+				top: 147px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				mask: url("../images/sprites/svg/octagon-mask.svg") center center;
+				overflow: hidden;
+				width: 76px;
+				height: 80px;
+
+				&::before {
+					content: "";
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 76px;
+					height: 80px;
+					background: url("../images/sprites/svg/octagon.svg") center no-repeat;
+				}
+
+				img {
+					z-index: -1;
+				}
+
+				@include desktop {
+					&:hover > & {
+						opacity: 0;
+					}
+				}
+
+				@include mobile {
+					top: 120px;
+				}
+			}
+
+			&__title {
+				margin-top: initial;
+				margin-bottom: 20px;
+				font-weight: 300;
+				font-size: 18px;
+				line-height: 130%;
+
+				@include mobile {
+					// stylelint-disable-next-line declaration-no-important
+					font-weight: 400 !important;
+					// stylelint-disable-next-line declaration-no-important
+					font-size: 11px !important;
+					// stylelint-disable-next-line declaration-no-important
+					line-height: 140% !important;
+					letter-spacing: 0.1em;
+					text-transform: uppercase;
+				}
+			}
+
+			&__description {
+				font-weight: 300;
+				// stylelint-disable-next-line declaration-no-important
+				font-size: 15px !important;
+				// stylelint-disable-next-line declaration-no-important
+				line-height: 187% !important;
 			}
 
 			&:nth-child(1) {
@@ -170,31 +218,32 @@ $grayborder: 1px solid rgba(104, 101, 101, 0.2);
 
 			&:nth-child(3n+1) {
 				border-left: $grayborder;
-				
+
 				&::after {
-					content: '';
+					content: "";
 					position: absolute;
-					top: -1px;
 					left: -86px;
+					top: -1px;
+					border-top: $grayborder;
 					width: 85px;
 					height: 1px;
-					border-top: $grayborder;
+
 					@include tablet {
 						content: none;
 					}
 				}
 			}
-			
+
 			&:nth-child(3n+3) {
 				&::after {
-					content: '';
+					content: "";
 					position: absolute;
-					top: -1px;
 					right: -86px;
+					top: -1px;
+					border-top: $grayborder;
 					width: 85px;
 					height: 1px;
-					border-top: $grayborder;
-					
+
 					@include tablet {
 						content: none;
 					}
@@ -206,13 +255,13 @@ $grayborder: 1px solid rgba(104, 101, 101, 0.2);
 					border-right: initial;
 
 					&::after {
-						content: '';
+						content: "";
 						position: absolute;
-						top: -1px;
 						left: -86px;
+						top: -1px;
+						border-top: $grayborder;
 						width: 85px;
 						height: 1px;
-						border-top: $grayborder;
 					}
 				}
 
@@ -228,14 +277,14 @@ $grayborder: 1px solid rgba(104, 101, 101, 0.2);
 			&:nth-child(even) {
 				@include tablet {
 					&::after {
-						content: '';
+						content: "";
 						position: absolute;
-						top: -1px;
 						left: initial;
 						right: -155px;
+						top: -1px;
+						border-top: $grayborder;
 						width: 154px;
 						height: 1px;
-						border-top: $grayborder;
 					}
 				}
 
@@ -244,10 +293,6 @@ $grayborder: 1px solid rgba(104, 101, 101, 0.2);
 						content: none;
 					}
 				}
-			}
-
-			&:hover {
-				background: #FFC630;
 			}
 
 			&--long-title {
@@ -262,77 +307,38 @@ $grayborder: 1px solid rgba(104, 101, 101, 0.2);
 				}
 			}
 
-			&__topside {
-				
-			}
-
-			&__bottomside {
-				opacity: 0;
-
-				:hover > & {
-					opacity: 1;
-				}
-			}
-
-			&__icon {
-				position: absolute;
-				overflow: hidden;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				top: 147px;
-				width: 76px;
-				height: 80px;
-				mask: url("../images/sprites/svg/octagon-mask.svg") center center;
-
-				@include mobile {
-					top: 120px;
-				}
-				
-				&::before {
-					content: '';
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 76px;
-					height: 80px;
-					background: url("../images/sprites/svg/octagon.svg") center no-repeat;
-				}
-
-				:hover > & {
-					opacity: 0;
-				}
-
-				& img {
-					z-index: -1;
-				}
-			}
-
-			&__title {
-				font-weight: 300;
-				font-size: 18px;
-				line-height: 130%;
-				margin-bottom: 20px;
-				margin-top: initial;
-
-				@include mobile {
-					font-size: 11px!important;
-					line-height: 140%!important;
-					font-weight: normal!important;
-					letter-spacing: 0.1em;
-					text-transform: uppercase;
-				}
-			}
-
-			&__description {
-				font-size: 15px!important;
-				line-height: 187%!important;
-				font-weight: 300;
-			}
-
 			&--big {
 				flex: 0 percentage(8 / 12);
 				justify-content: center;
+
+				&::before {
+					content: initial;
+				}
+
+				&::after {
+					content: "";
+					position: absolute;
+					right: -86px;
+					top: -1px;
+					border-top: $grayborder;
+					width: 85px;
+					height: 1px;
+				}
+
+				.about__directions__item__title {
+					@include mobile {
+						// stylelint-disable-next-line declaration-no-important
+						margin-bottom: 0 !important;
+						// stylelint-disable-next-line declaration-no-important
+						font-weight: 300 !important;
+						// stylelint-disable-next-line declaration-no-important
+						font-size: 21px !important;
+						// stylelint-disable-next-line declaration-no-important
+						line-height: 25px !important;
+						letter-spacing: -0.01em;
+						text-transform: none;
+					}
+				}
 
 				@include tablet {
 					flex: 1;
@@ -348,50 +354,48 @@ $grayborder: 1px solid rgba(104, 101, 101, 0.2);
 					padding: 0;
 					height: 260px;
 				}
+			}
 
-				&::before {
-					content: initial;
-				}
-
-				&::after {
-					content: '';
-					position: absolute;
-					top: -1px;
-					right: -86px;
-					width: 85px;
-					height: 1px;
-					border-top: $grayborder;
-				}
-
-				& .about__directions__item__title {
-					@include mobile {
-						font-size: 21px!important;
-						line-height: 25px!important;
-						letter-spacing: -0.01em;
-						font-weight: 300!important;
-						text-transform: none;
-						margin-bottom: 0!important;
-					}
+			@include desktop {
+				&:hover {
+					background: $color-sunglow;
 				}
 			}
+
+			@include tablet {
+				flex: 0 percentage(6 / 12);
+				border-left: $grayborder;
+			}
+
+			@include mobile {
+				flex: 0 percentage(12 / 12);
+				padding: 50px 50px 50px 30px;
+				height: 280px;
+			}
+		}
+
+		@include tablet {
+			padding-right: 110px;
+		}
+
+		@include mobile {
+			margin-bottom: initial;
+			border-bottom: initial;
+			padding-right: initial;
 		}
 	}
 
 	&__lists {
 		display: flex;
 
-		@include mobile {
-			flex-direction: column;
-		}
-
-		& .lists {
+		.lists {
 			&__title {
+				margin-top: 0;
+				margin-bottom: 40px;
 				font-weight: 300;
 				font-size: 32px;
 				line-height: 140%;
 				letter-spacing: -0.01em;
-				margin-top: 0;
-				margin-bottom: 40px;
 
 				@include mobile {
 					margin-bottom: 30px;
@@ -401,10 +405,6 @@ $grayborder: 1px solid rgba(104, 101, 101, 0.2);
 			&__col {
 				flex: 0 percentage(6 / 12);
 
-				@include mobile {
-					flex: 0 percentage(12 / 12)
-				}
-
 				&--short {
 					padding-right: 100px;
 
@@ -413,9 +413,13 @@ $grayborder: 1px solid rgba(104, 101, 101, 0.2);
 					}
 
 					@include mobile {
-						padding-right: initial;
 						margin-bottom: 40px;
+						padding-right: initial;
 					}
+				}
+
+				@include mobile {
+					flex: 0 percentage(12 / 12);
 				}
 			}
 
@@ -429,17 +433,21 @@ $grayborder: 1px solid rgba(104, 101, 101, 0.2);
 					line-height: 140%;
 					letter-spacing: 0.1em;
 					text-transform: uppercase;
-					color: #EDAE09;
+					color: $color-buttercup;
 				}
 
 				&__title {
-					font-size: 16px;
-					line-height: 187%;
-					font-weight: 300;
 					margin-top: 4px;
 					margin-bottom: 0;
+					font-weight: 300;
+					font-size: 16px;
+					line-height: 187%;
 				}
 			}
+		}
+
+		@include mobile {
+			flex-direction: column;
 		}
 	}
 
@@ -447,49 +455,17 @@ $grayborder: 1px solid rgba(104, 101, 101, 0.2);
 		display: flex;
 		flex-wrap: wrap;
 
-		& .counter {
+		.counter {
 			&__item {
-				flex: 0 340px;
 				position: relative;
 				display: flex;
+				flex: 0 340px;
 				flex-direction: column;
 				justify-content: space-between;
+				border: 1px solid rgba($color-woodsmoke, 0.1);
+				padding: 30px 35px;
 				width: 340px;
 				height: 160px;
-				padding: 30px 35px;
-				border: 1px solid rgba(#15151A, 0.1);
-
-				@include tablet {
-					flex: 0 255px;
-					width: 255px;
-				}
-
-				@include mobile {
-					flex: 0 100%;
-					width: 100%;
-				}
-
-				&:not(:last-child) {
-					@include mobile {
-						margin-bottom: 20px;
-					}
-				}
-
-				&:nth-child(2n+1) {
-					margin-right: 85px;
-
-					@include mobile {
-						margin-right: initial;
-					}
-				}
-
-				&:not(:nth-last-child(-n+2)) {
-					margin-bottom: 48px;
-
-					@include mobile {
-						margin-bottom: 20px;
-					}
-				}
 
 				&__number {
 					margin-top: 0;
@@ -522,11 +498,11 @@ $grayborder: 1px solid rgba(104, 101, 101, 0.2);
 					bottom: -1px;
 					overflow: hidden;
 					pointer-events: none;
-		
+
 					&:first-child {
 						&::before {
 							@include triangle(to top left, 4px, 4px, $color-sunglow);
-		
+
 							content: "";
 							position: absolute;
 							left: -5px;
@@ -536,10 +512,10 @@ $grayborder: 1px solid rgba(104, 101, 101, 0.2);
 							transition: transform 0.3s;
 							will-change: transform;
 						}
-		
+
 						&::after {
 							@include triangle(to bottom left, 4px, 4px, $color-sunglow);
-		
+
 							content: "";
 							position: absolute;
 							left: -5px;
@@ -550,11 +526,11 @@ $grayborder: 1px solid rgba(104, 101, 101, 0.2);
 							will-change: transform;
 						}
 					}
-		
+
 					&:last-child {
 						&::before {
 							@include triangle(to top right, 4px, 4px, $color-sunglow);
-		
+
 							content: "";
 							position: absolute;
 							right: -5px;
@@ -564,10 +540,10 @@ $grayborder: 1px solid rgba(104, 101, 101, 0.2);
 							transition: transform 0.3s;
 							will-change: transform;
 						}
-		
+
 						&::after {
 							@include triangle(to bottom right, 4px, 4px, $color-sunglow);
-		
+
 							content: "";
 							position: absolute;
 							right: -5px;
@@ -578,6 +554,38 @@ $grayborder: 1px solid rgba(104, 101, 101, 0.2);
 							will-change: transform;
 						}
 					}
+				}
+
+				&:not(:last-child) {
+					@include mobile {
+						margin-bottom: 20px;
+					}
+				}
+
+				&:not(:nth-last-child(-n+2)) {
+					margin-bottom: 48px;
+
+					@include mobile {
+						margin-bottom: 20px;
+					}
+				}
+
+				&:nth-child(2n+1) {
+					margin-right: 85px;
+
+					@include mobile {
+						margin-right: initial;
+					}
+				}
+
+				@include tablet {
+					flex: 0 255px;
+					width: 255px;
+				}
+
+				@include mobile {
+					flex: 0 100%;
+					width: 100%;
 				}
 			}
 		}

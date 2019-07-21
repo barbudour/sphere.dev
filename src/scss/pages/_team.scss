@@ -10,21 +10,21 @@
 				flex: 0 0 50%;
 				margin-bottom: 0;
 				max-width: 50%;
-				
-				&:first-child {
-					padding-right: 80px;
-
-					@include tablet {
-						padding-right: 0;
-					}
-				}
 
 				&:not(:first-child) {
 					padding-left: 30px;
 
 					@include mobile {
-						margin-top: 0;	
+						margin-top: 0;
 						padding-left: 0;
+					}
+				}
+
+				&:first-child {
+					padding-right: 80px;
+
+					@include tablet {
+						padding-right: 0;
 					}
 				}
 
@@ -96,16 +96,6 @@
 		align-items: center;
 		height: 500px;
 
-		&--ceo {
-			height: initial;
-			background: #EAEAEA;
-
-			@include mobile {
-				padding: initial!important;
-				flex-direction: column;
-			}
-		}
-
 		&__placeholder {
 			position: absolute;
 			left: 0;
@@ -138,9 +128,9 @@
 		}
 
 		&__photo {
-			& img {
-				margin-top: -76px;
+			img {
 				display: block;
+				margin-top: -76px;
 				width: 511px;
 				height: 414px;
 				object-fit: cover;
@@ -165,16 +155,6 @@
 			padding-left: 30px;
 			max-width: 50%;
 
-			@include tablet {
-				padding-right: 44px;
-			}
-
-			@include mobile {
-				flex: 0 0 100%;
-				padding: 0;
-				max-width: 100%;
-			}
-
 			&--left {
 				padding: 30px 85px;
 
@@ -186,6 +166,16 @@
 					padding: 30px 15px 80px;
 				}
 			}
+
+			@include tablet {
+				padding-right: 44px;
+			}
+
+			@include mobile {
+				flex: 0 0 100%;
+				padding: 0;
+				max-width: 100%;
+			}
 		}
 
 		&__post {
@@ -196,9 +186,10 @@
 			text-transform: uppercase;
 
 			&--gray {
-				color: #15151A;
+				color: $color-woodsmoke;
 				opacity: 0.6;
 			}
+
 			@include mobile {
 				margin-top: 0;
 			}
@@ -211,16 +202,16 @@
 			line-height: (45 / 32);
 			letter-spacing: -0.01em;
 
-			@include mobile {
-				margin-bottom: 40px;
-				font-size: 21px;
-				line-height: (25 / 21);
-			}
-
 			&--small {
 				font-weight: 300;
 				font-size: 18px;
 				line-height: 130%;
+			}
+
+			@include mobile {
+				margin-bottom: 40px;
+				font-size: 21px;
+				line-height: (25 / 21);
 			}
 		}
 
@@ -245,6 +236,17 @@
 			@include mobile {
 				font-size: 14px;
 				line-height: (25 / 14);
+			}
+		}
+
+		&--ceo {
+			height: initial;
+			background: $color-gallery;
+
+			@include mobile {
+				flex-direction: column;
+				// stylelint-disable-next-line declaration-no-important
+				padding: initial !important;
 			}
 		}
 
