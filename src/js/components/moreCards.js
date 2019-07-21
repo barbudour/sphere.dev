@@ -37,7 +37,9 @@ function loadVacancy(objects) {
 	}
 }
 
+// eslint-disable-next-line no-unused-vars
 function loadNews(object, count) {
+	// eslint-disable-next-line no-console
 	console.log(object);
 }
 

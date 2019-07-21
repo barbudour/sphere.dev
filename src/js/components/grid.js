@@ -1,6 +1,6 @@
 import * as globals from '../globals';
 
-let $gridItem = $('.page.home').find('.grid-item')
+let $gridItem = $('.page').find('.grid-item')
 	.not('.for-laptop')
 	.not('.for-laptop-only')
 	.not('.for-tablet')
@@ -12,7 +12,7 @@ let firstGridHeight = Math.round(400 / 1360 * innerWidth);
 let gridOffset = gridHeight - firstGridHeight;
 let beforeLastGridHeight = gridHeight + gridOffset;
 
-if (globals.isDesktopBig()) {
+if (globals.isDesktopBig() && $('.page').hasClass('home')) {
 	$gridItem.each((index, element) => {
 		if (index !== 0) {
 			$(element).css({
@@ -49,20 +49,60 @@ if (globals.isDesktopBig()) {
 	});
 }
 
+if (globals.isDesktopBig() && $('.page').hasClass('news')) {
+	$gridItem.each((index, element) => {
+		$(element).css({
+			height: `${gridHeight}px`,
+		});
+
+		if (index === 1) {
+			$(element).css({
+				height: `${firstGridHeight}px`,
+			});
+		}
+
+		if ((index + 1) % 3 === 2 && index !== 1) {
+			$(element).css({
+				'margin-top': `-${gridOffset}px`,
+				'height': `${gridHeight}px`,
+			});
+		}
+
+		if (index === $gridItem.length - 1) {
+			$(element)
+				.addClass('is-last is-bottom');
+		}
+
+		if (index === $gridItem.length - 2) {
+			$(element)
+				.addClass('is-before-last is-bottom')
+				.css({
+					'margin-top': `-${gridOffset}px`,
+					'height': `${beforeLastGridHeight}px`,
+				});
+		}
+
+		if (index === $gridItem.length - 3) {
+			$(element)
+				.addClass('is-bottom');
+		}
+	});
+}
+
 if (globals.isLaptopOnly()) {
-	$('.home-grid .grid-item')
-		.eq($('.home-grid .grid-item').length - 2)
+	$('.grid .grid-item')
+		.eq($('.grid .grid-item').length - 2)
 		.addClass('is-laptop-before-last');
 }
 
 if (globals.isTabletOnly()) {
-	$('.home-grid .grid-item')
-		.eq($('.home-grid .grid-item').length - 3)
+	$('.grid .grid-item')
+		.eq($('.grid .grid-item').length - 3)
 		.addClass('is-tablet-before-last');
 }
 
 $(window).on('resize', () => {
-	if (globals.isDesktopBig()) {
+	if (globals.isDesktopBig() && $('.page').hasClass('home')) {
 		gridHeight = Math.round(480 / 1360 * innerWidth) + 1;
 		firstGridHeight = Math.round(400 / 1360 * innerWidth);
 		gridOffset = gridHeight - firstGridHeight;
@@ -97,10 +137,50 @@ $(window).on('resize', () => {
 			}
 		});
 	}
+
+	if (globals.isDesktopBig() && $('.page').hasClass('news')) {
+		gridHeight = Math.round(480 / 1360 * innerWidth) + 1;
+		firstGridHeight = Math.round(400 / 1360 * innerWidth);
+		gridOffset = gridHeight - firstGridHeight;
+		beforeLastGridHeight = gridHeight + gridOffset;
+
+		$gridItem.each((index, element) => {
+			$(element).css({
+				height: `${gridHeight}px`,
+			});
+
+			if (index === 1) {
+				$(element).css({
+					height: `${firstGridHeight}px`,
+				});
+			}
+
+			if ((index + 1) % 3 === 2 && index !== 1) {
+				$(element).css({
+					'margin-top': `-${gridOffset}px`,
+					'height': `${gridHeight}px`,
+				});
+			}
+
+			if (index === $gridItem.length - 2) {
+				$(element)
+					.addClass('is-before-last')
+					.css({
+						'margin-top': `-${gridOffset}px`,
+						'height': `${beforeLastGridHeight}px`,
+					});
+			}
+
+			if (index === $gridItem.length - 1) {
+				$(element)
+					.addClass('is-last');
+			}
+		});
+	}
 });
 
 if (globals.isDesktop()) {
-	$('.home-grid').find('.grid-item').each((index, element) => {
+	$('.grid').find('.grid-item').each((index, element) => {
 		$(element)
 			.on('mouseenter', (event) => {
 				let $this = $(event.currentTarget);

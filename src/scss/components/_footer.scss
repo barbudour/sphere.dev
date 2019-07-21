@@ -13,7 +13,7 @@
 		display: flex;
 		align-items: flex-end;
 		justify-content: space-between;
-		padding: 16px 30px;
+		padding: 16px 85px;
 		width: 100%;
 		font-weight: 400;
 		font-size: 11px;
@@ -73,6 +73,24 @@
 	&--main {
 		width: 50vw;
 		max-width: 100%;
+
+		.footer__content {
+			padding: 16px 30px;
+
+			@include laptop {
+				padding: 16px 85px;
+			}
+
+			@include tablet {
+				padding: 16px 44px;
+			}
+
+			@include mobile {
+				display: block;
+				padding: 71px 15px 0;
+				text-align: center;
+			}
+		}
 
 		@include laptop {
 			width: 100%;

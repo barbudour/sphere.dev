@@ -7,12 +7,58 @@
 	margin-left: auto;
 	width: 100%;
 
-	@include tablet {
-		background: #1E2326;
-	}
-
 	.grid-item {
 		width: percentage(4 / 12);
+
+		&__bottomside {
+			display: flex;
+			align-items: flex-end;
+			width: initial;
+
+			@include mobile {
+				bottom: 50px;
+			}
+		}
+
+		&:nth-child(2n + 1) {
+			@include tablet {
+				margin-top: initial;
+			}
+		}
+
+		&--big {
+			width: percentage(8 / 12);
+
+			.grid-item__bottomside {
+				right: 60px;
+				bottom: 56px;
+
+				p {
+					font-size: 32px;
+					line-height: 140%;
+
+					@include mobile {
+						font-size: 21px;
+						line-height: 25px;
+					}
+				}
+
+				@include mobile {
+					right: 15px;
+					bottom: 50px;
+				}
+			}
+
+			@include tablet {
+				width: percentage(12 / 12);
+			}
+		}
+
+		&--empty {
+			@include mobile {
+				display: none;
+			}
+		}
 
 		@include tablet {
 			width: percentage(6 / 12);
@@ -27,66 +73,15 @@
 		@include desktop-big {
 			&:nth-child(2n + 1) {
 				margin-top: initial;
-	
+
 				&.grid-item--first {
 					margin-top: initial;
 				}
 			}
 		}
-		
-		&:nth-child(2n + 1) {
-			@include tablet {
-				margin-top: initial;
-			}
-		}
-		
-		&--big {
-			width: percentage(8 / 12);
-			
-			@include tablet {
-				width: percentage(12 / 12);
-			}
+	}
 
-			& .grid-item__bottomside {
-				bottom: 56px;
-				right: 60px;
-
-				@include mobile {
-					bottom: 50px;
-					right: 15px;
-				}
-	
-				p {
-					font-size: 32px;
-					line-height: 140%;
-
-					@include mobile {
-						font-size: 21px;
-						line-height: 25px;
-					}
-				}
-			}
-		}
-
-		&--empty {
-			@include mobile {
-				display: none;
-			}
-
-			&:hover {
-				
-			}
-		}
-
-		&__bottomside {
-			width: initial;
-			display: flex;
-			align-items: flex-end;
-
-			@include mobile {
-				bottom: 50px;
-			}
-		}
-
+	@include tablet {
+		background: $color-shark;
 	}
 }
