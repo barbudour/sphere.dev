@@ -141,6 +141,7 @@
 				}
 
 				@include mobile {
+					margin-top: -50px;
 					width: 100vw;
 					height: auto;
 				}
@@ -155,7 +156,7 @@
 			padding-left: 30px;
 			max-width: 50%;
 
-			&--left {
+			&--ceo {
 				padding: 30px 85px;
 
 				@include tablet {
