@@ -1,4 +1,6 @@
 .about {
+	overflow: hidden;
+	
 	&__fixed {
 		@include mobile {
 			height: 452px;
@@ -51,14 +53,14 @@
 				line-height: 25px;
 			}
 		}
-
-		p {
+		
+		&__paragraph {
 			margin-top: 0;
 			margin-bottom: 50px;
 			font-weight: 300;
 			font-size: 16px;
 			line-height: 187%;
-
+			
 			@include mobile {
 				font-size: 15px;
 				line-height: 26px;
@@ -71,8 +73,9 @@
 			line-height: 187%;
 
 			@include tablet {
-				// stylelint-disable-next-line declaration-no-important
-				margin: 0 0 30px !important;
+				margin-left: 0;
+				margin-right: 0;
+				margin-bottom: 30px;
 			}
 		}
 
@@ -133,14 +136,33 @@
 				width: 11px;
 				height: 11px;
 				background: url("../images/sprites/svg/plus.svg") center no-repeat;
-
+				
 				@include mobile {
 					top: 50px;
 				}
 			}
 
+			@include desktop {
+				&:hover {
+					background: $color-sunglow;
+				}
+			}
+
+			@include tablet {
+				flex: 0 percentage(6 / 12);
+				border-left: $grayborder;
+			}
+
+			@include mobile {
+				flex: 0 percentage(12 / 12);
+				padding: 50px 50px 50px 30px;
+				height: 280px;
+			}
+
 			&__bottomside {
 				opacity: 0;
+				background: $color-sunglow;
+				z-index: 1;
 
 				:hover > & {
 					opacity: 1;
@@ -172,12 +194,6 @@
 					z-index: -1;
 				}
 
-				@include desktop {
-					&:hover > & {
-						opacity: 0;
-					}
-				}
-
 				@include mobile {
 					top: 120px;
 				}
@@ -191,12 +207,9 @@
 				line-height: 130%;
 
 				@include mobile {
-					// stylelint-disable-next-line declaration-no-important
-					font-weight: 400 !important;
-					// stylelint-disable-next-line declaration-no-important
-					font-size: 11px !important;
-					// stylelint-disable-next-line declaration-no-important
-					line-height: 140% !important;
+					font-weight: 400;
+					font-size: 11px;
+					line-height: 140%;
 					letter-spacing: 0.1em;
 					text-transform: uppercase;
 				}
@@ -204,10 +217,8 @@
 
 			&__description {
 				font-weight: 300;
-				// stylelint-disable-next-line declaration-no-important
-				font-size: 15px !important;
-				// stylelint-disable-next-line declaration-no-important
-				line-height: 187% !important;
+				font-size: 15px;
+				line-height: 187%;
 			}
 
 			&:nth-child(1) {
@@ -327,14 +338,10 @@
 
 				.about__directions__item__title {
 					@include mobile {
-						// stylelint-disable-next-line declaration-no-important
-						margin-bottom: 0 !important;
-						// stylelint-disable-next-line declaration-no-important
-						font-weight: 300 !important;
-						// stylelint-disable-next-line declaration-no-important
-						font-size: 21px !important;
-						// stylelint-disable-next-line declaration-no-important
-						line-height: 25px !important;
+						margin-bottom: 0;
+						font-weight: 300;
+						font-size: 21px;
+						line-height: 25px;
 						letter-spacing: -0.01em;
 						text-transform: none;
 					}
@@ -354,23 +361,6 @@
 					padding: 0;
 					height: 260px;
 				}
-			}
-
-			@include desktop {
-				&:hover {
-					background: $color-sunglow;
-				}
-			}
-
-			@include tablet {
-				flex: 0 percentage(6 / 12);
-				border-left: $grayborder;
-			}
-
-			@include mobile {
-				flex: 0 percentage(12 / 12);
-				padding: 50px 50px 50px 30px;
-				height: 280px;
 			}
 		}
 
