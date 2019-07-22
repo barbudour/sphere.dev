@@ -158,24 +158,24 @@
 
 			&--ceo {
 				padding: 30px 85px;
-
-				@include tablet {
-					padding: 30px 44px;
-				}
-
-				@include mobile {
-					padding: 30px 15px 80px;
-				}
 			}
 
 			@include tablet {
 				padding-right: 44px;
+
+				&--ceo {
+					padding: 30px 44px;
+				}
 			}
 
 			@include mobile {
 				flex: 0 0 100%;
 				padding: 0;
 				max-width: 100%;
+
+				&--ceo {
+					padding: 30px 15px 80px;
+				}
 			}
 		}
 

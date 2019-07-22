@@ -170,13 +170,14 @@
 					position: absolute;
 					left: 0;
 					top: 0;
+					z-index: 1;
 					width: 76px;
 					height: 80px;
 					background: url("../images/sprites/svg/octagon.svg") center no-repeat;
 				}
 
 				img {
-					z-index: -1;
+					z-index: initial;
 				}
 
 				@include mobile {
