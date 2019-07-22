@@ -7,35 +7,11 @@
 	margin-left: auto;
 	width: 100%;
 
-	@include tablet {
-		background: $color-shark;
-	}
-
 	.grid-item {
 		position: relative;
 		width: percentage(4 / 12);
 		height: 400px;
 		text-decoration: none;
-
-		@include tablet {
-			width: percentage(6 / 12);
-			height: 400px;
-		}
-
-		@include mobile {
-			width: 100%;
-			height: 340px;
-		}
-
-		@include desktop-big {
-			&:nth-child(2n + 1) {
-				margin-top: initial;
-
-				&.grid-item--first {
-					margin-top: initial;
-				}
-			}
-		}
 
 		&__bg {
 			position: absolute;
@@ -45,7 +21,7 @@
 			width: 100%;
 			height: 100%;
 
-			& img {
+			img {
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
@@ -113,10 +89,6 @@
 		&--big {
 			width: percentage(8 / 12);
 
-			@include tablet {
-				width: percentage(12 / 12);
-			}
-
 			.grid-item__content {
 				padding: 30px 30px 56px;
 
@@ -126,7 +98,6 @@
 			}
 
 			.grid-item__bottomside {
-
 				p {
 					font-size: 32px;
 					line-height: 140%;
@@ -137,6 +108,10 @@
 					}
 				}
 			}
+
+			@include tablet {
+				width: percentage(12 / 12);
+			}
 		}
 
 		&--empty {
@@ -144,5 +119,29 @@
 				display: none;
 			}
 		}
+
+		@include tablet {
+			width: percentage(6 / 12);
+			height: 400px;
+		}
+
+		@include mobile {
+			width: 100%;
+			height: 340px;
+		}
+
+		@include desktop-big {
+			&:nth-child(2n + 1) {
+				margin-top: initial;
+
+				&.grid-item--first {
+					margin-top: initial;
+				}
+			}
+		}
+	}
+
+	@include tablet {
+		background: $color-shark;
 	}
 }

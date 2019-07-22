@@ -20,7 +20,6 @@
 	}
 
 	&__content {
-
 		&::before,
 		&::after {
 			content: "";
@@ -102,21 +101,7 @@
 		margin-bottom: 50px;
 		border-bottom: $grayborder;
 
-		@include tablet {
-			padding-right: 110px;
-		}
-
-		@include mobile {
-			margin-bottom: initial;
-			border-bottom: initial;
-			padding-right: initial;
-		}
-
 		&__title {
-
-			@include mobile {
-				display: none;
-			}
 			h2 {
 				margin-top: initial;
 				margin-bottom: 50px;
@@ -124,6 +109,10 @@
 				font-size: 32px;
 				line-height: 140%;
 				letter-spacing: -0.01em;
+			}
+
+			@include mobile {
+				display: none;
 			}
 		}
 
@@ -138,23 +127,6 @@
 			height: 355px;
 			text-decoration: none;
 			color: $color-woodsmoke;
-
-			@include desktop {
-				&:hover {
-					background: $color-sunglow;
-				}
-			}
-
-			@include tablet {
-				flex: 0 percentage(6 / 12);
-				border-left: $grayborder;
-			}
-
-			@include mobile {
-				flex: 0 percentage(12 / 12);
-				padding: 50px 50px 50px 30px;
-				height: 280px;
-			}
 
 			&::before {
 				content: "";
@@ -174,8 +146,9 @@
 				z-index: 1;
 				background: $color-sunglow;
 				opacity: 0;
+
 				@include desktop {
-					:hover>& {
+					:hover > & {
 						opacity: 1;
 					}
 				}
@@ -192,10 +165,6 @@
 				width: 76px;
 				height: 80px;
 
-				@include mobile {
-					top: 120px;
-				}
-
 				&::before {
 					content: "";
 					position: absolute;
@@ -208,6 +177,10 @@
 
 				img {
 					z-index: -1;
+				}
+
+				@include mobile {
+					top: 120px;
 				}
 			}
 
@@ -334,21 +307,6 @@
 				flex: 0 percentage(8 / 12);
 				justify-content: center;
 
-				@include tablet {
-					flex: 1;
-					margin-right: -154px;
-					border-right: initial;
-				}
-
-				@include mobile {
-					flex: 0 percentage(12 / 12);
-					margin-right: initial;
-					border-right: initial;
-					border-left: initial;
-					padding: 0;
-					height: 260px;
-				}
-
 				&::before {
 					content: initial;
 				}
@@ -375,16 +333,54 @@
 						text-transform: none;
 					}
 				}
+
+				@include tablet {
+					flex: 1;
+					margin-right: -154px;
+					border-right: initial;
+				}
+
+				@include mobile {
+					flex: 0 percentage(12 / 12);
+					margin-right: initial;
+					border-right: initial;
+					border-left: initial;
+					padding: 0;
+					height: 260px;
+				}
 			}
+
+			@include desktop {
+				&:hover {
+					background: $color-sunglow;
+				}
+			}
+
+			@include tablet {
+				flex: 0 percentage(6 / 12);
+				border-left: $grayborder;
+			}
+
+			@include mobile {
+				flex: 0 percentage(12 / 12);
+				padding: 50px 50px 50px 30px;
+				height: 280px;
+			}
+		}
+
+		@include tablet {
+			padding-right: 110px;
+		}
+
+		@include mobile {
+			margin-bottom: initial;
+			border-bottom: initial;
+			padding-right: initial;
 		}
 	}
 
 	&__lists {
 		display: flex;
-
-		@include mobile {
-			flex-direction: column;
-		}
 
 		.lists {
 			&__title {
@@ -403,10 +399,6 @@
 			&__col {
 				flex: 0 percentage(6 / 12);
 
-				@include mobile {
-					flex: 0 percentage(12 / 12);
-				}
-
 				&--short {
 					padding-right: 100px;
 
@@ -418,6 +410,10 @@
 						margin-bottom: 40px;
 						padding-right: initial;
 					}
+				}
+
+				@include mobile {
+					flex: 0 percentage(12 / 12);
 				}
 			}
 
@@ -443,6 +439,10 @@
 				}
 			}
 		}
+
+		@include mobile {
+			flex-direction: column;
+		}
 	}
 
 	&__counters {
@@ -461,20 +461,6 @@
 				padding: 30px 35px;
 				width: 340px;
 				height: 160px;
-
-				@include mobile {
-					margin-right: initial;
-				}
-
-				@include tablet {
-					flex: 0 255px;
-					width: 255px;
-				}
-
-				@include mobile {
-					flex: 0 100%;
-					width: 100%;
-				}
 
 				&__number {
 					margin-top: 0;
@@ -499,7 +485,7 @@
 					text-transform: uppercase;
 				}
 
-				>span.corner {
+				> span.corner {
 					position: absolute;
 					left: -1px;
 					right: -1px;
@@ -510,6 +496,7 @@
 
 					&:first-child {
 						&::before {
+							@include triangle(to top left, 4px, 4px, $color-sunglow);
 
 							content: "";
 							position: absolute;
@@ -519,10 +506,10 @@
 							transform-origin: left top;
 							transition: transform 0.3s;
 							will-change: transform;
-							@include triangle(to top left, 4px, 4px, $color-sunglow);
 						}
 
 						&::after {
+							@include triangle(to bottom left, 4px, 4px, $color-sunglow);
 
 							content: "";
 							position: absolute;
@@ -532,12 +519,12 @@
 							transform-origin: left bottom;
 							transition: transform 0.3s;
 							will-change: transform;
-							@include triangle(to bottom left, 4px, 4px, $color-sunglow);
 						}
 					}
 
 					&:last-child {
 						&::before {
+							@include triangle(to top right, 4px, 4px, $color-sunglow);
 
 							content: "";
 							position: absolute;
@@ -547,10 +534,10 @@
 							transform-origin: right top;
 							transition: transform 0.3s;
 							will-change: transform;
-							@include triangle(to top right, 4px, 4px, $color-sunglow);
 						}
 
 						&::after {
+							@include triangle(to bottom right, 4px, 4px, $color-sunglow);
 
 							content: "";
 							position: absolute;
@@ -560,7 +547,6 @@
 							transform-origin: right bottom;
 							transition: transform 0.3s;
 							will-change: transform;
-							@include triangle(to bottom right, 4px, 4px, $color-sunglow);
 						}
 					}
 				}
@@ -577,6 +563,20 @@
 					@include mobile {
 						margin-bottom: 20px;
 					}
+				}
+
+				@include mobile {
+					margin-right: initial;
+				}
+
+				@include tablet {
+					flex: 0 255px;
+					width: 255px;
+				}
+
+				@include mobile {
+					flex: 0 100%;
+					width: 100%;
 				}
 			}
 		}
