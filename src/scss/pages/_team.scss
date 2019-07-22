@@ -141,6 +141,7 @@
 				}
 
 				@include mobile {
+					margin-top: -50px;
 					width: 100vw;
 					height: auto;
 				}
@@ -155,7 +156,18 @@
 			padding-left: 30px;
 			max-width: 50%;
 
-			&--left {
+			
+			@include tablet {
+				padding-right: 44px;
+			}
+			
+			@include mobile {
+				flex: 0 0 100%;
+				padding: 0;
+				max-width: 100%;
+			}
+			
+			&--ceo {
 				padding: 30px 85px;
 
 				@include tablet {
@@ -165,16 +177,6 @@
 				@include mobile {
 					padding: 30px 15px 80px;
 				}
-			}
-
-			@include tablet {
-				padding-right: 44px;
-			}
-
-			@include mobile {
-				flex: 0 0 100%;
-				padding: 0;
-				max-width: 100%;
 			}
 		}
 

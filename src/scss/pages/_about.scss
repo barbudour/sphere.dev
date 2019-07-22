@@ -1,6 +1,6 @@
 .about {
 	overflow: hidden;
-	
+
 	&__fixed {
 		@include mobile {
 			height: 452px;
@@ -20,6 +20,7 @@
 	}
 
 	&__content {
+
 		&::before,
 		&::after {
 			content: "";
@@ -53,14 +54,14 @@
 				line-height: 25px;
 			}
 		}
-		
+
 		&__paragraph {
 			margin-top: 0;
 			margin-bottom: 50px;
 			font-weight: 300;
 			font-size: 16px;
 			line-height: 187%;
-			
+
 			@include mobile {
 				font-size: 15px;
 				line-height: 26px;
@@ -73,9 +74,9 @@
 			line-height: 187%;
 
 			@include tablet {
-				margin-left: 0;
 				margin-right: 0;
 				margin-bottom: 30px;
+				margin-left: 0;
 			}
 		}
 
@@ -101,7 +102,21 @@
 		margin-bottom: 50px;
 		border-bottom: $grayborder;
 
+		@include tablet {
+			padding-right: 110px;
+		}
+
+		@include mobile {
+			margin-bottom: initial;
+			border-bottom: initial;
+			padding-right: initial;
+		}
+
 		&__title {
+
+			@include mobile {
+				display: none;
+			}
 			h2 {
 				margin-top: initial;
 				margin-bottom: 50px;
@@ -109,10 +124,6 @@
 				font-size: 32px;
 				line-height: 140%;
 				letter-spacing: -0.01em;
-			}
-
-			@include mobile {
-				display: none;
 			}
 		}
 
@@ -127,20 +138,6 @@
 			height: 355px;
 			text-decoration: none;
 			color: $color-woodsmoke;
-
-			&::before {
-				content: "";
-				position: absolute;
-				left: -6px;
-				top: -6px;
-				width: 11px;
-				height: 11px;
-				background: url("../images/sprites/svg/plus.svg") center no-repeat;
-				
-				@include mobile {
-					top: 50px;
-				}
-			}
 
 			@include desktop {
 				&:hover {
@@ -159,12 +156,26 @@
 				height: 280px;
 			}
 
-			&__bottomside {
-				opacity: 0;
-				background: $color-sunglow;
-				z-index: 1;
+			&::before {
+				content: "";
+				position: absolute;
+				left: -6px;
+				top: -6px;
+				width: 11px;
+				height: 11px;
+				background: url("../images/sprites/svg/plus.svg") center no-repeat;
 
-				:hover > & {
+				@include mobile {
+					top: 50px;
+				}
+			}
+
+			&__bottomside {
+				z-index: 1;
+				background: $color-sunglow;
+				opacity: 0;
+
+				:hover>& {
 					opacity: 1;
 				}
 			}
@@ -180,6 +191,10 @@
 				width: 76px;
 				height: 80px;
 
+				@include mobile {
+					top: 120px;
+				}
+
 				&::before {
 					content: "";
 					position: absolute;
@@ -192,10 +207,6 @@
 
 				img {
 					z-index: -1;
-				}
-
-				@include mobile {
-					top: 120px;
 				}
 			}
 
@@ -322,6 +333,21 @@
 				flex: 0 percentage(8 / 12);
 				justify-content: center;
 
+				@include tablet {
+					flex: 1;
+					margin-right: -154px;
+					border-right: initial;
+				}
+
+				@include mobile {
+					flex: 0 percentage(12 / 12);
+					margin-right: initial;
+					border-right: initial;
+					border-left: initial;
+					padding: 0;
+					height: 260px;
+				}
+
 				&::before {
 					content: initial;
 				}
@@ -337,6 +363,8 @@
 				}
 
 				.about__directions__item__title {
+					max-width: 498px;
+
 					@include mobile {
 						margin-bottom: 0;
 						font-weight: 300;
@@ -346,37 +374,16 @@
 						text-transform: none;
 					}
 				}
-
-				@include tablet {
-					flex: 1;
-					margin-right: -154px;
-					border-right: initial;
-				}
-
-				@include mobile {
-					flex: 0 percentage(12 / 12);
-					margin-right: initial;
-					border-right: initial;
-					border-left: initial;
-					padding: 0;
-					height: 260px;
-				}
 			}
-		}
-
-		@include tablet {
-			padding-right: 110px;
-		}
-
-		@include mobile {
-			margin-bottom: initial;
-			border-bottom: initial;
-			padding-right: initial;
 		}
 	}
 
 	&__lists {
 		display: flex;
+
+		@include mobile {
+			flex-direction: column;
+		}
 
 		.lists {
 			&__title {
@@ -395,6 +402,10 @@
 			&__col {
 				flex: 0 percentage(6 / 12);
 
+				@include mobile {
+					flex: 0 percentage(12 / 12);
+				}
+
 				&--short {
 					padding-right: 100px;
 
@@ -406,10 +417,6 @@
 						margin-bottom: 40px;
 						padding-right: initial;
 					}
-				}
-
-				@include mobile {
-					flex: 0 percentage(12 / 12);
 				}
 			}
 
@@ -435,10 +442,6 @@
 				}
 			}
 		}
-
-		@include mobile {
-			flex-direction: column;
-		}
 	}
 
 	&__counters {
@@ -452,10 +455,25 @@
 				flex: 0 340px;
 				flex-direction: column;
 				justify-content: space-between;
+				margin-right: 85px;
 				border: 1px solid rgba($color-woodsmoke, 0.1);
 				padding: 30px 35px;
 				width: 340px;
 				height: 160px;
+
+				@include mobile {
+					margin-right: initial;
+				}
+
+				@include tablet {
+					flex: 0 255px;
+					width: 255px;
+				}
+
+				@include mobile {
+					flex: 0 100%;
+					width: 100%;
+				}
 
 				&__number {
 					margin-top: 0;
@@ -480,7 +498,7 @@
 					text-transform: uppercase;
 				}
 
-				> span.corner {
+				>span.corner {
 					position: absolute;
 					left: -1px;
 					right: -1px;
@@ -491,7 +509,6 @@
 
 					&:first-child {
 						&::before {
-							@include triangle(to top left, 4px, 4px, $color-sunglow);
 
 							content: "";
 							position: absolute;
@@ -501,10 +518,10 @@
 							transform-origin: left top;
 							transition: transform 0.3s;
 							will-change: transform;
+							@include triangle(to top left, 4px, 4px, $color-sunglow);
 						}
 
 						&::after {
-							@include triangle(to bottom left, 4px, 4px, $color-sunglow);
 
 							content: "";
 							position: absolute;
@@ -514,12 +531,12 @@
 							transform-origin: left bottom;
 							transition: transform 0.3s;
 							will-change: transform;
+							@include triangle(to bottom left, 4px, 4px, $color-sunglow);
 						}
 					}
 
 					&:last-child {
 						&::before {
-							@include triangle(to top right, 4px, 4px, $color-sunglow);
 
 							content: "";
 							position: absolute;
@@ -529,10 +546,10 @@
 							transform-origin: right top;
 							transition: transform 0.3s;
 							will-change: transform;
+							@include triangle(to top right, 4px, 4px, $color-sunglow);
 						}
 
 						&::after {
-							@include triangle(to bottom right, 4px, 4px, $color-sunglow);
 
 							content: "";
 							position: absolute;
@@ -542,6 +559,7 @@
 							transform-origin: right bottom;
 							transition: transform 0.3s;
 							will-change: transform;
+							@include triangle(to bottom right, 4px, 4px, $color-sunglow);
 						}
 					}
 				}
@@ -558,24 +576,6 @@
 					@include mobile {
 						margin-bottom: 20px;
 					}
-				}
-
-				&:nth-child(2n+1) {
-					margin-right: 85px;
-
-					@include mobile {
-						margin-right: initial;
-					}
-				}
-
-				@include tablet {
-					flex: 0 255px;
-					width: 255px;
-				}
-
-				@include mobile {
-					flex: 0 100%;
-					width: 100%;
 				}
 			}
 		}
