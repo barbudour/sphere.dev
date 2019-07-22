@@ -11,21 +11,21 @@
 			h1.page__top__title
 				| Вакансии
 			.vacancies__filter
-				select.vacancies__select.filter__select.js-filter-region(name="region")
-					option(value="all") Все регионы
+				select.vacancies__select.filter__select.js-select.js-filter-region(name="region")
+					option(value="all" selected) Все регионы
 					option(value="region-center") Центральный
 					option(value="region-sibir") Сибирский
 
-				select.vacancies__select.filter__select.js-filter-city(name="city")
-					option(value="all") Все города
+				select.vacancies__select.filter__select.js-select.js-filter-city(name="city")
+					option(value="all" selected) Все города
 					optgroup(value="region-center" label="Центральный регион")
 						option(value="city-moscow") Москва
 						option(value="city-ryazan") Рязань
 					optgroup(value="region-sibir" label="Сибирский регион")
 						option(value="city-irkutsk") Иркутск
 
-				select.vacancies__select.filter__select.js-filter-select(name="work")
-					option(value="all") Все сферы деятельности
+				select.vacancies__select.filter__select.js-select.js-filter-select(name="work")
+					option(value="all" selected) Все сферы деятельности
 					option(value="developer") Разработчик
 					option(value="admin") Администратор
 

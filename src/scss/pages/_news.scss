@@ -25,6 +25,12 @@
 				display: inline-block;
 				margin-top: 30px;
 			}
+
+			@include desktop {
+				&:hover {
+					border-bottom-style: solid;
+				}
+			}
 		}
 
 		@include laptop {
@@ -136,6 +142,16 @@
 			@include tablet {
 				// stylelint-disable-next-line declaration-no-important
 				width: 100vw !important;
+			}
+		}
+
+		.slick-current {
+			@include desktop {
+				+ .slick-slide {
+					+ .slick-slide {
+						pointer-events: none;
+					}
+				}
 			}
 		}
 	}

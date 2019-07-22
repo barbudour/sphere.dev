@@ -1,10 +1,12 @@
 // eslint-disable-next-line consistent-return
 function loadVacancy(objects) {
+	let html = '';
+
 	for (const i in objects) {
 		if (Object.prototype.hasOwnProperty.call(objects, i)) {
 			const object = objects[i];
 
-			return `<div class="vacancies-item" id="${object.id}">
+			html += `<div class="vacancies-item filter-card" id="${object.id}">
 						<div class="vacancies-item__info">
 							<div class="vacancies-item__info__top">
 								${object.date ? `<div class="vacancies-item__date">${object.date}</div>` : ''}
@@ -35,15 +37,46 @@ function loadVacancy(objects) {
 					</div>`;
 		}
 	}
+
+	return html;
 }
 
-// eslint-disable-next-line no-unused-vars
-function loadNews(object, count) {
-	// eslint-disable-next-line no-console
-	console.log(object);
+// eslint-disable-next-line consistent-return
+function loadNews(id, objects, count, iteration) {
+	let html = '';
+	let iter = iteration || 0;
+	count += iter;
+
+	for (const el in objects) {
+		if (Object.prototype.hasOwnProperty.call(objects, el)) {
+			const object = objects[el];
+			iter += 1;
+
+			if (iter <= count) {
+				html += `<a class="grid-item filter-card" href="${object.link}" data-filter="${object.filter}">
+							<div class="grid-item__bg" style="${object.style}">
+								${object.src ? `<img src="${object.src}" srcset="${object.srcset} 2x">` : ''}
+							</div>
+							<div class="grid-item__content">
+								<div class="grid-item__topside">
+									${object.label ? `<div class="grid-item__label">${object.label}</div>` : ''}
+									${object.date ? `<div class="grid-item__date">${object.date}</div>` : ''}
+								</div>
+								<div class="grid-item__bottomside">
+									<p class="grid-item__title">${object.title}</p>
+								</div>
+							</div>
+						</a>`;
+			}
+		}
+	}
+
+	$(`[data-id=${id}]`).data('iteration', iter);
+
+	return html;
 }
 
-function load(id, path, type, count) {
+function load(id, path, type, count, iteration) {
 	const $container = $(`#${id}`);
 
 	$.ajax({
@@ -55,7 +88,11 @@ function load(id, path, type, count) {
 			if (type === 'vacancy') {
 				$container.append(loadVacancy(response));
 			} else if (type === 'news') {
-				$container.append(loadNews(response, count));
+				if (!count) {
+					count = 1;
+				}
+
+				$container.append(loadNews(id, response, count, iteration));
 			}
 		})
 		.fail(() => {
@@ -69,10 +106,11 @@ $('.js-add-more').on('click', (e) => {
 	const url = $this.data('url');
 	const type = $this.data('type');
 	const count = $this.data('count') ? $this.data('count') : false;
+	const iteration = $this.data('iteration') ? $this.data('iteration') : false;
 
 	if (!count) {
 		$this.hide();
 	}
 
-	load(id, url, type, count);
+	load(id, url, type, count, iteration);
 });

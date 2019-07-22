@@ -1323,9 +1323,11 @@ textarea {
 		border: 0;
 		padding: 0 5px;
 		padding-right: 20px;
+		max-width: 100%;
 		font-size: 13px;
 		line-height: (18 / 13);
 		letter-spacing: 0.1em;
+		text-overflow: ellipsis;
 		text-transform: uppercase;
 		color: $color-white;
 		background-image: url("/images/sprites/svg/arrow-select.svg");
