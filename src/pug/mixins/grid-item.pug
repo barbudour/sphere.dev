@@ -1,5 +1,5 @@
 mixin grid-item(data)
-	a.grid-item(href= data.link class=`${data.classList ? data.classList : ''}`)
+	a.grid-item(href= data.link class=`${data.classList ? data.classList : ''}` data-filter=`${data.filter ? data.filter : ''}`)
 		.grid-item__bg(style=`background-color: ${data.background ? data.background : 'none'}; opacity: ${data.opacity ? data.opacity : 1}`)
 			if data.src
 				img(src= data.src srcset= data.srcset)

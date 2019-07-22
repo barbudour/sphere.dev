@@ -40,18 +40,22 @@
 		.news__top
 			h2 Новости
 			.news__filter
-				select.news__select.filter__select.js-filter-region(name="region")
-					option(value="all") Все теги
-					option(value="region-center") 1
-					option(value="region-sibir") 2
-				select.news__select.filter__select.js-filter-city(name="city")
-					option(value="all") Все даты
-						option(value="city-moscow") 1
-						option(value="city-ryazan") 2
-		.grid.news-grid
+				select.news__select.filter__select.js-select.js-filter-select(name="tags")
+					option(value="all" selected) Все теги
+					option(value="new") Новости
+					option(value="event") События
+				select.news__select.filter__select.js-select.js-filter-select(name="date")
+					option(value="all" selected) Все даты
+					option(value="07.07.19") 07.07.19
+					option(value="20.07.19") 20.07.19
+					option(value="15.07.19") 15.07.19
+					option(value="05.07.19") 05.07.19
+		.grid.js-grid.news-grid(id="news-grid")
 			+grid-item({
 				label: 'новость./',
 				date: '07&nbsp;Июл &lsquo;18',
+				classList: 'filter-card',
+				filter: '07.07.19 new',
 				title: 'СИБИНТЕК завоевал Кубок связи и&nbsp;IТ по&nbsp;волейболу',
 				src: '/images/pages/main/2.jpg',
 				srcset: '/images/pages/main/2@2x.jpg 2x',
@@ -60,6 +64,8 @@
 			+grid-item({
 				label: 'новость./',
 				date: '20 июня ‘18',
+				classList: 'filter-card',
+				filter: '20.07.19 new',
 				title: 'В СИБИНТЕК дан старт корпоративному турниру по спортивному «ЧГК»- 2018»!',
 				background: '#171B1E',
 				opacity: 0.95,
@@ -68,6 +74,8 @@
 			+grid-item({
 				label: 'новость./',
 				date: '15&nbsp;июня &lsquo;18',
+				classList: 'filter-card',
+				filter: '15.07.19 event',
 				title: 'Глобальная конкурентоспособность',
 				src: '/images/pages/main/13.jpg',
 				srcset: '/images/pages/main/13@2x.jpg 2x',
@@ -76,6 +84,8 @@
 			+grid-item({
 				label: 'новость./',
 				date: '05&nbsp;июня &lsquo;18',
+				classList: 'filter-card',
+				filter: '05.07.19 event',
 				title: 'Специалист СИБИНТЕК завоевал III место на&nbsp;Всероссийском конкурсе молодёжных авторских проектов &laquo;Моя страна&nbsp;&mdash; моя Россия&raquo; с&nbsp;проектом по&nbsp;созданию Центра краеведения &laquo;МОСТЫ&raquo; в&nbsp;Бузулуке.',
 				src: '/images/pages/main/6.jpg',
 				srcset: '/images/pages/main/6@2x.jpg 2x',
@@ -84,6 +94,8 @@
 			+grid-item({
 				label: 'новость./',
 				date: '30&nbsp;мая &lsquo;18',
+				classList: 'filter-card',
+				filter: '07.07.19 new',
 				title: 'В&nbsp;СИБИНТЕК состоялся финальный этап конкурса &laquo;Лучший по&nbsp;профессии&raquo; в&nbsp;номинации&nbsp;&mdash; &laquo;Лучший специалист АСУТП&raquo;',
 				src: '/images/pages/main/4.jpg',
 				srcset: '/images/pages/main/4@2x.jpg 2x',
@@ -92,6 +104,8 @@
 			+grid-item({
 				label: 'новость./',
 				date: '25&nbsp;мая &lsquo;18',
+				classList: 'filter-card',
+				filter: '07.07.19 new',
 				title: '&laquo;Макрорегион Поволжье&raquo; СИБИНТЕК принял более 30&nbsp;студентов на&nbsp;объекты филиала для прохождения производственной практики',
 				src: '/images/pages/main/7.jpg',
 				srcset: '/images/pages/main/7@2x.jpg 2x',
@@ -100,6 +114,8 @@
 			+grid-item({
 				label: 'новость./',
 				date: '22&nbsp;мая &lsquo;18',
+				classList: 'filter-card',
+				filter: '07.07.19 new',
 				title: 'Более 200 студентов ИТ-специальностей, десятки специалистов и&nbsp;руководителей ИТ-интегратора встретились 15&nbsp;мая в&nbsp;стенах Саратовского государственного университета&nbsp;им. Ю.А. Гагарина на&nbsp;Дне СИБИНТЕК',
 				src: '/images/pages/main/14.jpg',
 				srcset: '/images/pages/main/14@2x.jpg 2x',
@@ -108,6 +124,8 @@
 			+grid-item({
 				label: 'новость./',
 				date: '25&nbsp;апр &lsquo;18',
+				classList: 'filter-card',
+				filter: '07.07.19 new',
 				title: 'В&nbsp;МИРЭА состоялся первый &laquo;Хакатон&raquo; (Хакатон института Информационных Технологий Московского технологического университета), где СИБИНТЕК выступил в&nbsp;качестве одного из&nbsp;основных партнеров.',
 				background: '#1E2326',
 				opacity: 0.95,
@@ -116,6 +134,8 @@
 			+grid-item({
 				label: 'новость./',
 				date: '28&nbsp;марта &lsquo;18',
+				classList: 'filter-card',
+				filter: '07.07.19 new',
 				title: 'Молодые специалисты филиала &laquo;Макрорегион Урал&raquo; СИБИТНЕК организовали серию выездных туристических походов в&nbsp;Уральские горы.',
 				src: '/images/pages/main/10.jpg',
 				srcset: '/images/pages/main/10@2x.jpg 2x',
@@ -124,6 +144,8 @@
 			+grid-item({
 				label: 'новость./',
 				date: '01&nbsp;марта &lsquo;18',
+				classList: 'filter-card',
+				filter: '07.07.19 new',
 				title: 'В&nbsp;Рязанской области состоялся региональный чемпионат профессионального мастерства &laquo;Молодые профессионалы&raquo; (WorldSkills Russia).',
 				src: '/images/pages/main/11.jpg',
 				srcset: '/images/pages/main/11@2x.jpg 2x',
@@ -132,6 +154,8 @@
 			+grid-item({
 				label: 'новость./',
 				date: '22&nbsp;сент &lsquo;18',
+				classList: 'filter-card',
+				filter: '07.07.19 new',
 				title: 'Лучшие 10&nbsp;ИТ-проектов для нефтегазовой отрасли&quot; оценивались при участии СИБИНТЕК',
 				src: '/images/pages/main/15.jpg',
 				srcset: '/images/pages/main/15@2x.jpg 2x',
@@ -140,6 +164,8 @@
 			+grid-item({
 				label: 'новость./',
 				date: '25 апр ‘18',
+				classList: 'filter-card',
+				filter: '07.07.19 new',
 				title: 'В&nbsp;МИРЭА состоялся первый &laquo;Хакатон&raquo; (Хакатон института Информационных Технологий Московского технологического университета), где СИБИНТЕК выступил в&nbsp;качестве одного из&nbsp;основных партнеров.',
 				background: '#1E2326',
 				opacity: 0.95,
@@ -148,6 +174,8 @@
 			+grid-item({
 				label: 'новость./',
 				date: '30 мая ‘18',
+				classList: 'filter-card',
+				filter: '07.07.19 new',
 				title: 'В&nbsp;СИБИНТЕК состоялся финальный этап конкурса &laquo;Лучший по&nbsp;профессии&raquo; в&nbsp;номинации&nbsp;&mdash; &laquo;Лучший специалист АСУТП&raquo;',
 				src: '/images/pages/main/15.jpg',
 				srcset: '/images/pages/main/15@2x.jpg 2x',
@@ -156,6 +184,8 @@
 			+grid-item({
 				label: 'новость./',
 				date: '20 июня ‘18',
+				classList: 'filter-card',
+				filter: '07.07.19 new',
 				title: 'В СИБИНТЕК дан старт корпоративному турниру по спортивному «ЧГК»- 2018»!',
 				background: '#171B1E',
 				opacity: 0.95,
@@ -164,6 +194,8 @@
 			+grid-item({
 				label: 'новость./',
 				date: '15 июня ‘18',
+				classList: 'filter-card',
+				filter: '07.07.19 new',
 				title: 'Глобальная конкурентоспособность',
 				src: '/images/pages/main/16.jpg',
 				srcset: '/images/pages/main/16@2x.jpg 2x',
@@ -172,6 +204,8 @@
 			+grid-item({
 				label: 'новость./',
 				date: '25 апр ‘18',
+				classList: 'filter-card',
+				filter: '07.07.19 new',
 				title: 'В&nbsp;МИРЭА состоялся первый &laquo;Хакатон&raquo; (Хакатон института Информационных Технологий Московского технологического университета), где СИБИНТЕК выступил в&nbsp;качестве одного из&nbsp;основных партнеров.',
 				background: '#1E2326',
 				opacity: 0.95,
@@ -180,6 +214,8 @@
 			+grid-item({
 				label: 'новость./',
 				date: '30 мая ‘18',
+				classList: 'filter-card',
+				filter: '07.07.19 new',
 				title: 'В&nbsp;СИБИНТЕК состоялся финальный этап конкурса &laquo;Лучший по&nbsp;профессии&raquo; в&nbsp;номинации&nbsp;&mdash; &laquo;Лучший специалист АСУТП&raquo;',
 				src: '/images/pages/main/17.jpg',
 				srcset: '/images/pages/main/17@2x.jpg 2x',
@@ -188,9 +224,13 @@
 			+grid-item({
 				label: 'новость./',
 				date: '20 июня ‘18',
+				classList: 'filter-card',
+				filter: '07.07.19 new',
 				title: 'В СИБИНТЕК дан старт корпоративному турниру по спортивному «ЧГК»- 2018»!',
 				src: '/images/pages/main/9.jpg',
 				srcset: '/images/pages/main/9@2x.jpg 2x',
 				link: '#',
 			})
-		button.news__more загрузить еще
+
+		button.news__more.js-add-more(data-url="/news.json" data-count="5" data-type="news" data-id="news-grid" type="button")
+			| загрузить еще

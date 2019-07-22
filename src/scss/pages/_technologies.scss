@@ -1,0 +1,15 @@
+.technologies {
+	&-grid {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		flex-wrap: wrap;
+		margin-right: 0;
+		margin-left: auto;
+		width: vw(1020);
+
+		@include laptop {
+			width: 100%;
+		}
+	}
+}

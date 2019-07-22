@@ -14,10 +14,10 @@ $('.news__slide').each((index, element) => {
 });
 
 $('.news__slider').slick({
+	speed: 500,
 	dots: false,
 	arrows: true,
 	infinite: true,
-	variableWidth: true,
-	speed: 500,
 	cssEase: 'linear',
+	variableWidth: true,
 });

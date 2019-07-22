@@ -8,3 +8,4 @@ import './components/vacancies';
 import './components/moreCards';
 import './components/filter';
 import './components/news';
+import './components/select';
