@@ -174,9 +174,10 @@
 				z-index: 1;
 				background: $color-sunglow;
 				opacity: 0;
-
-				:hover>& {
-					opacity: 1;
+				@include desktop {
+					:hover>& {
+						opacity: 1;
+					}
 				}
 			}
 
