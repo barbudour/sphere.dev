@@ -197,6 +197,12 @@
 				margin-bottom: 20px;
 			}
 
+			.technology & {
+				@include desktop {
+					max-width: calc(100% - 85px);
+				}
+			}
+
 			@include mobile {
 				margin-bottom: 40px;
 				font-size: 30px;
