@@ -176,7 +176,7 @@
 				}
 
 				img {
-					z-index: -1;
+					z-index: initial;
 				}
 
 				@include mobile {
