@@ -1,4 +1,6 @@
 .button {
+	width: fit-content;
+
 	&--more {
 		display: flex;
 		align-items: center;
@@ -18,8 +20,9 @@
 			width: 14px;
 			height: 14px;
 			fill: none;
+			stroke: $color-black;
 			transform: translateZ(0);
-			transition: transform 0.3s;
+			transition: all 0.3s;
 			will-change: transform;
 
 			@include mobile {
@@ -29,7 +32,7 @@
 
 		&:hover {
 			svg {
-				transform: translateX(4px);
+				stroke: $color-sunglow;
 			}
 		}
 	}
