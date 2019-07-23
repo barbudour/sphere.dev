@@ -9,6 +9,7 @@
 
 	.grid-item {
 		position: relative;
+		flex-basis: auto;
 		width: percentage(4 / 12);
 		height: 400px;
 		text-decoration: none;
