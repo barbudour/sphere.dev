@@ -761,6 +761,11 @@ textarea {
 		@include desktop {
 			&:hover {
 				text-decoration: underline;
+
+				&.button {
+					text-decoration: none;
+					color: $color-woodsmoke;
+				}
 			}
 		}
 	}
@@ -1380,5 +1385,136 @@ textarea {
 				margin-right: 50px;
 			}
 		}
+	}
+}
+
+.block-image {
+	line-height: 0;
+}
+
+.block-next {
+	position: relative;
+	display: block;
+	padding: 60px 85px;
+	height: vw(317);
+	// stylelint-disable-next-line declaration-no-important
+	text-decoration: none !important;
+
+	&__bg {
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 1;
+		overflow: hidden;
+		width: 100%;
+		height: 100%;
+
+		img {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			display: block;
+			min-width: 100%;
+			min-height: 100%;
+			transform: translate(-50%, -50%);
+		}
+	}
+
+	&__content {
+		position: relative;
+		z-index: 2;
+	}
+
+	&__topside {
+		display: flex;
+		font-size: 11px;
+		line-height: 15px;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: $color-white;
+	}
+
+	&__label {
+		color: $color-sunglow;
+	}
+
+	&__date {
+		margin-left: 11px;
+	}
+
+	&__text {
+		display: flex;
+		align-items: flex-end;
+		margin-top: 18px;
+		max-width: 696px;
+		font-weight: 300;
+		font-size: 32px;
+		line-height: 45px;
+		letter-spacing: -0.01em;
+		color: $color-white;
+
+		h2 {
+			margin: 0;
+			width: auto;
+			max-width: calc(100% - 25px);
+			font-weight: 300;
+			font-size: 32px;
+			line-height: (45 / 32);
+			letter-spacing: -0.01em;
+
+			@include mobile {
+				display: inline;
+				font-size: 21px;
+				line-height: 25px;
+			}
+		}
+
+		svg {
+			flex: 0 0 auto;
+			margin-bottom: 13px;
+			margin-left: 20px;
+			width: 17px;
+			height: 17px;
+			fill: none;
+			stroke: $color-white;
+			transition: stroke 0.3s, transform 0.3s;
+
+			@include mobile {
+				margin: 0;
+				transform: translate(12px, 1px);
+			}
+		}
+
+		@include mobile {
+			display: block;
+			margin-top: 52px;
+			font-size: 21px;
+			line-height: 25px;
+		}
+	}
+
+	@include desktop {
+		&:hover {
+			text-decoration: none;
+
+			.block-next__text {
+				svg {
+					stroke: $color-sunglow;
+					transform: translateX(8px);
+				}
+			}
+		}
+	}
+
+	@include laptop {
+		height: 317px;
+	}
+
+	@include tablet {
+		padding: 43px 30px 43px 44px;
+	}
+
+	@include mobile {
+		padding: 29px 30px 30px 15px;
 	}
 }

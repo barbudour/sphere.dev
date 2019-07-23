@@ -54,16 +54,15 @@
 			bottom: 40px;
 			z-index: 3;
 			margin: 0;
-			border: none;
+			border: 1px solid rgba($color-white, 0.2);
 			padding: 0;
-			width: 45px;
 			height: 45px;
+			min-width: 45px;
 			font-size: 0;
-			background: url("../images/sprites/svg/arrow-bg.svg") no-repeat center;
-			background-size: 100% 100%;
+			text-indent: -10000;
 			cursor: pointer;
 
-			&::before {
+			&::after {
 				content: "";
 				position: absolute;
 				left: 0;
@@ -73,22 +72,13 @@
 				background-position: center;
 				background-size: 11px 17px;
 				background-repeat: no-repeat;
-				transition: background 0.3s;
 			}
 
 			&.slick-prev {
 				right: 95px;
 
-				&::before {
+				&::after {
 					background-image: url("../images/sprites/svg/prev.svg");
-				}
-
-				@include desktop {
-					&:hover {
-						&::before {
-							background-image: url("../images/sprites/svg/prev-hover.svg");
-						}
-					}
 				}
 
 				@include mobile {
@@ -99,16 +89,8 @@
 			&.slick-next {
 				right: 30px;
 
-				&::before {
+				&::after {
 					background-image: url("../images/sprites/svg/next.svg");
-				}
-
-				@include desktop {
-					&:hover {
-						&::before {
-							background-image: url("../images/sprites/svg/next-hover.svg");
-						}
-					}
 				}
 
 				@include mobile {

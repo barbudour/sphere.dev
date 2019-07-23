@@ -14,10 +14,13 @@ $('.news__slide').each((index, element) => {
 });
 
 $('.news__slider').slick({
+	rows: 0,
 	speed: 500,
 	dots: false,
 	arrows: true,
 	infinite: true,
 	cssEase: 'linear',
 	variableWidth: true,
+	nextArrow: '<button type="button" class="slick-next slick-arrow button"><span></span>Следующий<span></span></button>',
+	prevArrow: '<button type="button" class="slick-prev slick-arrow button"><span></span>Предыдущий<span></span></button>',
 });
