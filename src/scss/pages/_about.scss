@@ -157,6 +157,7 @@
 			height: 355px;
 			text-decoration: none;
 			color: $color-woodsmoke;
+			transition: all 0.3s;
 
 			&::before {
 				content: "";
@@ -174,8 +175,8 @@
 
 			&__bottomside {
 				z-index: 1;
-				background: $color-sunglow;
 				opacity: 0;
+				transition: opacity 0.3s;
 
 				@include desktop {
 					:hover > & {
@@ -194,6 +195,7 @@
 				overflow: hidden;
 				width: 76px;
 				height: 80px;
+				transition: opacity 0.3s;
 
 				&::before {
 					content: "";
@@ -208,6 +210,10 @@
 
 				img {
 					z-index: initial;
+				}
+
+				:hover > & {
+					opacity: 0;
 				}
 
 				@include mobile {
