@@ -6,7 +6,8 @@ let $gridItem = $('.page').find('.grid-item')
 	.not('.for-tablet')
 	.not('.for-tablet-only')
 	.not('.for-mobile')
-	.not('.for-mobile-only');
+	.not('.for-mobile-only')
+	.not('.grid-item--empty');
 let gridHeight = Math.round(480 / 1360 * innerWidth) + 1;
 let firstGridHeight = Math.round(400 / 1360 * innerWidth);
 let gridOffset = gridHeight - firstGridHeight;
@@ -180,7 +181,7 @@ $(window).on('resize', () => {
 });
 
 if (globals.isDesktop()) {
-	$('.js-grid').find('.grid-item').each((index, element) => {
+	$('.js-grid').find('.grid-item').not('.grid-item--empty').each((index, element) => {
 		$(element)
 			.on('mouseenter', (event) => {
 				let $this = $(event.currentTarget);
