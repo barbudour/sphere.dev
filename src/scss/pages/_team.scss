@@ -241,7 +241,7 @@
 		}
 
 		&--ceo {
-			height: initial;
+			height: auto;
 			background: $color-gallery;
 
 			@include mobile {
