@@ -26,5 +26,11 @@
 				margin-left: 4px;
 			}
 		}
+
+		&:hover {
+			svg {
+				transform: translateX(4px);
+			}
+		}
 	}
 }

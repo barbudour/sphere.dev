@@ -10,6 +10,12 @@
 		display: flex;
 		align-items: center;
 		text-decoration: none;
+
+		&:hover {
+			svg {
+				transform: translateX(4px);
+			}
+		}
 	}
 
 	&__subtitle {
@@ -39,6 +45,8 @@
 		width: 19px;
 		height: 19px;
 		fill: none;
+		transition: transform 0.3s;
+		will-change: transform;
 
 		@include mobile {
 			margin-left: 12px;
