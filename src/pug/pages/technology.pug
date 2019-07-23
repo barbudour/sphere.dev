@@ -1,7 +1,7 @@
 .page.technology
 	.page__fixed
 
-	.wrapper
+	.wrapper.content
 		+breadcrumb({
 			link: 'technology.html',
 			name: 'Технологии и решения',
@@ -12,3 +12,98 @@
 				| Гибридная поддержка принятия решений при бурении скважин
 			.page__top__text
 				| Программный продукт для раннего выявления осложнений в&nbsp;процессе бурения скважин на&nbsp;основе физико-статистических моделей, когнитивных технологий и&nbsp;методов машинного обучения при выборе своевременных оптимальных решений по&nbsp;управлению процессом бурения.
+
+		.content__container.content__container--white
+			.technology__container
+				.technology__media
+					.technology__media__image
+						img(src="/images/pages/technology/cube.png" alt="")
+
+				.technology__content
+					.technology__content__body
+						h2
+							| Описание продукта
+						p
+							| Высокий процент непродуктивного времени в&nbsp;процессе бурения скважин (более&nbsp;50% времени непродуктивно). Высокое влияние человеческого фактора на&nbsp;процесс бурения скважин. Отсутствие ИТ-инструментов прогнозирования осложнений в&nbsp;процессе бурения скважин в&nbsp;режиме реального времени. Отсутствие ИТ-инструментов поддержки принятия решений по&nbsp;управлению процессом бурения скважин в&nbsp;режиме реального времени
+
+					.technology__content__body
+						h2
+							| Решаемые бизнес-задачи
+						p
+							| Потребность в&nbsp;приближенной к&nbsp;реальности визуализации активов предприятия, производственных процессов и&nbsp;данных, а&nbsp;также анализе огромного массива разнородной информации, поступающей с&nbsp;месторождений, что физически невозможно осуществить при представлении данных в&nbsp;традиционных формах. Необходимость интеграции оперативных данных в&nbsp;едином решении и&nbsp;визуализации информации для целей принятия оперативных управленческих решений по&nbsp;ключевым производственным процессам.
+
+					.technology__content__body
+						h2
+							| Прогноз эффектов
+						ul
+							li
+								| Снижение числа осложнений в&nbsp;процессе бурения скважин
+							li
+								| Снижение числа незапланированных остановок в&nbsp;процессе бурения скважин
+							li
+								| Уменьшение времени бурения скважин
+							li
+								| Снижение затрат на&nbsp;бурение скважин
+
+			hr
+			h2
+				| Концепция
+			p
+				| Орошение, как&nbsp;бы это ни&nbsp;казалось парадоксальным, требует большего внимания к&nbsp;анализу ошибок, которые даёт лазерный песок, что при любом переменном вращении в&nbsp;горизонтальной плоскости будет направлено вдоль оси. Сила участвует в&nbsp;погрешности определения курса меньше, чем эксикатор.
+			ul
+				li
+					| Функция многих переменных, следовательно, обуславливает комплексный интеграл по&nbsp;ориентированной области
+				li
+					| Окрестность точки программирует математический анализ
+
+		.slider
+			.slide
+				img(src="/images/styles/slide.jpg" srcset="/images/styles/slide@2x.jpg 2x" alt="slide 1")
+			.slide
+				img(src="/images/styles/slide.jpg" srcset="/images/styles/slide@2x.jpg 2x" alt="slide 1")
+
+		.content__container.content__container--white
+			h2
+				| Технологии
+			p
+				| Орошение, как&nbsp;бы это ни&nbsp;казалось парадоксальным, требует большего внимания к&nbsp;анализу ошибок, которые даёт лазерный песок, что при любом переменном вращении в&nbsp;горизонтальной плоскости будет направлено вдоль оси. Сила участвует в&nbsp;погрешности определения курса меньше, чем эксикатор.
+			.technology__grid
+				.technology__grid__item
+					.technology__grid__item__image
+						img(src="/images/pages/technology/sfera.png" srcset="/images/pages/technology/sfera@2x.png 2x" alt="")
+				.technology__grid__item
+					.technology__grid__item__image
+						img(src="/images/pages/technology/c++.png" srcset="/images/pages/technology/c++@2x.png 2x" alt="")
+				.technology__grid__item
+					.technology__grid__item__image
+						img(src="/images/pages/technology/java.png" srcset="/images/pages/technology/java@2x.png 2x" alt="")
+				.technology__grid__item
+					.technology__grid__item__image
+						img(src="/images/pages/technology/cisco.png" srcset="/images/pages/technology/cisco@2x.png 2x" alt="")
+
+		.block-image.block-image--big
+			img(src="/images/pages/technology/image.jpg" srcset="/images/pages/technology/image@2x.jpg 2x" alt="")
+
+		.videos
+			.video.js-cursor
+				span.corner
+				.video__content
+					.video__title
+						| Видео о&nbsp;цифровом кластере
+					.video__controls
+						.video__play
+							button(type="button")
+								+svg('play')
+							span play
+							.video__time 3:30
+				span.corner
+
+		a.block-next(href="#")
+			.block-next__bg
+				img(src="/images/pages/technology/next.jpg" srcset="/images/pages/technology/next@2x.jpg 2x" alt="")
+			.block-next__content
+				.block-next__topside
+					| Следующий продукт
+				.block-next__text
+					h2 Автономные дроны
+					+svg('news-more')

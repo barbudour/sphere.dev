@@ -38,13 +38,12 @@
 		bottom: 20px;
 		z-index: 3;
 		margin: 0;
-		border: none;
+		border: 1px solid rgba($color-white, 0.2);
 		padding: 0;
-		width: 45px;
 		height: 45px;
+		min-width: 45px;
 		font-size: 0;
-		background: url("../images/sprites/svg/arrow-bg.svg") no-repeat center;
-		background-size: 100% 100%;
+		text-indent: -10000;
 		cursor: pointer;
 
 		&::before {
@@ -65,13 +64,9 @@
 
 			&::before {
 				background-image: url("../images/sprites/svg/prev.svg");
-			}
 
-			@include desktop {
-				&:hover {
-					&::before {
-						background-image: url("../images/sprites/svg/prev-hover.svg");
-					}
+				.technology & {
+					background-image: url("../images/sprites/svg/prev-black.svg");
 				}
 			}
 		}
@@ -81,15 +76,15 @@
 
 			&::before {
 				background-image: url("../images/sprites/svg/next.svg");
-			}
 
-			@include desktop {
-				&:hover {
-					&::before {
-						background-image: url("../images/sprites/svg/next-hover.svg");
-					}
+				.technology & {
+					background-image: url("../images/sprites/svg/next-black.svg");
 				}
 			}
+		}
+
+		.technology & {
+			border-color: rgba($color-woodsmoke, 0.1);
 		}
 
 		@include mobile {

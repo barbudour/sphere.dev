@@ -13,12 +13,15 @@ $('.slider').each((index, element) => {
 	}
 
 	$(element).slick({
+		rows: 0,
+		fade: true,
+		speed: 500,
 		dots: false,
 		arrows: true,
 		infinite: true,
-		speed: 500,
-		fade: true,
 		cssEase: 'linear',
+		nextArrow: '<button type="button" class="slick-next slick-arrow button"><span></span>Следующий<span></span></button>',
+		prevArrow: '<button type="button" class="slick-prev slick-arrow button"><span></span>Предыдущий<span></span></button>',
 	});
 
 	$(element).append(slidesCounter);
