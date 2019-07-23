@@ -157,6 +157,7 @@
 			max-width: 50%;
 
 			&--ceo {
+				margin: initial;
 				padding: 30px 85px;
 			}
 
@@ -241,6 +242,7 @@
 		}
 
 		&--ceo {
+			justify-content: space-between;
 			height: auto;
 			background: $color-gallery;
 
