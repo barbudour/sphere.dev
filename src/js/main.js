@@ -9,3 +9,4 @@ import './components/moreCards';
 import './components/filter';
 import './components/news';
 import './components/select';
+import './components/technology';
