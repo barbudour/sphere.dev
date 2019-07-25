@@ -9,8 +9,8 @@ let $gridItem = $('.page').find('.grid-item')
 	.not('.for-mobile-only')
 	.not('.grid-item--empty');
 let gridHeight = Math.round(480 / 1360 * innerWidth) + 1;
-let firstGridHeight = Math.round(400 / 1360 * innerWidth);
-let gridOffset = gridHeight - firstGridHeight;
+let firstGridHeight = Math.round(401 / 1360 * innerWidth);
+let gridOffset = gridHeight - firstGridHeight + 1;
 let beforeLastGridHeight = gridHeight + gridOffset;
 
 if (globals.isDesktopBig() && $('.page').hasClass('home')) {
@@ -105,8 +105,8 @@ if (globals.isTabletOnly()) {
 $(window).on('resize', () => {
 	if (globals.isDesktopBig() && $('.page').hasClass('home')) {
 		gridHeight = Math.round(480 / 1360 * innerWidth) + 1;
-		firstGridHeight = Math.round(400 / 1360 * innerWidth);
-		gridOffset = gridHeight - firstGridHeight;
+		firstGridHeight = Math.round(401 / 1360 * innerWidth);
+		gridOffset = gridHeight - firstGridHeight + 1;
 		beforeLastGridHeight = gridHeight + gridOffset;
 
 		$gridItem.each((index, element) => {
