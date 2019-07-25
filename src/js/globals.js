@@ -7,6 +7,7 @@ vars.$siteContainer = $('.site-container');
 vars.$page = $('.page');
 vars.$header = $('.header');
 vars.$footer = $('.footer');
+vars.$technology = $('.page.technology');
 
 vars.isEdgeIE = vars.$html.hasClass('is-browser-edge') || vars.$html.hasClass('is-browser-ie');
 
@@ -79,7 +80,7 @@ export function bodyWithScrollbar() {
 }
 
 export function saveScrollPosition() {
-	lastPageYOffset = window.pageYOffset;
+	lastPageYOffset = window.pageYOffset || document.documentElement.scrollTop;
 }
 
 export function restoreScrollPosition() {
