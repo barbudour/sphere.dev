@@ -2,25 +2,41 @@ import * as globals from '../globals';
 
 let windowCalc = $(window).scrollTop() + innerHeight;
 let firstTime = 1;
+let docScroll;
+const $techBody = globals.vars.$technology.find('.technology__content__body');
+const $techMedia = globals.vars.$technology.find('.technology__media__image');
+
+const getPageYScroll = () => {
+	docScroll = window.pageYOffset || document.documentElement.scrollTop;
+};
 
 function sortFigures() {
 	const X = 55;
 	let Y = 66;
 	const Y2 = 34;
 	let body = [];
+	let scrollPercent;
 
-	globals.vars.$siteContainer.find('.technology__content__body').each((i, e) => {
+	$techBody.each((i, e) => {
 		body.push($(e));
 	});
 
-	globals.vars.$siteContainer.find('.technology__media__image').each((i, e) => {
+	$techMedia.each((i, e) => {
 		const $el = $(e);
+
+		let start = body[i].offset().top;
+		let startEl = $el.offset().top;
+
+		let end = start + body[i].innerHeight();
+		let endEl = startEl + $el.innerHeight();
+
+		scrollPercent = (startEl - start) / (endEl - end);
 
 		TweenMax.to($el, 0, {
 			y: -$el.innerHeight() * i,
 			bottom: 0,
 			zIndex: `+=${i}`,
-			opacity: 1,
+			opacity: scrollPercent > 0 ? scrollPercent > 1 ? 1 : scrollPercent.toFixed(3) : 0,
 		});
 
 		if (i !== 0) {
@@ -37,27 +53,41 @@ function sortFigures() {
 			});
 		}
 
-		$(window).on('load scroll', () => {
+		$(window).on('scroll.techology', () => {
+			start = body[i].offset().top;
+			startEl = $el.offset().top;
+
+			end = start + body[i].innerHeight();
+			endEl = startEl + $el.innerHeight();
+			scrollPercent = (startEl - start) / (endEl - end);
+			getPageYScroll();
+
+			console.log(scrollPercent.toFixed(3));
+
 			if (body[i].offset().top > windowCalc - 40) {
-				body[i].removeClass('is-active');
 				if (i !== 0) {
 					TweenMax.to($el, 1, {
-						y: `-=${$el.innerHeight()}`,
+						opacity: scrollPercent > 0 ? scrollPercent > 1 ? 1 : scrollPercent.toFixed(3) : 0,
+						y: -$el.innerHeight() * i + docScroll / 1.5,
 					});
 				}
-			} else {
-				body[i].addClass('is-active');
-				if (i !== 0) {
-					TweenMax.to($el, 1, {
-						y: 0,
-					});
-				}
+			} else if (i !== 0) {
+				TweenMax.to($el, 1, {
+					y: 0,
+				});
 			}
 
-			if (body[i].find('h2').offset().top + body[i].find('h2').innerHeight() > $el.offset().top && body[i].hasClass('is-active')) {
+			const titlePosition = body[i].find('h2').offset().top;
+			const titlePositionWithHeight = titlePosition + body[i].find('h2').innerHeight();
+			const elPosition = $el.offset().top;
+			const elPositionWithHeight = elPosition + $el.innerHeight();
+
+			if (titlePositionWithHeight > elPosition && titlePosition < elPositionWithHeight) {
 				body[i].addClass('is-active');
-			} else {
+				$el.addClass('is-active');
+			} else if (body[i].addClass('is-active')) {
 				body[i].removeClass('is-active');
+				$el.removeClass('is-active');
 			}
 		});
 	});
@@ -79,7 +109,8 @@ function sticky() {
 			y: diff,
 		});
 
-		$('.technology__content__body').removeClass('is-active');
+		$techBody.removeClass('is-active');
+		$techMedia.removeClass('is-active');
 	} else {
 		TweenMax.to($sticky, firstTime, {
 			y: windowCalc - stickyParentPosition - stickyHeight,
@@ -93,7 +124,7 @@ $(window).on('load', () => {
 	firstTime = 0;
 });
 
-$(window).on('scroll', () => {
+$(window).on('scroll.techology', () => {
 	windowCalc = $(window).scrollTop() + innerHeight;
 
 	sticky();
