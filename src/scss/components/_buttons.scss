@@ -1,6 +1,4 @@
 .button {
-	width: fit-content;
-
 	&--more {
 		display: flex;
 		align-items: center;
@@ -35,5 +33,9 @@
 				stroke: $color-sunglow;
 			}
 		}
+	}
+
+	@include mobile {
+		width: fit-content;
 	}
 }
