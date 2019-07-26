@@ -16,6 +16,14 @@ textarea {
 	}
 }
 
+a {
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: none;
+	}
+}
+
 html {
 	box-sizing: border-box;
 
