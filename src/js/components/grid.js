@@ -20,6 +20,10 @@ if (globals.isDesktopBig() && $('.page').hasClass('home')) {
 				height: `${gridHeight}px`,
 			});
 
+			$(element).children('.grid-item__bg').css({
+				'top': `-1px`,
+			});
+
 			if (index % 2 === 0) {
 				$(element).css({
 					'margin-top': `-${gridOffset}px`,
@@ -41,6 +45,9 @@ if (globals.isDesktopBig() && $('.page').hasClass('home')) {
 					'margin-top': `-${gridOffset}px`,
 					'height': `${beforeLastGridHeight}px`,
 				});
+			$(element).children('.grid-item__bg').css({
+				'top': `-1px`,
+			});
 		}
 
 		if (index === $gridItem.length - 1) {
@@ -192,25 +199,42 @@ if (globals.isDesktop()) {
 					})
 					.addClass('is-hovered');
 
-				TweenMax.to($this, 0.3, {
-					scale: 1.05,
-					rotationZ: -0.001,
-					ease: Power0.easeNone,
-				});
-			})
-			.on('mouseleave', (event) => {
-				let $this = $(event.currentTarget);
+				$this
+					.children('.grid-item__bg').css({
+						'left': `-1px`,
+						'right': `-1px`,
+						'bottom': `-1px`,
+					});
+					
+					TweenMax.to($this, 0.3, {
+						scale: 1.05,
+						rotationZ: -0.001,
+						ease: Power1.easeOut,
+						force3d: false
+					});
+				})
+				.on('mouseleave', (event) => {
+					let $this = $(event.currentTarget);
 
 				$this
 					.css({
 						'z-index': 2,
 					})
 					.removeClass('is-hovered');
+					
+
+				$this
+					.children('.grid-item__bg').css({
+						'left': `0`,
+						'right': `0`,
+						'bottom': `0`,
+					});
 
 				TweenMax.to($this, 0.3, {
 					scale: 1,
 					rotationZ: -0.001,
-					ease: Power0.easeNone,
+					ease: Power1.easeOut,
+					force3d: false,
 					clearProps: 'rotationZ',
 					onComplete() {
 						$this.css('z-index', 1);
