@@ -118,7 +118,7 @@
 			}
 		}
 
-		@include tablet-up {
+		@include tablet-only {
 			height: 63px;
 
 			ul {
