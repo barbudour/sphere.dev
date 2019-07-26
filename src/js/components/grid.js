@@ -198,13 +198,6 @@ if (globals.isDesktop()) {
 						'z-index': 3,
 					})
 					.addClass('is-hovered');
-
-				$this
-					.children('.grid-item__bg').css({
-						'left': `-1px`,
-						'right': `-1px`,
-						'bottom': `-1px`,
-					});
 					
 					TweenMax.to($this, 0.3, {
 						scale: 1.05,
