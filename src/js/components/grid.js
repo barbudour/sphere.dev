@@ -17,9 +17,9 @@ if (globals.isDesktopBig() && $('.page').hasClass('home')) {
 	$gridItem.each((index, element) => {
 		if (index !== 0) {
 			$(element).css({
-				height: `${gridHeight}px`,
+				'height': `${gridHeight}px`,
 			});
-
+			
 			$(element).children('.grid-item__bg').css({
 				'top': `-1px`,
 			});

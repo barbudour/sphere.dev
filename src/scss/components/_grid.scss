@@ -9,6 +9,7 @@
 	.grid-item {
 		position: relative;
 		z-index: 1;
+		overflow: hidden;
 		width: 50%;
 		height: 480px;
 		font-weight: 400;
@@ -103,6 +104,8 @@
 			bottom: 0;
 			z-index: 1;
 			overflow: hidden;
+			filter: blur(0);
+			transform: scale(1.2);
 			transition: opacity 0.3s;
 
 			img {
@@ -201,6 +204,7 @@
 			.grid-item__bg {
 				// stylelint-disable-next-line declaration-no-important
 				opacity: 1 !important;
+				filter: blur(20px);
 			}
 		}
 
