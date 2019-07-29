@@ -76,7 +76,7 @@
 					.video__title Заголовок видеоролика. Всегда пишем полное название
 					.video__controls
 						.video__play
-							button.js-popup-open(data-href="https://www.youtube.com/watch?v=bZNFRIwlQxQ&t=4s")
+							button.js-popup-open(data-url="https://www.youtube.com/watch?v=bZNFRIwlQxQ" data-type="youtube")
 								+svg('play')
 							span play
 							.video__time 3:30
@@ -88,7 +88,7 @@
 					.video__title Заголовок видеоролика
 					.video__controls
 						.video__play
-							button.js-popup-open(data-href="https://www.youtube.com/watch?v=bZNFRIwlQxQ&t=4s")
+							button.js-popup-open(data-url="https://vimeo.com/191947042" data-type="vimeo")
 								+svg('play')
 							span play
 							.video__time 3:30
@@ -170,13 +170,3 @@
 					.file__textblock
 						p Заголовок для файла
 						span 3,5 мбайт
-
-.popup.js-popup.is-hidden
-	.popup__shade.js-popup-close
-
-	.popup__body
-		button.popup__close.js-popup-close
-			+svg('close')
-		video.fancybox-video(controls controlsList="nodownload" poster="{{poster}}")
-			source(src="#" type="video")
-			| Извините, но ваш браузер не поддерживает тег video

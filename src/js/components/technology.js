@@ -95,38 +95,41 @@ function sortFigures() {
 
 sortFigures();
 
-const $sticky = $('.js-sticky');
-const $stickyrStopper = $('.sticky-stopper');
-const stickyHeight = $sticky.innerHeight();
-const stickyStopPosition = $stickyrStopper.offset().top;
-const stickyParentHeight = $sticky.parent().innerHeight();
-const stickyParentPosition = $sticky.parent().offset().top;
-const diff = stickyParentHeight - stickyHeight;
+let sticky = {};
+sticky.$sticky = $('.js-sticky');
+sticky.$stickyStopper = $('.sticky-stopper');
 
-function sticky() {
-	if (stickyStopPosition < windowCalc) {
-		TweenMax.to($sticky, firstTime, {
-			y: diff,
+function stickyPosition() {
+	if (sticky.stickyStopPosition < windowCalc) {
+		TweenMax.to(sticky.$sticky, firstTime, {
+			y: sticky.diff,
 		});
 
 		$techBody.removeClass('is-active');
 		$techMedia.removeClass('is-active');
 	} else {
-		TweenMax.to($sticky, firstTime, {
-			y: windowCalc - stickyParentPosition - stickyHeight,
+		TweenMax.to(sticky.$sticky, firstTime, {
+			y: windowCalc - sticky.stickyParentPosition - sticky.height,
 		});
 	}
 }
 
-$(window).on('load', () => {
-	sticky();
+if (sticky.$sticky.length) {
+	sticky.height = sticky.$sticky.innerHeight();
+	sticky.stickyStopPosition = sticky.$stickyStopper.offset().top;
+	sticky.stickyParentHeight = sticky.$sticky.parent().innerHeight();
+	sticky.stickyParentPosition = sticky.$sticky.parent().offset().top;
+	sticky.diff = sticky.stickyParentHeight - sticky.height;
 
-	firstTime = 0;
-});
+	$(window).on('load', () => {
+		stickyPosition();
 
-$(window).on('scroll.techology', () => {
-	windowCalc = $(window).scrollTop() + innerHeight;
+		firstTime = 0;
+	});
 
-	sticky();
-});
+	$(window).on('scroll.techology', () => {
+		windowCalc = $(window).scrollTop() + innerHeight;
 
+		stickyPosition();
+	});
+}
