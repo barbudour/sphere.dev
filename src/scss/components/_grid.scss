@@ -14,7 +14,7 @@
 		height: 480px;
 		font-weight: 400;
 		font-size: 11px;
-		line-height: 15px;
+		line-height: (15 / 11);
 		letter-spacing: 0.1em;
 		text-decoration: none;
 
@@ -38,7 +38,7 @@
 			bottom: -52px;
 			font-weight: 500;
 			font-size: 240px;
-			line-height: 240px;
+			line-height: (240 / 240);
 			letter-spacing: -0.06em;
 			text-align: center;
 			color: rgba($color-white, 0.2);
@@ -63,14 +63,14 @@
 			max-width: 200px;
 			font-weight: 300;
 			font-size: 18px;
-			line-height: 23px;
+			line-height: (23 / 18);
 			letter-spacing: 0;
 			color: $color-white;
 
 			@include mobile {
 				max-width: 100%;
 				font-size: 17px;
-				line-height: 22px;
+				line-height: (22 / 17);
 			}
 		}
 
@@ -104,11 +104,8 @@
 			bottom: 0;
 			z-index: 1;
 			overflow: hidden;
-			image-rendering: optimizeSpeed;
-			filter: blur(20px);
 			transform: scale(1.1);
-			transition: 0.3s -webkit-filter linear, opacity 0.3s;
-			will-change: filter;
+			transition: opacity 0.3s;
 
 			img {
 				position: absolute;
@@ -117,7 +114,10 @@
 				display: block;
 				min-width: 100%;
 				min-height: 100%;
+				filter: blur(20px);
 				transform: translate(-50%, -50%);
+				transition: 0.3s filter;
+				will-change: filter;
 			}
 		}
 
@@ -163,24 +163,24 @@
 				margin: 0;
 				font-weight: 300;
 				font-size: 18px;
-				line-height: 23px;
+				line-height: (23 / 18);
 				letter-spacing: 0;
 				color: $color-white;
 
 				@include mobile {
 					font-size: 17px;
-					line-height: 22px;
+					line-height: (22 / 17);
 				}
 			}
 
 			.grid-item__text {
 				font-weight: 300;
 				font-size: 15px;
-				line-height: 28px;
+				line-height: (28 / 15);
 
 				@include mobile {
 					font-size: 14px;
-					line-height: 25px;
+					line-height: (25 / 14);
 				}
 			}
 
@@ -189,7 +189,7 @@
 				right: 15px;
 				bottom: 38px;
 				font-size: 17px;
-				line-height: 22px;
+				line-height: (22 / 17);
 			}
 		}
 
@@ -204,12 +204,15 @@
 			}
 
 			.grid-item__bg {
-				// stylelint-disable-next-line declaration-no-important
 				left: -1px;
 				right: -1px;
 				bottom: -1px;
+				// stylelint-disable-next-line declaration-no-important
 				opacity: 1 !important;
-				filter: blur(0);
+
+				img {
+					filter: blur(0);
+				}
 			}
 		}
 
@@ -474,6 +477,76 @@
 					}
 				}
 			}
+		}
+	}
+
+	&.news-grid {
+		width: 100%;
+
+		.grid-item {
+			flex-basis: auto;
+			width: percentage(4 / 12);
+			height: 400px;
+
+			&__bottomside {
+				bottom: 50px;
+			}
+
+			&:nth-child(2n + 1) {
+				@include tablet {
+					margin-top: initial;
+				}
+			}
+
+			&--big {
+				width: percentage(8 / 12);
+
+				.grid-item__bottomside {
+					p {
+						font-size: 32px;
+						line-height: (45 / 32);
+
+						@include mobile {
+							font-size: 21px;
+							line-height: (25 / 21);
+						}
+					}
+				}
+
+				@include tablet {
+					width: percentage(12 / 12);
+				}
+			}
+
+			&--empty {
+				@include mobile {
+					display: none;
+				}
+			}
+
+			@include tablet {
+				width: percentage(6 / 12);
+				height: 400px;
+			}
+
+			@include mobile {
+				width: 100%;
+				height: 340px;
+			}
+
+			@include desktop-big {
+				&:nth-child(2n + 1) {
+					margin-top: initial;
+
+					&.grid-item--first {
+						margin-top: initial;
+					}
+				}
+			}
+		}
+
+		@include tablet {
+			background: $color-shark;
 		}
 	}
 

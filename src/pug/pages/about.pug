@@ -166,8 +166,12 @@
 				})
 
 		include ../components/news-widget
-		+pagination-big({
-			subtitle: 'Смотрите также',
-			title: 'Технологии и&nbsp;решения',
-			link: '#'
-		})
+
+		a.block-next(href="#")
+			.block-next__bg(style="background-color: #171b1e;")
+			.block-next__content
+				.block-next__topside 
+					.block-next__label Смотрите также
+				.block-next__text
+					h2 Технологии и&nbsp;решения
+					+svg('news-more')

@@ -17,7 +17,7 @@
 		width: 100%;
 		font-weight: 400;
 		font-size: 11px;
-		line-height: 30px;
+		line-height: (30 / 11);
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
 		color: $color-white;

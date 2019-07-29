@@ -17,17 +17,17 @@ if (globals.isDesktopBig() && $('.page').hasClass('home')) {
 	$gridItem.each((index, element) => {
 		if (index !== 0) {
 			$(element).css({
-				'height': `${gridHeight}px`,
+				height: `${gridHeight}px`,
 			});
-			
+
 			$(element).children('.grid-item__bg').css({
-				'top': `-1px`,
+				top: '-1px',
 			});
 
 			if (index % 2 === 0) {
 				$(element).css({
-					'margin-top': `-${gridOffset}px`,
-					'height': `${gridHeight}px`,
+					marginTop: `-${gridOffset}px`,
+					height: `${gridHeight}px`,
 				});
 			}
 		}
@@ -46,7 +46,7 @@ if (globals.isDesktopBig() && $('.page').hasClass('home')) {
 					'height': `${beforeLastGridHeight}px`,
 				});
 			$(element).children('.grid-item__bg').css({
-				'top': `-1px`,
+				top: '-1px',
 			});
 		}
 
@@ -71,8 +71,8 @@ if (globals.isDesktopBig() && $('.page').hasClass('news')) {
 
 		if ((index + 1) % 3 === 2 && index !== 1) {
 			$(element).css({
-				'margin-top': `-${gridOffset}px`,
-				'height': `${gridHeight}px`,
+				marginTop: `-${gridOffset}px`,
+				height: `${gridHeight}px`,
 			});
 		}
 
@@ -85,8 +85,8 @@ if (globals.isDesktopBig() && $('.page').hasClass('news')) {
 			$(element)
 				.addClass('is-before-last is-bottom')
 				.css({
-					'margin-top': `-${gridOffset}px`,
-					'height': `${beforeLastGridHeight}px`,
+					marginTop: `-${gridOffset}px`,
+					height: `${beforeLastGridHeight}px`,
 				});
 		}
 
@@ -124,8 +124,8 @@ $(window).on('resize', () => {
 
 				if (index % 2 === 0) {
 					$(element).css({
-						'margin-top': `-${gridOffset}px`,
-						'height': `${gridHeight}px`,
+						marginTop: `-${gridOffset}px`,
+						height: `${gridHeight}px`,
 					});
 				}
 			}
@@ -139,8 +139,8 @@ $(window).on('resize', () => {
 			if (index === $gridItem.length - 2) {
 				$(element)
 					.css({
-						'margin-top': `-${gridOffset}px`,
-						'height': `${beforeLastGridHeight}px`,
+						marginTop: `-${gridOffset}px`,
+						height: `${beforeLastGridHeight}px`,
 					});
 			}
 		});
@@ -165,8 +165,8 @@ $(window).on('resize', () => {
 
 			if ((index + 1) % 3 === 2 && index !== 1) {
 				$(element).css({
-					'margin-top': `-${gridOffset}px`,
-					'height': `${gridHeight}px`,
+					marginTop: `-${gridOffset}px`,
+					height: `${gridHeight}px`,
 				});
 			}
 
@@ -174,8 +174,8 @@ $(window).on('resize', () => {
 				$(element)
 					.addClass('is-before-last')
 					.css({
-						'margin-top': `-${gridOffset}px`,
-						'height': `${beforeLastGridHeight}px`,
+						marginTop: `-${gridOffset}px`,
+						height: `${beforeLastGridHeight}px`,
 					});
 			}
 
@@ -198,29 +198,28 @@ if (globals.isDesktop()) {
 						'z-index': 3,
 					})
 					.addClass('is-hovered');
-					
-					TweenMax.to($this, 0.3, {
-						scale: 1.05,
-						rotationZ: -0.001,
-						ease: Power1.easeOut,
-						force3d: false
-					});
-				})
-				.on('mouseleave', (event) => {
-					let $this = $(event.currentTarget);
+
+				TweenMax.to($this, 0.3, {
+					scale: 1.05,
+					rotationZ: -0.001,
+					ease: Power1.easeOut,
+					force3d: false,
+				});
+			})
+			.on('mouseleave', (event) => {
+				let $this = $(event.currentTarget);
 
 				$this
 					.css({
 						'z-index': 2,
 					})
 					.removeClass('is-hovered');
-					
 
 				$this
 					.children('.grid-item__bg').css({
-						'left': `0`,
-						'right': `0`,
-						'bottom': `0`,
+						left: '0',
+						right: '0',
+						bottom: '0',
 					});
 
 				TweenMax.to($this, 0.3, {

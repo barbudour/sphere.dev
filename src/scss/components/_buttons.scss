@@ -1,12 +1,93 @@
 .button {
+	position: relative;
+	z-index: 0;
+	display: inline-block;
+	border: 1px solid rgba($color-white, 0.2);
+	padding: 0 22px;
+	min-width: 150px;
+	font-size: 11px;
+	line-height: 43px;
+	letter-spacing: 1px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: $color-white;
+
+	span {
+		position: absolute;
+		left: -1px;
+		right: -1px;
+		top: -1px;
+		bottom: -1px;
+		z-index: -1;
+		overflow: hidden;
+		pointer-events: none;
+
+		&:first-child {
+			&::before {
+				@include triangle(to top left, 4px, 4px, $color-sunglow);
+
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 0;
+				transform: translateZ(0);
+				transform-origin: left top;
+				transition: transform 0.3s;
+				will-change: transform;
+			}
+
+			&::after {
+				@include triangle(to bottom left, 4px, 4px, $color-sunglow);
+
+				content: "";
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				transform: translateZ(0);
+				transform-origin: left bottom;
+				transition: transform 0.3s;
+				will-change: transform;
+			}
+		}
+
+		&:last-child {
+			&::before {
+				@include triangle(to top right, 4px, 4px, $color-sunglow);
+
+				content: "";
+				position: absolute;
+				right: 0;
+				top: 0;
+				transform: translateZ(0);
+				transform-origin: right top;
+				transition: transform 0.3s;
+				will-change: transform;
+			}
+
+			&::after {
+				@include triangle(to bottom right, 4px, 4px, $color-sunglow);
+
+				content: "";
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				transform: translateZ(0);
+				transform-origin: right bottom;
+				transition: transform 0.3s;
+				will-change: transform;
+			}
+		}
+	}
+
 	&--more {
-		display: flex;
+		display: inline-flex;
 		align-items: center;
 		margin-top: 28px;
 		padding: 15px 0;
 		font-weight: 400;
 		font-size: 11px;
-		line-height: 15px;
+		line-height: (15 / 11);
 		letter-spacing: 0.1em;
 		text-decoration: none;
 		text-transform: uppercase;
@@ -35,7 +116,19 @@
 		}
 	}
 
+	@include desktop {
+		&:hover {
+			span {
+				&::before,
+				&::after {
+					transform: scale(35) translateZ(0);
+				}
+			}
+		}
+	}
+
 	@include mobile {
-		width: fit-content;
+		display: block;
+		text-align: center;
 	}
 }
