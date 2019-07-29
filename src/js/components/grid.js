@@ -6,7 +6,8 @@ let $gridItem = $('.page').find('.grid-item')
 	.not('.for-tablet')
 	.not('.for-tablet-only')
 	.not('.for-mobile')
-	.not('.for-mobile-only');
+	.not('.for-mobile-only')
+	.not('.grid-item--empty');
 let gridHeight = Math.round(480 / 1360 * innerWidth) + 1;
 let firstGridHeight = Math.round(401 / 1360 * innerWidth);
 let gridOffset = gridHeight - firstGridHeight + 1;
@@ -16,7 +17,11 @@ if (globals.isDesktopBig() && $('.page').hasClass('home')) {
 	$gridItem.each((index, element) => {
 		if (index !== 0) {
 			$(element).css({
-				height: `${gridHeight}px`,
+				'height': `${gridHeight}px`,
+			});
+			
+			$(element).children('.grid-item__bg').css({
+				'top': `-1px`,
 			});
 
 			if (index % 2 === 0) {
@@ -40,6 +45,9 @@ if (globals.isDesktopBig() && $('.page').hasClass('home')) {
 					'margin-top': `-${gridOffset}px`,
 					'height': `${beforeLastGridHeight}px`,
 				});
+			$(element).children('.grid-item__bg').css({
+				'top': `-1px`,
+			});
 		}
 
 		if (index === $gridItem.length - 1) {
@@ -180,7 +188,7 @@ $(window).on('resize', () => {
 });
 
 if (globals.isDesktop()) {
-	$('.js-grid').find('.grid-item').each((index, element) => {
+	$('.js-grid').find('.grid-item').not('.grid-item--empty').each((index, element) => {
 		$(element)
 			.on('mouseenter', (event) => {
 				let $this = $(event.currentTarget);
@@ -190,26 +198,36 @@ if (globals.isDesktop()) {
 						'z-index': 3,
 					})
 					.addClass('is-hovered');
-
-				TweenMax.to($this, 0.3, {
-					scale: 1.05,
-					rotationZ: -0.001,
-					ease: Power0.easeNone,
-				});
-			})
-			.on('mouseleave', (event) => {
-				let $this = $(event.currentTarget);
+					
+					TweenMax.to($this, 0.3, {
+						scale: 1.05,
+						rotationZ: -0.001,
+						ease: Power1.easeOut,
+						force3d: false
+					});
+				})
+				.on('mouseleave', (event) => {
+					let $this = $(event.currentTarget);
 
 				$this
 					.css({
 						'z-index': 2,
 					})
 					.removeClass('is-hovered');
+					
+
+				$this
+					.children('.grid-item__bg').css({
+						'left': `0`,
+						'right': `0`,
+						'bottom': `0`,
+					});
 
 				TweenMax.to($this, 0.3, {
 					scale: 1,
 					rotationZ: -0.001,
-					ease: Power0.easeNone,
+					ease: Power1.easeOut,
+					force3d: false,
 					clearProps: 'rotationZ',
 					onComplete() {
 						$this.css('z-index', 1);

@@ -98,6 +98,10 @@
 						}
 					}
 				}
+
+				@include tablet-up {
+					transform: translateY(-2px);
+				}
 			}
 		}
 
@@ -107,9 +111,19 @@
 
 		@include tablet {
 			width: calc(100% - 96px);
+
 			ul {
 				padding-right: 30px;
 				padding-left: 30px;
+			}
+		}
+
+		@include tablet-only {
+			height: 63px;
+
+			ul {
+				padding-right: 20px;
+				padding-left: 20px;
 			}
 		}
 

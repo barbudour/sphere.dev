@@ -9,7 +9,15 @@
 	&__link {
 		display: flex;
 		align-items: center;
+		width: fit-content;
 		text-decoration: none;
+
+		&:hover {
+			svg {
+				stroke: $color-sunglow;
+				transform: translateX(8px);
+			}
+		}
 	}
 
 	&__subtitle {
@@ -36,9 +44,11 @@
 
 	svg {
 		margin-left: 20px;
-		width: 19px;
-		height: 19px;
+		width: 17px;
+		height: 17px;
 		fill: none;
+		stroke: $color-white;
+		transition: all 0.3s;
 
 		@include mobile {
 			margin-left: 12px;

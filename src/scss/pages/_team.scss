@@ -28,6 +28,10 @@
 					}
 				}
 
+				@include desktop {
+					margin-top: 30px;
+				}
+
 				@include laptop {
 					padding-right: 44px;
 				}
@@ -83,10 +87,39 @@
 
 		@include desktop {
 			max-width: 680px;
+
+			ul {
+				margin-top: 30px;
+
+				li {
+					margin-bottom: 18px;
+					padding-left: 54px;
+
+					&::before {
+						left: 4px;
+					}
+				}
+			}
 		}
 
 		@include desktop-big {
 			max-width: vw(680);
+		}
+	}
+
+	&__description {
+		@include desktop {
+			h2:first-child {
+				margin: 0 0 38px;
+			}
+
+			h3 {
+				margin: 56px 0 17px;
+			}
+
+			h3:nth-last-child(1) {
+				margin: 71px 0 17px;
+			}
 		}
 	}
 
@@ -157,30 +190,31 @@
 			max-width: 50%;
 
 			&--ceo {
+				margin: initial;
 				padding: 30px 85px;
-
-				@include tablet {
-					padding: 30px 44px;
-				}
-
-				@include mobile {
-					padding: 30px 15px 80px;
-				}
 			}
 
 			@include tablet {
 				padding-right: 44px;
+
+				&--ceo {
+					padding: 30px 44px;
+				}
 			}
 
 			@include mobile {
 				flex: 0 0 100%;
 				padding: 0;
 				max-width: 100%;
+
+				&--ceo {
+					padding: 30px 15px 80px;
+				}
 			}
 		}
 
 		&__post {
-			margin: 20px 0 10px;
+			margin: 14px 0 10px;
 			font-size: 11px;
 			line-height: (15 / 11);
 			letter-spacing: 0.1em;
@@ -241,7 +275,8 @@
 		}
 
 		&--ceo {
-			height: initial;
+			justify-content: space-between;
+			height: auto;
 			background: $color-gallery;
 
 			@include mobile {
@@ -291,7 +326,7 @@
 				margin-left: 40px;
 
 				@include tablet {
-					margin-top: 30px;
+					margin-top: 19px;
 					margin-left: 0;
 				}
 			}
