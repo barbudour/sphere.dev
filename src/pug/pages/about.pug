@@ -135,7 +135,7 @@
 						| Видео о&nbsp;цифровом кластере
 					.video__controls
 						.video__play
-							button(type="button")
+							button.js-popup-open(data-url="/video.mp4")
 								+svg('play')
 							span play
 							.video__time 3:30
@@ -166,8 +166,13 @@
 				})
 
 		include ../components/news-widget
-		+pagination-big({
-			subtitle: 'Смотрите также',
-			title: 'Технологии и&nbsp;решения',
-			link: '#'
-		})
+
+		a.block-next(href="#")
+			.block-next__bg(style="background-color: #171b1e;")
+			.block-next__content
+				.block-next__topside 
+					.block-next__label Смотрите также
+				.block-next__text
+					h2 Технологии и&nbsp;решения
+					+svg('news-more')
+

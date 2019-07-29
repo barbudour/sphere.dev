@@ -23,7 +23,7 @@
 	&__subtitle {
 		margin-bottom: 20px;
 		font-size: 11px;
-		line-height: 140%;
+		line-height: (15 / 11);
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
 		color: $color-sunglow;
@@ -32,13 +32,13 @@
 	&__title {
 		font-weight: 300;
 		font-size: 32px;
-		line-height: 140%;
+		line-height: (42 / 32);
 		letter-spacing: -0.01em;
 		color: #fff;
 
 		@include mobile {
 			font-size: 21px;
-			line-height: 25px;
+			line-height: (25 / 21);
 		}
 	}
 

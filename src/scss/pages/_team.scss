@@ -240,7 +240,7 @@
 			&--small {
 				font-weight: 300;
 				font-size: 18px;
-				line-height: 130%;
+				line-height: (23 / 18);
 			}
 
 			@include mobile {

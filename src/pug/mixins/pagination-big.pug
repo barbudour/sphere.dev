@@ -1,7 +1,0 @@
-mixin pagination-big(data)
-	.pagination.pagination--big.js-cursor
-		.pagination__content
-			span.pagination__subtitle!= data.subtitle
-			a.pagination__link(href=data.link alt=data.title)
-				span.pagination__title!= data.title
-				+svg('pagination-arrow')

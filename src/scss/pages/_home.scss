@@ -142,7 +142,7 @@
 			z-index: 2;
 			font-weight: 300;
 			font-size: 32px;
-			line-height: 43px;
+			line-height: (42 / 32);
 			letter-spacing: -0.01em;
 			color: $color-white;
 
@@ -160,7 +160,7 @@
 				top: auto;
 				bottom: vh(121, 550);
 				font-size: 21px;
-				line-height: 25px;
+				line-height: (25 / 21);
 			}
 		}
 
@@ -208,7 +208,7 @@
 			margin-right: 66px;
 			font-weight: 400;
 			font-size: 11px;
-			line-height: 15px;
+			line-height: (15 / 11);
 			letter-spacing: 0.1em;
 			text-align: center;
 			text-transform: uppercase;
