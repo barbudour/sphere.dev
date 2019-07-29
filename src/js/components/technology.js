@@ -1,7 +1,6 @@
 import * as globals from '../globals';
 
-let windowCalc = $(window).scrollTop() + innerHeight;
-let firstTime = 1;
+let windowPosBottom = $(window).scrollTop() + innerHeight;
 let docScroll;
 const $techBody = globals.vars.$technology.find('.technology__content__body');
 const $techMedia = globals.vars.$technology.find('.technology__media__image');
@@ -10,12 +9,12 @@ const getPageYScroll = () => {
 	docScroll = window.pageYOffset || document.documentElement.scrollTop;
 };
 
-function sortFigures() {
+function figuresCubes() {
 	const X = 55;
 	let Y = 66;
 	const Y2 = 34;
 	let body = [];
-	let scrollPercent;
+	let scrollCalc;
 
 	$techBody.each((i, e) => {
 		body.push($(e));
@@ -24,19 +23,18 @@ function sortFigures() {
 	$techMedia.each((i, e) => {
 		const $el = $(e);
 
-		let start = body[i].offset().top;
-		let startEl = $el.offset().top;
+		let titlePos = body[i].find('h2').offset().top;
+		let titlePosBottom = titlePos + body[i].find('h2').innerHeight();
+		let elPos = $el.offset().top;
+		let elPosBottom = elPos + $el.innerHeight();
 
-		let end = start + body[i].innerHeight();
-		let endEl = startEl + $el.innerHeight();
-
-		scrollPercent = (startEl - start) / (endEl - end);
+		scrollCalc = elPosBottom / titlePos;
 
 		TweenMax.to($el, 0, {
 			y: -$el.innerHeight() * i,
 			bottom: 0,
 			zIndex: `+=${i}`,
-			opacity: scrollPercent > 0 ? scrollPercent > 1 ? 1 : scrollPercent.toFixed(3) : 0,
+			opacity: scrollCalc > 0 ? scrollCalc.toFixed(3) : 0,
 		});
 
 		if (i !== 0) {
@@ -54,35 +52,33 @@ function sortFigures() {
 		}
 
 		$(window).on('scroll.techology', () => {
-			start = body[i].offset().top;
-			startEl = $el.offset().top;
+			titlePos = body[i].find('h2').offset().top;
+			titlePosBottom = titlePos + body[i].find('h2').innerHeight();
+			elPos = $el.offset().top;
+			elPosBottom = elPos + $el.innerHeight();
 
-			end = start + body[i].innerHeight();
-			endEl = startEl + $el.innerHeight();
-			scrollPercent = (startEl - start) / (endEl - end);
+			scrollCalc = elPosBottom / titlePos;
+
 			getPageYScroll();
 
-			console.log(scrollPercent.toFixed(3));
+			if (titlePosBottom > windowPosBottom) {
+				TweenMax.to($el, 0.5, {
+					opacity: scrollCalc > 0 ? scrollCalc.toFixed(3) : 0,
+				});
 
-			if (body[i].offset().top > windowCalc - 40) {
 				if (i !== 0) {
 					TweenMax.to($el, 1, {
-						opacity: scrollPercent > 0 ? scrollPercent > 1 ? 1 : scrollPercent.toFixed(3) : 0,
-						y: -$el.innerHeight() * i + docScroll / 1.5,
+						y: -$el.innerHeight() * i + docScroll / 2.5,
 					});
 				}
-			} else if (i !== 0) {
+			} else {
 				TweenMax.to($el, 1, {
 					y: 0,
+					opacity: 1,
 				});
 			}
 
-			const titlePosition = body[i].find('h2').offset().top;
-			const titlePositionWithHeight = titlePosition + body[i].find('h2').innerHeight();
-			const elPosition = $el.offset().top;
-			const elPositionWithHeight = elPosition + $el.innerHeight();
-
-			if (titlePositionWithHeight > elPosition && titlePosition < elPositionWithHeight) {
+			if (titlePosBottom > elPos && titlePos < elPosBottom) {
 				body[i].addClass('is-active');
 				$el.addClass('is-active');
 			} else if (body[i].addClass('is-active')) {
@@ -93,43 +89,44 @@ function sortFigures() {
 	});
 }
 
-sortFigures();
+figuresCubes();
 
 let sticky = {};
+let stickyTime = 1;
 sticky.$sticky = $('.js-sticky');
 sticky.$stickyStopper = $('.sticky-stopper');
 
-function stickyPosition() {
-	if (sticky.stickyStopPosition < windowCalc) {
-		TweenMax.to(sticky.$sticky, firstTime, {
+function stickyPos() {
+	if (sticky.stickyStopPos < windowPosBottom) {
+		TweenMax.to(sticky.$sticky, stickyTime, {
 			y: sticky.diff,
 		});
 
 		$techBody.removeClass('is-active');
 		$techMedia.removeClass('is-active');
 	} else {
-		TweenMax.to(sticky.$sticky, firstTime, {
-			y: windowCalc - sticky.stickyParentPosition - sticky.height,
+		TweenMax.to(sticky.$sticky, stickyTime, {
+			y: windowPosBottom - sticky.stickyParentPos - sticky.height,
 		});
 	}
 }
 
 if (sticky.$sticky.length) {
 	sticky.height = sticky.$sticky.innerHeight();
-	sticky.stickyStopPosition = sticky.$stickyStopper.offset().top;
+	sticky.stickyStopPos = sticky.$stickyStopper.offset().top;
 	sticky.stickyParentHeight = sticky.$sticky.parent().innerHeight();
-	sticky.stickyParentPosition = sticky.$sticky.parent().offset().top;
+	sticky.stickyParentPos = sticky.$sticky.parent().offset().top;
 	sticky.diff = sticky.stickyParentHeight - sticky.height;
 
 	$(window).on('load', () => {
-		stickyPosition();
+		stickyPos();
 
-		firstTime = 0;
+		stickyTime = 0;
 	});
 
 	$(window).on('scroll.techology', () => {
-		windowCalc = $(window).scrollTop() + innerHeight;
+		windowPosBottom = $(window).scrollTop() + innerHeight;
 
-		stickyPosition();
+		stickyPos();
 	});
 }
