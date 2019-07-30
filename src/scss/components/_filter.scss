@@ -21,9 +21,9 @@
 		font-size: 13px;
 		line-height: (18 / 13);
 		letter-spacing: 0.1em;
+		white-space: nowrap;
 		text-overflow: ellipsis;
 		text-transform: uppercase;
-		white-space: nowrap;
 		color: $color-white;
 		background-image: url("/images/sprites/svg/arrow-select.svg");
 		background-position: 100% 50%;
@@ -149,6 +149,14 @@
 	&__input {
 		@include visually-hidden;
 
+		&:disabled,
+		&.is-disabled {
+			+ label {
+				color: rgba($color-woodsmoke, 0.4);
+				cursor: not-allowed;
+			}
+		}
+
 		&.is-active,
 		&:checked {
 			+ label {
@@ -159,14 +167,6 @@
 				&::after {
 					opacity: 1;
 				}
-			}
-		}
-
-		&:disabled,
-		&.is-disabled {
-			+ label {
-				color: rgba($color-woodsmoke, 0.4);
-				cursor: not-allowed;
 			}
 		}
 	}
@@ -201,18 +201,18 @@
 		&::after {
 			content: "";
 			position: absolute;
-			top: 6px;
 			left: 2px;
+			top: 6px;
 			width: 8px;
 			height: 6px;
-			background-image: url('/images/sprites/svg/filter-ok.svg');
+			background-image: url("/images/sprites/svg/filter-ok.svg");
 			background-size: contain;
 			background-repeat: no-repeat;
 			opacity: 0;
 			transition: 0.3s;
 
 			.is-browser-ie {
-				background-image: url('/images/sprites/png/filter-ok.png');
+				background-image: url("/images/sprites/png/filter-ok.png");
 			}
 		}
 
