@@ -1,32 +1,30 @@
-let $card = $('.filter-card');
-let $city = $('.filter-city');
-let $region = $('.filter-region');
+import * as globals from '../globals';
 
-function filterCard(filter) {
+let $card = $('body').find('.filter-card');
+let $city = $('body').find('.filter-city');
+let $region = $('body').find('.filter-region');
+
+export function filterCard(filter, $item) {
+	$card = $('body').find('.filter-card');
+
+	let $elem = $item || $card;
+
 	if (filter === 'all') {
-		$card.show();
+		$elem.show();
 	} else {
-		let filters = [];
 		let objActive = [];
 
-		filters.push(filter);
-
-		$card.each((i, e) => {
+		$elem.each((i, e) => {
 			let param = $(e).data('filter');
 
-			let k = filters.length;
-
-			for (let j = 0; j < filters.length; j++) {
-				if (param.indexOf(filters[j]) !== -1) {
-					k--;
+			for (let j = 0; j < filter.length; j++) {
+				if (param.indexOf(filter[j]) !== -1) {
+					objActive.push(e);
 				}
 			}
-
-			if (k === 0) {
-				objActive.push(e);
-			}
 		});
-		$card.hide();
+
+		$elem.hide();
 
 		for (let k of objActive) {
 			$(k).show();
@@ -34,23 +32,7 @@ function filterCard(filter) {
 	}
 }
 
-function filterContainer(filter, name, $item) {
-	if (filter === 'all') {
-		$item.show();
-	} else {
-		$item.show();
-
-		$item.each((i, e) => {
-			let param = $(e).data(name);
-
-			if (filter !== param) {
-				$(e).hide();
-			}
-		});
-	}
-}
-
-function filterCitySelect(filter) {
+export function filterCitySelect(filter) {
 	const $filter = $('.js-filter-city');
 	const $item = $filter.find('optgroup');
 
@@ -58,37 +40,76 @@ function filterCitySelect(filter) {
 	$city.show();
 
 	if (filter === 'all') {
-		$item.show();
+		$item.prop('disabled', false);
 	} else {
-		$item.show();
+		$item.prop('disabled', false);
 
 		$item.each((i, e) => {
 			let param = $(e).attr('value');
 
 			if (filter !== param) {
-				$(e).hide();
+				$(e).prop('disabled', true);
 			}
 		});
 	}
 }
 
-$('.js-filter-select').on('change', (e) => {
-	const filter = $(e.currentTarget).val();
+export function filterSelect(filter) {
+	const $select = $('.js-filter-city').find('select');
+	const $group = $('.js-filter-city').find('.filter__group');
 
-	filterCard(filter);
-});
+	$select.val('all');
+	$city.show();
 
-$('.js-filter-city').on('change', (e) => {
-	const filter = $(e.currentTarget).val();
-	const name = $(e.currentTarget).attr('name');
+	if (filter === 'all') {
+		$group.removeClass('is-disabled');
+	} else {
+		$group.addClass('is-disabled');
 
-	filterContainer(filter, name, $city);
-});
+		$group.each((i, e) => {
+			let param = $(e).data('filter');
 
-$('.js-filter-region').on('change', (e) => {
-	const filter = $(e.currentTarget).val();
-	const name = $(e.currentTarget).attr('name');
+			for (let j = 0; j < filter.length; j++) {
+				if (param.indexOf(filter[j]) !== -1) {
+					$(e).removeClass('is-disabled');
+				}
+			}
+		});
+	}
+}
 
-	filterContainer(filter, name, $region);
-	filterCitySelect(filter);
-});
+function init() {
+	if (globals.isTablet()) {
+		$('body')
+			.on('change', '.js-filter-select', (e) => {
+				let filter = $(e.currentTarget).val();
+
+				if (!filter.length) {
+					filter = 'all';
+				}
+
+				filterCard(filter);
+			})
+			.on('change', '.js-filter-city', (e) => {
+				let filter = $(e.currentTarget).val();
+
+				if (!filter.length) {
+					filter = 'all';
+				}
+
+				filterCard(filter, $city);
+			})
+			.on('change', '.js-filter-region', (e) => {
+				let filter = $(e.currentTarget).val();
+
+				if (!filter.length) {
+					filter = 'all';
+				}
+
+				filterCard(filter, $region);
+				filterCitySelect(filter);
+			});
+	}
+}
+
+init();

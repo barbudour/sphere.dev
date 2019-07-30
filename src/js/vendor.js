@@ -3,6 +3,7 @@ import svg4everybody from 'svg4everybody';
 import $ from 'jquery';
 import 'gsap';
 import 'slick-carousel';
+import './polyfill';
 
 svg4everybody();
 

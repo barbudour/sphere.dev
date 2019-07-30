@@ -1,4 +1,5 @@
 import './vendor';
+import './components/header';
 import './components/cursor';
 import './components/grid';
 import './components/polygon';
