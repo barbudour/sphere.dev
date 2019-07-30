@@ -62,7 +62,7 @@ function closeSelect() {
 	$('.js-select-toggle').fadeOut();
 }
 
-function getFilter($element) {
+export function getFilter($element) {
 	let array = [];
 
 	$element.find('input[type="checkbox"]').each((i, el) => {
@@ -83,9 +83,9 @@ function getFilter($element) {
 }
 
 function init() {
-	const $select = $('.js-select');
-	let $city = $('.filter-city');
-	let $region = $('.filter-region');
+	const $select = $('body').find('.js-select');
+	let $city = $('body').find('.filter-city');
+	let $region = $('body').find('.filter-region');
 
 	$select.each((i, e) => {
 		const $this = $(e);

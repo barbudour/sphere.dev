@@ -1,10 +1,12 @@
 import * as globals from '../globals';
 
-let $card = $('.filter-card');
-let $city = $('.filter-city');
-let $region = $('.filter-region');
+let $card = $('body').find('.filter-card');
+let $city = $('body').find('.filter-city');
+let $region = $('body').find('.filter-region');
 
 export function filterCard(filter, $item) {
+	$card = $('body').find('.filter-card');
+
 	let $elem = $item || $card;
 
 	if (filter === 'all') {

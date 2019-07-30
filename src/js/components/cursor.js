@@ -5,7 +5,7 @@ globals.vars.$siteContainer.append('<div class="cursor"></div>');
 const $cursor = $(document).find('.cursor');
 
 $('.js-cursor').each((index, element) => {
-	if (innerWidth > 1024) {
+	if (globals.isDesktop()) {
 		$(element).on('mousemove', (e) => {
 			TweenMax.to($cursor, 0.1, {
 				x: e.pageX - $cursor.width() / 2,
