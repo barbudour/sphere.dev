@@ -4,7 +4,8 @@ append vars
 	//- ...
 
 block content
-	.site-container
+	.site-container(data-barba="wrapper")
 		include pug/components/header
-		include pug/pages/single-news
-		include pug/components/footer
+		.main(data-barba="container" data-barba-namespace="post")
+			include pug/pages/single-news
+			include pug/components/footer
