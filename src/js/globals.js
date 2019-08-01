@@ -59,6 +59,10 @@ export function bodyWithOutScrollbar() {
 	$('.page__fixed').css({
 		right: `${getBodyScrollbarWidth()}px`,
 	});
+
+	$('.popup__close').css({
+		right: `${getBodyScrollbarWidth()}px`,
+	});
 }
 
 export function bodyWithScrollbar() {
@@ -75,6 +79,10 @@ export function bodyWithScrollbar() {
 	});
 
 	$('.page__fixed').css({
+		right: '',
+	});
+
+	$('.popup__close').css({
 		right: '',
 	});
 }

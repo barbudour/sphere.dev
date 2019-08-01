@@ -76,7 +76,7 @@
 					.video__title Заголовок видеоролика. Всегда пишем полное название
 					.video__controls
 						.video__play
-							button
+							button.js-popup-open(data-url="https://www.youtube.com/watch?v=bZNFRIwlQxQ" data-type="youtube")
 								+svg('play')
 							span play
 							.video__time 3:30
@@ -88,7 +88,7 @@
 					.video__title Заголовок видеоролика
 					.video__controls
 						.video__play
-							button
+							button.js-popup-open(data-url="https://vimeo.com/191947042" data-type="vimeo")
 								+svg('play')
 							span play
 							.video__time 3:30

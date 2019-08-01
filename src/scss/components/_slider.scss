@@ -118,7 +118,7 @@
 	padding-left: 15px;
 	font-weight: 400;
 	font-size: 11px;
-	line-height: 15px;
+	line-height: (15 / 11);
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
 	background-color: $color-white;

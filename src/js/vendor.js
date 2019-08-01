@@ -6,6 +6,7 @@ import 'slick-carousel';
 import barba from '@barba/core';
 import barbaRouter from '@barba/router';
 import barbaCss from '@barba/css';
+import './polyfill';
 
 svg4everybody();
 

@@ -356,23 +356,6 @@
 	}
 
 	&__popup {
-		position: fixed;
-		left: 0;
-		right: 0;
-		top: 0;
-		z-index: 11;
-		height: 100%;
-
-		&__shade {
-			position: absolute;
-			left: 0;
-			right: 0;
-			top: 0;
-			bottom: 0;
-			z-index: 1;
-			background-color: rgba($color-black, 0.5);
-		}
-
 		&__body {
 			position: absolute;
 			right: 0;

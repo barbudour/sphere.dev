@@ -39,12 +39,12 @@
 		.news__top
 			h2 Новости
 			.news__filter
-				select.news__select.filter__select.js-select.js-filter-select(name="tags")
-					option(value="all" selected) Все теги
+				select.filter__select.js-select(name="tags" multiple data-class="news__select js-filter-select")
+					option(value="all" selected hidden) Все теги
 					option(value="new") Новости
 					option(value="event") События
-				select.news__select.filter__select.js-select.js-filter-select(name="date")
-					option(value="all" selected) Все даты
+				select.filter__select.js-select(name="date" multiple data-class="news__select js-filter-select")
+					option(value="all" selected hidden) Все даты
 					option(value="07.07.19") 07.07.19
 					option(value="20.07.19") 20.07.19
 					option(value="15.07.19") 15.07.19

@@ -1,4 +1,5 @@
 import './vendor';
+import './components/header';
 import './components/cursor';
 import './components/grid';
 import './components/polygon';
@@ -11,3 +12,4 @@ import './components/news';
 import './components/select';
 import './components/router';
 import './components/technology';
+import './components/popup';

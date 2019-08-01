@@ -1,26 +1,40 @@
 import * as globals from '../globals';
 
-let windowCalc = $(window).scrollTop() + innerHeight;
-let firstTime = 1;
+let windowPosBottom = $(window).scrollTop() + innerHeight;
+let docScroll;
+const $techBody = globals.vars.$technology.find('.technology__content__body');
+const $techMedia = globals.vars.$technology.find('.technology__media__image');
 
-function sortFigures() {
+const getPageYScroll = () => {
+	docScroll = window.pageYOffset || document.documentElement.scrollTop;
+};
+
+function figuresCubes() {
 	const X = 55;
 	let Y = 66;
 	const Y2 = 34;
 	let body = [];
+	let scrollCalc;
 
-	globals.vars.$siteContainer.find('.technology__content__body').each((i, e) => {
+	$techBody.each((i, e) => {
 		body.push($(e));
 	});
 
-	globals.vars.$siteContainer.find('.technology__media__image').each((i, e) => {
+	$techMedia.each((i, e) => {
 		const $el = $(e);
+
+		let titlePos = body[i].find('h2').offset().top;
+		let titlePosBottom = titlePos + body[i].find('h2').innerHeight();
+		let elPos = $el.offset().top;
+		let elPosBottom = elPos + $el.innerHeight();
+
+		scrollCalc = elPosBottom / titlePos;
 
 		TweenMax.to($el, 0, {
 			y: -$el.innerHeight() * i,
 			bottom: 0,
 			zIndex: `+=${i}`,
-			opacity: 1,
+			opacity: scrollCalc > 0 ? scrollCalc.toFixed(3) : 0,
 		});
 
 		if (i !== 0) {
@@ -37,65 +51,82 @@ function sortFigures() {
 			});
 		}
 
-		$(window).on('load scroll', () => {
-			if (body[i].offset().top > windowCalc - 40) {
-				body[i].removeClass('is-active');
+		$(window).on('scroll.techology', () => {
+			titlePos = body[i].find('h2').offset().top;
+			titlePosBottom = titlePos + body[i].find('h2').innerHeight();
+			elPos = $el.offset().top;
+			elPosBottom = elPos + $el.innerHeight();
+
+			scrollCalc = elPosBottom / titlePos;
+
+			getPageYScroll();
+
+			if (titlePosBottom > windowPosBottom) {
+				TweenMax.to($el, 0.5, {
+					opacity: scrollCalc > 0 ? scrollCalc.toFixed(3) : 0,
+				});
+
 				if (i !== 0) {
 					TweenMax.to($el, 1, {
-						y: `-=${$el.innerHeight()}`,
+						y: -$el.innerHeight() * i + docScroll / 2.5,
 					});
 				}
 			} else {
-				body[i].addClass('is-active');
-				if (i !== 0) {
-					TweenMax.to($el, 1, {
-						y: 0,
-					});
-				}
+				TweenMax.to($el, 1, {
+					y: 0,
+					opacity: 1,
+				});
 			}
 
-			if (body[i].find('h2').offset().top + body[i].find('h2').innerHeight() > $el.offset().top && body[i].hasClass('is-active')) {
+			if (titlePosBottom > elPos && titlePos < elPosBottom) {
 				body[i].addClass('is-active');
-			} else {
+				$el.addClass('is-active');
+			} else if (body[i].addClass('is-active')) {
 				body[i].removeClass('is-active');
+				$el.removeClass('is-active');
 			}
 		});
 	});
 }
 
-sortFigures();
+figuresCubes();
 
-const $sticky = $('.js-sticky');
-const $stickyrStopper = $('.sticky-stopper');
-const stickyHeight = $sticky.innerHeight();
-const stickyStopPosition = $stickyrStopper.offset().top;
-const stickyParentHeight = $sticky.parent().innerHeight();
-const stickyParentPosition = $sticky.parent().offset().top;
-const diff = stickyParentHeight - stickyHeight;
+let sticky = {};
+let stickyTime = 1;
+sticky.$sticky = $('.js-sticky');
+sticky.$stickyStopper = $('.sticky-stopper');
 
-function sticky() {
-	if (stickyStopPosition < windowCalc) {
-		TweenMax.to($sticky, firstTime, {
-			y: diff,
+function stickyPos() {
+	if (sticky.stickyStopPos < windowPosBottom) {
+		TweenMax.to(sticky.$sticky, stickyTime, {
+			y: sticky.diff,
 		});
 
-		$('.technology__content__body').removeClass('is-active');
+		$techBody.removeClass('is-active');
+		$techMedia.removeClass('is-active');
 	} else {
-		TweenMax.to($sticky, firstTime, {
-			y: windowCalc - stickyParentPosition - stickyHeight,
+		TweenMax.to(sticky.$sticky, stickyTime, {
+			y: windowPosBottom - sticky.stickyParentPos - sticky.height,
 		});
 	}
 }
 
-$(window).on('load', () => {
-	sticky();
+if (sticky.$sticky.length) {
+	sticky.height = sticky.$sticky.innerHeight();
+	sticky.stickyStopPos = sticky.$stickyStopper.offset().top;
+	sticky.stickyParentHeight = sticky.$sticky.parent().innerHeight();
+	sticky.stickyParentPos = sticky.$sticky.parent().offset().top;
+	sticky.diff = sticky.stickyParentHeight - sticky.height;
 
-	firstTime = 0;
-});
+	$(window).on('load', () => {
+		stickyPos();
 
-$(window).on('scroll', () => {
-	windowCalc = $(window).scrollTop() + innerHeight;
+		stickyTime = 0;
+	});
 
-	sticky();
-});
+	$(window).on('scroll.techology', () => {
+		windowPosBottom = $(window).scrollTop() + innerHeight;
 
+		stickyPos();
+	});
+}

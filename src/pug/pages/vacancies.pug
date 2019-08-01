@@ -9,21 +9,21 @@
 			h1.page__top__title
 				| Вакансии
 			.vacancies__filter
-				select.vacancies__select.filter__select.js-select.js-filter-region(name="region")
-					option(value="all" selected) Все регионы
+				select.filter__select.js-select(name="region" multiple data-class="vacancies__select js-filter-region")
+					option(value="all" selected hidden) Все регионы
 					option(value="region-center") Центральный
 					option(value="region-sibir") Сибирский
 
-				select.vacancies__select.filter__select.js-select.js-filter-city(name="city")
-					option(value="all" selected) Все города
+				select.filter__select.js-select(name="city" multiple data-class="vacancies__select js-filter-city")
+					option(value="all" selected hidden) Все города
 					optgroup(value="region-center" label="Центральный регион")
 						option(value="city-moscow") Москва
 						option(value="city-ryazan") Рязань
-					optgroup(value="region-sibir" label="Сибирский регион")
+					optgroup(value="region-sibir" label="Сибирский регион" disabled)
 						option(value="city-irkutsk") Иркутск
 
-				select.vacancies__select.filter__select.js-select.js-filter-select(name="work")
-					option(value="all" selected) Все сферы деятельности
+				select.filter__select.js-select(name="work" multiple data-class="vacancies__select js-filter-select")
+					option(value="all" selected hidden) Все сферы деятельности
 					option(value="developer") Разработчик
 					option(value="admin") Администратор
 
@@ -44,8 +44,8 @@
 				p
 					| В&nbsp;Кластере поддерживается творческий подход к&nbsp;своему делу, нацеленность на&nbsp;результат, профессионализм, инициативность и&nbsp;умение работать в&nbsp;команде.
 
-		.vacancyes__region.filter-region(data-region="region-center")
-			.vacancies__city.content__container.filter-city#city-moscow(data-city="city-moscow")
+		.vacancyes__region.filter-region(data-filter="region-center")
+			.vacancies__city.content__container.filter-city#city-moscow(data-filter="city-moscow")
 				h2.vacancies__city__title
 					| Москва
 
@@ -145,7 +145,7 @@
 				button.vacancies__city__button.js-add-more(data-url="/vacancies.json" data-type="vacancy" data-id="city-moscow" type="button")
 					| Показать все вакансии в&nbsp;Москве
 
-			.vacancies__city.content__container.filter-city#city-ryazan(data-city="city-ryazan")
+			.vacancies__city.content__container.filter-city#city-ryazan(data-filter="city-ryazan")
 				h2.vacancies__city__title
 					| Рязань
 
@@ -245,8 +245,8 @@
 				button.vacancies__city__button.js-add-more(data-url="/vacanciesd.json" data-type="vacancy" data-id="city-ryazan" type="button")
 					| Показать все вакансии в&nbsp;Рязани
 
-		.vacancyes__region.filter-region(data-region="region-sibir")
-			.vacancies__city.content__container.filter-city#city-irkutsk(data-city="city-irkutsk")
+		.vacancyes__region.filter-region(data-filter="region-sibir")
+			.vacancies__city.content__container.filter-city#city-irkutsk(data-filter="city-irkutsk")
 				h2.vacancies__city__title
 					| Иркутск
 
@@ -315,69 +315,3 @@
 
 				button.vacancies__city__button.js-add-more(data-url="/vacancies.json" data-type="vacancy" data-id="city-irkutsk" type="button")
 					| Показать все вакансии в&nbsp;Иркутска
-
-.vacancies__popup.is-hidden
-	.vacancies__popup__shade.js-vacancies-popup-close
-
-	.vacancies__popup__body
-		.vacancies__popup__top
-			.vacancies__popup__name
-				| Отправить резюме
-			button.vacancies__popup__close.js-vacancies-popup-close
-				+svg('close')
-
-		form.vacancies__popup__form(action="/result.json")
-			input.vacancies__popup__field--hide(type="text" name="vacancy_id")
-			input.vacancies__popup__field--hide(type="text" name="vacancy_name")
-			.vacancies__popup__middle
-				.vacancies__popup__fieldset.required(data-error="Неверный формат")
-					input.vacancies__popup__field#popup-name(type="text" name="name" data-length="5")
-					label.vacancies__popup__label(for="popup-name")
-						| Имя Фамилия
-
-				.vacancies__popup__fieldset.required(data-error="Неверный формат")
-					input.vacancies__popup__field.js-mask-phone#popup-phone(type="tel" name="phone" data-length="16")
-					label.vacancies__popup__label(for="popup-phone")
-						| Телефон
-
-				.vacancies__popup__fieldset.required(data-error="Неверный формат")
-					input.vacancies__popup__field#popup-email(type="email" name="email" data-length="6")
-					label.vacancies__popup__label(for="popup-email")
-						| E-mail
-
-				.vacancies__popup__fieldset
-					textarea.vacancies__popup__field.vacancies__popup__textarea#popup-message(name="message")
-					label.vacancies__popup__label(for="popup-message")
-						| Сопроводительное письмо
-				
-				.vacancies__popup__file
-					.vacancies__popup__name
-						| Прикрепить файлы
-
-					.vacancies__popup__file__text
-						| Вы&nbsp;можете прикрепить до&nbsp;двух файлов, размером не&nbsp;более 10&nbsp;МБ. #[br]Доступные форматы: .doc, .pdf, .jpg, .jpeg, .png.
-
-					.vacancies__popup__file__fieldset
-						.vacancies__popup__file__result.is-hidden
-
-						input.vacancies__popup__file__input.js-vacancies-popup-file#popup-file(type="file" accept=".doc, .pdf, .jpg, .jpeg, .png" multiple)
-						label.button.vacancies__popup__file__label(for="popup-file")
-							span
-							| Выбрать
-							span
-
-			.vacancies__popup__bottom
-				button.vacancies__popup__submit(disabled)
-					| Отправить
-
-		.vacancies__popup__result.is-hidden
-			.vacancies__popup__result__title
-				| Спасибо!
-
-			.vacancies__popup__result__text
-				| Ваше резюме отправлено.
-
-			button.button.vacancies__popup__result__button.js-vacancies-popup-close
-				span
-				| Хорошо
-				span

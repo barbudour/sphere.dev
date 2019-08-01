@@ -1,3 +1,7 @@
+import * as globals from '../globals';
+import {filterCard} from './filter';
+import {getFilter} from './select';
+
 // eslint-disable-next-line consistent-return
 function loadVacancy(objects) {
 	let html = '';
@@ -6,7 +10,7 @@ function loadVacancy(objects) {
 		if (Object.prototype.hasOwnProperty.call(objects, i)) {
 			const object = objects[i];
 
-			html += `<div class="vacancies-item filter-card" id="${object.id}">
+			html += `<div class="vacancies-item filter-card" id="${object.id}" data-filter="${object.filter}" ${object.hidden ? 'style="display:none"' : ''}>
 						<div class="vacancies-item__info">
 							<div class="vacancies-item__info__top">
 								${object.date ? `<div class="vacancies-item__date">${object.date}</div>` : ''}
@@ -53,7 +57,7 @@ function loadNews(id, objects, count, iteration) {
 			iter += 1;
 
 			if (iter <= count) {
-				html += `<a class="grid-item filter-card" href="${object.link}" data-filter="${object.filter}">
+				html += `<a class="grid-item filter-card" href="${object.link}" data-filter="${object.filter}" ${object.hidden ? 'style="display:none"' : ''}>
 							<div class="grid-item__bg" style="${object.style}">
 								${object.src ? `<img src="${object.src}" srcset="${object.srcset} 2x">` : ''}
 							</div>
@@ -87,6 +91,15 @@ function load(id, path, type, count, iteration) {
 		.done((response) => {
 			if (type === 'vacancy') {
 				$container.append(loadVacancy(response));
+				let filter = '';
+
+				if (globals.isDesktop()) {
+					filter = getFilter($('.js-filter-select'));
+				} else {
+					filter = $('.js-filter-select').val();
+				}
+
+				filterCard(filter, $('body').find('.filter-card'));
 			} else if (type === 'news') {
 				if (!count) {
 					count = 1;
