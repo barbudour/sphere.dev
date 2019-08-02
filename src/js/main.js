@@ -13,3 +13,4 @@ import './components/select';
 import './components/router';
 import './components/technology';
 import './components/popup';
+import './components/tabletscroll';

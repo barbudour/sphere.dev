@@ -103,6 +103,10 @@
 					transform: translateY(-2px);
 				}
 			}
+
+			@include laptop {
+				padding: 0 50px;
+			}
 		}
 
 		@include laptop {
