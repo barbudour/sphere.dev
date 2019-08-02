@@ -119,6 +119,10 @@
 		height: vw(365, 768);
 	}
 
+	@include tablet-only {
+		height: 367px;
+	}
+
 	@include mobile {
 		margin: 0;
 		height: 341px;
