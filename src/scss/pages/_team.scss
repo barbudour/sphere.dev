@@ -190,8 +190,12 @@
 			max-width: 50%;
 
 			&--ceo {
+				display: flex;
+				flex-direction: column;
+				align-self: stretch;
+				justify-content: space-between;
 				margin: initial;
-				padding: 30px 85px;
+				padding: 30px 85px 35px;
 			}
 
 			@include tablet {
@@ -214,7 +218,7 @@
 		}
 
 		&__post {
-			margin: 14px 0 10px;
+			margin: 0 0 10px;
 			font-size: 11px;
 			line-height: (15 / 11);
 			letter-spacing: 0.1em;
@@ -244,9 +248,9 @@
 			}
 
 			@include mobile {
-				margin-bottom: 40px;
-				font-size: 21px;
-				line-height: (25 / 21);
+				margin-bottom: 50px;
+				font-size: 17px;
+				line-height: 130%;
 			}
 		}
 
@@ -254,23 +258,23 @@
 			position: relative;
 			font-weight: 300;
 			font-size: 15px;
-			line-height: (28 / 15);
+			line-height: (30 / 15);
 
 			&::before {
 				content: "";
 				position: absolute;
 				left: 0;
-				top: -15px;
-				width: 10px;
-				height: 10px;
+				top: -20px;
+				width: 14px;
+				height: 12px;
 				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 12' fill='none'%3E%3Cpath fill='%23edae09' d='M8 11V7h4v4H8z'/%3E%3Cpath stroke='%23edae09' d='M11.333 1L8 7m0 0v4h4V7H8z'/%3E%3Cpath fill='%23edae09' d='M1 11V7h4v4H1z'/%3E%3Cpath stroke='%23edae09' d='M4.333 1L1 7m0 0v4h4V7H1z'/%3E%3C/svg%3E");
 				background-size: contain;
 				background-repeat: no-repeat;
 			}
 
 			@include mobile {
-				font-size: 14px;
-				line-height: (25 / 14);
+				font-size: 15px;
+				line-height: 26px;
 			}
 		}
 

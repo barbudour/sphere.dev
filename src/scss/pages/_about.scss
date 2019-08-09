@@ -9,7 +9,7 @@
 
 	&__top {
 		@include mobile {
-			margin: 40px 15px;
+			margin: 40px 15px 45px;
 		}
 	}
 
@@ -18,6 +18,14 @@
 
 		@include mobile {
 			padding: 0 15px;
+		}
+	}
+
+	&__results {
+		padding: 56px 85px 103px;
+
+		@include mobile {
+			padding: 60px 15px;
 		}
 	}
 
@@ -51,6 +59,7 @@
 			letter-spacing: -0.01em;
 
 			@include mobile {
+				margin-bottom: 18px;
 				font-size: 21px;
 				line-height: 25px;
 			}
@@ -60,7 +69,7 @@
 			margin-top: 0;
 			font-weight: 300;
 			font-size: 16px;
-			line-height: 187%;
+			line-height: 190%;
 
 			@include mobile {
 				font-size: 15px;
@@ -430,14 +439,16 @@
 		.lists {
 			&__title {
 				margin-top: 0;
-				margin-bottom: 40px;
+				margin-bottom: 38px;
 				font-weight: 300;
 				font-size: 32px;
 				line-height: 140%;
 				letter-spacing: -0.01em;
 
 				@include mobile {
-					margin-bottom: 30px;
+					margin-bottom: 22px;
+					font-size: 21px;
+					line-height: 25px;
 				}
 			}
 
@@ -452,7 +463,7 @@
 					}
 
 					@include mobile {
-						margin-bottom: 40px;
+						margin-bottom: 46px;
 						padding-right: initial;
 					}
 				}
@@ -464,7 +475,7 @@
 
 			&__item {
 				&:not(:last-child) {
-					margin-bottom: 20px;
+					margin-bottom: 19px;
 				}
 
 				&__index {
@@ -476,11 +487,16 @@
 				}
 
 				&__title {
-					margin-top: 4px;
+					margin-top: 0;
 					margin-bottom: 0;
 					font-weight: 300;
 					font-size: 16px;
 					line-height: 187%;
+
+					@include mobile {
+						font-size: 15px;
+						line-height: 26px;
+					}
 				}
 			}
 		}
@@ -493,6 +509,7 @@
 	&__counters {
 		display: flex;
 		flex-wrap: wrap;
+		margin-top: 55px;
 
 		.counter {
 			&__item {

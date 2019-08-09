@@ -1111,7 +1111,7 @@ textarea {
 				}
 
 				@include mobile {
-					margin-top: 19px;
+					margin-top: -3px;
 				}
 			}
 
@@ -1185,13 +1185,17 @@ textarea {
 			}
 		}
 
+		@include laptop {
+			height: 100%;
+		}
+
 		@include tablet {
 			padding-right: 40px;
 			padding-left: 40px;
 		}
 
 		@include mobile {
-			padding: 56px 11px;
+			padding: 56px 19px;
 			height: 100%;
 		}
 	}
@@ -1200,8 +1204,13 @@ textarea {
 		margin-top: 0;
 	}
 
+	@include laptop {
+		height: 480px;
+	}
+
 	@include mobile {
-		padding: 60px 15px;
+		padding: 56px 11px;
+		height: 400px;
 	}
 }
 
