@@ -211,6 +211,7 @@ $('body')
 
 		$this.toggleClass('is-active');
 		$this.closest('.vacancies-item').find('.vacancies-item__body').slideToggle();
+		$this.closest('.vacancies-item').find('.vacancies-item__salary').toggleClass('vacancies-item__salary--hide');
 	})
 
 	.on('click', '.js-vacancies-popup-open', (e) => {
