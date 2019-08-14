@@ -6,7 +6,7 @@
 		margin-right: 25px;
 
 		@include mobile {
-			margin-right: 0;
+			margin-right: 49px;
 			margin-bottom: 25px;
 		}
 	}
@@ -48,6 +48,14 @@
 
 		&:focus {
 			outline: none;
+		}
+
+		&--tags {
+			margin-right: 21px;
+		}
+
+		&--date {
+			padding-right: 16px;
 		}
 
 		.filter & {
