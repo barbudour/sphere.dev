@@ -8,13 +8,17 @@
 		}
 	}
 
+	&__top {
+		margin-bottom: 45px;
+	}
+
 	&__hr {
-		padding: 60px 90px;
+		padding: 60px 90px 65px;
 
 		&__top {
 			display: flex;
 			align-items: center;
-			margin-bottom: 45px;
+			margin-bottom: 48px;
 
 			@include mobile {
 				display: block;
@@ -31,7 +35,7 @@
 			max-width: 100px;
 
 			@include mobile {
-				margin-bottom: 25px;
+				margin-bottom: 29px;
 			}
 		}
 
@@ -81,7 +85,7 @@
 				line-height: (28 / 15);
 
 				&:not(:last-child) {
-					margin-bottom: 25px;
+					margin-bottom: 28px;
 				}
 
 				@include mobile {
@@ -96,7 +100,7 @@
 		}
 
 		@include mobile {
-			padding: 40px 15px;
+			padding: 40px 15px 46px;
 		}
 	}
 
@@ -222,11 +226,25 @@
 		}
 
 		&__salary {
-			flex: 0 0 vw(256);
-			max-width: vw(256);
+			flex: 0 0 vw(346);
+			padding-left: 60px;
+			max-width: vw(346);
 			font-weight: 300;
 			font-size: 15px;
 			line-height: (28 / 15);
+			transition: all 0.3s ease;
+
+			&--hide {
+				opacity: 0;
+			}
+
+			@include laptop {
+				padding-left: 66px;
+			}
+
+			@include tablet {
+				padding-left: initial;
+			}
 
 			@include mobile {
 				flex: 0 0 100%;
@@ -313,6 +331,7 @@
 			}
 
 			&__button {
+				margin-top: 5px;
 				border-color: rgba($color-woodsmoke, 0.1);
 				color: $color-woodsmoke;
 				background-color: transparent;
@@ -336,11 +355,12 @@
 				max-width: 340px;
 				font-weight: 300;
 				font-size: 15px;
-				line-height: (28 / 15);
+				line-height: 25px;
 				color: rgba($color-woodsmoke, 0.5);
 
 				@include mobile {
 					margin-right: 0;
+					margin-bottom: 33px;
 					max-width: 100%;
 				}
 			}
@@ -601,7 +621,9 @@
 				color: $color-black;
 
 				@include mobile {
+					margin-top: 4px;
 					margin-bottom: 15px;
+					line-height: 25px;
 				}
 			}
 
