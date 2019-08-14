@@ -1,4 +1,9 @@
 .event {
+	&__intro-content {
+		padding-top: 92px;
+		padding-bottom: 100px;
+	}
+
 	&__info {
 		margin-bottom: 30px;
 
@@ -63,6 +68,7 @@
 			text-align: center;
 			text-transform: uppercase;
 			color: $color-white;
+			transform: translateY(-6px);
 
 			@include mobile {
 				margin: 0 0 21px;

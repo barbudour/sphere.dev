@@ -84,6 +84,14 @@
 					}
 				}
 			}
+
+			@include tablet {
+				margin-bottom: 26px;
+			}
+
+			@include mobile {
+				margin-bottom: 32px;
+			}
 		}
 
 		&__title {
@@ -169,16 +177,17 @@
 		}
 
 		&--event {
-			margin: 66px 0 52px;
+			margin: 74px 0 52px;
 			padding-right: 20px;
 
 			.page__top__title {
-				margin-bottom: 19px;
+				margin-bottom: 30px;
 				max-width: 840px;
 				font-size: 38px;
 				line-height: (46 / 38);
 
 				@include mobile {
+					margin-bottom: 20px;
 					font-size: 25px;
 					line-height: (31 / 25);
 					letter-spacing: -0.3px;
@@ -240,6 +249,11 @@
 
 			&--event {
 				margin-top: 75px;
+
+				@include tablet {
+					margin-top: 80px;
+					margin-bottom: 41px;
+				}
 			}
 		}
 
@@ -249,7 +263,7 @@
 		}
 
 		@include mobile {
-			margin: 35px 15px 47px;
+			margin: 35px 15px 42px;
 		}
 	}
 
@@ -405,7 +419,7 @@ textarea {
 
 		@include mobile {
 			font-size: 15px;
-			line-height: (26 / 15);
+			line-height: 26px;
 		}
 	}
 
@@ -534,6 +548,10 @@ textarea {
 						}
 					}
 				}
+			}
+
+			@include tablet-only {
+				padding-left: 42px;
 			}
 
 			@include mobile {
@@ -974,7 +992,7 @@ textarea {
 		}
 
 		@include mobile {
-			margin-bottom: 29px;
+			margin-bottom: initial;
 			max-width: 100%;
 		}
 	}

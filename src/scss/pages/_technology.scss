@@ -18,7 +18,31 @@
 					max-width: vw(125);
 					max-height: vw(125);
 				}
+
+				@include laptop {
+					width: 198px;
+					height: 198px;
+				}
+
+				@include tablet {
+					width: 160px;
+					height: 160px;
+				}
+
+				@include mobile {
+					width: 144px;
+					height: 145px;
+				}
 			}
+
+			@include mobile {
+				padding: 0 5px 10px;
+			}
+		}
+
+		@include mobile {
+			display: flex;
+			flex-wrap: wrap;
 		}
 	}
 
@@ -64,6 +88,10 @@
 					}
 				}
 			}
+		}
+
+		@include tablet {
+			display: none;
 		}
 	}
 
@@ -114,6 +142,10 @@
 				padding-left: 30px;
 			}
 		}
+
+		@include tablet {
+			margin-left: initial;
+		}
 	}
 
 	.slider {
@@ -151,6 +183,22 @@
 					bottom: 29px;
 					z-index: 0;
 				}
+			}
+		}
+	}
+
+	h2 {
+		margin: 0 0 35px;
+	}
+
+	p {
+		margin: 0 0 55px;
+	}
+
+	.hide-ul {
+		&--mobile {
+			@include mobile {
+				display: none;
 			}
 		}
 	}
