@@ -978,7 +978,7 @@ textarea {
 		}
 
 		@include mobile {
-			margin-bottom: 29px;
+			margin-bottom: initial;
 			max-width: 100%;
 		}
 	}
