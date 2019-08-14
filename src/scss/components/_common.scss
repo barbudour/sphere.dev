@@ -417,6 +417,10 @@ textarea {
 			max-width: 680px;
 		}
 
+		@include tablet {
+			margin: 0 0 36px;
+		}
+
 		@include mobile {
 			font-size: 15px;
 			line-height: 26px;
@@ -615,6 +619,10 @@ textarea {
 
 		@include laptop {
 			max-width: 730px;
+		}
+
+		@include mobile {
+			margin-bottom: 30px;
 		}
 	}
 
