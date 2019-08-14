@@ -62,7 +62,7 @@
 				max-width: 100%;
 
 				&:not(:last-child) {
-					margin-bottom: 30px;
+					margin-bottom: 37px;
 				}
 			}
 		}
@@ -200,6 +200,7 @@
 
 			@include tablet {
 				padding-right: 44px;
+				padding-left: 20px;
 
 				&--ceo {
 					padding: 30px 44px;
@@ -331,6 +332,11 @@
 
 				@include tablet {
 					margin-top: 19px;
+					margin-left: 0;
+				}
+
+				@include mobile {
+					margin-top: 29px;
 					margin-left: 0;
 				}
 			}
