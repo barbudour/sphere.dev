@@ -621,7 +621,9 @@
 				color: $color-black;
 
 				@include mobile {
+					margin-top: 4px;
 					margin-bottom: 15px;
+					line-height: 25px;
 				}
 			}
 
