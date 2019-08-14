@@ -405,7 +405,7 @@ textarea {
 
 		@include mobile {
 			font-size: 15px;
-			line-height: (26 / 15);
+			line-height: 26px;
 		}
 	}
 
@@ -534,6 +534,10 @@ textarea {
 						}
 					}
 				}
+			}
+
+			@include tablet-only {
+				padding-left: 42px;
 			}
 
 			@include mobile {
