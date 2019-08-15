@@ -22,6 +22,7 @@ if (globals.isDesktopBig() && $('.page').hasClass('home')) {
 
 			$(element).children('.grid-item__bg').css({
 				top: '-1px',
+				right: '-3px',
 			});
 
 			if (index % 2 === 0) {
@@ -47,6 +48,7 @@ if (globals.isDesktopBig() && $('.page').hasClass('home')) {
 				});
 			$(element).children('.grid-item__bg').css({
 				top: '-1px',
+				right: '-3px',
 			});
 		}
 
@@ -218,7 +220,6 @@ if (globals.isDesktop()) {
 				$this
 					.children('.grid-item__bg').css({
 						left: '0',
-						right: '0',
 						bottom: '0',
 					});
 
