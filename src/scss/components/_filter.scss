@@ -25,7 +25,7 @@
 		text-overflow: ellipsis;
 		text-transform: uppercase;
 		color: $color-white;
-		background-image: url("/images/sprites/svg/arrow-select.svg");
+		background-image: url("../images/sprites/svg/arrow-select.svg");
 		background-position: 100% 50%;
 		background-size: 14px;
 		background-repeat: no-repeat;
@@ -66,7 +66,7 @@
 		}
 
 		.is-browser-ie & {
-			background-image: url("/images/arrow-select.png");
+			background-image: url("../images/arrow-select.png");
 		}
 
 		.news & {
@@ -75,7 +75,7 @@
 			letter-spacing: 0.1em;
 			text-transform: uppercase;
 			color: $color-white;
-			background-image: url("/images/sprites/svg/arrow-select-yellow.svg");
+			background-image: url("../images/sprites/svg/arrow-select-yellow.svg");
 
 			&.filter__select:not(:last-of-type) {
 				margin-right: 50px;
@@ -203,7 +203,7 @@
 			border-radius: 2px;
 			width: 12px;
 			height: 12px;
-			transition: 0.3s;
+			transition: all 0.3s;
 		}
 
 		&::after {
@@ -213,14 +213,14 @@
 			top: 6px;
 			width: 8px;
 			height: 6px;
-			background-image: url("/images/sprites/svg/filter-ok.svg");
+			background-image: url("../images/sprites/svg/filter-ok.svg");
 			background-size: contain;
 			background-repeat: no-repeat;
 			opacity: 0;
-			transition: 0.3s;
+			transition: all 0.3s;
 
 			.is-browser-ie {
-				background-image: url("/images/sprites/png/filter-ok.png");
+				background-image: url("../images/sprites/png/filter-ok.png");
 			}
 		}
 

@@ -125,7 +125,7 @@
 			text-transform: uppercase;
 			color: $color-white;
 			background-color: $color-woodsmoke-dark;
-			transition: 0.3s;
+			transition: background-color 0.3s;
 
 			&:hover {
 				background-color: $color-black;
@@ -267,7 +267,7 @@
 			height: 50px;
 			color: $color-woodsmoke;
 			transform: translateY(-50%);
-			transition: 0.3s ease-out;
+			transition: transform 0.3s ease-out;
 
 			span {
 				position: absolute;
@@ -278,7 +278,7 @@
 				overflow: hidden;
 				border: 1px solid rgba($color-woodsmoke, 0.1);
 				transform: rotate(45deg);
-				transition: 0.3s ease-out;
+				transition: transform 0.3s ease-out;
 
 				&::before {
 					content: "";
@@ -289,7 +289,7 @@
 					bottom: -1px;
 					border: inherit;
 					transform: rotate(45deg);
-					transition: 0.3s ease-out;
+					transition: transform 0.3s ease-out;
 				}
 			}
 
@@ -471,7 +471,7 @@
 			width: 65px;
 			height: 65px;
 			background-color: rgba($color-woodsmoke, 0.05);
-			transition: 0.3s;
+			transition: background-color 0.3s;
 
 			svg {
 				width: 22px;
@@ -504,7 +504,7 @@
 				background-color: $color-pink;
 				opacity: 0;
 				visibility: hidden;
-				transition: 0.3s;
+				transition: all 0.3s;
 			}
 
 			&:not(:last-child) {
@@ -534,7 +534,7 @@
 			font-size: 16px;
 			line-height: 0.75;
 			color: $color-black;
-			transition: 0.2s;
+			transition: all 0.2s;
 
 			&.is-filled,
 			&:focus {
@@ -560,7 +560,7 @@
 			font-size: 16px;
 			line-height: 0.75;
 			color: rgba($color-black, 0.6);
-			transition: 0.2s;
+			transition: all 0.2s;
 			cursor: text;
 		}
 
