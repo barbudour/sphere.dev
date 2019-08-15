@@ -66,6 +66,7 @@
 		"ninelines-ua-parser": "1.1.6",
 		"normalize.css": "8.0.1",
 		"slick-carousel": "1.8.1",
+		"stackblur-canvas": "2.2.0",
 		"svg4everybody": "2.1.9"
 	}
 }

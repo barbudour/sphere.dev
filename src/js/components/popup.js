@@ -69,8 +69,6 @@ function closePopup() {
 	})
 		.to($popupBody, 0.4, {
 			y: '100%',
-		})
-		.to($popupShade, 0.3, {
 			autoAlpha: 0,
 		});
 }
@@ -85,6 +83,11 @@ $('body')
 		globals.saveScrollPosition();
 
 		showPopup(getVideoId(url, type), type);
+	})
+	.keyup(function(e) {
+		if (e.keyCode === 27) {
+			closePopup();
+		}
 	})
 	.on('click', '.js-popup-close', () => {
 		closePopup();

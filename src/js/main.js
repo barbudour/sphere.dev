@@ -2,6 +2,7 @@ import './vendor';
 import './components/header';
 import './components/cursor';
 import './components/grid';
+import './components/gridHover';
 import './components/polygon';
 import './components/menu';
 import './components/slider';
