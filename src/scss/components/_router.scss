@@ -1,0 +1,66 @@
+
+/* transition active state (same for leave and enter) */
+.barba-leave-active,
+.barba-enter-active {
+	transition: all 0.4s ease;
+
+	.wrapper > *:not(.breadcrumb):not(.page__top),
+	.grid,
+	.breadcrumb > .breadcrumb__item:last-child,
+	.page__top {
+		transition: all 0.4s ease;
+	}
+}
+
+/* initial state */
+.barba-leave {
+	opacity: 1;
+}
+
+.barba-enter,
+.barba-leave-to {
+	.wrapper > *:not(.breadcrumb):not(.page__top) {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+
+	.grid {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+
+	.breadcrumb {
+		.breadcrumb__item:last-child {
+			opacity: 0;
+			transform: translateX(10px);
+		}
+	}
+
+	.page__top {
+		opacity: 0;
+		transform: translateX(10px);
+	}
+}
+
+/* ending state */
+.barba-leave-to {
+	.wrapper > *:not(.breadcrumb):not(.page__top) {
+		transition-delay: 0s;
+	}
+
+	.breadcrumb {
+		.breadcrumb__item:last-child {
+			transition-delay: 0s;
+		}
+	}
+
+	.page__top {
+		transition-delay: 0s;
+	}
+}
+
+.barba-enter-to {
+	opacity: 1;
+}
+
+/* Note that this code can be refactored for optimization */

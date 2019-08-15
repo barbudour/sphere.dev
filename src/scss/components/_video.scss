@@ -1,0 +1,230 @@
+
+.videos {
+	padding: 96px 81px;
+	background-color: rgba($color-woodsmoke-dark, 0.85);
+
+	.video {
+		position: relative;
+		display: flex;
+		align-items: center;
+		margin-bottom: 42px;
+		padding: 15px 89px;
+		height: vw(288);
+
+		&::before {
+			content: "";
+			position: absolute;
+			left: 4px;
+			right: 4px;
+			top: 4px;
+			bottom: 4px;
+			border: 1px solid rgba($color-white, 0.2);
+			pointer-events: none;
+		}
+
+		> span {
+			position: absolute;
+			left: -1px;
+			right: -1px;
+			top: -1px;
+			bottom: -1px;
+			overflow: hidden;
+			pointer-events: none;
+
+			&:first-child {
+				&::before {
+					@include triangle(to top left, 4px, 4px, $color-sunglow);
+
+					content: "";
+					position: absolute;
+					left: 0;
+					top: 0;
+					transform: translate(5px, 5px) translateZ(0);
+					transform-origin: left top;
+					transition: transform 0.3s;
+					will-change: transform;
+				}
+
+				&::after {
+					@include triangle(to bottom left, 4px, 4px, $color-sunglow);
+
+					content: "";
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					transform: translate(5px, -5px) translateZ(0);
+					transform-origin: left bottom;
+					transition: transform 0.3s;
+					will-change: transform;
+				}
+			}
+
+			&:last-child {
+				&::before {
+					@include triangle(to top right, 4px, 4px, $color-sunglow);
+
+					content: "";
+					position: absolute;
+					right: 0;
+					top: 0;
+					transform: translate(-5px, 5px) translateZ(0);
+					transform-origin: right top;
+					transition: transform 0.3s;
+					will-change: transform;
+				}
+
+				&::after {
+					@include triangle(to bottom right, 4px, 4px, $color-sunglow);
+
+					content: "";
+					position: absolute;
+					right: 0;
+					bottom: 0;
+					transform: translate(-5px, -5px) translateZ(0);
+					transform-origin: right bottom;
+					transition: transform 0.3s;
+					will-change: transform;
+				}
+			}
+		}
+
+		&__title {
+			max-width: 500px;
+			font-weight: 300;
+			font-size: 32px;
+			line-height: (45 / 32);
+			letter-spacing: -0.01em;
+			color: $color-white;
+
+			@include mobile {
+				font-size: 21px;
+				line-height: (25 / 21);
+				letter-spacing: -0.01em;
+				color: $color-white;
+			}
+		}
+
+		&__play {
+			display: flex;
+			align-items: center;
+			margin-top: 23px;
+			height: 45px;
+
+			button {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border: none;
+				width: 45px;
+				height: 45px;
+				background-color: $color-sunglow;
+				transition: background 0.3s;
+
+				svg {
+					width: 12px;
+					height: 15px;
+				}
+
+				@include mobile {
+					margin-top: -3px;
+				}
+			}
+
+			span {
+				margin-left: 20px;
+				font-weight: 400;
+				font-size: 11px;
+				line-height: (15 / 11);
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				color: $color-white;
+			}
+
+			@include desktop {
+				&:hover {
+					button {
+						background-color: $color-buttercup;
+					}
+				}
+			}
+		}
+
+		&__time {
+			margin-left: 10px;
+			font-weight: 400;
+			font-size: 11px;
+			line-height: (15 / 11);
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: rgba($color-white, 0.5);
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		@include desktop {
+			&:hover {
+				> span {
+					&:first-child {
+						&::before {
+							transform: translate(0, 0) translateZ(0);
+						}
+
+						&::after {
+							transform: translate(0, 0) translateZ(0);
+						}
+					}
+
+					&:last-child {
+						&::before {
+							transform: translate(0, 0) translateZ(0);
+						}
+
+						&::after {
+							transform: translate(0, 0) translateZ(0);
+						}
+					}
+				}
+			}
+
+			@include laptop {
+				height: 288px;
+			}
+
+			@include mobile {
+				margin-bottom: 32px;
+				padding: 74px 19px;
+				height: auto;
+				min-height: vmin(288, 320);
+			}
+		}
+
+		@include laptop {
+			height: 100%;
+		}
+
+		@include tablet {
+			padding-right: 40px;
+			padding-left: 40px;
+		}
+
+		@include mobile {
+			padding: 56px 19px;
+			height: 100%;
+		}
+	}
+
+	.no-offset-top {
+		margin-top: 0;
+	}
+
+	@include laptop {
+		height: 480px;
+	}
+
+	@include mobile {
+		padding: 56px 11px;
+		height: 400px;
+	}
+}
