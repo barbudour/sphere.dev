@@ -1,0 +1,17 @@
+.cursor {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 10;
+	width: 60px;
+	height: 60px;
+	background: url("../images/sprites/svg/cursor.svg") no-repeat center;
+	background-size: cover;
+	opacity: 0;
+	transition: opacity 0.3s;
+	pointer-events: none;
+
+	&.is-active {
+		opacity: 1;
+	}
+}

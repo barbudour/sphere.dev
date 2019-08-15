@@ -1,5 +1,10 @@
+
 button {
+	border: 0;
+	padding: 0;
+	background-color: transparent;
 	transition: all 0.3s;
+	cursor: pointer;
 }
 
 .button {
@@ -35,6 +40,7 @@ button {
 				position: absolute;
 				left: 0;
 				top: 0;
+				backface-visibility: hidden;
 				transform: translateZ(0);
 				transform-origin: left top;
 				transition: transform 0.3s;
@@ -48,6 +54,7 @@ button {
 				position: absolute;
 				left: 0;
 				bottom: 0;
+				backface-visibility: hidden;
 				transform: translateZ(0);
 				transform-origin: left bottom;
 				transition: transform 0.3s;
@@ -63,6 +70,7 @@ button {
 				position: absolute;
 				right: 0;
 				top: 0;
+				backface-visibility: hidden;
 				transform: translateZ(0);
 				transform-origin: right top;
 				transition: transform 0.3s;
@@ -76,6 +84,7 @@ button {
 				position: absolute;
 				right: 0;
 				bottom: 0;
+				backface-visibility: hidden;
 				transform: translateZ(0);
 				transform-origin: right bottom;
 				transition: transform 0.3s;
