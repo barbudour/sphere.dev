@@ -64,3 +64,23 @@
 }
 
 /* Note that this code can be refactored for optimization */
+
+#nprogress {
+	position: fixed;
+	left: 25vw;
+	top: 65px;
+	overflow: hidden;
+	width: 75vw;
+	height: 6px;
+	z-index: 999;
+
+	.bar {
+		position: absolute;
+		height: 6px;
+		background: $color-sunglow;
+
+		.peg {
+			display: none;
+		}
+	}
+}

@@ -269,10 +269,33 @@ html(class=html.classList)&attributes(html.attrs)
 		block styles
 			link(rel="stylesheet" href=`${baseDir}css/main.css?v=${Date.now()}`)
 		block head-end
-	body(class=body.classList)&attributes(body.attrs)
-		block body-start
-		block content
-		block scripts
 			script(src=`${baseDir}js/vendor.js?v=${Date.now()}`)
-			script(src=`${baseDir}js/main.js?v=${Date.now()}`)
+	body(class=body.classList)&attributes(body.attrs)(data-barba="wrapper")
+		block body-start
+		main(data-barba="container" data-barba-namespace!=barbaName)
+			block content
+			block scripts
+				script(src=`${baseDir}js/main.js?v=${Date.now()}`)
 		block body-end
+		script.
+			barba.init({
+			transitions: [
+			{
+			sync: true,
+			beforeLeave({ current }) {
+			$('html,body').animate({ scrollTop: 0 }, 300);
+			// $('body').children('script[src*=main]').remove();
+			// let script = document.createElement('script');
+			// script.src = '/js/main.js?v='+Date.now();
+			// $('body').appendChild(script);
+			NProgress.start();
+			},
+			beforeEnter({ next }) {
+			let script = document.createElement('script');
+			script.src="/js/main.js";
+			next.container.appendChild(script);
+			NProgress.done();
+			},
+			},
+			],
+			});

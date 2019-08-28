@@ -2,12 +2,12 @@ extends pug/base
 
 append vars
 	//- ...
+	- barbaName = 'team'
 
 block content
-	.site-container(data-barba="wrapper")
+	.site-container
 		include pug/components/header
-		main(data-barba="container" data-barba-namespace="team")
-			include pug/pages/team
-			include pug/components/footer
-			include pug/components/popup
+		include pug/pages/team
+		include pug/components/footer
+		include pug/components/popup
 		.page__fixed
