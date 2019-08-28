@@ -65,6 +65,8 @@
 		"jquery": "3.4.0",
 		"ninelines-ua-parser": "1.1.6",
 		"normalize.css": "8.0.1",
+		"nprogress": "0.2.0",
+		"pace-progressbar": "1.0.8",
 		"slick-carousel": "1.8.1",
 		"stackblur-canvas": "2.2.0",
 		"svg4everybody": "2.1.9"

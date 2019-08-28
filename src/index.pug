@@ -3,12 +3,12 @@ extends pug/base
 append vars
 	//- ...
 	- main = true
+	- barbaName = 'home'
 
 block content
-	.site-container.site-container--home(data-barba="wrapper")
+	.site-container.site-container--home
 		include pug/components/header
-		main(data-barba="container" data-barba-namespace="home")
-			include pug/pages/home
-			include pug/components/footer
-			include pug/components/popup
+		include pug/pages/home
+		include pug/components/footer
+		include pug/components/popup
 		.page__fixed
