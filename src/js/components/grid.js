@@ -190,7 +190,7 @@ $(window).on('resize', () => {
 });
 
 if (globals.isDesktop()) {
-	$('.js-grid').find('.grid-item').not('.grid-item--empty').each((index, element) => {
+	$('.js-grid').not('.news-grid').find('.grid-item').not('.grid-item--empty').each((index, element) => {
 		$(element)
 			.on('mouseenter', (event) => {
 				let $this = $(event.currentTarget);

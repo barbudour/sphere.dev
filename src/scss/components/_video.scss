@@ -10,6 +10,7 @@
 		margin-bottom: 42px;
 		padding: 15px 89px;
 		height: vw(288);
+		cursor: pointer;
 
 		&::before {
 			content: "";
@@ -19,6 +20,7 @@
 			top: 4px;
 			bottom: 4px;
 			border: 1px solid rgba($color-white, 0.2);
+			transition: border-color 0.3s;
 			pointer-events: none;
 		}
 
@@ -165,6 +167,10 @@
 
 		@include desktop {
 			&:hover {
+				&::before {
+					border-color: $color-sunglow;
+				}
+
 				> span {
 					&:first-child {
 						&::before {

@@ -76,25 +76,11 @@
 					text-decoration: none;
 					text-transform: uppercase;
 					color: $color-woodsmoke;
-
-					&::before {
-						content: "";
-						position: absolute;
-						left: 0;
-						bottom: 5px;
-						width: 100%;
-						height: 2px;
-						background-color: $color-woodsmoke;
-						transform: scaleX(0) translateZ(0);
-						transition: transform 0.3s;
-						will-change: transform;
-					}
+					transition: color 0.3s;
 
 					@include desktop {
 						&:hover {
-							&::before {
-								transform: scaleX(1) translateZ(0);
-							}
+							color: $color-sunglow;
 						}
 					}
 				}

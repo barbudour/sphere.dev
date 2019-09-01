@@ -1,14 +1,16 @@
-$(".grid-item").each(function(){
-	var blurImg = $(this).find(".grid-item__bg img");
-	var blurCanvas = $(this).find(".grid-item__blur");
-	// StackBlur.image(blurImg, blurCanvas, 20, true);
-	var img = new Image();
-	img.src = blurImg.attr("src");
-	img.onload = function() {
-		context.drawImage(img, this.x, this.y, blurImg.clientWidth, blurImg.clientHeight);
-	};
+$('.news-grid .grid-item').each((index, element) => {
+	let myCanvas = $(element).find('.grid-item__blur').get(0);
+	let $blurImg = $(element).find('.grid-item__bg img');
 
-	$(this).on("mouseenter", function () {
-		console.log("hover");
-	});
+	if ($blurImg.length > 0) {
+		myCanvas.width = $blurImg.width() + 20;
+		myCanvas.height = $blurImg.height() + 20;
+		let ctx = myCanvas.getContext('2d');
+		let pic = new Image();
+		pic.src = $blurImg.attr('src');
+		pic.onload = () => {
+			ctx.filter = 'blur(10px)';
+			ctx.drawImage(pic, 0, 0, $blurImg.width() + 20, $blurImg.height() + 20);
+		};
+	}
 });

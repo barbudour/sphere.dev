@@ -23,31 +23,31 @@ window.NProgress = NProgress;
 
 const routes = [{
 	path: '/index',
-	name: 'home'
+	name: 'home',
 }, {
 	path: '/about',
-	name: 'about'
+	name: 'about',
 }, {
 	path: '/technologies',
-	name: 'techall'
+	name: 'techall',
 }, {
 	path: '/technologies/:technology',
-	name: 'tech'
+	name: 'tech',
 }, {
 	path: '/news',
-	name: 'news'
+	name: 'news',
 }, {
 	path: '/news/:post',
-	name: 'post'
+	name: 'post',
 }, {
 	path: '/news/:event',
-	name: 'event'
+	name: 'event',
 }, {
 	path: '/team',
-	name: 'team'
+	name: 'team',
 }, {
 	path: '/vacancies',
-	name: 'job'
+	name: 'job',
 }];
 
 barba.use(barbaRouter, {

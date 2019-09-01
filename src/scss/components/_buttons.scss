@@ -21,6 +21,7 @@ button {
 	text-decoration: none;
 	text-transform: uppercase;
 	color: $color-white;
+	transition: border-color 0.3s;
 
 	span {
 		position: absolute;
@@ -29,7 +30,6 @@ button {
 		top: -1px;
 		bottom: -1px;
 		z-index: -1;
-		overflow: hidden;
 		pointer-events: none;
 
 		&:first-child {
@@ -131,10 +131,27 @@ button {
 
 	@include desktop {
 		&:hover {
-			span {
-				&::before,
-				&::after {
-					transform: scale(35) translateZ(0);
+			border-color: $color-sunglow;
+
+			> span {
+				&:first-child {
+					&::before {
+						transform: translate(-5px, -5px) translateZ(0);
+					}
+
+					&::after {
+						transform: translate(-5px, 5px) translateZ(0);
+					}
+				}
+
+				&:last-child {
+					&::before {
+						transform: translate(5px, -5px) translateZ(0);
+					}
+
+					&::after {
+						transform: translate(5px, 5px) translateZ(0);
+					}
 				}
 			}
 		}

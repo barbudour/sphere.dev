@@ -176,6 +176,7 @@
 		&__info {
 			position: relative;
 			padding-right: 60px;
+			cursor: pointer;
 
 			&__top {
 				display: flex;
@@ -193,6 +194,24 @@
 
 				@include mobile {
 					display: block;
+				}
+			}
+
+			@include desktop {
+				&:hover {
+					.vacancies-item__button {
+						span {
+							border-width: 25px;
+
+							&::before {
+								left: -25px;
+								right: -25px;
+								top: -25px;
+								bottom: -25px;
+								border: 1px solid rgba($color-woodsmoke, 0.1);
+							}
+						}
+					}
 				}
 			}
 		}
@@ -301,27 +320,15 @@
 			&.is-active {
 				transform: translateY(-50%) rotate(180deg);
 			}
-
-			@include desktop {
-				&:hover {
-					span {
-						border-width: 25px;
-
-						&::before {
-							left: -25px;
-							right: -25px;
-							top: -25px;
-							bottom: -25px;
-							border: 1px solid rgba($color-woodsmoke, 0.1);
-						}
-					}
-				}
-			}
 		}
 
 		&__body {
 			display: none;
 			margin-top: 50px;
+
+			> ul {
+				margin-top: 0;
+			}
 
 			&__title {
 				margin: 0 0 10px;

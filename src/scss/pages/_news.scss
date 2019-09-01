@@ -20,6 +20,7 @@
 			text-decoration: none;
 			text-transform: uppercase;
 			color: $color-white;
+			transition: border-color 0.3s;
 
 			@include mobile {
 				display: inline-block;
@@ -28,7 +29,7 @@
 
 			@include desktop {
 				&:hover {
-					border-bottom-style: solid;
+					border-bottom-color: rgba($color-white, 0);
 				}
 			}
 		}
@@ -54,7 +55,6 @@
 			bottom: 40px;
 			z-index: 3;
 			margin: 0;
-			border: 1px solid rgba($color-white, 0.2);
 			padding: 0;
 			height: 45px;
 			min-width: 45px;
@@ -183,6 +183,7 @@
 			font-size: 18px;
 			line-height: (23 / 18);
 			color: $color-white;
+			transition: color 0.3s;
 		}
 
 		&.is-second {
@@ -199,7 +200,7 @@
 				text-decoration: none !important;
 
 				.news__slide__text {
-					text-decoration: underline;
+					color: $color-sunglow;
 				}
 			}
 		}
@@ -286,10 +287,23 @@
 		height: 120px;
 		font-weight: 400;
 		font-size: 11px;
-		line-height: (15 / 11);
+		line-height: 30px;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
 		color: $color-white;
 		background-color: $color-woodsmoke-dark;
+
+		span {
+			transition: opacity 0.3s;
+			will-change: opacity;
+		}
+
+		@include desktop {
+			span {
+				&:hover {
+					opacity: 0.6;
+				}
+			}
+		}
 	}
 }

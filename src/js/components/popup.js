@@ -84,7 +84,7 @@ $('body')
 
 		showPopup(getVideoId(url, type), type);
 	})
-	.keyup(function(e) {
+	.keyup((e) => {
 		if (e.keyCode === 27) {
 			closePopup();
 		}
