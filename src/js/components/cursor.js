@@ -18,7 +18,6 @@ $('.js-cursor').each((index, element) => {
 		});
 
 		$('.news__more span').on('mouseenter', () => {
-			console.log(1)
 			$cursor.addClass('is-plus');
 		}).on('mouseleave', () => {
 			$cursor.removeClass('is-plus');

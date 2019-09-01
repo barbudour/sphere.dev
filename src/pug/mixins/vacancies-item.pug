@@ -24,9 +24,9 @@ mixin vacancies-item(data)
 					.vacancies-item__body__title= list.name
 
 					if list.array
-						ul.vacancies-item__list.no-offset-top
+						ul
 							each arr in list.array
-								li.vacancies-item__list__item= arr
+								li= arr
 					else
 						p
 							| Нет описания
