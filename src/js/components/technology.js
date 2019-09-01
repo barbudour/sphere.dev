@@ -1,168 +1,80 @@
+import throttle from 'lodash';
 import * as globals from '../globals';
 
 let windowPosBottom = $(window).scrollTop() + innerHeight;
 let docScroll;
+let canScroll = true;
 const $techBody = globals.vars.$technology.find('.technology__content__body');
-const $techMedia = globals.vars.$technology.find('.technology__media__image');
-const $yellowCubes = globals.vars.$technology.find('.cubes__yellow');
+const $techMedia = globals.vars.$technology.find('.technology__media__figure');
 
 const getPageYScroll = () => {
 	docScroll = window.pageYOffset || document.documentElement.scrollTop;
 };
 
-function figuresCubes() {
-	const X = 50;
-	let Y = 60;
-	const Y2 = 32;
+function sortFigures() {
+	const X = 57;
+	let Y = 68;
+	const Y2 = 35;
 	let body = [];
-	let scrollCalc;
 
 	$techBody.each((i, e) => {
 		body.push($(e));
 	});
-
 
 	$techMedia.each((i, e) => {
 		const $el = $(e);
 
 		let titlePos = body[i].find('h2').offset().top;
 		let titlePosBottom = titlePos + body[i].find('h2').innerHeight();
-		let elPos = $el.offset().top;
-		let elPosBottom = elPos + $el.innerHeight();
+		let elPosBottom = $el.offset().top;
 
-		scrollCalc = elPosBottom / titlePos;
-
-		TweenMax.to($el, 0, {
+		TweenLite.to($el, 0, {
 			y: -$el.innerHeight() * i,
 			bottom: 0,
 			zIndex: `+=${i}`,
-			opacity: 1
-			// opacity: scrollCalc > 0 ? scrollCalc.toFixed(3) : 1,
-		});
-		
-		if (i !== 0) {
-			TweenMax.to($el, 0, {
-				bottom: `+=${Y * i}`,
-			});
-		}
-		
-		if (i % 2 === 0 && i !== 0) {
-			TweenMax.to($el, 0, {
-				left: X,
-				bottom: `-=${Y2}`,
-				zIndex: `-=${2}`,
-			});
-		}
-		
-		$(window).on('scroll.techology', () => {
-			titlePos = body[i].find('h2').offset().top;
-			titlePosBottom = titlePos + body[i].find('h2').innerHeight();
-			elPos = $el.offset().top;
-			elPosBottom = elPos + $el.innerHeight();
-			
-			scrollCalc = elPosBottom / titlePos;
-			
-			getPageYScroll();
-			
-			if (titlePosBottom > windowPosBottom) {
-				TweenMax.to($el, 0.5, {
-					opacity: 1
-				});
-				
-				if (i !== 0) {
-					TweenMax.to($el, 1, {
-						y: -$el.innerHeight() * i + docScroll / 2.5,
-						opacity: 1
-					});
-				}
-			} else {
-				TweenMax.to($el, 1, {
-					y: 0,
-					opacity: 0,
-				});
-			}
-			
-			if (titlePosBottom > elPos && titlePos < elPosBottom) {
-				body[i].addClass('is-active');
-				$el.addClass('is-active');
-			} else if (body[i].addClass('is-active')) {
-				body[i].removeClass('is-active');
-				$el.removeClass('is-active');
-			}
-		});
-	});
-
-
-	$yellowCubes.each((i, e) => {
-		const $el = $(e);
-		TweenMax.to($el, 0, {
-			y: -$el.innerHeight() * i,
-			bottom: 0,
-			zIndex: `+=${i}`,
-			opacity: 0
-			// opacity: scrollCalc > 0 ? scrollCalc.toFixed(3) : 0,
 		});
 
 		if (i !== 0) {
-			TweenMax.to($el, 0, {
+			TweenLite.to($el, 0, {
 				bottom: `+=${Y * i}`,
 			});
 		}
 
-		if (i == 1) {
-			TweenMax.to($el, 0, {
-				zIndex: 999,
-			});
-		}
-		
 		if (i % 2 === 0 && i !== 0) {
-			TweenMax.to($el, 0, {
+			TweenLite.to($el, 0, {
 				left: X,
 				bottom: `-=${Y2}`,
 				zIndex: `-=${2}`,
 			});
 		}
 
-		$(window).on('scroll.techology', () => {
-			let titlePos = body[i].find('h2').offset().top;
-			let titlePosBottom = titlePos + body[i].find('h2').innerHeight();
-			let elPos = $el.offset().top;
-			let elPosBottom = elPos + $el.innerHeight();
-			
-			scrollCalc = elPosBottom / titlePos;
-			
+		$(window).on('scroll.techology', _.throttle(() => {
 			getPageYScroll();
-			
-			if (titlePosBottom > windowPosBottom) {
-				TweenMax.to($el, 0.5, {
-					opacity: 0
-				});
-				
-				if (i !== 0) {
-					TweenMax.to($el, 1, {
-						y: -$el.innerHeight() * i + docScroll / 2.5,
-						opacity: 0
+
+			if (canScroll) {
+				elPosBottom = $el.offset().top;
+
+				if (titlePosBottom > windowPosBottom) {
+					TweenLite.to($el, 1, {
+						y: -$el.innerHeight() * i + docScroll / 1.5,
 					});
+					body[i].removeClass('is-active');
+					$el.removeClass('is-active');
+				} else {
+					TweenLite.to($el, 1, {
+						y: 0,
+					});
+					body[i].addClass('is-active');
+					$el.addClass('is-active');
 				}
-			} else {
-				TweenMax.to($el, 1, {
-					y: 0,
-					opacity: 1,
-				});
+
+				if (titlePosBottom < elPosBottom && body[i].hasClass('is-active')) {
+					body[i].removeClass('is-active');
+				}
 			}
-			
-			if (titlePosBottom > elPos && titlePos < elPosBottom) {
-				body[i].addClass('is-active');
-				$el.addClass('is-active');
-			} else if (body[i].addClass('is-active')) {
-				body[i].removeClass('is-active');
-				$el.removeClass('is-active');
-			}
-		});
+		}, 121));
 	});
 }
-
-figuresCubes();
 
 let sticky = {};
 let stickyTime = 1;
@@ -171,15 +83,16 @@ sticky.$stickyStopper = $('.sticky-stopper');
 
 function stickyPos() {
 	if (sticky.stickyStopPos < windowPosBottom) {
-		TweenMax.to(sticky.$sticky, stickyTime, {
-			y: sticky.diff,
+		canScroll = false;
+		TweenLite.to(sticky.$sticky, stickyTime, {
+			top: sticky.diff,
 		});
 
 		$techBody.removeClass('is-active');
-		$techMedia.removeClass('is-active');
 	} else {
-		TweenMax.to(sticky.$sticky, stickyTime, {
-			y: windowPosBottom - sticky.stickyParentPos - sticky.height,
+		canScroll = true;
+		TweenLite.to(sticky.$sticky, stickyTime, {
+			top: windowPosBottom - sticky.stickyParentPos - sticky.height,
 		});
 	}
 }
@@ -194,6 +107,12 @@ if (sticky.$sticky.length) {
 	$(window).on('load', () => {
 		stickyPos();
 
+		sortFigures();
+
+		TweenLite.to(sticky.$sticky, stickyTime * 1.75, {
+			opacity: 1,
+		});
+
 		stickyTime = 0;
 	});
 
@@ -203,3 +122,51 @@ if (sticky.$sticky.length) {
 		stickyPos();
 	});
 }
+
+if ($('main').data('barba-namespace') === 'tech' && globals.vars.isEdgeIE) {
+	$('body').on('mousewheel', () => {
+		event.preventDefault();
+
+		let wheelDelta = event.wheelDelta;
+		let currentScrollPosition = window.pageYOffset;
+		window.scrollTo(0, currentScrollPosition - wheelDelta);
+	});
+}
+
+$('.js-slide-image-plus').on('click', (e) => {
+	const $element = $(e.currentTarget).closest('.slide').find('img');
+	let zoom = Number($element.data('zoom'));
+
+	if (zoom < 2.5) {
+		zoom += 0.25;
+
+		TweenLite.to($element, 0.4, {
+			scaleY: `${zoom}`,
+			scaleX: `${zoom}`,
+		});
+
+		$element.attr('data-zoom', `${zoom}`).data('zoom', `${zoom}`);
+	}
+});
+
+$('.js-slide-image-minus').on('click', (e) => {
+	const $element = $(e.currentTarget).closest('.slide').find('img');
+	let zoom = Number($element.data('zoom'));
+
+	if (zoom > 1) {
+		zoom -= 0.25;
+
+		TweenLite.to($element, 0.4, {
+			scaleY: `${zoom}`,
+			scaleX: `${zoom}`,
+		});
+
+		$element.attr('data-zoom', `${zoom}`).data('zoom', `${zoom}`);
+	} else {
+		TweenLite.to($element, 0.4, {
+			scale: 1,
+		});
+
+		$element.attr('data-zoom', 1).data('zoom', 1);
+	}
+});
