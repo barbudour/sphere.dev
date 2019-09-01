@@ -287,10 +287,23 @@
 		height: 120px;
 		font-weight: 400;
 		font-size: 11px;
-		line-height: (15 / 11);
+		line-height: 30px;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
 		color: $color-white;
 		background-color: $color-woodsmoke-dark;
+
+		span {
+			transition: opacity 0.3s;
+			will-change: opacity;
+		}
+
+		@include desktop {
+			span {
+				&:hover {
+					opacity: 0.6;
+				}
+			}
+		}
 	}
 }

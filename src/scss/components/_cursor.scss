@@ -11,7 +11,28 @@
 	transition: opacity 0.3s;
 	pointer-events: none;
 
+	&::before {
+		content: "";
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		width: 18px;
+		height: 18px;
+		background: url("../images/sprites/svg/plus-yellow.svg") no-repeat center;
+		background-size: cover;
+		opacity: 0;
+		transform: translate(-50%, -50%) translateZ(0);
+		transition: opacity 0.3s;
+		will-change: opacity;
+	}
+
 	&.is-active {
 		opacity: 1;
+	}
+
+	&.is-plus {
+		&::before {
+			opacity: 1;
+		}
 	}
 }

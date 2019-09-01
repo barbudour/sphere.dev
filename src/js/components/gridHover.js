@@ -1,14 +1,16 @@
-// eslint-disable-next-line func-names
-$('.grid-item').each(function () {
-	let blurImg = $(this).find('.grid-item__bg img');
-	// eslint-disable-next-line no-unused-vars
-	let blurCanvas = $(this).find('.grid-item__blur');
-	// StackBlur.image(blurImg, blurCanvas, 20, true);
-	let img = new Image();
-	img.src = blurImg.attr('src');
-	// eslint-disable-next-line func-names
-	img.onload = function () {
-		// eslint-disable-next-line no-undef
-		context.drawImage(img, this.x, this.y, blurImg.clientWidth, blurImg.clientHeight);
-	};
+$('.news-grid .grid-item').each((index, element) => {
+	let myCanvas = $(element).find('.grid-item__blur').get(0);
+	let $blurImg = $(element).find('.grid-item__bg img');
+
+	if ($blurImg.length > 0) {
+		myCanvas.width = $blurImg.width() + 20;
+		myCanvas.height = $blurImg.height() + 20;
+		let ctx = myCanvas.getContext('2d');
+		let pic = new Image();
+		pic.src = $blurImg.attr('src');
+		pic.onload = () => {
+			ctx.filter = 'blur(10px)';
+			ctx.drawImage(pic, 0, 0, $blurImg.width() + 20, $blurImg.height() + 20);
+		};
+	}
 });

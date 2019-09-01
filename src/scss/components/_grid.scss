@@ -494,12 +494,34 @@
 				bottom: 38px;
 			}
 
-			// &__bg {
-			// 	margin: -10px;
-			// 	filter: blur(10px);
-			// 	transition: filter 0.3s;
-			// 	will-change: filter;
-			// }
+			&__content {
+				z-index: 3;
+			}
+
+			&__bg {
+				left: -10px;
+				top: -10px;
+				z-index: 1;
+				width: calc(100% + 20px);
+				height: calc(100% + 20px);
+			}
+
+			&__blur {
+				position: absolute;
+				left: -10px;
+				top: -10px;
+				z-index: 2;
+				width: calc(100% + 20px);
+				height: calc(100% + 20px);
+				transition: opacity 0.3s;
+				will-change: opacity;
+			}
+
+			&__title {
+				transform: translateZ(0);
+				transition: transform 0.3s;
+				will-change: transform;
+			}
 
 			&:nth-child(2n + 1) {
 				@include tablet {
@@ -553,13 +575,17 @@
 				}
 			}
 
-			// @include desktop {
-			// 	&:hover {
-			// 		.grid-item__bg {
-			// 			filter: blur(0px);
-			// 		}
-			// 	}
-			// }
+			@include desktop {
+				&:hover {
+					.grid-item__blur {
+						opacity: 0;
+					}
+
+					.grid-item__title {
+						transform: translateY(-50px);
+					}
+				}
+			}
 		}
 
 		@include tablet {
