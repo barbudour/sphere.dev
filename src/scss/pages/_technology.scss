@@ -65,6 +65,7 @@
 			position: absolute;
 			width: 100%;
 			height: 236px;
+			opacity: 0;
 			will-change: transform;
 		}
 
@@ -75,7 +76,7 @@
 			transition: bottom 0.5s, opacity 0.5s;
 
 			svg {
-				width: 172px;
+				width: 173px;
 				height: 172px;
 			}
 
@@ -110,27 +111,11 @@
 			}
 
 			&--double {
-				.technology__media__figure__container {
-					display: flex;
-				}
 				svg {
 					position: relative;
 					z-index: 1;
 					width: 230px;
 					height: 205px;
-
-					&:nth-child(2n) {
-						position: absolute;
-						left: 50px;
-						bottom: 29px;
-						z-index: 0;
-					}
-
-					&:nth-child(3n) {
-						position: absolute;
-						left: 0;
-						bottom: 0;
-					}
 				}
 			}
 		}
