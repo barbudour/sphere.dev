@@ -57,6 +57,7 @@
 	&__media {
 		position: relative;
 		flex: 0 0 230px;
+		margin-left: 10px;
 		max-width: 230px;
 		line-height: 0.75;
 
@@ -67,24 +68,68 @@
 			will-change: transform;
 		}
 
-		&__image {
+		&__figure {
 			position: absolute;
 			bottom: 100%;
 			z-index: 10;
 			transition: bottom 0.5s, opacity 0.5s;
 
-			&--double {
-				> svg {
-					&:first-child {
-						position: relative;
-						z-index: 1;
-					}
+			svg {
+				width: 172px;
+				height: 172px;
+			}
 
-					&:last-child {
+			&__container {
+				position: relative;
+
+				svg {
+					&:nth-child(2n) {
+						position: absolute;
+					}
+				}
+			}
+
+			&--white {
+				transition: 0.5s;
+
+				.is-active & {
+					opacity: 0;
+				}
+			}
+
+			&--yellow {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				opacity: 0;
+				transition: 0.5s;
+
+				.is-active & {
+					opacity: 1;
+				}
+			}
+
+			&--double {
+				.technology__media__figure__container {
+					display: flex;
+				}
+				svg {
+					position: relative;
+					z-index: 1;
+					width: 230px;
+					height: 205px;
+
+					&:nth-child(2n) {
 						position: absolute;
 						left: 50px;
 						bottom: 29px;
 						z-index: 0;
+					}
+
+					&:nth-child(3n) {
+						position: absolute;
+						left: 0;
+						bottom: 0;
 					}
 				}
 			}
@@ -119,7 +164,7 @@
 
 			&.is-active {
 				&::before {
-					left: -100px;
+					left: -125px;
 					width: 102px;
 					opacity: 1;
 				}
@@ -167,7 +212,7 @@
 			position: absolute;
 			bottom: 100%;
 			z-index: 6;
-			transition: bottom 0.5s, opacity 0.5s;
+			transition: bottom 0.5s, opacity 0.3s;
 		}
 
 		&--double {
