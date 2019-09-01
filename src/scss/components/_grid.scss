@@ -494,6 +494,13 @@
 				bottom: 38px;
 			}
 
+			// &__bg {
+			// 	margin: -10px;
+			// 	filter: blur(10px);
+			// 	transition: filter 0.3s;
+			// 	will-change: filter;
+			// }
+
 			&:nth-child(2n + 1) {
 				@include tablet {
 					margin-top: initial;
@@ -545,6 +552,14 @@
 					}
 				}
 			}
+
+			// @include desktop {
+			// 	&:hover {
+			// 		.grid-item__bg {
+			// 			filter: blur(0px);
+			// 		}
+			// 	}
+			// }
 		}
 
 		@include tablet {

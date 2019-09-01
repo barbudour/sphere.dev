@@ -793,6 +793,7 @@
 			max-width: vw(377);
 			text-decoration: none;
 			color: $color-woodsmoke;
+			transition: color 0.3s;
 
 			&__icon {
 				position: relative;
@@ -814,6 +815,7 @@
 					line-height: (15 / 11);
 					letter-spacing: 0.1em;
 					text-transform: uppercase;
+					color: $color-woodsmoke;
 				}
 			}
 
@@ -845,6 +847,12 @@
 
 			&:nth-child(odd) {
 				margin-right: 48px;
+			}
+
+			@include desktop {
+				&:hover {
+					color: $color-sunglow;
+				}
 			}
 
 			@include laptop {

@@ -206,10 +206,10 @@ $('body')
 
 	.on('change', '.js-vacancies-popup-file', updateFiles)
 
-	.on('click', '.js-vacancies-button-more', (e) => {
+	.on('click', '.vacancies-item__info', (e) => {
 		const $this = $(e.currentTarget);
 
-		$this.toggleClass('is-active');
+		$this.closest('.vacancies-item').find('.vacancies-item__button').toggleClass('is-active');
 		$this.closest('.vacancies-item').find('.vacancies-item__body').slideToggle();
 		$this.closest('.vacancies-item').find('.vacancies-item__salary').toggleClass('vacancies-item__salary--hide');
 	})

@@ -69,10 +69,10 @@
 	position: fixed;
 	left: 25vw;
 	top: 65px;
+	z-index: 999;
 	overflow: hidden;
 	width: 75vw;
 	height: 6px;
-	z-index: 999;
 
 	.bar {
 		position: absolute;

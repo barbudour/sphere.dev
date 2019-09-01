@@ -15,12 +15,10 @@ function figuresCubes() {
 	let Y = 60;
 	const Y2 = 32;
 	let body = [];
-	let scrollCalc;
 
 	$techBody.each((i, e) => {
 		body.push($(e));
 	});
-
 
 	$techMedia.each((i, e) => {
 		const $el = $(e);
@@ -30,22 +28,20 @@ function figuresCubes() {
 		let elPos = $el.offset().top;
 		let elPosBottom = elPos + $el.innerHeight();
 
-		scrollCalc = elPosBottom / titlePos;
-
 		TweenMax.to($el, 0, {
 			y: -$el.innerHeight() * i,
 			bottom: 0,
 			zIndex: `+=${i}`,
-			opacity: 1
+			opacity: 1,
 			// opacity: scrollCalc > 0 ? scrollCalc.toFixed(3) : 1,
 		});
-		
+
 		if (i !== 0) {
 			TweenMax.to($el, 0, {
 				bottom: `+=${Y * i}`,
 			});
 		}
-		
+
 		if (i % 2 === 0 && i !== 0) {
 			TweenMax.to($el, 0, {
 				left: X,
@@ -53,26 +49,24 @@ function figuresCubes() {
 				zIndex: `-=${2}`,
 			});
 		}
-		
+
 		$(window).on('scroll.techology', () => {
 			titlePos = body[i].find('h2').offset().top;
 			titlePosBottom = titlePos + body[i].find('h2').innerHeight();
 			elPos = $el.offset().top;
 			elPosBottom = elPos + $el.innerHeight();
-			
-			scrollCalc = elPosBottom / titlePos;
-			
+
 			getPageYScroll();
-			
+
 			if (titlePosBottom > windowPosBottom) {
 				TweenMax.to($el, 0.5, {
-					opacity: 1
+					opacity: 1,
 				});
-				
+
 				if (i !== 0) {
 					TweenMax.to($el, 1, {
 						y: -$el.innerHeight() * i + docScroll / 2.5,
-						opacity: 1
+						opacity: 1,
 					});
 				}
 			} else {
@@ -81,7 +75,7 @@ function figuresCubes() {
 					opacity: 0,
 				});
 			}
-			
+
 			if (titlePosBottom > elPos && titlePos < elPosBottom) {
 				body[i].addClass('is-active');
 				$el.addClass('is-active');
@@ -92,14 +86,13 @@ function figuresCubes() {
 		});
 	});
 
-
 	$yellowCubes.each((i, e) => {
 		const $el = $(e);
 		TweenMax.to($el, 0, {
 			y: -$el.innerHeight() * i,
 			bottom: 0,
 			zIndex: `+=${i}`,
-			opacity: 0
+			opacity: 0,
 			// opacity: scrollCalc > 0 ? scrollCalc.toFixed(3) : 0,
 		});
 
@@ -109,12 +102,12 @@ function figuresCubes() {
 			});
 		}
 
-		if (i == 1) {
+		if (i === 1) {
 			TweenMax.to($el, 0, {
 				zIndex: 999,
 			});
 		}
-		
+
 		if (i % 2 === 0 && i !== 0) {
 			TweenMax.to($el, 0, {
 				left: X,
@@ -128,20 +121,18 @@ function figuresCubes() {
 			let titlePosBottom = titlePos + body[i].find('h2').innerHeight();
 			let elPos = $el.offset().top;
 			let elPosBottom = elPos + $el.innerHeight();
-			
-			scrollCalc = elPosBottom / titlePos;
-			
+
 			getPageYScroll();
-			
+
 			if (titlePosBottom > windowPosBottom) {
 				TweenMax.to($el, 0.5, {
-					opacity: 0
+					opacity: 0,
 				});
-				
+
 				if (i !== 0) {
 					TweenMax.to($el, 1, {
 						y: -$el.innerHeight() * i + docScroll / 2.5,
-						opacity: 0
+						opacity: 0,
 					});
 				}
 			} else {
@@ -150,7 +141,7 @@ function figuresCubes() {
 					opacity: 1,
 				});
 			}
-			
+
 			if (titlePosBottom > elPos && titlePos < elPosBottom) {
 				body[i].addClass('is-active');
 				$el.addClass('is-active');

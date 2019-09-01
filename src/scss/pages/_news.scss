@@ -20,6 +20,7 @@
 			text-decoration: none;
 			text-transform: uppercase;
 			color: $color-white;
+			transition: border-color 0.3s;
 
 			@include mobile {
 				display: inline-block;
@@ -28,7 +29,7 @@
 
 			@include desktop {
 				&:hover {
-					border-bottom-style: solid;
+					border-bottom-color: rgba($color-white, 0);
 				}
 			}
 		}
@@ -54,7 +55,6 @@
 			bottom: 40px;
 			z-index: 3;
 			margin: 0;
-			border: 1px solid rgba($color-white, 0.2);
 			padding: 0;
 			height: 45px;
 			min-width: 45px;
@@ -183,6 +183,7 @@
 			font-size: 18px;
 			line-height: (23 / 18);
 			color: $color-white;
+			transition: color 0.3s;
 		}
 
 		&.is-second {
@@ -199,7 +200,7 @@
 				text-decoration: none !important;
 
 				.news__slide__text {
-					text-decoration: underline;
+					color: $color-sunglow;
 				}
 			}
 		}
