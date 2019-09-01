@@ -22,6 +22,34 @@
 		// stylelint-disable-next-line declaration-no-important
 		display: block !important;
 		height: 100%;
+
+		&__button {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border: none;
+			width: 45px;
+			height: 45px;
+			background-color: $color-sunglow;
+			transition: background 0.3s;
+
+			svg {
+				width: 16px;
+				height: 16px;
+			}
+
+			&--plus {
+				position: absolute;
+				top: 20px;
+				right: 20px;
+			}
+
+			&--minus {
+				position: absolute;
+				top: 85px;
+				right: 20px;
+			}
+		}
 	}
 
 	.slick-list {
