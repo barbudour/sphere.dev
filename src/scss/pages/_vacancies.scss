@@ -294,8 +294,9 @@
 				right: 0;
 				top: 0;
 				bottom: 0;
+				z-index: 1;
 				overflow: hidden;
-				border: 1px solid rgba($color-woodsmoke, 0.1);
+				border: 1px solid $color-sunglow;
 				transform: rotate(45deg);
 				transition: transform 0.3s ease-out;
 
@@ -313,6 +314,8 @@
 			}
 
 			svg {
+				position: relative;
+				z-index: 2;
 				width: 11px;
 				height: 17px;
 			}
@@ -599,7 +602,7 @@
 		}
 
 		&__submit {
-			padding: 0 22px;
+			padding: 0 23px;
 			font-size: 11px;
 			line-height: 43px;
 			letter-spacing: 0.1em;
@@ -680,6 +683,7 @@
 
 			&__label {
 				border: 1px solid rgba($color-woodsmoke, 0.1);
+				min-width: 104px;
 				color: $color-woodsmoke;
 			}
 		}
