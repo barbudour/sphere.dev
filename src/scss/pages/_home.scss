@@ -187,10 +187,6 @@
 				text-align: center;
 			}
 		}
-
-		@include retina {
-			background-image: url("../images/pages/main/bg@2x.jpg");
-		}
 	}
 
 	&__all-news {

@@ -201,26 +201,15 @@
 
 			&__icon {
 				position: absolute;
-				top: 147px;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				mask: url("../images/sprites/svg/octagon-mask.svg") center center;
 				overflow: hidden;
-				width: 76px;
-				height: 80px;
 				transition: opacity 0.3s;
-
-				&::before {
-					content: "";
-					position: absolute;
-					left: 0;
-					top: 0;
-					z-index: 1;
-					width: 76px;
-					height: 80px;
-					background: url("../images/sprites/svg/octagon.svg") center no-repeat;
-				}
 
 				img {
 					z-index: initial;
