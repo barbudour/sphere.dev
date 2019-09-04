@@ -1,8 +1,8 @@
 import * as globals from '../globals';
 
-const $popup = $('.js-popup');
-const $popupBody = $popup.find('.popup__body');
-const $popupShade = $popup.find('.popup__shade');
+let $popup = $('.js-popup');
+let $popupBody = $popup.find('.popup__body');
+let $popupShade = $popup.find('.popup__shade');
 
 function getVideoId(url, type) {
 	if (type === 'youtube') {
@@ -73,7 +73,19 @@ function closePopup() {
 		});
 }
 
-$('body')
+function init() {
+	$popup = $('.js-popup');
+	$popupBody = $popup.find('.popup__body');
+	$popupShade = $popup.find('.popup__shade');
+}
+
+init();
+
+export default {
+	init,
+};
+
+globals.vars.$document
 	.on('click', '.js-popup-open', (e) => {
 		const url = $(e.currentTarget).data('url');
 		const type = $(e.currentTarget).data('type');

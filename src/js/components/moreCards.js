@@ -113,17 +113,36 @@ function load(id, path, type, count, iteration) {
 		});
 }
 
-$('.js-add-more').on('click', (e) => {
-	const $this = $(e.currentTarget);
-	const id = $this.data('id');
-	const url = $this.data('url');
-	const type = $this.data('type');
-	const count = $this.data('count') ? $this.data('count') : false;
-	const iteration = $this.data('iteration') ? $this.data('iteration') : false;
+function init() {
+	const $loadMore = $('.js-add-more');
 
-	if (!count) {
-		$this.hide();
+	if (!$loadMore.length) {
+		return;
 	}
 
-	load(id, url, type, count, iteration);
-});
+	$loadMore.on('click.load-more', (e) => {
+		const $this = $(e.currentTarget);
+		const id = $this.data('id');
+		const url = $this.data('url');
+		const type = $this.data('type');
+		const count = $this.data('count') ? $this.data('count') : false;
+		const iteration = $this.data('iteration') ? $this.data('iteration') : false;
+
+		if (!count) {
+			$this.hide();
+		}
+
+		load(id, url, type, count, iteration);
+	});
+}
+
+function destroy() {
+	$('.js-add-more').off('.load-more');
+}
+
+init();
+
+export default {
+	init,
+	destroy,
+};

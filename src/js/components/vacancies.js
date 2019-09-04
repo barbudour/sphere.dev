@@ -1,20 +1,11 @@
 import * as globals from '../globals';
 import IMask from 'imask';
 
-const $popup = $('.vacancies__popup');
-const $popupBody = $popup.find('.vacancies__popup__body');
-const $popupShade = $popup.find('.vacancies__popup__shade');
-const $popupForm = $popup.find('.vacancies__popup__form');
-const $popupresult = $popup.find('.vacancies__popup__result');
-
-$('.js-mask-phone').each((i, el) => {
-	const $this = $(el);
-
-	// eslint-disable-next-line no-unused-vars
-	const mask = new IMask($this.get(0), {
-		mask: '+{7} 000 000 00 00',
-	});
-});
+let $popup = $('.vacancies__popup');
+let $popupBody = $popup.find('.vacancies__popup__body');
+let $popupShade = $popup.find('.vacancies__popup__shade');
+let $popupForm = $popup.find('.vacancies__popup__form');
+let $popupresult = $popup.find('.vacancies__popup__result');
 
 function showPopup(id, name) {
 	$popupBody.find('[name="vacancy_id"]').val(id);
@@ -187,49 +178,83 @@ function removeFile(event) {
 	$(event.target).closest('.vacancies__popup__file__result__item').remove();
 }
 
-$('.vacancies__popup__field').on('keyup', (e) => {
-	$(e.currentTarget).toggleClass('is-filled', $(e.currentTarget).val().length > 0);
-
-	if ($(e.currentTarget).closest('.reqired')) {
-		enabledButton(e);
+function init() {
+	if (!$('.vacancies').length) {
+		return;
 	}
-});
 
-$popupForm.on('submit', (e) => {
-	e.preventDefault();
+	$popup = $('.vacancies__popup');
+	$popupBody = $popup.find('.vacancies__popup__body');
+	$popupShade = $popup.find('.vacancies__popup__shade');
+	$popupForm = $popup.find('.vacancies__popup__form');
+	$popupresult = $popup.find('.vacancies__popup__result');
 
-	validateForm(e);
-});
+	$('.js-mask-phone').each((i, el) => {
+		const $this = $(el);
 
-$('body')
-	.on('click', '.js-vacancies-popup-file-remove', removeFile)
-
-	.on('change', '.js-vacancies-popup-file', updateFiles)
-
-	.on('click', '.vacancies-item__info', (e) => {
-		const $this = $(e.currentTarget);
-
-		$this.closest('.vacancies-item').find('.vacancies-item__button').toggleClass('is-active');
-		$this.closest('.vacancies-item').find('.vacancies-item__body').slideToggle();
-		$this.closest('.vacancies-item').find('.vacancies-item__salary').toggleClass('vacancies-item__salary--hide');
-	})
-
-	.on('click', '.js-vacancies-popup-open', (e) => {
-		const id = $(e.currentTarget).data('id');
-		const name = $(e.currentTarget).data('name');
-
-		globals.bodyWithOutScrollbar();
-		globals.vars.$html.addClass('is-overflow-hidden');
-		globals.saveScrollPosition();
-		showPopup(id, name);
-	})
-
-	.on('click', '.js-vacancies-popup-close', () => {
-		closePopup();
-
-		setTimeout(() => {
-			globals.vars.$html.removeClass('is-overflow-hidden');
-			globals.restoreScrollPosition();
-			globals.bodyWithScrollbar();
-		}, 250);
+		// eslint-disable-next-line no-unused-vars
+		const mask = new IMask($this.get(0), {
+			mask: '+{7} 000 000 00 00',
+		});
 	});
+
+	$('.vacancies__popup__field').on('keyup.vacancies', (e) => {
+		$(e.currentTarget).toggleClass('is-filled', $(e.currentTarget).val().length > 0);
+
+		if ($(e.currentTarget).closest('.reqired')) {
+			enabledButton(e);
+		}
+	});
+
+	$popupForm.on('submit.vacancies', (e) => {
+		e.preventDefault();
+
+		validateForm(e);
+	});
+
+	globals.vars.$document
+		.on('click.vacancies', '.js-vacancies-popup-file-remove', removeFile)
+
+		.on('change.vacancies', '.js-vacancies-popup-file', updateFiles)
+
+		.on('click.vacancies', '.vacancies-item__info', (e) => {
+			const $this = $(e.currentTarget);
+
+			$this.closest('.vacancies-item').find('.vacancies-item__button').toggleClass('is-active');
+			$this.closest('.vacancies-item').find('.vacancies-item__body').slideToggle();
+			$this.closest('.vacancies-item').find('.vacancies-item__salary').toggleClass('vacancies-item__salary--hide');
+		})
+
+		.on('click.vacancies', '.js-vacancies-popup-open', (e) => {
+			const id = $(e.currentTarget).data('id');
+			const name = $(e.currentTarget).data('name');
+
+			globals.bodyWithOutScrollbar();
+			globals.vars.$html.addClass('is-overflow-hidden');
+			globals.saveScrollPosition();
+			showPopup(id, name);
+		})
+
+		.on('click.vacancies', '.js-vacancies-popup-close', () => {
+			closePopup();
+
+			setTimeout(() => {
+				globals.vars.$html.removeClass('is-overflow-hidden');
+				globals.restoreScrollPosition();
+				globals.bodyWithScrollbar();
+			}, 250);
+		});
+}
+
+function destroy() {
+	globals.vars.$document.off('.vacancies');
+	$popupForm.off('.vacancies');
+	$('.vacancies__popup__field').off('.vacancies');
+}
+
+init();
+
+export default {
+	init,
+	destroy,
+};

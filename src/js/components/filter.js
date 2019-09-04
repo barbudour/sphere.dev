@@ -1,11 +1,11 @@
 import * as globals from '../globals';
 
-let $card = $('body').find('.filter-card');
-let $city = $('body').find('.filter-city');
-let $region = $('body').find('.filter-region');
+let $card = globals.vars.$body.find('.filter-card');
+let $city = globals.vars.$body.find('.filter-city');
+let $region = globals.vars.$body.find('.filter-region');
 
 export function filterCard(filter, $item) {
-	$card = $('body').find('.filter-card');
+	$card = globals.vars.$body.find('.filter-card');
 
 	let $elem = $item || $card;
 
@@ -79,9 +79,13 @@ export function filterSelect(filter) {
 }
 
 function init() {
+	$card = globals.vars.$body.find('.filter-card');
+	$city = globals.vars.$body.find('.filter-city');
+	$region = globals.vars.$body.find('.filter-region');
+
 	if (globals.isTablet()) {
-		$('body')
-			.on('change', '.js-filter-select', (e) => {
+		globals.vars.$body
+			.on('change.filter', '.js-filter-select', (e) => {
 				let filter = $(e.currentTarget).val();
 
 				if (!filter.length) {
@@ -90,7 +94,7 @@ function init() {
 
 				filterCard(filter);
 			})
-			.on('change', '.js-filter-city', (e) => {
+			.on('change.filter', '.js-filter-city', (e) => {
 				let filter = $(e.currentTarget).val();
 
 				if (!filter.length) {
@@ -99,7 +103,7 @@ function init() {
 
 				filterCard(filter, $city);
 			})
-			.on('change', '.js-filter-region', (e) => {
+			.on('change.filter', '.js-filter-region', (e) => {
 				let filter = $(e.currentTarget).val();
 
 				if (!filter.length) {
@@ -112,4 +116,13 @@ function init() {
 	}
 }
 
+function destroy() {
+	globals.vars.$body.off('.filter');
+}
+
 init();
+
+export default {
+	init,
+	destroy,
+};

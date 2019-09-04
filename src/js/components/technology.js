@@ -1,11 +1,13 @@
-import throttle from 'lodash';
 import * as globals from '../globals';
 
-let windowPosBottom = $(window).scrollTop() + innerHeight;
+let windowPosBottom = globals.vars.$window.scrollTop() + innerHeight;
 let docScroll;
 let canScroll = true;
-const $techBody = globals.vars.$technology.find('.technology__content__body');
-const $techMedia = globals.vars.$technology.find('.technology__media__figure');
+let sticky = {};
+let stickyTime = 1;
+
+let $techBody = globals.vars.$technology.find('.technology__content__body');
+let $techMedia = globals.vars.$technology.find('.technology__media__figure');
 
 const getPageYScroll = () => {
 	docScroll = window.pageYOffset || document.documentElement.scrollTop;
@@ -48,7 +50,7 @@ function sortFigures() {
 			});
 		}
 
-		$(window).on('scroll.techology', _.throttle(() => {
+		globals.vars.$window.on('scroll.techology', _.throttle(() => {
 			getPageYScroll();
 
 			if (canScroll) {
@@ -58,12 +60,14 @@ function sortFigures() {
 					TweenLite.to($el, 1, {
 						y: -$el.innerHeight() * i + docScroll / 1.5,
 					});
+
 					body[i].removeClass('is-active');
 					$el.removeClass('is-active');
 				} else {
 					TweenLite.to($el, 1, {
 						y: 0,
 					});
+
 					body[i].addClass('is-active');
 					$el.addClass('is-active');
 				}
@@ -76,14 +80,10 @@ function sortFigures() {
 	});
 }
 
-let sticky = {};
-let stickyTime = 1;
-sticky.$sticky = $('.js-sticky');
-sticky.$stickyStopper = $('.sticky-stopper');
-
 function stickyPos() {
 	if (sticky.stickyStopPos < windowPosBottom) {
 		canScroll = false;
+
 		TweenLite.to(sticky.$sticky, stickyTime, {
 			top: sticky.diff,
 		});
@@ -91,20 +91,35 @@ function stickyPos() {
 		$techBody.removeClass('is-active');
 	} else {
 		canScroll = true;
+
 		TweenLite.to(sticky.$sticky, stickyTime, {
 			top: windowPosBottom - sticky.stickyParentPos - sticky.height,
 		});
 	}
 }
 
-if (sticky.$sticky.length) {
-	sticky.height = sticky.$sticky.innerHeight();
-	sticky.stickyStopPos = sticky.$stickyStopper.offset().top;
-	sticky.stickyParentHeight = sticky.$sticky.parent().innerHeight();
-	sticky.stickyParentPos = sticky.$sticky.parent().offset().top;
-	sticky.diff = sticky.stickyParentHeight - sticky.height;
+function init() {
+	if (!$('.technology').length) {
+		return;
+	}
 
-	$(window).on('load', () => {
+	windowPosBottom = globals.vars.$window.scrollTop() + innerHeight;
+	canScroll = true;
+	stickyTime = 1;
+
+	$techBody = globals.vars.$technology.find('.technology__content__body');
+	$techMedia = globals.vars.$technology.find('.technology__media__figure');
+
+	sticky.$sticky = $('.js-sticky');
+	sticky.$stickyStopper = $('.sticky-stopper');
+
+	if (sticky.$sticky.length) {
+		sticky.height = sticky.$sticky.innerHeight();
+		sticky.stickyStopPos = sticky.$stickyStopper.offset().top;
+		sticky.stickyParentHeight = sticky.$sticky.parent().innerHeight();
+		sticky.stickyParentPos = sticky.$sticky.parent().offset().top;
+		sticky.diff = sticky.stickyParentHeight - sticky.height;
+
 		stickyPos();
 
 		sortFigures();
@@ -114,59 +129,33 @@ if (sticky.$sticky.length) {
 		});
 
 		stickyTime = 0;
-	});
 
-	$(window).on('scroll.techology', () => {
-		windowPosBottom = $(window).scrollTop() + innerHeight;
+		globals.vars.$window.on('scroll.techology', () => {
+			windowPosBottom = globals.vars.$window.scrollTop() + innerHeight;
 
-		stickyPos();
-	});
+			stickyPos();
+		});
+	}
+
+	if ($('main').data('barba-namespace') === 'tech' && globals.vars.isEdgeIE) {
+		globals.vars.$body.on('mousewheel.techology', () => {
+			event.preventDefault();
+
+			let wheelDelta = event.wheelDelta;
+			let currentScrollPosition = window.pageYOffset;
+			window.scrollTo(0, currentScrollPosition - wheelDelta);
+		});
+	}
 }
 
-if ($('main').data('barba-namespace') === 'tech' && globals.vars.isEdgeIE) {
-	$('body').on('mousewheel', () => {
-		event.preventDefault();
-
-		let wheelDelta = event.wheelDelta;
-		let currentScrollPosition = window.pageYOffset;
-		window.scrollTo(0, currentScrollPosition - wheelDelta);
-	});
+function destroy() {
+	globals.vars.$window.off('.techology');
+	globals.vars.$body.off('.techology');
 }
 
-$('.js-slide-image-plus').on('click', (e) => {
-	const $element = $(e.currentTarget).closest('.slide').find('img');
-	let zoom = Number($element.data('zoom'));
+init();
 
-	if (zoom < 2.5) {
-		zoom += 0.25;
-
-		TweenLite.to($element, 0.4, {
-			scaleY: `${zoom}`,
-			scaleX: `${zoom}`,
-		});
-
-		$element.attr('data-zoom', `${zoom}`).data('zoom', `${zoom}`);
-	}
-});
-
-$('.js-slide-image-minus').on('click', (e) => {
-	const $element = $(e.currentTarget).closest('.slide').find('img');
-	let zoom = Number($element.data('zoom'));
-
-	if (zoom > 1) {
-		zoom -= 0.25;
-
-		TweenLite.to($element, 0.4, {
-			scaleY: `${zoom}`,
-			scaleX: `${zoom}`,
-		});
-
-		$element.attr('data-zoom', `${zoom}`).data('zoom', `${zoom}`);
-	} else {
-		TweenLite.to($element, 0.4, {
-			scale: 1,
-		});
-
-		$element.attr('data-zoom', 1).data('zoom', 1);
-	}
-});
+export default {
+	init,
+	destroy,
+};

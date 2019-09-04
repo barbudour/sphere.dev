@@ -83,9 +83,14 @@ export function getFilter($element) {
 }
 
 function init() {
-	const $select = $('body').find('.js-select');
-	let $city = $('body').find('.filter-city');
-	let $region = $('body').find('.filter-region');
+	const $select = globals.vars.$body.find('.js-select');
+
+	if (!$select.length) {
+		return;
+	}
+
+	let $city = globals.vars.$body.find('.filter-city');
+	let $region = globals.vars.$body.find('.filter-region');
 
 	$select.each((i, e) => {
 		const $this = $(e);
@@ -106,8 +111,8 @@ function init() {
 		getWidth($this);
 	});
 
-	$('body')
-		.on('click', '.js-select-button', (e) => {
+	globals.vars.$document
+		.on('click.select', '.js-select-button', (e) => {
 			const $this = $(e.currentTarget);
 			const $parent = $this.parent();
 
@@ -124,31 +129,31 @@ function init() {
 				}
 			}
 		})
-		.on('click', '.js-select-clear', (e) => {
+		.on('click.select', '.js-select-clear', (e) => {
 			const $this = $(e.currentTarget);
 			const $parent = $this.closest('.js-select-toggle');
 
 			$parent.removeData('value');
 			$parent.find('input').prop('checked', false);
 		})
-		.on('click', (e) => {
+		.on('click.select', (e) => {
 			const $el = $('.js-select-holder');
 
 			if (!$el.is(e.target) && $el.has(e.target).length === 0 && $el.hasClass('is-active')) {
 				closeSelect();
 			}
 		})
-		.on('click', '.js-filter-select .js-select-pick', (e) => {
+		.on('click.select', '.js-filter-select .js-select-pick', (e) => {
 			const $parent = $(e.currentTarget).closest('.js-select-holder');
 
 			filterCard(getFilter($parent));
 		})
-		.on('click', '.js-filter-city .js-select-pick', (e) => {
+		.on('click.select', '.js-filter-city .js-select-pick', (e) => {
 			const $parent = $(e.currentTarget).closest('.js-select-holder');
 
 			filterCard(getFilter($parent), $city);
 		})
-		.on('click', '.js-filter-region .js-select-pick', (e) => {
+		.on('click.select', '.js-filter-region .js-select-pick', (e) => {
 			const $parent = $(e.currentTarget).closest('.js-select-holder');
 
 			filterCard(getFilter($parent), $region);
@@ -156,4 +161,13 @@ function init() {
 		});
 }
 
+function destroy() {
+	globals.vars.$document.off('.select');
+}
+
 init();
+
+export default {
+	init,
+	destroy,
+};
