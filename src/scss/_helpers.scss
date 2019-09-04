@@ -4,6 +4,10 @@
 	transition: all 0.3s;
 }
 
+.is-no-interact {
+	pointer-events: none;
+}
+
 .for-desktop {
 	@include mobile {
 		// stylelint-disable-next-line declaration-no-important

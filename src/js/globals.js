@@ -1,15 +1,20 @@
 export let vars = {};
 let lastPageYOffset = null;
 
-vars.$body = $(document.body);
+vars.$window = $(window);
+vars.$document = $(document);
 vars.$html = $(document.documentElement);
-vars.$siteContainer = $('.site-container');
-vars.$page = $('.page');
-vars.$header = $('.header');
-vars.$footer = $('.footer');
-vars.$technology = $('.page.technology');
+vars.$body = $(document.body);
 
 vars.isEdgeIE = vars.$html.hasClass('is-browser-edge') || vars.$html.hasClass('is-browser-ie');
+
+export function initVars() {
+	vars.$siteContainer = $('.site-container');
+	vars.$page = $('.page');
+	vars.$header = $('.header');
+	vars.$footer = $('.footer');
+	vars.$technology = $('.page.technology');
+}
 
 export function isMobile() {
 	return innerWidth <= 767;
@@ -97,3 +102,5 @@ export function restoreScrollPosition() {
 		lastPageYOffset = null;
 	}
 }
+
+initVars();
