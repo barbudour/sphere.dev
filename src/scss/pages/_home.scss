@@ -214,6 +214,16 @@
 			@include mobile {
 				margin: 0 0 21px;
 			}
+
+			@include tablet-only {
+				transform: translateX(-6px);
+			}
+		}
+
+		a {
+			@include tablet-only {
+				transform: translateX(-4px);
+			}
 		}
 
 		@include desktop-big {
