@@ -85,8 +85,39 @@
 					}
 				}
 
-				@include tablet-up {
-					transform: translateY(-2px);
+				&:nth-child(1) {
+					[data-barba-namespace="about"] & {
+						opacity: 0.3;
+						pointer-events: none;
+					}
+				}
+
+				&:nth-child(2) {
+					[data-barba-namespace="techall"] & {
+						opacity: 0.3;
+						pointer-events: none;
+					}
+				}
+
+				&:nth-child(3) {
+					[data-barba-namespace="team"] & {
+						opacity: 0.3;
+						pointer-events: none;
+					}
+				}
+
+				&:nth-child(4) {
+					[data-barba-namespace="news"] & {
+						opacity: 0.3;
+						pointer-events: none;
+					}
+				}
+
+				&:nth-child(5) {
+					[data-barba-namespace="jpb"] & {
+						opacity: 0.3;
+						pointer-events: none;
+					}
 				}
 			}
 
@@ -109,7 +140,7 @@
 		}
 
 		@include tablet-only {
-			height: 63px;
+			height: 65px;
 
 			ul {
 				padding-right: 20px;
@@ -209,7 +240,9 @@
 		padding-left: 0;
 
 		&.is-fixed {
-			padding-left: 12px;
+			.header__logo {
+				margin-left: 12px;
+			}
 		}
 
 		&.is-active {
