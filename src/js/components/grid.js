@@ -205,7 +205,7 @@ if (globals.isDesktop()) {
 					scale: 1.05,
 					rotationZ: -0.001,
 					ease: Power1.easeOut,
-					force3d: false,
+					force3D: false,
 				});
 			})
 			.on('mouseleave', (event) => {
@@ -227,7 +227,7 @@ if (globals.isDesktop()) {
 					scale: 1,
 					rotationZ: -0.001,
 					ease: Power1.easeOut,
-					force3d: false,
+					force3D: false,
 					clearProps: 'rotationZ',
 					onComplete() {
 						$this.css('z-index', 1);
