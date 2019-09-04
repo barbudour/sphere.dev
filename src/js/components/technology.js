@@ -1,4 +1,3 @@
-import throttle from 'lodash';
 import * as globals from '../globals';
 
 let windowPosBottom = $(window).scrollTop() + innerHeight;
