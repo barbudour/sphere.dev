@@ -1,4 +1,5 @@
 import * as globals from '../globals';
+import * as StackBlur from 'stackblur-canvas';
 
 function gridItemsBlur() {
 	const $gridItem = $('.grid-item');
@@ -8,21 +9,54 @@ function gridItemsBlur() {
 	}
 
 	$gridItem.each((index, element) => {
+		let myCanvas = $(element).find('.grid-item__blur').get(0);
 		let $blurImg = $(element).find('.grid-item__bg img');
 
 		if ($blurImg.length > 0) {
-			let pic = new Image();
+			// myCanvas.width = $blurImg.width() + 20;
+			// myCanvas.height = $blurImg.height() + 20;
 
-			pic.src = $blurImg.attr('src');
-			pic.onload = () => {
-				$(element).append(`
-					<div class="blur-image"></div>
-				`);
+			// let ctx = myCanvas.getContext('2d');
+			// let pic = new Image();
 
-				let $blurContainer = $(element).find('.blur-image');
+			// pic.src = $blurImg.attr('src');
+			// pic.onload = () => {
+			// 	ctx.filter = 'blur(10px)';
+			// 	ctx.drawImage(pic, 0, 0, $blurImg.width() + 20, $blurImg.height() + 20);
 
-				$blurContainer.append(pic);
-			};
+			// 	$(element).append(`
+			// 		<div class="blur-image"></div>
+			// 	`);
+
+			// 	let $blurContainer = $(element).find('.blur-image');
+
+			// 	$blurContainer.append(pic);
+			// };
+
+			$blurImg
+				.after('<canvas></canvas>');
+
+			const $blur = $blurImg.parent();
+			const $canvas = $blur.find('canvas');
+			const canvas = $canvas.get(0);
+
+			$canvas.css({
+				height: `${$blurImg.height()}px`,
+				width: `${$blurImg.width()}px`,
+			});
+
+			$canvas.get(0).height = $blurImg.height();
+			$canvas.get(0).width = $blurImg.width();
+
+			StackBlur.image($blurImg.get(0), $canvas.get(0), 10);
+
+			// canvas.height = $blurImg.height();
+			// canvas.width = $blurImg.width();
+
+			$canvas.css({
+				height: `${$blurImg.height()}px`,
+				width: `${$blurImg.width()}px`,
+			});
 		}
 	});
 }
