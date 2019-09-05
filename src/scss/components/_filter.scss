@@ -30,6 +30,7 @@
 		background-size: 14px;
 		background-repeat: no-repeat;
 		background-color: transparent;
+		transition: color 0.3, background 0.3s;
 
 		option,
 		optgroup {
@@ -85,6 +86,13 @@
 		@include mobile {
 			&:not(:last-of-type) {
 				margin-bottom: 25px;
+			}
+		}
+
+		@include desktop {
+			&:hover {
+				color: $color-sunglow;
+				background-image: url("../images/sprites/svg/arrow-select-yellow.svg");
 			}
 		}
 	}
