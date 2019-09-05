@@ -368,6 +368,7 @@
 
 	h4 {
 		margin: 40px 0 16px;
+		font-weight: 400;
 		font-size: 11px;
 		line-height: (15 / 11);
 		letter-spacing: 0.1em;
@@ -386,7 +387,7 @@
 		}
 
 		@include tablet {
-			margin: 0 0 36px;
+			margin: 0 0 19px;
 		}
 
 		@include mobile {
@@ -523,7 +524,7 @@
 			}
 
 			@include tablet-only {
-				padding-left: 42px;
+				padding-left: 50px;
 			}
 
 			@include mobile {
@@ -693,7 +694,7 @@
 	table {
 		table-layout: fixed;
 		overflow-wrap: break-word;
-		margin-top: 100px;
+		margin: 100px 0;
 		border: 1px solid $color-black;
 		border-collapse: collapse;
 		padding: 0;
@@ -720,7 +721,7 @@
 			border-right: 1px solid rgba($color-black, 0.1);
 			border-bottom: 1px solid $color-black;
 			border-left: none;
-			padding: 30px 35px;
+			padding: 28px 35px;
 			font-weight: 400;
 			font-size: 11px;
 			line-height: (15 / 11);
@@ -743,7 +744,7 @@
 		td {
 			border-right: 1px solid rgba($color-black, 0.1);
 			border-left: none;
-			padding: 30px 35px;
+			padding: 21px 35px;
 			font-weight: 300;
 			font-size: 15px;
 			line-height: (28 / 15);
@@ -783,6 +784,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		margin-top: 107px;
+		margin-bottom: -34px;
 		max-width: vw(802);
 
 		.file {
@@ -838,6 +840,7 @@
 					line-height: (15 / 11);
 					letter-spacing: 0.1em;
 					text-transform: uppercase;
+					color: rgba($color-woodsmoke, 0.5);
 				}
 
 				@include tablet {
@@ -882,6 +885,7 @@
 
 		@include tablet {
 			margin-top: 136px;
+			margin-bottom: 17px;
 		}
 
 		@include mobile {
@@ -953,6 +957,10 @@
 
 			@include laptop {
 				max-width: 680px;
+			}
+
+			@include tablet {
+				// margin-top: 25px;
 			}
 		}
 
