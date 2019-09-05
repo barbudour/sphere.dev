@@ -1,4 +1,5 @@
 import * as globals from '../globals';
+import * as StackBlur from 'stackblur-canvas';
 
 function gridItemsBlur() {
 	const $gridItem = $('.grid-item');
@@ -11,18 +12,27 @@ function gridItemsBlur() {
 		let $blurImg = $(element).find('.grid-item__bg img');
 
 		if ($blurImg.length > 0) {
-			let pic = new Image();
+			$blurImg
+				.after('<canvas></canvas>');
 
-			pic.src = $blurImg.attr('src');
-			pic.onload = () => {
-				$(element).append(`
-					<div class="blur-image"></div>
-				`);
+			const $blur = $blurImg.parent();
+			const $canvas = $blur.find('canvas');
+			const canvas = $canvas.get(0);
 
-				let $blurContainer = $(element).find('.blur-image');
+			$canvas.css({
+				height: `${$blurImg.height()}px`,
+				width: `${$blurImg.width()}px`,
+			});
 
-				$blurContainer.append(pic);
-			};
+			canvas.height = $blurImg.height();
+			canvas.width = $blurImg.width();
+
+			StackBlur.image($blurImg.get(0), $canvas.get(0), 10);
+
+			$canvas.css({
+				height: `${$blurImg.height()}px`,
+				width: `${$blurImg.width()}px`,
+			});
 		}
 	});
 }
