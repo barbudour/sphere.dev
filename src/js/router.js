@@ -34,7 +34,9 @@ barba.init({
 				scrollTop: 0,
 			}, 300);
 
-			globals.vars.$html.addClass('is-no-interact');
+			globals.vars.$html
+				.addClass('is-no-interact')
+				.removeClass('is-overflow-hidden');
 
 			cursor.destroy();
 			filter.destroy();
