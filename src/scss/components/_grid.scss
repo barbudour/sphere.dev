@@ -312,6 +312,14 @@
 					&:nth-child(2) {
 						margin-top: 0;
 						height: 400px;
+
+						&.grid-item--first {
+							height: calc(100vh - 65px);
+						}
+
+						&.is-laptop-before-last {
+							height: 560px;
+						}
 					}
 				}
 			}
@@ -362,10 +370,14 @@
 					margin-top: -80px;
 
 					&:last-child {
-						height: 560px;
+						height: 480px;
+
+						@include tablet {
+							height: 560px;
+						}
 
 						@include mobile {
-							height: 400px;
+							height: 560px;
 						}
 					}
 
@@ -377,7 +389,7 @@
 					@include mobile {
 						margin-top: 0;
 						width: 100%;
-						height: 400px;
+						height: 480px;
 
 						&:nth-child(2n + 1) {
 							margin-top: 0;
@@ -501,7 +513,6 @@
 		.grid-item {
 			flex-basis: auto;
 			width: percentage(4 / 12);
-			height: 400px;
 
 			&__bottomside {
 				bottom: 38px;
@@ -609,12 +620,20 @@
 
 			@include tablet {
 				width: percentage(6 / 12);
-				height: 400px;
+				height: 480px;
+
+				&:last-child {
+					height: 560px;
+				}
+
+				&.is-laptop-before-last {
+					height: 560px;
+				}
 			}
 
 			@include mobile {
 				width: 100%;
-				height: 340px;
+				height: 400px;
 			}
 
 			@include desktop-big {

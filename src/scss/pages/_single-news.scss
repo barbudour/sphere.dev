@@ -9,9 +9,20 @@
 		.block-image--wrap {
 			margin-bottom: 25px;
 
+			img {
+				@include desktop-big {
+					margin-right: vw(20);
+				}
+			}
+
 			span {
 				display: block;
 				margin-top: -5px;
+				max-width: vw(680);
+
+				@include laptop {
+					max-width: 680px;
+				}
 			}
 
 			@include laptop {
@@ -35,12 +46,18 @@
 		}
 
 		.single-news__more {
+			margin-top: -1px;
+
 			p {
 				margin-bottom: 0;
 
 				@include mobile {
 					margin: 0 0 21px;
 				}
+			}
+
+			a {
+				color: $color-white;
 			}
 		}
 	}

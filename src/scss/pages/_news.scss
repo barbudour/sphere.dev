@@ -117,11 +117,12 @@
 			}
 
 			@include tablet {
+				padding: 30px;
 				// stylelint-disable-next-line declaration-no-important
 				width: vw(454, 768) !important;
 			}
 
-			@include tablet {
+			@include mobile {
 				// stylelint-disable-next-line declaration-no-important
 				width: 100vw !important;
 			}
@@ -223,7 +224,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 0 36px 0 30px;
+		padding: 0 30px;
 		height: 105px;
 		background-color: $color-woodsmoke-dark;
 
