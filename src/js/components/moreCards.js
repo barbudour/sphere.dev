@@ -1,6 +1,7 @@
 import * as globals from '../globals';
 import {filterCard} from './filter';
 import {getFilter} from './select';
+import grid from './grid';
 
 // eslint-disable-next-line consistent-return
 function loadVacancy(objects) {
@@ -106,6 +107,8 @@ function load(id, path, type, count, iteration) {
 				}
 
 				$container.append(loadNews(id, response, count, iteration));
+				grid.init();
+				grid.gridItemsBlur();
 			}
 		})
 		.fail(() => {

@@ -55,6 +55,8 @@ function init() {
 	let gridOffset = gridHeight - firstGridHeight + 1;
 	let beforeLastGridHeight = gridHeight + gridOffset;
 
+	$gridItem.removeClass('is-before-last is-last is-bottom is-laptop-before-last is-tablet-before-last');
+
 	if (globals.isDesktopBig() && $('.page').hasClass('home')) {
 		$gridItem.each((index, element) => {
 			if (index !== 0) {
@@ -290,6 +292,7 @@ function destroy() {
 init();
 
 export default {
+	gridItemsBlur,
 	init,
 	destroy,
 };

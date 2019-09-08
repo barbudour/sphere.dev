@@ -3,10 +3,9 @@
 	z-index: 11;
 
 	&:not(:last-of-type) {
-		margin-right: 25px;
+		margin-right: 45px;
 
 		@include mobile {
-			margin-right: 49px;
 			margin-bottom: 25px;
 		}
 	}
