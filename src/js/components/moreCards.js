@@ -97,7 +97,7 @@ function load(id, path, type, count, iteration) {
 				if (globals.isDesktop()) {
 					filter = getFilter($('.js-filter-select'));
 				} else {
-					filter = $('.js-filter-select').val();
+					filter = $('.js-filter-select').val()[0];
 				}
 
 				filterCard(filter, $('body').find('.filter-card'));
