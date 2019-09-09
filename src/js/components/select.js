@@ -6,12 +6,8 @@ function createClassName(className) {
 }
 
 function templateOption(element) {
-	if (element.index === 0) {
-		return '';
-	}
-
 	const checked = element.selected ? 'checked' : '';
-	const name = element.parentElement.attributes[1].nodeValue;
+	const name = $(element).closest('select').attr('name');
 	const id = `${name}-${element.index}`;
 
 	return `<fieldset class="filter__item">
@@ -28,7 +24,9 @@ function renderOption(select) {
 			let subHtml = '';
 
 			$(el).find('option').each((j, subel) => {
-				subHtml += templateOption(subel);
+				if (!$(el).attr('hidden')) {
+					subHtml += templateOption(subel);
+				}
 			});
 
 			html += `<div class="filter__group" data-filter="${$(el).attr('value')}">
@@ -38,7 +36,9 @@ function renderOption(select) {
 		});
 	} else {
 		select.find('option').each((i, el) => {
-			html += `${templateOption(el)}`;
+			if (!$(el).attr('hidden')) {
+				html += `${templateOption(el)}`;
+			}
 		});
 	}
 
