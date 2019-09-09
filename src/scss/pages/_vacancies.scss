@@ -154,6 +154,10 @@
 			top: 0;
 			border-top: 15px solid $color-sunglow;
 			border-right: 15px solid transparent;
+
+			@include mobile {
+				left: -15px;
+			}
 		}
 
 		&::after {
@@ -201,7 +205,8 @@
 				&:hover {
 					.vacancies-item__button {
 						span {
-							border-width: 25px;
+							border-width: 23px;
+							border-color: $color-sunglow;
 
 							&::before {
 								left: -25px;
@@ -241,13 +246,15 @@
 			@include mobile {
 				padding-right: 0;
 				padding-bottom: 20px;
+				// stylelint-disable-next-line declaration-no-important
+				font-weight: 300 !important;
 			}
 		}
 
 		&__salary {
-			flex: 0 0 vw(346);
+			flex: 0 0 253px;
 			padding-left: 60px;
-			max-width: vw(346);
+			max-width: 253px;
 			font-weight: 300;
 			font-size: 15px;
 			line-height: (28 / 15);
@@ -282,8 +289,9 @@
 			align-items: center;
 			justify-content: center;
 			overflow: hidden;
-			width: 50px;
-			height: 50px;
+			margin-top: 20px;
+			width: 46px;
+			height: 46px;
 			color: $color-woodsmoke;
 			transform: translateY(-50%);
 			transition: transform 0.3s ease-out;
@@ -296,7 +304,7 @@
 				bottom: 0;
 				z-index: 1;
 				overflow: hidden;
-				border: 1px solid $color-sunglow;
+				border: 1px solid rgba($color-woodsmoke, 0.1);
 				transform: rotate(45deg);
 				transition: transform 0.3s ease-out;
 
@@ -322,6 +330,10 @@
 
 			&.is-active {
 				transform: translateY(-50%) rotate(180deg);
+			}
+
+			@include laptop {
+				margin-top: 17px;
 			}
 		}
 
@@ -358,6 +370,7 @@
 
 		&__bottom {
 			display: flex;
+			margin-top: 50px;
 
 			&__left {
 				margin-right: 85px;
@@ -438,7 +451,7 @@
 
 		&__middle {
 			position: relative;
-			padding: 30px 65px;
+			padding: 30px 35px 30px 65px;
 
 			&::after {
 				content: "";
@@ -497,6 +510,7 @@
 
 		&__fieldset {
 			position: relative;
+			padding-right: 30px;
 
 			&::after {
 				content: attr(data-error);
@@ -530,6 +544,10 @@
 				input {
 					border-color: rgba($color-error, 0.6);
 				}
+			}
+
+			@include mobile {
+				padding-right: 0;
 			}
 		}
 

@@ -149,7 +149,7 @@ function enabledButton(e) {
 function updateFiles(event) {
 	const $input = $(event.target);
 	const $result = $('.vacancies__popup__file__result');
-	const BUTTON = '<button class="vacancies__popup__file__result__remove js-vacancies-popup-file-remove" type="button"><svg><use xlink:href="/images/sprites.svg#close"></use></svg></button>';
+	const BUTTON = '<button class="vacancies__popup__file__result__remove js-vacancies-popup-file-remove" type="button"><svg><use xlink:href="/images/sprites.svg#delete"></use></svg></button>';
 
 	const curFiles = $input.get(0).files;
 

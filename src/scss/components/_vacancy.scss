@@ -44,6 +44,30 @@
 		padding-left: 30px;
 		max-width: 280px;
 
+		.team & {
+			padding-top: 92px;
+			max-width: 300px;
+
+			h4 {
+				margin: 0 0 26px;
+				font-weight: 300;
+				font-size: 18px;
+				line-height: (23 / 18);
+				text-transform: none;
+				color: $color-black;
+
+				@include mobile {
+					font-size: 17px;
+					line-height: (22 / 17);
+				}
+			}
+
+			.button--more {
+				margin-top: 0;
+				color: $color-woodsmoke;
+			}
+		}
+
 		@include mobile {
 			padding: 63px 15px 0;
 			max-width: 310px;
