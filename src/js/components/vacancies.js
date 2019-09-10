@@ -214,9 +214,7 @@ function init() {
 
 	globals.vars.$document
 		.on('click.vacancies', '.js-vacancies-popup-file-remove', removeFile)
-
 		.on('change.vacancies', '.js-vacancies-popup-file', updateFiles)
-
 		.on('click.vacancies', '.vacancies-item__info', (e) => {
 			const $this = $(e.currentTarget);
 
@@ -224,7 +222,6 @@ function init() {
 			$this.closest('.vacancies-item').find('.vacancies-item__body').slideToggle();
 			$this.closest('.vacancies-item').find('.vacancies-item__salary').toggleClass('vacancies-item__salary--hide');
 		})
-
 		.on('click.vacancies', '.js-vacancies-popup-open', (e) => {
 			const id = $(e.currentTarget).data('id');
 			const name = $(e.currentTarget).data('name');
@@ -234,7 +231,17 @@ function init() {
 			globals.saveScrollPosition();
 			showPopup(id, name);
 		})
+		.on('keydown', (e) => {
+			if (e.keyCode === 27) {
+				closePopup();
 
+				setTimeout(() => {
+					globals.vars.$html.removeClass('is-overflow-hidden');
+					globals.restoreScrollPosition();
+					globals.bodyWithScrollbar();
+				}, 250);
+			}
+		})
 		.on('click.vacancies', '.js-vacancies-popup-close', () => {
 			closePopup();
 
