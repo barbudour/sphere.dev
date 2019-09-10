@@ -96,7 +96,7 @@ globals.vars.$document
 
 		showPopup(getVideoId(url, type), type);
 	})
-	.keyup((e) => {
+	.on('keydown', (e) => {
 		if (e.keyCode === 27) {
 			closePopup();
 		}
