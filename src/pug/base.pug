@@ -274,6 +274,7 @@ html(class=html.classList)&attributes(html.attrs)
 		block body-start
 		main(data-barba="container" data-barba-namespace!=barbaName)
 			block content
+		canvas#renderFigure(touch-action='none')
 		block scripts
 			script(src=`${baseDir}js/vendor.js?v=${Date.now()}`)
 			script(src=`${baseDir}js/main.js?v=${Date.now()}`)
