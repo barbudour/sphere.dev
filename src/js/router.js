@@ -16,17 +16,76 @@ import slider from './components/slider';
 import tabletScroll from './components/tabletscroll';
 import technology from './components/technology';
 import vacancies from './components/vacancies';
+import sphere from './components/sphere';
 
 NProgress.configure({
 	showSpinner: false,
 });
 
+$(document).ready(function () {
+	if ($('[data-barba-namespace="home"]').length > 0) {
+		console.log('main page');
+		sphere.stateNormal();
+	} else {
+		console.log('not main page');
+		sphere.statePageLoaded();
+	}
+});
+
+function scrollPage() {
+	$(window).scroll(function () { 
+		if ($(this).scrollTop() < 10) {
+			sphere.statePageLoaded();
+		} else if ($(this).scrollTop() > 10 && $(this).scrollTop() < 50) {
+			sphere.stateStartScroll();
+		} else if ($(this).scrollTop() > 50) {
+			sphere.stateScroll();
+		}
+	});
+}
+
+function checkLink() {
+	$('a').on('click', function () {
+		var checkLogo = $(this).hasClass('header__logo');
+		if (checkLogo) {
+			// console.log('клик по лого')
+			sphere.stateNormal();
+		} else {
+			sphere.statePageLoaded();
+			// console.log('клик по ссылке')
+		}
+	});
+}
+
+checkLink();
+
 barba.use(barbaCss);
 
 barba.init({
 
-	transitions: [{
-
+	transitions: [
+		// {
+		// 	name: 'homepageTo',
+		// 	to: {
+		// 		namespace: 'home'
+		// 	},
+		// 	beforeEnter() {
+		// 		sphere.stateNormal();
+		// 	}
+		// },
+		// {
+		// 	name: 'homepageFrom',
+		// 	from: {
+		// 		namespace: [
+		// 			'home'
+		// 		]
+		// 	},
+		// 	beforeLeave() {
+		// 		sphere.statePageLoaded();
+		// 	}
+		// },
+		{
+		// sync: true,
 		beforeLeave() {
 			NProgress.start();
 
@@ -52,7 +111,6 @@ barba.init({
 
 		beforeEnter() {
 			globals.initVars();
-
 			cursor.init();
 			filter.init();
 			grid.init();
@@ -65,14 +123,17 @@ barba.init({
 			tabletScroll.init();
 			technology.init();
 			vacancies.init();
-
+			
+			// sphere.statePageLoaded();
 			NProgress.done();
 		},
-
+		
 		afterEnter() {
 			globals.vars.$html.removeClass('is-no-interact');
+			checkLink();
+			scrollPage();
+			// statePageLoaded();
 		},
-
 	}],
 
 	prevent(data) {

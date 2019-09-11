@@ -1,4 +1,5 @@
 import './vendor';
+import './components/sphere';
 import './router';
 import './components/header';
 import './components/cursor';
