@@ -1093,6 +1093,7 @@
 		line-height: (45 / 32);
 		letter-spacing: -0.01em;
 		color: $color-white;
+		transition: color 0.3s;
 
 		h2 {
 			margin: 0;
@@ -1139,9 +1140,10 @@
 			text-decoration: none;
 
 			.block-next__text {
+				color: $color-sunglow;
+
 				svg {
 					stroke: $color-sunglow;
-					transform: translateX(8px);
 				}
 			}
 		}

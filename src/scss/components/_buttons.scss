@@ -105,6 +105,7 @@ button {
 		text-decoration: none;
 		text-transform: uppercase;
 		color: $color-woodsmoke;
+		transition: color 0.3s;
 
 		svg {
 			margin-top: -1px;
@@ -123,6 +124,8 @@ button {
 		}
 
 		&:hover {
+			color: $color-sunglow;
+
 			svg {
 				stroke: $color-sunglow;
 			}
