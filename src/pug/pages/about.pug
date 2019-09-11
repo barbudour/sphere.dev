@@ -69,7 +69,7 @@
 					icon: '8',
 					text: 'Цифровой кластер обеспечивает компетенции и&nbsp;среду&nbsp;для&nbsp;реализации программ цифровизации'
 				})
-			.about__content.about__content--short.about__content--mobile-hide
+			.about__content.about__content--short
 				p.about__content__paragraph.about__content__description
 					| Цифровой кластер&nbsp;&mdash; это команда единомышленников, обладающая энтузиазмом и&nbsp;компетенциями, необходимыми для развития современных, инновационных и&nbsp;перспективных технологий.
 				+button-more({
@@ -129,14 +129,14 @@
 				img(src="/images/pages/about/ceo.png" srcset="/images/pages/about/ceo@2x.png 2x")
 
 		.videos
-			.video.js-cursor
+			.video.js-cursor.js-popup-open(data-url="/video.mp4")
 				span.corner
 				.video__content
 					.video__title
 						| Видео о&nbsp;цифровом кластере
 					.video__controls
 						.video__play
-							button.js-popup-open(data-url="/video.mp4")
+							button
 								+svg('play')
 							span play
 							.video__time 3:30

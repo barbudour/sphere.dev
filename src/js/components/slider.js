@@ -31,7 +31,12 @@ function init() {
 			prevArrow: '<button type="button" class="slick-prev slick-arrow button"><span></span>Предыдущий<span></span></button>',
 		});
 
-		$(element).append(slidesCounter);
+		if (itemsCol > 1) {
+			$(element).append(slidesCounter);
+		} else {
+			$slider.find('button').remove();
+		}
+
 		$(element).find('.slides-counter__all').html(itemsColText);
 
 		$(element).on('beforeChange.slider', (event, slick, currentSlide, nextSlide) => {

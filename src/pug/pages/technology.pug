@@ -59,15 +59,16 @@
 			.sticky-stopper
 
 			hr
-			h2
-				| Концепция
-			p
-				| Орошение, как&nbsp;бы это ни&nbsp;казалось парадоксальным, требует большего внимания к&nbsp;анализу ошибок, которые даёт лазерный песок, что при любом переменном вращении в&nbsp;горизонтальной плоскости будет направлено вдоль оси. Сила участвует в&nbsp;погрешности определения курса меньше, чем эксикатор.
-			ul.hide-ul--mobile
-				li
-					| Функция многих переменных, следовательно, обуславливает комплексный интеграл по&nbsp;ориентированной области
-				li
-					| Окрестность точки программирует математический анализ
+			.technology__concept
+				h2
+					| Концепция
+				p
+					| Орошение, как&nbsp;бы это ни&nbsp;казалось парадоксальным, требует большего внимания к&nbsp;анализу ошибок, которые даёт лазерный песок, что при любом переменном вращении в&nbsp;горизонтальной плоскости будет направлено вдоль оси. Сила участвует в&nbsp;погрешности определения курса меньше, чем эксикатор.
+				ul.hide-ul--mobile
+					li
+						| Функция многих переменных, следовательно, обуславливает комплексный интеграл по&nbsp;ориентированной области
+					li
+						| Окрестность точки программирует математический анализ
 
 		.slider
 			.slide
@@ -83,7 +84,7 @@
 				button.js-slide-image-minus.slide__button.slide__button--minus
 					+svg('minus')
 
-		.content__container.content__container--white
+		.content__container.content__container--white.technology__technology
 			h2
 				| Технологии
 			p
@@ -102,18 +103,23 @@
 					.technology__grid__item__image
 						img(src="/images/pages/technology/cisco.png" srcset="/images/pages/technology/cisco@2x.png 2x" alt="")
 
-		.block-image.block-image--big
-			img(src="/images/pages/technology/image.jpg" srcset="/images/pages/technology/image@2x.jpg 2x" alt="")
+		.slider
+			.slide
+				img(src="/images/pages/technology/image.jpg" srcset="/images/pages/technology/image@2x.jpg 2x" alt="")
+				button.js-slide-image-plus.slide__button.slide__button--plus
+					+svg('plus')
+				button.js-slide-image-minus.slide__button.slide__button--minus
+					+svg('minus')
 
 		.videos
-			.video.js-cursor
+			.video.js-cursor.js-popup-open(data-url="/video.mp4")
 				span.corner
 				.video__content
 					.video__title
-						| Видео о&nbsp;цифровом кластере
+						| Гибридная поддержка принятия решений при бурении скважин
 					.video__controls
 						.video__play
-							button.js-popup-open(data-url="/video.mp4")
+							button
 								+svg('play')
 							span play
 							.video__time 3:30

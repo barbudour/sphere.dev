@@ -267,6 +267,18 @@
 			}
 		}
 
+		.about & {
+			height: vw(400);
+
+			@include laptop {
+				height: 400px;
+			}
+
+			@include tablet {
+				height: 400px;
+			}
+		}
+
 		@include desktop-big {
 			.home & {
 				&:nth-child(2n + 1) {
@@ -428,15 +440,6 @@
 		}
 	}
 
-	&.home-grid {
-		width: calc(50vw - 1px);
-
-		@include laptop {
-			width: 100%;
-			pointer-events: none;
-		}
-	}
-
 	&.technologies-grid {
 		.grid-item {
 			width: percentage(4 / 12);
@@ -467,6 +470,10 @@
 					max-width: vw(530);
 					font-size: 16px;
 					line-height: (30 / 16);
+
+					@include laptop {
+						max-width: 530px;
+					}
 				}
 
 				@include tablet {
@@ -600,7 +607,7 @@
 						font-size: 32px;
 						line-height: (45 / 32);
 
-						@include mobile {
+						@include tablet {
 							font-size: 21px;
 							line-height: (25 / 21);
 						}
@@ -628,6 +635,18 @@
 
 				&.is-laptop-before-last {
 					height: 560px;
+				}
+
+				.about & {
+					height: 400px;
+
+					&.grid-item--empty {
+						display: none;
+					}
+
+					@include mobile {
+						height: 340px;
+					}
 				}
 			}
 
@@ -666,6 +685,8 @@
 	}
 
 	&.home-grid {
+		width: calc(50vw - 1px);
+
 		.grid-item {
 			&__bottomside {
 				bottom: 38px;
@@ -750,6 +771,11 @@
 					}
 				}
 			}
+		}
+
+		@include laptop {
+			width: 100%;
+			pointer-events: none;
 		}
 
 		@include tablet {

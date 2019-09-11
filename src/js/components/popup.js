@@ -99,6 +99,12 @@ globals.vars.$document
 	.on('keydown', (e) => {
 		if (e.keyCode === 27) {
 			closePopup();
+
+			setTimeout(() => {
+				globals.vars.$html.removeClass('is-overflow-hidden');
+				globals.restoreScrollPosition();
+				globals.bodyWithScrollbar();
+			}, 700);
 		}
 	})
 	.on('click', '.js-popup-close', () => {
