@@ -101,6 +101,10 @@
 
 		&--short {
 			max-width: 560px;
+
+			&::before {
+				display: none;
+			}
 		}
 
 		&--mobile-hide {
@@ -445,6 +449,23 @@
 				@include mobile {
 					&::after {
 						content: none;
+					}
+				}
+			}
+
+			&:nth-child(8) {
+				&::after {
+					content: "";
+					position: absolute;
+					left: 100%;
+					top: -1px;
+					border-top: $grayborder;
+					border-right: $grayborder;
+					width: calc(100% + 2px);
+					height: calc(100% + 1px);
+
+					@include tablet {
+						display: none;
 					}
 				}
 			}

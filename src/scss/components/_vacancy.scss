@@ -65,6 +65,13 @@
 			.button--more {
 				margin-top: 0;
 				color: $color-woodsmoke;
+
+				@include desktop {
+					&:hover {
+						text-decoration: none;
+						color: $color-sunglow;
+					}
+				}
 			}
 		}
 
@@ -104,6 +111,7 @@
 	a {
 		text-decoration: none;
 		color: $color-woodsmoke;
+		transition: color 0.3s;
 
 		svg {
 			margin-top: -1px;
@@ -112,7 +120,7 @@
 			height: 14px;
 			fill: none;
 			transform: translateZ(0);
-			transition: transform 0.3s;
+			transition: transform 0.3s, fill 0.3s, stroke 0.3s;
 			will-change: transform;
 
 			@include mobile {
@@ -122,9 +130,7 @@
 
 		@include desktop {
 			&:hover {
-				svg {
-					transform: scale(1.25) translateZ(0);
-				}
+				color: $color-sunglow;
 			}
 		}
 
