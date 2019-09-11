@@ -418,7 +418,7 @@
 		}
 
 		&__top {
-			position: sticky;
+			position: relative;
 			top: 0;
 			display: flex;
 			align-items: center;
@@ -432,6 +432,10 @@
 				left: 0;
 				right: 0;
 				bottom: 0;
+				border-bottom: 1px solid rgba($color-woodsmoke, 0.05);
+			}
+
+			.is-browser-ie & {
 				border-bottom: 1px solid rgba($color-woodsmoke, 0.05);
 			}
 
@@ -552,12 +556,14 @@
 		}
 
 		&__field {
+			appearance: none;
 			display: block;
 			border: 1px solid rgba($color-woodsmoke, 0.1);
 			border-radius: 5px;
 			padding: 24px;
 			width: 100%;
 			height: 70px;
+			box-shadow: none;
 			font-weight: 300;
 			font-size: 16px;
 			line-height: 0.75;
@@ -734,6 +740,13 @@
 				border: 1px solid rgba($color-woodsmoke, 0.1);
 				min-width: 100px;
 				color: $color-woodsmoke;
+
+				@include mobile {
+					position: absolute;
+					left: 15px;
+					bottom: 50px;
+					width: calc(100% - 30px);
+				}
 			}
 		}
 	}

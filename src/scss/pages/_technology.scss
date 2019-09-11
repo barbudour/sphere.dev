@@ -51,7 +51,13 @@
 		display: flex;
 		overflow: hidden;
 		margin-top: -97px;
-		padding-top: 97px;
+		padding-top: 92px;
+	}
+
+	.page__top__title {
+		@include laptop {
+			max-width: 800px;
+		}
 	}
 
 	&__media {
@@ -169,7 +175,13 @@
 			margin-top: 20px;
 
 			li {
-				padding-left: 30px;
+				margin-bottom: 10px;
+				padding-left: 17px;
+
+				&::before {
+					width: 5px;
+					height: 5px;
+				}
 			}
 		}
 
@@ -179,6 +191,7 @@
 	}
 
 	.slider {
+		max-height: 556px;
 		background-color: $color-white;
 
 		&::before {
@@ -189,6 +202,10 @@
 			width: 100%;
 			height: 100%;
 			background-color: rgba($color-woodsmoke, 0.03);
+		}
+
+		@include mobile {
+			margin-bottom: 0;
 		}
 	}
 
@@ -218,17 +235,92 @@
 	}
 
 	h2 {
-		margin: 0 0 35px;
+		margin: 0 0 18px;
 	}
 
 	p {
-		margin: 0 0 55px;
+		margin: 0 0 50px;
+	}
+
+	&__concept {
+		h2 {
+			margin-bottom: 47px;
+
+			@include mobile {
+				margin-bottom: 17px;
+			}
+		}
+
+		p {
+			margin-bottom: 20px;
+			max-width: 540px;
+
+			@include laptop {
+				max-width: 680px;
+			}
+		}
+
+		ul {
+			margin-top: 0;
+			max-width: 540px;
+
+			li {
+				margin-bottom: 12px;
+				padding-left: 15px;
+
+				&::before {
+					width: 5px;
+					height: 5px;
+				}
+			}
+		}
+	}
+
+	&__technology {
+		h2 {
+			margin-bottom: 34px;
+
+			@include mobile {
+				margin-bottom: 17px;
+			}
+		}
 	}
 
 	.hide-ul {
 		&--mobile {
 			@include mobile {
 				display: none;
+			}
+		}
+	}
+
+	.videos {
+		height: auto;
+	}
+
+	.block-image {
+		margin-top: 0;
+	}
+
+	.block-next {
+		h2 {
+			margin-bottom: 0;
+		}
+
+		&__text {
+			margin-top: 6px;
+
+			svg {
+				margin-bottom: 10px;
+
+				@include mobile {
+					margin-bottom: 0;
+					transform: translate(10px, 3px);
+				}
+			}
+
+			@include mobile {
+				margin-top: 21px;
 			}
 		}
 	}
