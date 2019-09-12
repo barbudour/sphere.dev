@@ -50,6 +50,7 @@ function checkLink() {
 		if (checkLogo) {
 			// console.log('клик по лого')
 			// sphere.statePageLoaded();
+			sphere.stateStartScroll();
 			sphere.statePageLoaded();
 			sphere.stateNormal();
 		} else {
@@ -69,6 +70,7 @@ function homeSphereHover() {
 		);
 }
 
+// checkHome();
 checkLink();
 homeSphereHover();
 
@@ -123,7 +125,7 @@ barba.init({
 		afterEnter() {
 			globals.vars.$html.removeClass('is-no-interact');
 			checkLink();
-			// checkHome();
+			checkHome();
 			scrollPage();
 			homeSphereHover();
 			// statePageLoaded();

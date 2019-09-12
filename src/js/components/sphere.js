@@ -696,7 +696,12 @@ var engine = new BABYLON.Engine(canvas, true, {
 	preserveDrawingBuffer: true,
 	stencil: true
 });
-var scene = createScene();
+
+var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent);
+    
+if (!isMobile) {
+	var scene = createScene();
+}
 
 engine.runRenderLoop(function () {
 	if (scene) {
