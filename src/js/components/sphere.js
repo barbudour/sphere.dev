@@ -20,6 +20,9 @@ var fakePosition;
 var enterPagePositionX;
 var enterPagePositionY;
 
+var keysEnterPosition;
+var keysEnterPositionY;
+
 var smallShapeRotate;
 var bigShapeRotate;
 
@@ -54,11 +57,11 @@ function createScene() {
 
 	// Our built-in 'sphere' shape.
 
-	var triggerSphere = BABYLON.MeshBuilder.CreateSphere("triggerSphere", {diameter: 550}, scene);
-	triggerSphere.visibility = 0;
+	// var triggerSphere = BABYLON.MeshBuilder.CreateSphere("triggerSphere", {diameter: 550}, scene);
+	// triggerSphere.visibility = 0;
 
-	triggerSphere.position.x = startPointX;
-	triggerSphere.position.y = startPointY;
+	// triggerSphere.position.x = startPointX;
+	// triggerSphere.position.y = startPointY;
 
 	BABYLON.SceneLoader.ImportMesh("", "images/", "octs_small.glb", smallShape, function (container) {   
 		container[0].scaling.scaleInPlace(7.5);
@@ -391,7 +394,7 @@ function createScene() {
             enterPagePositionY.setKeys(keysEnterPositionY);
 			scene.beginDirectAnimation(smallShape, [enterPagePositionX, enterPagePositionY], 0, 20, false);
 			scene.beginDirectAnimation(bigShape, [enterPagePositionX, enterPagePositionY], 0, 20, false);
-			scene.beginDirectAnimation(triggerSphere, [enterPagePositionX, enterPagePositionY], 0, 20, false);
+			// scene.beginDirectAnimation(triggerSphere, [enterPagePositionX, enterPagePositionY], 0, 20, false);
 		};
 		this.enterPage = function () {
 			console.log('enter');
@@ -477,7 +480,7 @@ function createScene() {
             fakePosition.setKeys(fakeP);
 			scene.beginDirectAnimation(smallShape, [enterPagePositionX, enterPagePositionY], 0, 20, false);
             scene.beginDirectAnimation(bigShape, [enterPagePositionX, enterPagePositionY], 0, 20, false);
-            scene.beginDirectAnimation(triggerSphere, [enterPagePositionX, enterPagePositionY], 0, 20, false);
+            // scene.beginDirectAnimation(triggerSphere, [enterPagePositionX, enterPagePositionY], 0, 20, false);
             scene.beginDirectAnimation(fakeShape, [fakePosition], 0, 20, false);
 
 			function hideFakeShape(params) {
@@ -595,7 +598,7 @@ function createScene() {
 			enterPagePositionY.setKeys(keysEnterPositionY);
 			mainSpherePositionX.setKeys(mainSpherePositionXKeys);
 			fakePosition.setKeys(fakeP);
-            scene.beginDirectAnimation(triggerSphere, [enterPagePositionX, enterPagePositionY], 0, 20, false);
+            // scene.beginDirectAnimation(triggerSphere, [enterPagePositionX, enterPagePositionY], 0, 20, false);
             scene.beginDirectAnimation(smallShape, [mainSpherePositionX], 0, 20, false);
             scene.beginDirectAnimation(fakeShape, [fakePosition], 0, 20, false);
 			function hideFake() {
@@ -641,7 +644,7 @@ function createScene() {
 			enterPagePositionX.setKeys(keysEnterPosition);
 			fakePosition.setKeys(fakeP);
 			scene.beginDirectAnimation(smallShape, [enterPagePositionX], 0, 20, false);
-            scene.beginDirectAnimation(triggerSphere, [enterPagePositionX], 0, 20, false);
+            // scene.beginDirectAnimation(triggerSphere, [enterPagePositionX], 0, 20, false);
             scene.beginDirectAnimation(fakeShape, [fakePosition], 0, 20, false);
 
 			fakeShape.getChildMeshes().forEach(childMesh => {
@@ -652,31 +655,31 @@ function createScene() {
 
 	// Наведение на сферы
 
-	triggerSphere.actionManager = new BABYLON.ActionManager(scene);
+	// triggerSphere.actionManager = new BABYLON.ActionManager(scene);
 
-	triggerSphere.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function(ev){	
-		smallShapeRotate.speedRatio = 1.2;
-		bigShapeRotate.speedRatio = 1.2;
+	// triggerSphere.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function(ev){	
+	// 	smallShapeRotate.speedRatio = 1.2;
+	// 	bigShapeRotate.speedRatio = 1.2;
 
-		function standartSpeed() {
-			smallShapeRotate.speedRatio = 0.5;
-			bigShapeRotate.speedRatio = 0.5;
-		}
+	// 	function standartSpeed() {
+	// 		smallShapeRotate.speedRatio = 0.5;
+	// 		bigShapeRotate.speedRatio = 0.5;
+	// 	}
 
-		setTimeout(standartSpeed, 1600);
-	}));
+	// 	setTimeout(standartSpeed, 1600);
+	// }));
 
-	triggerSphere.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger, function(ev){
-		smallShapeRotate.speedRatio = -1.2;
-		bigShapeRotate.speedRatio = -1.2;
+	// triggerSphere.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger, function(ev){
+	// 	smallShapeRotate.speedRatio = -1.2;
+	// 	bigShapeRotate.speedRatio = -1.2;
 
-		function standartSpeed() {
-			smallShapeRotate.speedRatio = 0.5;
-			bigShapeRotate.speedRatio = 0.5;
-		}
+	// 	function standartSpeed() {
+	// 		smallShapeRotate.speedRatio = 0.5;
+	// 		bigShapeRotate.speedRatio = 0.5;
+	// 	}
 
-		setTimeout(standartSpeed, 1600);
-	}));
+	// 	setTimeout(standartSpeed, 1600);
+	// }));
 
 	// const gui = new dat.GUI();
 	// var text = new sphereAnimations();
@@ -693,7 +696,12 @@ var engine = new BABYLON.Engine(canvas, true, {
 	preserveDrawingBuffer: true,
 	stencil: true
 });
-var scene = createScene();
+
+var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent);
+    
+if (!isMobile) {
+	var scene = createScene();
+}
 
 engine.runRenderLoop(function () {
 	if (scene) {
@@ -781,7 +789,7 @@ function stateNormal () {
 	enterPagePositionY.setKeys(keysEnterPositionY);
 	scene.beginDirectAnimation(smallShape, [enterPagePositionX, enterPagePositionY], 0, 20, false);
 	scene.beginDirectAnimation(bigShape, [enterPagePositionX, enterPagePositionY], 0, 20, false);
-	scene.beginDirectAnimation(triggerSphere, [enterPagePositionX, enterPagePositionY], 0, 20, false);
+	// scene.beginDirectAnimation(triggerSphere, [enterPagePositionX, enterPagePositionY], 0, 20, false);
 };
 function statePageLoaded () {
 	console.log('enter');
@@ -868,7 +876,7 @@ function statePageLoaded () {
 	fakePosition.setKeys(fakeP);
 	scene.beginDirectAnimation(smallShape, [enterPagePositionX, enterPagePositionY], 0, 20, false);
 	scene.beginDirectAnimation(bigShape, [enterPagePositionX, enterPagePositionY], 0, 20, false);
-	scene.beginDirectAnimation(triggerSphere, [enterPagePositionX, enterPagePositionY], 0, 20, false);
+	// scene.beginDirectAnimation(triggerSphere, [enterPagePositionX, enterPagePositionY], 0, 20, false);
 	scene.beginDirectAnimation(fakeShape, [fakePosition], 0, 20, false);
 
 	function hideFakeShape(params) {
@@ -986,7 +994,7 @@ function stateStartScroll () {
 	enterPagePositionY.setKeys(keysEnterPositionY);
 	mainSpherePositionX.setKeys(mainSpherePositionXKeys);
 	fakePosition.setKeys(fakeP);
-	scene.beginDirectAnimation(triggerSphere, [enterPagePositionX, enterPagePositionY], 0, 20, false);
+	// scene.beginDirectAnimation(triggerSphere, [enterPagePositionX, enterPagePositionY], 0, 20, false);
 	scene.beginDirectAnimation(smallShape, [mainSpherePositionX], 0, 20, false);
 	scene.beginDirectAnimation(fakeShape, [fakePosition], 0, 20, false);
 	function hideFake() {
@@ -1032,7 +1040,7 @@ function stateScroll () {
 	enterPagePositionX.setKeys(keysEnterPosition);
 	fakePosition.setKeys(fakeP);
 	scene.beginDirectAnimation(smallShape, [enterPagePositionX], 0, 20, false);
-	scene.beginDirectAnimation(triggerSphere, [enterPagePositionX], 0, 20, false);
+	// scene.beginDirectAnimation(triggerSphere, [enterPagePositionX], 0, 20, false);
 	scene.beginDirectAnimation(fakeShape, [fakePosition], 0, 20, false);
 
 	fakeShape.getChildMeshes().forEach(childMesh => {
@@ -1049,11 +1057,36 @@ function testNext() {
 	console.log('work next');
 }
 
+function hoverOn() {
+	smallShapeRotate.speedRatio = 1.2;
+	bigShapeRotate.speedRatio = 1.2;
+
+	function standartSpeed() {
+		smallShapeRotate.speedRatio = 0.5;
+		bigShapeRotate.speedRatio = 0.5;
+	}
+
+	setTimeout(standartSpeed, 1600);
+}
+
+function hoverOff() {
+	smallShapeRotate.speedRatio = -1.2;
+	bigShapeRotate.speedRatio = -1.2;
+
+	function standartSpeed() {
+		smallShapeRotate.speedRatio = 0.5;
+		bigShapeRotate.speedRatio = 0.5;
+	}
+
+	setTimeout(standartSpeed, 1600);
+}
+
 export default {
 	testNext,
 	stateNormal,
 	statePageLoaded,
 	stateStartScroll,
 	stateScroll,
-	expansion
+	hoverOn,
+	hoverOff
 };
