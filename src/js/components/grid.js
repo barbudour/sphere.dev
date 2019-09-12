@@ -64,11 +64,6 @@ function init() {
 					height: `${gridHeight}px`,
 				});
 
-				// $(element).children('.grid-item__bg').css({
-				// 	top: '-1px',
-				// 	right: '-3px',
-				// });
-
 				if (index % 2 === 0) {
 					$(element).css({
 						marginTop: `-${gridOffset}px`,
@@ -90,10 +85,6 @@ function init() {
 						'margin-top': `-${gridOffset}px`,
 						'height': `${beforeLastGridHeight}px`,
 					});
-				// $(element).children('.grid-item__bg').css({
-				// 	top: '-1px',
-				// 	right: '-3px',
-				// });
 			}
 
 			if (index === $gridItem.length - 1) {
@@ -233,53 +224,18 @@ function init() {
 		}
 	});
 
-	// if (globals.isDesktop()) {
-	// 	$('.js-grid').not('.news-grid').find('.grid-item').not('.grid-item--empty').each((index, element) => {
-	// 		$(element)
-	// 			.on('mouseenter.grid', (event) => {
-	// 				let $this = $(event.currentTarget);
-
-	// 				$this
-	// 					.css({
-	// 						'z-index': 3,
-	// 					})
-	// 					.addClass('is-hovered');
-
-	// 				TweenMax.to($this, 0.3, {
-	// 					scale: 1.05,
-	// 					rotationZ: -0.001,
-	// 					ease: Power1.easeOut,
-	// 					force3D: false,
-	// 				});
-	// 			})
-	// 			.on('mouseleave.grid', (event) => {
-	// 				let $this = $(event.currentTarget);
-
-	// 				$this
-	// 					.css({
-	// 						'z-index': 2,
-	// 					})
-	// 					.removeClass('is-hovered');
-
-	// 				$this
-	// 					.children('.grid-item__bg').css({
-	// 						left: '0',
-	// 						bottom: '0',
-	// 					});
-
-	// 				TweenMax.to($this, 0.3, {
-	// 					scale: 1,
-	// 					rotationZ: -0.001,
-	// 					ease: Power1.easeOut,
-	// 					force3D: false,
-	// 					clearProps: 'rotationZ',
-	// 					onComplete() {
-	// 						$this.css('z-index', 1);
-	// 					},
-	// 				});
-	// 			});
-	// 	});
-	// }
+	$gridItem.each((index, element) => {
+		if ($(element).hasClass('grid-item--first') && $(element).find('.grid-item__content').length > 1) {
+			$(element).slick({
+				speed: 500,
+				fade: true,
+				dots: true,
+				arrows: false,
+				infinite: true,
+				cssEase: 'linear',
+			});
+		}
+	});
 
 	gridItemsBlur();
 }

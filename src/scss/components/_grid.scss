@@ -222,8 +222,76 @@
 			height: 400px;
 			background-color: $color-buttercup;
 
+			.slick-list {
+				width: 100%;
+				height: 100%;
+			}
+
+			.slick-track {
+				height: 100%;
+			}
+
+			.slick-slide {
+				height: 100%;
+
+				> div {
+					height: 100%;
+				}
+			}
+
+			.slick-dots {
+				position: absolute;
+				left: 25px;
+				bottom: 30px;
+				display: flex;
+				list-style: none;
+				padding: 0;
+				font-size: 0;
+
+				li {
+					position: relative;
+					overflow: hidden;
+					width: 10px;
+					height: 27px;
+					cursor: pointer;
+
+					&::before {
+						content: "";
+						position: absolute;
+						left: 50%;
+						bottom: 0;
+						width: 1px;
+						height: 27px;
+						background-color: $color-white;
+						transform: translateY(12px);
+						transition: transform 0.3s, background 0.3s;
+					}
+
+					&.slick-active {
+						&::before {
+							background-color: $color-woodsmoke;
+							transform: translateY(0);
+						}
+					}
+
+					@include desktop {
+						&:hover {
+							&::before {
+								background-color: $color-woodsmoke;
+								transform: translateY(0);
+							}
+						}
+					}
+				}
+
+				@include mobile {
+					left: 10px;
+				}
+			}
+
 			.grid-item__content {
 				padding: 30px 30px 35px;
+				text-decoration: none;
 
 				@include mobile {
 					padding: 30px 15px 35px;
@@ -520,6 +588,7 @@
 		.grid-item {
 			flex-basis: auto;
 			width: percentage(4 / 12);
+			transform: translateZ(0);
 
 			&__bottomside {
 				bottom: 38px;
@@ -547,6 +616,11 @@
 					background-color: rgba($color-black, 0.4);
 					transform: translateZ(0);
 					transition: opacity 0.3s;
+					will-change: opacity;
+
+					.is-browser-ie & {
+						right: -5px;
+					}
 				}
 
 				img {
@@ -564,6 +638,11 @@
 					top: 50%;
 					transform: translate(-50%, -50%) translateZ(0);
 					transition: opacity 0.3s;
+					will-change: opacity;
+				}
+
+				.is-browser-ie & {
+					width: calc(100% + 3px);
 				}
 			}
 
@@ -581,10 +660,6 @@
 				transform: translate(-50%, -50%);
 				transition: opacity 0.3s;
 				will-change: opacity;
-
-				.is-browser-ie & {
-					display: block;
-				}
 			}
 
 			&__title {
@@ -687,7 +762,9 @@
 	&.home-grid {
 		width: calc(50vw - 1px);
 
-		.grid-item {
+		.grid-item {			
+			transform: translateZ(0);
+
 			&__bottomside {
 				bottom: 38px;
 			}
@@ -714,6 +791,11 @@
 					background-color: rgba($color-black, 0.4);
 					transform: translateZ(0);
 					transition: opacity 0.3s;
+					will-change: opacity;
+
+					.is-browser-ie & {
+						right: -5px;
+					}
 				}
 
 				img {
@@ -731,6 +813,11 @@
 					top: 50%;
 					transform: translate(-50%, -50%) translateZ(0);
 					transition: opacity 0.3s;
+					will-change: opacity;
+				}
+
+				.is-browser-ie & {
+					width: calc(100% + 3px);
 				}
 			}
 
@@ -747,10 +834,6 @@
 				transform: translate(-50%, -50%);
 				transition: opacity 0.3s;
 				will-change: opacity;
-
-				.is-browser-ie & {
-					display: block;
-				}
 			}
 
 			&__title {
