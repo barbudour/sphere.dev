@@ -222,8 +222,77 @@
 			height: 400px;
 			background-color: $color-buttercup;
 
+			.slick-list {
+				width: 100%;
+				height: 100%;
+			}
+
+			.slick-track {
+				height: 100%;
+			}
+
+			.slick-slide {
+				height: 100%;
+
+				> div {
+					height: 100%;
+				}
+			}
+
+			.slick-dots {
+				position: absolute;
+				left: 25px;
+				bottom: 30px;
+				display: flex;
+				list-style: none;
+				padding: 0;
+				font-size: 0;
+
+				li {
+					position: relative;
+					overflow: hidden;
+					width: 10px;
+					height: 27px;
+					cursor: pointer;
+
+					&::before {
+						content: "";
+						position: absolute;
+						left: 50%;
+						bottom: 0;
+						width: 1px;
+						height: 27px;
+						background-color: $color-white;
+						transform: translateY(12px);
+						transition: transform 0.3s, background 0.3s;
+					}
+
+					&.slick-active {
+						&::before {
+							background-color: $color-woodsmoke;
+							transform: translateY(0);
+						}
+					}
+
+					@include desktop {
+						&:hover {
+							&::before {
+								background-color: $color-woodsmoke;
+								transform: translateY(0);
+							}
+						}
+					}
+				}
+
+				@include mobile {
+					left: 10px;
+				}
+			}
+
 			.grid-item__content {
+				display: block;
 				padding: 30px 30px 35px;
+				text-decoration: none;
 
 				@include mobile {
 					padding: 30px 15px 35px;
@@ -264,6 +333,18 @@
 			@include laptop {
 				width: 340px;
 				height: 480px;
+			}
+		}
+
+		.about & {
+			height: vw(400);
+
+			@include laptop {
+				height: 400px;
+			}
+
+			@include tablet {
+				height: 400px;
 			}
 		}
 
@@ -428,15 +509,6 @@
 		}
 	}
 
-	&.home-grid {
-		width: calc(50vw - 1px);
-
-		@include laptop {
-			width: 100%;
-			pointer-events: none;
-		}
-	}
-
 	&.technologies-grid {
 		.grid-item {
 			width: percentage(4 / 12);
@@ -467,6 +539,10 @@
 					max-width: vw(530);
 					font-size: 16px;
 					line-height: (30 / 16);
+
+					@include laptop {
+						max-width: 530px;
+					}
 				}
 
 				@include tablet {
@@ -513,6 +589,7 @@
 		.grid-item {
 			flex-basis: auto;
 			width: percentage(4 / 12);
+			transform: translateZ(0);
 
 			&__bottomside {
 				bottom: 38px;
@@ -540,6 +617,11 @@
 					background-color: rgba($color-black, 0.4);
 					transform: translateZ(0);
 					transition: opacity 0.3s;
+					will-change: opacity;
+
+					.is-browser-ie & {
+						right: -5px;
+					}
 				}
 
 				img {
@@ -557,6 +639,11 @@
 					top: 50%;
 					transform: translate(-50%, -50%) translateZ(0);
 					transition: opacity 0.3s;
+					will-change: opacity;
+				}
+
+				.is-browser-ie & {
+					width: calc(100% + 3px);
 				}
 			}
 
@@ -574,10 +661,6 @@
 				transform: translate(-50%, -50%);
 				transition: opacity 0.3s;
 				will-change: opacity;
-
-				.is-browser-ie & {
-					display: block;
-				}
 			}
 
 			&__title {
@@ -600,7 +683,7 @@
 						font-size: 32px;
 						line-height: (45 / 32);
 
-						@include mobile {
+						@include tablet {
 							font-size: 21px;
 							line-height: (25 / 21);
 						}
@@ -628,6 +711,18 @@
 
 				&.is-laptop-before-last {
 					height: 560px;
+				}
+
+				.about & {
+					height: 400px;
+
+					&.grid-item--empty {
+						display: none;
+					}
+
+					@include mobile {
+						height: 340px;
+					}
 				}
 			}
 
@@ -666,7 +761,11 @@
 	}
 
 	&.home-grid {
-		.grid-item {
+		width: calc(50vw - 1px);
+
+		.grid-item {			
+			transform: translateZ(0);
+
 			&__bottomside {
 				bottom: 38px;
 			}
@@ -693,6 +792,11 @@
 					background-color: rgba($color-black, 0.4);
 					transform: translateZ(0);
 					transition: opacity 0.3s;
+					will-change: opacity;
+
+					.is-browser-ie & {
+						right: -5px;
+					}
 				}
 
 				img {
@@ -710,6 +814,11 @@
 					top: 50%;
 					transform: translate(-50%, -50%) translateZ(0);
 					transition: opacity 0.3s;
+					will-change: opacity;
+				}
+
+				.is-browser-ie & {
+					width: calc(100% + 3px);
 				}
 			}
 
@@ -726,10 +835,6 @@
 				transform: translate(-50%, -50%);
 				transition: opacity 0.3s;
 				will-change: opacity;
-
-				.is-browser-ie & {
-					display: block;
-				}
 			}
 
 			&__title {
@@ -750,6 +855,11 @@
 					}
 				}
 			}
+		}
+
+		@include laptop {
+			width: 100%;
+			pointer-events: none;
 		}
 
 		@include tablet {

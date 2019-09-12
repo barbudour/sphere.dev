@@ -211,6 +211,10 @@
 			width: 12px;
 			height: 12px;
 			transition: all 0.3s;
+
+			.is-browser-edge & {
+				top: 4px;
+			}
 		}
 
 		&::after {
@@ -228,6 +232,10 @@
 
 			.is-browser-ie {
 				background-image: url("../images/sprites/png/filter-ok.png");
+			}
+
+			.is-browser-edge & {
+				top: 7px;
 			}
 		}
 
