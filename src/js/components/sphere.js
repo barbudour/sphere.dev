@@ -1049,11 +1049,36 @@ function testNext() {
 	console.log('work next');
 }
 
+function hoverOn() {
+	smallShapeRotate.speedRatio = 1.2;
+	bigShapeRotate.speedRatio = 1.2;
+
+	function standartSpeed() {
+		smallShapeRotate.speedRatio = 0.5;
+		bigShapeRotate.speedRatio = 0.5;
+	}
+
+	setTimeout(standartSpeed, 1600);
+}
+
+function hoverOff() {
+	smallShapeRotate.speedRatio = -1.2;
+	bigShapeRotate.speedRatio = -1.2;
+
+	function standartSpeed() {
+		smallShapeRotate.speedRatio = 0.5;
+		bigShapeRotate.speedRatio = 0.5;
+	}
+
+	setTimeout(standartSpeed, 1600);
+}
+
 export default {
 	testNext,
 	stateNormal,
 	statePageLoaded,
 	stateStartScroll,
 	stateScroll,
-	expansion
+	hoverOn,
+	hoverOff
 };

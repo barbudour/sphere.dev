@@ -57,7 +57,18 @@ function checkLink() {
 	});
 }
 
+function homeSphereHover() {
+	$( ".home__fixed" ).hover(
+		function() {
+			sphere.hoverOn();
+		}, function() {
+			sphere.hoverOff();
+		}
+	);
+}
+
 checkLink();
+homeSphereHover();
 
 barba.use(barbaCss);
 
@@ -132,6 +143,7 @@ barba.init({
 			globals.vars.$html.removeClass('is-no-interact');
 			checkLink();
 			scrollPage();
+			homeSphereHover();
 			// statePageLoaded();
 		},
 	}],
