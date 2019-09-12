@@ -22,7 +22,7 @@ NProgress.configure({
 	showSpinner: false,
 });
 
-$(document).ready(function () {
+function checkHome() {
 	if ($('[data-barba-namespace="home"]').length > 0) {
 		console.log('main page');
 		sphere.stateNormal();
@@ -30,15 +30,15 @@ $(document).ready(function () {
 		console.log('not main page');
 		sphere.statePageLoaded();
 	}
-});
+};
 
 function scrollPage() {
 	$(window).scroll(function () { 
 		if ($(this).scrollTop() < 10) {
 			sphere.statePageLoaded();
-		} else if ($(this).scrollTop() > 10 && $(this).scrollTop() < 50) {
+		} else if ($(this).scrollTop() > 10 && $(this).scrollTop() < window.innerHeight) {
 			sphere.stateStartScroll();
-		} else if ($(this).scrollTop() > 50) {
+		} else if ($(this).scrollTop() > window.innerHeight) {
 			sphere.stateScroll();
 		}
 	});
@@ -49,6 +49,8 @@ function checkLink() {
 		var checkLogo = $(this).hasClass('header__logo');
 		if (checkLogo) {
 			// console.log('клик по лого')
+			// sphere.statePageLoaded();
+			sphere.statePageLoaded();
 			sphere.stateNormal();
 		} else {
 			sphere.statePageLoaded();
@@ -64,7 +66,7 @@ function homeSphereHover() {
 		}, function() {
 			sphere.hoverOff();
 		}
-	);
+		);
 }
 
 checkLink();
@@ -75,28 +77,7 @@ barba.use(barbaCss);
 barba.init({
 
 	transitions: [
-		// {
-		// 	name: 'homepageTo',
-		// 	to: {
-		// 		namespace: 'home'
-		// 	},
-		// 	beforeEnter() {
-		// 		sphere.stateNormal();
-		// 	}
-		// },
-		// {
-		// 	name: 'homepageFrom',
-		// 	from: {
-		// 		namespace: [
-		// 			'home'
-		// 		]
-		// 	},
-		// 	beforeLeave() {
-		// 		sphere.statePageLoaded();
-		// 	}
-		// },
 		{
-		// sync: true,
 		beforeLeave() {
 			NProgress.start();
 
@@ -142,6 +123,7 @@ barba.init({
 		afterEnter() {
 			globals.vars.$html.removeClass('is-no-interact');
 			checkLink();
+			// checkHome();
 			scrollPage();
 			homeSphereHover();
 			// statePageLoaded();
