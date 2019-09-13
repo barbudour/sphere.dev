@@ -145,6 +145,7 @@
 		width: vw(454);
 		height: vw(270);
 		background-color: rgba($color-woodsmoke-dark, 0.88);
+		transform: translateZ(0);
 
 		&__topside {
 			display: flex;
@@ -199,6 +200,7 @@
 			&:hover {
 				// stylelint-disable-next-line declaration-no-important
 				text-decoration: none !important;
+				transform: translateZ(0);
 
 				.news__slide__text {
 					color: $color-sunglow;

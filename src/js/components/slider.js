@@ -19,35 +19,38 @@ function init() {
 			itemsColText = `0${itemsCol}`;
 		}
 
-		$(element).slick({
-			rows: 0,
-			fade: true,
-			speed: 500,
-			dots: false,
-			arrows: true,
-			infinite: true,
-			cssEase: 'linear',
-			nextArrow: '<button type="button" class="slick-next slick-arrow button"><span></span>Следующий<span></span></button>',
-			prevArrow: '<button type="button" class="slick-prev slick-arrow button"><span></span>Предыдущий<span></span></button>',
-		});
+		setTimeout(() => {
+			$(element).slick({
+				rows: 0,
+				fade: true,
+				speed: 500,
+				dots: false,
+				arrows: true,
+				infinite: true,
+				cssEase: 'linear',
+				lazyLoad: 'ondemand',
+				nextArrow: '<button type="button" class="slick-next slick-arrow button"><span></span>Следующий<span></span></button>',
+				prevArrow: '<button type="button" class="slick-prev slick-arrow button"><span></span>Предыдущий<span></span></button>',
+			});
 
-		if (itemsCol > 1) {
-			$(element).append(slidesCounter);
-		} else {
-			$slider.find('button').remove();
-		}
-
-		$(element).find('.slides-counter__all').html(itemsColText);
-
-		$(element).on('beforeChange.slider', (event, slick, currentSlide, nextSlide) => {
-			counter = nextSlide + 1;
-
-			if (counter < 10) {
-				counter = `0${nextSlide + 1}`;
+			if (itemsCol > 1) {
+				$(element).append(slidesCounter);
+			} else {
+				$slider.find('button').remove();
 			}
 
-			$(element).find('.slides-counter__current').html(counter);
-		});
+			$(element).find('.slides-counter__all').html(itemsColText);
+
+			$(element).on('beforeChange.slider', (event, slick, currentSlide, nextSlide) => {
+				counter = nextSlide + 1;
+
+				if (counter < 10) {
+					counter = `0${nextSlide + 1}`;
+				}
+
+				$(element).find('.slides-counter__current').html(counter);
+			});
+		}, 100);
 	});
 
 	$('.js-slide-image-plus').on('click.slider', (e) => {

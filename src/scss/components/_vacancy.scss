@@ -123,14 +123,28 @@
 			transition: transform 0.3s, fill 0.3s, stroke 0.3s;
 			will-change: transform;
 
+			.is-browser-edge & {
+				opacity: 0;
+			}
+
 			@include mobile {
 				margin-left: 4px;
 			}
 		}
 
+		.is-browser-edge & {
+			background: url("../images/sprites/svg/more-gray.svg") no-repeat right center;
+			background-size: 14px 14px;
+			transition: all 0.3s;
+		}
+
 		@include desktop {
 			&:hover {
 				color: $color-sunglow;
+
+				.is-browser-edge & {
+					background-image: url("../images/sprites/svg/more-active.svg");
+				}
 			}
 		}
 

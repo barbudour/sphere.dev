@@ -58,8 +58,12 @@ function getWidth($el) {
 }
 
 function closeSelect() {
-	$('.js-select-holder').removeClass('is-active right');
+	let $currentSelect = $(document).find('.js-select-holder.is-active');
 	$('.js-select-toggle').fadeOut();
+
+	setTimeout(() => {
+		$currentSelect.removeClass('is-active right');
+	}, 400);
 }
 
 export function getFilter($element) {
