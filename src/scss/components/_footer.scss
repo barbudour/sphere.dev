@@ -71,7 +71,7 @@
 	}
 
 	&--main {
-		width: 50vw;
+		width: calc(50vw - 1px);
 		max-width: 100%;
 
 		.footer__content {
