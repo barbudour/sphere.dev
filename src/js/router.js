@@ -16,17 +16,70 @@ import slider from './components/slider';
 import tabletScroll from './components/tabletscroll';
 import technology from './components/technology';
 import vacancies from './components/vacancies';
+import sphere from './components/sphere';
 
 NProgress.configure({
 	showSpinner: false,
 });
 
+function checkHome() {
+	if ($('[data-barba-namespace="home"]').length > 0) {
+		console.log('main page');
+		sphere.stateNormal();
+	} else {
+		console.log('not main page');
+		sphere.statePageLoaded();
+	}
+};
+
+function scrollPage() {
+	$(window).scroll(function () { 
+		if ($(this).scrollTop() < 10) {
+			sphere.statePageLoaded();
+		} else if ($(this).scrollTop() > 10 && $(this).scrollTop() < window.innerHeight) {
+			sphere.stateStartScroll();
+		} else if ($(this).scrollTop() > window.innerHeight) {
+			sphere.stateScroll();
+		}
+	});
+}
+
+function checkLink() {
+	$('a').on('click', function () {
+		var checkLogo = $(this).hasClass('header__logo');
+		if (checkLogo) {
+			// console.log('клик по лого')
+			// sphere.statePageLoaded();
+			sphere.stateStartScroll();
+			sphere.statePageLoaded();
+			sphere.stateNormal();
+		} else {
+			sphere.statePageLoaded();
+			// console.log('клик по ссылке')
+		}
+	});
+}
+
+function homeSphereHover() {
+	$( ".home__fixed" ).hover(
+		function() {
+			sphere.hoverOn();
+		}, function() {
+			sphere.hoverOff();
+		}
+		);
+}
+
+// checkHome();
+checkLink();
+homeSphereHover();
+
 barba.use(barbaCss);
 
 barba.init({
 
-	transitions: [{
-
+	transitions: [
+		{
 		beforeLeave() {
 			NProgress.start();
 
@@ -52,7 +105,6 @@ barba.init({
 
 		beforeEnter() {
 			globals.initVars();
-
 			cursor.init();
 			filter.init();
 			grid.init();
@@ -65,14 +117,19 @@ barba.init({
 			tabletScroll.init();
 			technology.init();
 			vacancies.init();
-
+			
+			// sphere.statePageLoaded();
 			NProgress.done();
 		},
-
+		
 		afterEnter() {
 			globals.vars.$html.removeClass('is-no-interact');
+			checkLink();
+			checkHome();
+			scrollPage();
+			homeSphereHover();
+			// statePageLoaded();
 		},
-
 	}],
 
 	prevent(data) {
