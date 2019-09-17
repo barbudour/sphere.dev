@@ -29,8 +29,6 @@ var bigShapeRotate;
 var startPointX = -(window.innerWidth*0.075);
 var startPointY = -(window.innerHeight*0.05);
 
-console.log(location.pathname);
-
 function createScene() {
 
 	// This creates a basic Babylon Scene object (non-mesh)
