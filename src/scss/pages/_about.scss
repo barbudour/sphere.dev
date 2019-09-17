@@ -207,6 +207,7 @@
 				width: 11px;
 				height: 11px;
 				background: url("../images/sprites/svg/plus.svg") center no-repeat;
+				transition: opacity 0.3s;
 
 				@include mobile {
 					top: 50px;
@@ -463,10 +464,17 @@
 					border-right: $grayborder;
 					width: calc(100% + 2px);
 					height: calc(100% + 1px);
+					pointer-events: none;
 
 					@include tablet {
 						display: none;
 					}
+				}
+			}
+
+			&.is-hovered {
+				&::before {
+					opacity: 0;
 				}
 			}
 
@@ -783,6 +791,17 @@
 	.videos {
 		@include tablet {
 			height: auto;
+		}
+	}
+
+	.block-next__text {
+		svg {
+			margin-bottom: 0;
+			transform: translateY(-10px);
+
+			@include mobile {
+				transform: translateY(4px);
+			}
 		}
 	}
 }
