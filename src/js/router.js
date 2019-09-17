@@ -18,31 +18,26 @@ import technology from './components/technology';
 import vacancies from './components/vacancies';
 import sphere from './components/sphere';
 
+var stateSphereActive = false;
+
+$(document).ready(function () {
+	if (location.pathname != '/') {
+		sphere.stateInnerPage();
+		window.onload = function() {
+			sphere.stateStartScroll();
+			setTimeout(function() {
+				sphere.stateScroll();
+			}, 1000)
+			stateSphereActive = true;
+		};
+	} else {
+		return false;
+	}
+});
+
 NProgress.configure({
 	showSpinner: false,
 });
-
-function checkHome() {
-	if ($('[data-barba-namespace="home"]').length > 0) {
-		console.log('main page');
-		sphere.stateNormal();
-	} else {
-		console.log('not main page');
-		sphere.statePageLoaded();
-	}
-};
-
-function scrollPage() {
-	$(window).scroll(function () { 
-		if ($(this).scrollTop() < 10) {
-			sphere.statePageLoaded();
-		} else if ($(this).scrollTop() > 10 && $(this).scrollTop() < window.innerHeight) {
-			sphere.stateStartScroll();
-		} else if ($(this).scrollTop() > window.innerHeight) {
-			sphere.stateScroll();
-		}
-	});
-}
 
 function checkLink() {
 	$('a').on('click', function () {
@@ -53,15 +48,25 @@ function checkLink() {
 			sphere.stateStartScroll();
 			sphere.statePageLoaded();
 			sphere.stateNormal();
+			stateSphereActive = false;
 		} else {
-			sphere.statePageLoaded();
+			if (!stateSphereActive) {
+				sphere.statePageLoaded();
+				setTimeout(function() {
+					sphere.stateStartScroll();
+					setTimeout(function() {
+						sphere.stateScroll();
+					}, 1000)
+				}, 1000)
+				stateSphereActive = true;
+			}
 			// console.log('клик по ссылке')
 		}
 	});
 }
 
 function homeSphereHover() {
-	$( ".home__fixed" ).hover(
+	$( ".home__fixed__decoration" ).hover(
 		function() {
 			sphere.hoverOn();
 		}, function() {
@@ -70,7 +75,6 @@ function homeSphereHover() {
 		);
 }
 
-// checkHome();
 checkLink();
 homeSphereHover();
 
@@ -125,8 +129,6 @@ barba.init({
 		afterEnter() {
 			globals.vars.$html.removeClass('is-no-interact');
 			checkLink();
-			checkHome();
-			scrollPage();
 			homeSphereHover();
 			// statePageLoaded();
 		},
@@ -138,7 +140,6 @@ barba.init({
 
 			return true;
 		}
-
 		return false;
 	},
 

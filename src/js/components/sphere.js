@@ -368,7 +368,7 @@ function createScene() {
 				}
 			});
 
-			for (let i = 0; i < selectedPolygons.length / 2; i += 1) {
+			for (var i = 0; i < selectedPolygons.length / 1.5; i += 1) {
 
 				let random = 0;
 				let random2 = 0;
@@ -452,7 +452,7 @@ function createScene() {
 				}
 			});
 
-			for (let i = 0; i < selectedPolygons.length / 2; i += 1) {
+			for (var i = 0; i < selectedPolygons.length / 1.5; i += 1) {
 
 				let random = 0;
 				let random2 = 0;
@@ -547,7 +547,7 @@ function createScene() {
 				}
 			});
 
-			for (let i = 0; i < selectedPolygons.length / 2; i += 1) {
+			for (var i = 0; i < selectedPolygons.length / 1.5; i += 1) {
 				function getRandomArbitary(min, max) {
 					let pos = Math.random() * (max - min) + min;
 					const sphereD = 30;
@@ -759,7 +759,7 @@ function stateNormal() {
 		}
 	});
 
-	for (let i = 0; i < selectedPolygons.length / 2; i += 1) {
+	for (var i = 0; i < selectedPolygons.length / 1.5; i += 1) {
 
 		let random = 0;
 		let random2 = 0;
@@ -784,7 +784,8 @@ function stateNormal() {
 		translate.setKeys(translatePosition);
 		selectedPolygons[i].animations.push(translate);
 		scene.beginDirectAnimation(selectedPolygons[i], [translate], 0, 20, false);
-	}
+		selectedPolygons[i].position = new BABYLON.Vector3(random, random2, random3);
+	};
 
 	let easingFunction = new BABYLON.CubicEase();
 	easingFunction.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
@@ -844,7 +845,7 @@ function statePageLoaded() {
 		}
 	});
 
-	for (let i = 0; i < selectedPolygons.length / 2; i += 1) {
+	for (var i = 0; i < selectedPolygons.length / 1.5; i += 1) {
 
 		let random = 0;
 		let random2 = 0;
@@ -894,8 +895,8 @@ function statePageLoaded() {
 }
 function stateStartScroll() {
 
-	console.log('scroll');
-	let enterPagePositionX = new BABYLON.Animation('enterPagePositionX', 'position.x', 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+	// console.log('scroll');            
+	var enterPagePositionX = new BABYLON.Animation("enterPagePositionX", "position.x", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
 
 	let keysEnterPosition = [];
 	keysEnterPosition.push({
@@ -939,7 +940,7 @@ function stateStartScroll() {
 		}
 	});
 
-	for (let i = 0; i < selectedPolygons.length / 2; i += 1) {
+	for (var i = 0; i < selectedPolygons.length / 1.5; i += 1) {
 		function getRandomArbitary(min, max) {
 			let pos = Math.random() * (max - min) + min;
 			const sphereD = 30;
@@ -948,15 +949,11 @@ function stateStartScroll() {
 				return pos = sphereD * 1.5;
 			}
 
-			return pos;
-
-		}
-
-		let random = getRandomArbitary(-300, 300);
-		let random2 = getRandomArbitary(-300, 300);
-		let random3 = getRandomArbitary(-300, 300);
-		console.log(selectedPolygons[i]);
-		let translate = new BABYLON.Animation('translate', 'position', 20, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+		var random = getRandomArbitary(-300,300);
+		var random2 = getRandomArbitary(-300,300);
+		var random3 = getRandomArbitary(-300,300);
+		// console.log(selectedPolygons[i]);
+		var translate = new BABYLON.Animation("translate", "position", 20, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
 
 		let translatePosition = [];
 		translatePosition.push({
@@ -1013,8 +1010,8 @@ function stateStartScroll() {
 }
 function stateScroll() {
 
-	console.log('scroll');
-	let enterPagePositionX = new BABYLON.Animation('enterPagePositionX', 'position.x', 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+	// console.log('scroll');            
+	var enterPagePositionX = new BABYLON.Animation("enterPagePositionX", "position.x", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
 
 	let keysEnterPosition = [];
 	keysEnterPosition.push({
@@ -1056,12 +1053,19 @@ function stateScroll() {
 	// console.log(enterPagePositionX);
 }
 
-function expansion() {
+function stateInnerPage() {
+	var innerPosition = window.innerWidth * 0.45;
+
+	bigShape.position.x = innerPosition;
+	smallShape.position.x = innerPosition;
+}
+
+function expansion () {
 
 }
 
 function testNext() {
-	console.log('work next');
+	// console.log('work next');
 }
 
 function hoverOn() {
@@ -1094,6 +1098,7 @@ export default {
 	statePageLoaded,
 	stateStartScroll,
 	stateScroll,
+	stateInnerPage,
 	hoverOn,
 	hoverOff,
 };
