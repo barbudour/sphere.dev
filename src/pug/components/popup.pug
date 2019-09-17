@@ -31,7 +31,7 @@
 						| Телефон
 
 				.vacancies__popup__fieldset.required(data-error="Неверный формат")
-					input.vacancies__popup__field#popup-email(type="email" name="email" data-length="6")
+					input.vacancies__popup__field#popup-email(type="text" name="email" data-length="6")
 					label.vacancies__popup__label(for="popup-email")
 						| E-mail
 
@@ -58,7 +58,7 @@
 
 			.vacancies__popup__bottom
 				button.vacancies__popup__submit(disabled)
-					| Отправить
+					span Отправить
 
 		.vacancies__popup__result.is-hidden
 			.vacancies__popup__result__title
