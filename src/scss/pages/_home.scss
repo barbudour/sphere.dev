@@ -8,13 +8,12 @@
 
 		&__decoration {
 			position: absolute;
-			left: 50%;
-			top: vh(160);
+			left: 40%;
+			top: vh(100);
 			z-index: 1;
-			margin-left: vh(-377);
-			width: vh(600);
-			height: vh(600);
-			pointer-events: none;
+			margin-left: vh(-300);
+			width: vh(680);
+			height: vh(680);
 
 			&__image {
 				position: absolute;

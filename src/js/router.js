@@ -109,7 +109,7 @@ function checkLink() {
 }
 
 function homeSphereHover() {
-	$( ".home__fixed" ).hover(
+	$( ".home__fixed__decoration" ).hover(
 		function() {
 			sphere.hoverOn();
 		}, function() {
