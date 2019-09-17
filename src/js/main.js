@@ -6,6 +6,7 @@ import './components/cursor';
 import './components/grid';
 import './components/polygon';
 import './components/slider';
+import './components/about';
 import './components/vacancies';
 import './components/moreCards';
 import './components/filter';

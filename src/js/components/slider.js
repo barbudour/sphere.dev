@@ -36,7 +36,7 @@ function init() {
 			if (itemsCol > 1) {
 				$(element).append(slidesCounter);
 			} else {
-				$slider.find('button').remove();
+				$(element).find('button').remove();
 			}
 
 			$(element).find('.slides-counter__all').html(itemsColText);
