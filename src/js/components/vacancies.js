@@ -53,7 +53,7 @@ function closePopup() {
 		});
 }
 
-function showSendMessage() {
+function showSendMessage($form) {
 	new TimelineLite({
 		onStart() {
 			$popupresult.removeClass('is-hidden');
@@ -62,6 +62,7 @@ function showSendMessage() {
 			$('.vacancies__popup__form input, vacancies__popup__form textarea').val('').removeClass('is-filled');
 			$('.vacancies__popup__submit').prop('disabled', true);
 			$('.vacancies__popup__file__result').html('');
+			$form.find('input, textarea').val('');
 
 			TweenMax.set($popupForm, {
 				clearProps: 'all',
@@ -89,20 +90,26 @@ function ajaxForm($form, action) {
 		data: $form.serialize(),
 	})
 		.done(() => {
-			showSendMessage();
+			showSendMessage($form);
 		})
 		.fail(() => {
 			$popupBody.find('.vacancies__popup__result__title').text('Извините, произошла ошибка при отправке данных!');
 			$popupBody.find('.vacancies__popup__result__text').hide();
-			showSendMessage();
+			showSendMessage($form);
 		});
 }
+
+$('.vacancies__popup__field[name="name"]').on('keyup', (e) => {
+	let input = $(e.currentTarget).get()[0];
+
+	input.value = input.value.replace(/[^а-яА-яa-zA-Z ]/g, '');
+});
 
 // eslint-disable-next-line consistent-return
 function validateForm(e) {
 	const $form = $(e.currentTarget);
-	const $textInput = $form.find('.required input').not('[type="email"]');
-	const $email = $form.find('[type="email"]');
+	const $textInput = $form.find('.required input').not('[name="email"]');
+	const $email = $form.find('[name="email"]');
 
 	$textInput.each((i, el) => {
 		const length = Number($(el).data('length'));
@@ -115,7 +122,9 @@ function validateForm(e) {
 	const address = $email.val();
 	const addressLength = $email.data('length');
 
-	if (address.length < addressLength && reg.test(address) === false) {
+	console.log(address.length, addressLength, reg.test(address))
+
+	if (address.length < addressLength || reg.test(address) === false) {
 		$email.closest('.required').addClass('is-error');
 
 		e.preventDefault();

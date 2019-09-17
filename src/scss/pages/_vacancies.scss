@@ -626,17 +626,31 @@
 		}
 
 		&__submit {
+			display: flex;
+			align-items: center;
+			justify-content: center;
 			padding: 0 23px;
+			height: 43px;
 			font-size: 11px;
-			line-height: 43px;
 			letter-spacing: 0.1em;
 			text-transform: uppercase;
 			color: $color-black;
 			background-color: $color-sunglow;
+			transition: background 0.3s;
+
+			span {
+				transform: translateY(1px);
+			}
 
 			&:disabled {
 				opacity: 0.5;
 				cursor: not-allowed;
+			}
+
+			@include desktop {
+				&:hover {
+					background-color: $color-buttercup;
+				}
 			}
 
 			@include mobile {
@@ -709,6 +723,7 @@
 				border: 1px solid rgba($color-woodsmoke, 0.1);
 				min-width: 104px;
 				color: $color-woodsmoke;
+				cursor: pointer;
 			}
 		}
 
