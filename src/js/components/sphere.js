@@ -358,7 +358,7 @@ function createScene() {
 				}
 			});
 
-			for (var i = 0; i < selectedPolygons.length / 2; i += 1) {
+			for (var i = 0; i < selectedPolygons.length / 1.5; i += 1) {
 
 				var random = 0;
 				var random2 = 0;
@@ -442,7 +442,7 @@ function createScene() {
 				}
 			});
 
-			for (var i = 0; i < selectedPolygons.length / 2; i += 1) {
+			for (var i = 0; i < selectedPolygons.length / 1.5; i += 1) {
 
 				var random = 0;
 				var random2 = 0;
@@ -537,7 +537,7 @@ function createScene() {
 				}
 			});
 
-			for (var i = 0; i < selectedPolygons.length / 2; i += 1) {
+			for (var i = 0; i < selectedPolygons.length / 1.5; i += 1) {
 				function getRandomArbitary(min, max) {
 					var pos = Math.random() * (max - min) + min;
 					const sphereD = 30;
@@ -753,7 +753,7 @@ function stateNormal () {
 		}
 	});
 
-	for (var i = 0; i < selectedPolygons.length / 2; i += 1) {
+	for (var i = 0; i < selectedPolygons.length / 1.5; i += 1) {
 
 		var random = 0;
 		var random2 = 0;
@@ -838,7 +838,7 @@ function statePageLoaded () {
 		}
 	});
 
-	for (var i = 0; i < selectedPolygons.length / 2; i += 1) {
+	for (var i = 0; i < selectedPolygons.length / 1.5; i += 1) {
 
 		var random = 0;
 		var random2 = 0;
@@ -933,7 +933,7 @@ function stateStartScroll () {
 		}
 	});
 
-	for (var i = 0; i < selectedPolygons.length / 2; i += 1) {
+	for (var i = 0; i < selectedPolygons.length / 1.5; i += 1) {
 		function getRandomArbitary(min, max) {
 			var pos = Math.random() * (max - min) + min;
 			const sphereD = 30;
