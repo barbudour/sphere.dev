@@ -18,6 +18,8 @@ import technology from './components/technology';
 import vacancies from './components/vacancies';
 import sphere from './components/sphere';
 
+var stateSphereActive = false;
+
 NProgress.configure({
 	showSpinner: false,
 });
@@ -28,21 +30,57 @@ function checkHome() {
 		sphere.stateNormal();
 	} else {
 		console.log('not main page');
-		sphere.statePageLoaded();
+		// sphere.statePageLoaded();
 	}
 };
 
 function scrollPage() {
-	$(window).scroll(function () { 
-		if ($(this).scrollTop() < 10) {
-			sphere.statePageLoaded();
-		} else if ($(this).scrollTop() > 10 && $(this).scrollTop() < window.innerHeight) {
-			sphere.stateStartScroll();
-		} else if ($(this).scrollTop() > window.innerHeight) {
-			sphere.stateScroll();
+	// $(window).scroll(function () { 
+	// 	if ($(this).scrollTop() < 10) {
+	// 		sphere.statePageLoaded();
+	// 	} else if ($(this).scrollTop() > 10 && $(this).scrollTop() < window.innerHeight) {
+	// 		sphere.stateStartScroll();
+	// 	} else if ($(this).scrollTop() > window.innerHeight) {
+	// 		sphere.stateScroll();
+	// 	}
+	// });
+	// new Waypoint.Inview({
+	// 	element: $('.wrapper')[0],
+	// 	entered: function(direction) {
+	// 		console.log('Enter triggered with direction ' + direction)
+	// 	}
+	// 	// entered: function(direction) {
+	// 	// 	notify('Entered triggered with direction ' + direction)
+	// 	// },
+	// 	// exit: function(direction) {
+	// 	// 	notify('Exit triggered with direction ' + direction)
+	// 	// },
+	// 	// exited: function(direction) {
+	// 	// 	notify('Exited triggered with direction ' + direction)
+	// 	// }
+	// })
+	new Waypoint({
+		element: $('.page__top')[0],
+		handler: function(direction) {
+			// console.log('Direction: ' + direction)
+			if (direction == 'down') {
+				sphere.stateStartScroll();
+			} else if (direction == 'up') {
+				sphere.statePageLoaded();
+			}
 		}
-	});
-}
+	})
+	new Waypoint({
+		element: $('.wrapper')[0],
+		offset: '-50%',
+		handler: function(direction) {
+			// console.log('Direction: ' + direction)
+			if (direction == 'down') {
+				sphere.stateScroll();
+			}
+		}
+	})
+};
 
 function checkLink() {
 	$('a').on('click', function () {
@@ -53,8 +91,18 @@ function checkLink() {
 			sphere.stateStartScroll();
 			sphere.statePageLoaded();
 			sphere.stateNormal();
+			stateSphereActive = false;
 		} else {
-			sphere.statePageLoaded();
+			if (!stateSphereActive) {
+				sphere.statePageLoaded();
+				setTimeout(function() {
+					sphere.stateStartScroll();
+					setTimeout(function() {
+						sphere.stateScroll();
+					}, 1000)
+				}, 1000)
+				stateSphereActive = true;
+			}
 			// console.log('клик по ссылке')
 		}
 	});
@@ -124,9 +172,8 @@ barba.init({
 		
 		afterEnter() {
 			globals.vars.$html.removeClass('is-no-interact');
-			checkLink();
 			checkHome();
-			scrollPage();
+			checkLink();
 			homeSphereHover();
 			// statePageLoaded();
 		},
