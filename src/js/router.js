@@ -20,67 +20,24 @@ import sphere from './components/sphere';
 
 var stateSphereActive = false;
 
+$(document).ready(function () {
+	if (location.pathname != '/') {
+		sphere.stateInnerPage();
+		window.onload = function() {
+			sphere.stateStartScroll();
+			setTimeout(function() {
+				sphere.stateScroll();
+			}, 1000)
+			stateSphereActive = true;
+		};
+	} else {
+		return false;
+	}
+});
+
 NProgress.configure({
 	showSpinner: false,
 });
-
-function checkHome() {
-	if ($('[data-barba-namespace="home"]').length > 0) {
-		console.log('main page');
-		sphere.stateNormal();
-	} else {
-		console.log('not main page');
-		// sphere.statePageLoaded();
-	}
-};
-
-function scrollPage() {
-	// $(window).scroll(function () { 
-	// 	if ($(this).scrollTop() < 10) {
-	// 		sphere.statePageLoaded();
-	// 	} else if ($(this).scrollTop() > 10 && $(this).scrollTop() < window.innerHeight) {
-	// 		sphere.stateStartScroll();
-	// 	} else if ($(this).scrollTop() > window.innerHeight) {
-	// 		sphere.stateScroll();
-	// 	}
-	// });
-	// new Waypoint.Inview({
-	// 	element: $('.wrapper')[0],
-	// 	entered: function(direction) {
-	// 		console.log('Enter triggered with direction ' + direction)
-	// 	}
-	// 	// entered: function(direction) {
-	// 	// 	notify('Entered triggered with direction ' + direction)
-	// 	// },
-	// 	// exit: function(direction) {
-	// 	// 	notify('Exit triggered with direction ' + direction)
-	// 	// },
-	// 	// exited: function(direction) {
-	// 	// 	notify('Exited triggered with direction ' + direction)
-	// 	// }
-	// })
-	new Waypoint({
-		element: $('.page__top')[0],
-		handler: function(direction) {
-			// console.log('Direction: ' + direction)
-			if (direction == 'down') {
-				sphere.stateStartScroll();
-			} else if (direction == 'up') {
-				sphere.statePageLoaded();
-			}
-		}
-	})
-	new Waypoint({
-		element: $('.wrapper')[0],
-		offset: '-50%',
-		handler: function(direction) {
-			// console.log('Direction: ' + direction)
-			if (direction == 'down') {
-				sphere.stateScroll();
-			}
-		}
-	})
-};
 
 function checkLink() {
 	$('a').on('click', function () {
@@ -109,7 +66,7 @@ function checkLink() {
 }
 
 function homeSphereHover() {
-	$( ".home__fixed" ).hover(
+	$( ".home__fixed__decoration" ).hover(
 		function() {
 			sphere.hoverOn();
 		}, function() {
@@ -118,7 +75,6 @@ function homeSphereHover() {
 		);
 }
 
-// checkHome();
 checkLink();
 homeSphereHover();
 
@@ -172,7 +128,6 @@ barba.init({
 		
 		afterEnter() {
 			globals.vars.$html.removeClass('is-no-interact');
-			checkHome();
 			checkLink();
 			homeSphereHover();
 			// statePageLoaded();
@@ -185,7 +140,6 @@ barba.init({
 
 			return true;
 		}
-
 		return false;
 	},
 

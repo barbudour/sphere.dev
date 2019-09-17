@@ -778,6 +778,7 @@ function stateNormal () {
 		translate.setKeys(translatePosition);
 		selectedPolygons[i].animations.push(translate);
 		scene.beginDirectAnimation(selectedPolygons[i], [translate], 0, 20, false);
+		selectedPolygons[i].position = new BABYLON.Vector3(random, random2, random3);
 	};
 
 	var easingFunction = new BABYLON.CubicEase();
@@ -888,7 +889,7 @@ function statePageLoaded () {
 };
 function stateStartScroll () {
 
-	console.log('scroll');            
+	// console.log('scroll');            
 	var enterPagePositionX = new BABYLON.Animation("enterPagePositionX", "position.x", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
 
 	var keysEnterPosition = [];
@@ -948,7 +949,7 @@ function stateStartScroll () {
 		var random = getRandomArbitary(-300,300);
 		var random2 = getRandomArbitary(-300,300);
 		var random3 = getRandomArbitary(-300,300);
-		console.log(selectedPolygons[i]);
+		// console.log(selectedPolygons[i]);
 		var translate = new BABYLON.Animation("translate", "position", 20, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
 
 		var translatePosition = [];
@@ -1006,7 +1007,7 @@ function stateStartScroll () {
 };
 function stateScroll () {
 
-	console.log('scroll');            
+	// console.log('scroll');            
 	var enterPagePositionX = new BABYLON.Animation("enterPagePositionX", "position.x", 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
 
 	var keysEnterPosition = [];
@@ -1049,12 +1050,19 @@ function stateScroll () {
 	// console.log(enterPagePositionX);
 };
 
+function stateInnerPage() {
+	var innerPosition = window.innerWidth * 0.45;
+
+	bigShape.position.x = innerPosition;
+	smallShape.position.x = innerPosition;
+}
+
 function expansion () {
 
 };
 
 function testNext() {
-	console.log('work next');
+	// console.log('work next');
 }
 
 function hoverOn() {
@@ -1087,6 +1095,7 @@ export default {
 	statePageLoaded,
 	stateStartScroll,
 	stateScroll,
+	stateInnerPage,
 	hoverOn,
 	hoverOff
 };
