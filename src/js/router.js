@@ -21,7 +21,7 @@ import sphere from './components/sphere';
 var stateSphereActive = false;
 
 $(document).ready(function () {
-	if (location.pathname != '/') {
+	if (location.pathname !== '/') {
 		sphere.stateInnerPage();
 		window.onload = function() {
 			sphere.stateStartScroll();
